@@ -1,0 +1,9 @@
+Header header
+geometry_msgs/Vector3 linear_acceleration
+geometry_msgs/Vector3 acceleration
+geometry_msgs/Vector3 gravity_vector
+geometry_msgs/Vector3 angular_velocity
+geometry_msgs/Quaternion orientation
+geometry_msgs/Vector3 euler_angle
+geometry_msgs/Vector3 magnetic_field
+float64[9] temperature
