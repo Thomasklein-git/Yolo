@@ -15,8 +15,8 @@ class image_converter:
     #self.image_pub = rospy.Publisher("image_topic_2",Image)
 
     self.bridge = CvBridge()
-    #self.image_sub = rospy.Subscriber("/usb_cam/image_raw",Image,self.callback)
-    self.image_sub = rospy.Subscriber("/zed2/zed_node/left/image_rect_color",Image,self.callback)
+    self.image_sub = rospy.Subscriber("/usb_cam/image_raw",Image,self.callback)
+    #self.image_sub = rospy.Subscriber("/zed2/zed_node/left/image_rect_color",Image,self.callback)
     
 
   def callback(self,data):
