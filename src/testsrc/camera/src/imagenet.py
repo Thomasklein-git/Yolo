@@ -12,7 +12,7 @@ from cv_bridge import CvBridge, CvBridgeError
 class image_converter:
 
   def __init__(self):
-    self.image_pub = rospy.Publisher("image_topic_2",Image)
+    #self.image_pub = rospy.Publisher("image_topic_2",Image)
 
     self.bridge = CvBridge()
     #self.image_sub = rospy.Subscriber("/usb_cam/image_raw",Image,self.callback)
@@ -20,22 +20,37 @@ class image_converter:
     
 
   def callback(self,data):
+    time1 = rospy.get_rostime()
     try:
       cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
     except CvBridgeError as e:
       print(e)
+    
+
+    packtime = data.header.stamp.secs + data.header.stamp.nsecs*10**-9
+    time2 = rospy.get_rostime()    
+
+    beforetime = time1.secs + time1.nsecs*10**-9
+    aftertime = time2.secs + time2.nsecs*10**-9
+
+
+    recievetime = beforetime - packtime
+    Evaltime = aftertime - beforetime
+
+    print("Time to recieve signal:", recievetime)
+    print("Time to evaluate signal:", Evaltime)
 
     (rows,cols,channels) = cv_image.shape
     if cols > 60 and rows > 60 :
       cv2.circle(cv_image, (50,50), 10, 255)
 
-    cv2.imshow("Image window", cv_image)
+    #cv2.imshow("Image window", cv_image)
     cv2.waitKey(3)
 
-    try:
-      self.image_pub.publish(self.bridge.cv2_to_imgmsg(cv_image, "bgr8"))
-    except CvBridgeError as e:
-      print(e)
+    #try:
+      #self.image_pub.publish(self.bridge.cv2_to_imgmsg(cv_image, "bgr8"))
+    #except CvBridgeError as e:
+      #print(e)
 
 def main(args):
   ic = image_converter()
