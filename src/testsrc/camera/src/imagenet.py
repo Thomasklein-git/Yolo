@@ -23,7 +23,7 @@ class image_converter:
   def callback(self,data):
     time1 = rospy.get_rostime()
     try:
-      cv_image = self.bridge.imgmsg_to_cv2(data.image, data.image.encoding)
+      cv_image = self.bridge.imgmsg_to_cv2(data.image, "32FC1")
     except CvBridgeError as e:
       print(e)
     
