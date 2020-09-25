@@ -41,7 +41,7 @@ class image_converter:
     print("Time to evaluate signal:", Evaltime)
 
     cv_image_nonan = np.where(np.isnan(cv_image),0, cv_image)
-    cv_image_nonan *= 255/20 #cv_image_nonan.max()
+    cv_image_nonan *= 255/cv_image_nonan.max()
     cv_image_norm = cv_image_nonan.astype('uint8')
 
     print(cv_image_nonan[360,640])
