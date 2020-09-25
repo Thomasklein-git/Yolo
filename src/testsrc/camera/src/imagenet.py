@@ -7,6 +7,7 @@ import rospy
 import cv2
 from std_msgs.msg import String
 from sensor_msgs.msg import Image
+from stereo_msgs.msg import DisparityImage
 from cv_bridge import CvBridge, CvBridgeError
 
 class image_converter:
@@ -17,12 +18,12 @@ class image_converter:
     self.bridge = CvBridge()
     #self.image_sub = rospy.Subscriber("/usb_cam/image_raw",Image,self.callback)
     #self.image_sub = rospy.Subscriber("/zed2/zed_node/left/image_rect_color",Image,self.callback)
-    self.image_sub = rospy.Subscriber("/zed2/zed_node/disparity/disparity_image/image",Image,self.callback)
+    self.image_sub = rospy.Subscriber("/zed2/zed_node/disparity/disparity_image",DisparityImage,self.callback)
 
   def callback(self,data):
     time1 = rospy.get_rostime()
     try:
-      cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
+      cv_image = self.bridge.imgmsg_to_cv2(data.image, data.image.encoding)
     except CvBridgeError as e:
       print(e)
     
@@ -40,9 +41,9 @@ class image_converter:
     print("Time to recieve signal:", recievetime)
     print("Time to evaluate signal:", Evaltime)
 
-    (rows,cols,channels) = cv_image.shape
-    if cols > 60 and rows > 60 :
-      cv2.circle(cv_image, (50,50), 10, 255)
+    #(rows,cols,channels) = cv_image.shape
+    #if cols > 60 and rows > 60 :
+    #  cv2.circle(cv_image, (50,50), 10, 255)
 
     cv2.imshow("Image window", cv_image)
     cv2.waitKey(3)
