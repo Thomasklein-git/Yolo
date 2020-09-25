@@ -5,6 +5,7 @@ import roslib
 import sys
 import rospy
 import cv2
+import numpy as np
 from std_msgs.msg import String
 from sensor_msgs.msg import Image
 from stereo_msgs.msg import DisparityImage
@@ -41,6 +42,7 @@ class image_converter:
 
     print("Time to recieve signal:", recievetime)
     print("Time to evaluate signal:", Evaltime)
+    print(cv_image[360,640])
 
     #(rows,cols,channels) = cv_image.shape
     #if cols > 60 and rows > 60 :
