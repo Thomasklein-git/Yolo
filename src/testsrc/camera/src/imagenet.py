@@ -18,12 +18,13 @@ class image_converter:
     self.bridge = CvBridge()
     #self.image_sub = rospy.Subscriber("/usb_cam/image_raw",Image,self.callback)
     #self.image_sub = rospy.Subscriber("/zed2/zed_node/left/image_rect_color",Image,self.callback)
-    self.image_sub = rospy.Subscriber("/zed2/zed_node/disparity/disparity_image",DisparityImage,self.callback)
+    #self.image_sub = rospy.Subscriber("/zed2/zed_node/disparity/disparity_image",DisparityImage,self.callback)
+    self.image_sub = rospy.Subscriber("/zed2/zed_node/depth/depth_registered",Imagr,self.callback)
 
   def callback(self,data):
     time1 = rospy.get_rostime()
     try:
-      cv_image = self.bridge.imgmsg_to_cv2(data.image, "32FC1")
+      cv_image = self.bridge.imgmsg_to_cv2(image, encoding)
     except CvBridgeError as e:
       print(e)
     
@@ -48,10 +49,10 @@ class image_converter:
     cv2.imshow("Image window", cv_image)
     cv2.waitKey(3)
 
-    try:
-      self.image_pub.publish(self.bridge.cv2_to_imgmsg(cv_image, "32FC1"))
-    except CvBridgeError as e:
-      print(e)
+    #try:
+    #  self.image_pub.publish(self.bridge.cv2_to_imgmsg(cv_image, "32FC1"))
+    #except CvBridgeError as e:
+    #  print(e)
 
 def main(args):
   ic = image_converter()
