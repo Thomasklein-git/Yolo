@@ -17,7 +17,7 @@ class image_converter:
     self.bridge = CvBridge()
     #self.image_sub = rospy.Subscriber("/usb_cam/image_raw",Image,self.callback)
     #self.image_sub = rospy.Subscriber("/zed2/zed_node/left/image_rect_color",Image,self.callback)
-    self.image_sub = rospy.Subscriber("/zed2/zed_node/disparity/disparity_image/Image",Image,self.callback)
+    self.image_sub = rospy.Subscriber("/zed2/zed_node/disparity/disparity_image",Image,self.callback)
 
   def callback(self,data):
     time1 = rospy.get_rostime()
