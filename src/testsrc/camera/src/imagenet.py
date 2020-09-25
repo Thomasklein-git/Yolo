@@ -15,9 +15,9 @@ class image_converter:
     #self.image_pub = rospy.Publisher("image_topic_2",Image)
 
     self.bridge = CvBridge()
-    self.image_sub = rospy.Subscriber("/usb_cam/image_raw",Image,self.callback)
+    #self.image_sub = rospy.Subscriber("/usb_cam/image_raw",Image,self.callback)
     #self.image_sub = rospy.Subscriber("/zed2/zed_node/left/image_rect_color",Image,self.callback)
-    
+    self.image_sub = rospy.Subscriber("/zed2/zed_node/disparity/disparity_image/Image",Image,self.callback)
 
   def callback(self,data):
     time1 = rospy.get_rostime()
@@ -44,7 +44,7 @@ class image_converter:
     if cols > 60 and rows > 60 :
       cv2.circle(cv_image, (50,50), 10, 255)
 
-    #cv2.imshow("Image window", cv_image)
+    cv2.imshow("Image window", cv_image)
     cv2.waitKey(3)
 
     #try:
