@@ -19,12 +19,12 @@ class image_converter:
     #self.image_sub = rospy.Subscriber("/usb_cam/image_raw",Image,self.callback)
     #self.image_sub = rospy.Subscriber("/zed2/zed_node/left/image_rect_color",Image,self.callback)
     #self.image_sub = rospy.Subscriber("/zed2/zed_node/disparity/disparity_image",DisparityImage,self.callback)
-    self.image_sub = rospy.Subscriber("/zed2/zed_node/depth/depth_registered",Imagr,self.callback)
+    self.image_sub = rospy.Subscriber("/zed2/zed_node/depth/depth_registered",Image,self.callback)
 
   def callback(self,data):
     time1 = rospy.get_rostime()
     try:
-      cv_image = self.bridge.imgmsg_to_cv2(image, encoding)
+      cv_image = self.bridge.imgmsg_to_cv2(data, data.encoding)
     except CvBridgeError as e:
       print(e)
     
