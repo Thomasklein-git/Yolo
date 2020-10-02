@@ -1,0 +1,1580 @@
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/b11672ec01b3da4c.jpg 0,0,1001,682,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/44403657a507c112.jpg 410,182,601,481,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/eca37ba17d39de03.jpg 205,343,414,654,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/853bc9210aaa3ace.jpg 58,81,763,683,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/348824dd8c0c74e6.jpg 253,79,408,559,0 686,241,739,311,0 774,227,849,307,0 931,208,1024,305,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/5816e7186d1c97af.jpg 552,298,682,429,0 946,335,968,390,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/9a1de158d644b485.jpg 0,337,1024,446,0 610,179,675,292,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/901d8df389a5ee5f.jpg 299,9,1022,767,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/7c1a4eb736b3fc4d.jpg 11,13,214,185,0 397,117,432,252,0 565,221,765,615,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/25369d9ce6ade643.jpg 167,100,515,842,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/86d5a96217a5e4e2.jpg 78,178,365,246,0 836,143,953,265,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/53e1685a30ac3ba2.jpg 570,76,731,293,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/ec8e70a716f63784.jpg 123,0,516,270,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/528db7f88ac0b2ea.jpg 479,422,536,507,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/ddf8749bc387e6e5.jpg 253,0,776,565,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/4d9315a09ce9dec6.jpg 101,0,989,676,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/0d98d0cea52c9f52.jpg 0,333,46,475,0 3,468,42,590,0 35,387,113,523,0 132,368,198,551,0 210,408,235,491,0 240,391,295,450,0 808,205,925,360,0 929,475,977,624,0 967,456,995,528,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/16829d1cc125b697.jpg 35,471,508,761,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/5a06cc680775df9c.jpg 324,155,870,681,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/d100c733d7af6ce3.jpg 0,0,1024,638,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/3542845eae87b9d6.jpg 70,390,97,467,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/a9d55e2efa8d2c65.jpg 29,96,977,455,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/9298524c8dfaf236.jpg 56,155,661,568,0 259,398,604,819,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/6eb3a79c5a790a39.jpg 307,622,347,677,0 412,623,443,672,0 641,596,682,692,0 681,588,728,678,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/1c49ae62cd982f80.jpg 295,394,563,502,0 442,115,872,768,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/ca8de4484aa70be5.jpg 309,162,471,340,0 398,138,488,258,0 417,446,526,629,0 481,135,560,299,0 554,129,590,211,0 568,201,628,305,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/72015d23bbdb911a.jpg 0,599,156,768,0 58,390,221,633,0 227,388,433,693,0 635,419,806,638,0 679,361,802,483,0 892,345,1024,488,0 972,403,1024,554,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/940d7418b2f20b20.jpg 442,249,776,913,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/330fef47255728ac.jpg 0,49,1023,768,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/dee1b1c220415295.jpg 198,18,923,686,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/5dac73222a34b47e.jpg 391,218,632,768,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/5662542c8fc1e578.jpg 56,130,1023,680,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/76faa5748f4fc096.jpg 0,265,43,386,0 38,329,70,384,0 47,289,141,403,0 152,305,199,391,0 353,80,447,429,0 499,321,569,419,0 593,302,721,427,0 667,316,716,427,0 715,362,799,436,0 842,339,930,437,0 979,363,1024,568,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/033c662851c65e27.jpg 14,97,266,787,0 164,39,750,849,0 425,102,634,861,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/90e9af3509ed1263.jpg 0,0,1024,738,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/ac20cc62c4cdaa1a.jpg 207,13,600,1024,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/f9973f86e2db99b2.jpg 0,714,1024,768,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/69e7d0ee73e98cfc.jpg 255,548,300,627,0 307,553,337,621,0 335,556,370,624,0 593,511,659,723,0 654,527,729,717,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/d02165654fbace68.jpg 476,234,580,474,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/fb6a1356b146fa2e.jpg 0,495,12,537,0 0,555,17,585,0 0,588,35,679,0 0,284,108,475,0 29,442,168,582,0 49,594,195,680,0 100,197,213,452,0 161,453,312,653,0 219,212,328,457,0 299,498,477,663,0 312,610,398,680,0 325,205,441,458,0 448,211,563,464,0 472,512,630,663,0 493,633,559,680,0 567,211,682,473,0 660,507,819,654,0 700,217,808,474,0 734,622,796,680,0 834,144,952,475,0 919,585,1024,680,0 993,657,1024,680,0 1000,559,1024,610,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/49d062c43793eb73.jpg 199,0,1015,259,0 274,460,895,671,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/de7c2171ea897f89.jpg 593,221,815,417,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/70e2727df0b6403d.jpg 53,44,447,1014,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/be57c542d09cef1f.jpg 0,150,683,861,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/17cfc16988bd01d6.jpg 862,379,939,511,0 893,379,972,468,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/355bc1ce582f0e96.jpg 315,38,672,548,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/732320891b071e3f.jpg 79,0,1021,768,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/5a55bff2f8842ff8.jpg 307,25,637,674,0 808,242,1024,674,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/0e2d9796271b9d43.jpg 734,194,1024,730,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/6b43a9f00479b61c.jpg 92,189,141,322,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/66dcc06f4a2c1d03.jpg 577,365,642,523,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/82b02bfd724dfa66.jpg 0,41,423,678,0 389,170,713,678,0 662,198,916,634,0 868,258,1024,676,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/fd51a6f195a86022.jpg 0,0,1024,683,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/59bcf6394131c43f.jpg 0,0,683,295,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/9901d93bff08a329.jpg 0,67,1024,681,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/2fe8f7dce31d4004.jpg 469,0,634,512,0 682,0,873,274,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/71c36392b3fbc7f0.jpg 56,216,695,778,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/a9ad526ab1e05df5.jpg 608,258,667,314,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/b0fc2209995d75cb.jpg 632,0,934,282,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/78f4047f2d141727.jpg 333,16,616,670,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/88306f2ebbe6e95d.jpg 66,142,1024,788,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/a309464face2453a.jpg 471,193,642,549,0 508,338,870,490,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/100d6bbd6f81fe6f.jpg 0,0,1024,676,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/67135dc40570ec97.jpg 0,521,372,681,0 0,0,591,539,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/5657c4272c642057.jpg 0,156,801,1024,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/c34c137718f18529.jpg 79,13,112,95,0 298,15,328,93,0 613,8,645,72,0 875,0,891,37,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/ae8306ed949ea392.jpg 0,0,527,364,0 844,0,1024,257,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/487aca195e6ecb32.jpg 222,306,831,391,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/11051240239ce83f.jpg 0,23,698,1024,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/88894bb2a7863110.jpg 298,143,628,768,0 397,79,823,738,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/06d67ce06ae11ab3.jpg 71,322,116,405,0 117,326,227,481,0 180,335,281,555,0 281,317,370,543,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/6678f51e27f16660.jpg 0,0,343,312,0 0,140,122,633,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/26ecbaf87d1736d9.jpg 435,28,1024,734,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/ec0fe448e2dafdc6.jpg 305,31,912,683,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/426f6b665d06fbaf.jpg 208,87,595,524,0 254,0,350,182,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/9c07834020322308.jpg 0,183,171,278,0 260,139,445,366,0 356,159,1024,337,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/cc2037453083aa5c.jpg 242,50,911,537,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/0b7d561041faf0d9.jpg 466,419,522,598,0 565,429,590,513,0 596,426,611,478,0 615,422,630,469,0 616,422,632,474,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/db11a5b49456707e.jpg 331,113,431,372,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/7817a54419096904.jpg 354,140,935,653,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/092d91b5e46f6fc2.jpg 56,323,1024,683,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/0c3228734c66d31b.jpg 0,0,355,680,0 381,59,909,680,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/9f410c1c669bc6cf.jpg 230,0,466,392,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/3e5c1e6ead8f14c4.jpg 234,307,553,645,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/67ed7074e4f21d13.jpg 0,19,1024,972,0 1,420,110,690,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/ab4a45d68690aa0e.jpg 360,0,650,259,0 502,46,744,455,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/46ff159ae0b34796.jpg 4,237,64,426,0 778,179,816,362,0 964,207,997,377,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/59912247de2bb8a8.jpg 159,230,435,932,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/1c8dcef0ebf1947e.jpg 197,145,253,179,0 419,98,646,463,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/e2a8a6be381c14f9.jpg 399,0,966,389,0 889,1,1024,683,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/3bd9e5d93333befd.jpg 263,111,704,552,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/206f16d2a0ebd435.jpg 141,268,315,727,0 257,266,432,533,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/c2e33bc4391a66b7.jpg 212,257,272,359,0 553,268,561,290,0 623,257,680,356,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/8aa98be99d4c9dc9.jpg 301,158,670,683,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/1562e20aaeadf456.jpg 96,52,441,636,0 610,126,899,532,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/6d46529d4fd45cfc.jpg 11,157,545,279,0 363,232,642,653,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/f86dbc669fd631f7.jpg 0,121,110,551,0 37,157,79,263,0 73,177,135,286,0 174,77,362,431,0 224,73,397,407,0 391,134,565,688,0 474,55,659,610,0 570,263,768,628,0 702,209,741,282,0 736,174,795,372,0 769,281,928,587,0 874,217,911,294,0 910,214,963,322,0 962,213,989,321,0 988,226,1021,311,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/fd405e5e76deeb42.jpg 388,194,560,379,0 416,200,537,390,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/d5c88eaa12a097d5.jpg 0,25,683,607,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/fc38fe60ffab8d8d.jpg 212,120,408,352,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/2a2a1d0ab1895bff.jpg 0,102,679,732,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/68861f0b3bd7c1b6.jpg 217,36,968,709,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/426a58c982b53acf.jpg 325,261,440,673,0 524,153,556,263,0 983,255,1024,374,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/d5ee916014eeebc2.jpg 329,0,665,535,0 690,0,1017,560,0 965,55,1024,388,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/0c4b47db0a89d8ab.jpg 346,233,525,550,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/77b3a7413941c16d.jpg 169,195,578,946,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/fbaca8f46a70ac91.jpg 0,0,768,1024,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/192643b349935cde.jpg 0,420,386,741,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/6f436044c2b31399.jpg 63,158,561,985,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/cf2960fe0ad0d1d1.jpg 109,210,463,679,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/23180090fe91a4d4.jpg 531,303,541,328,0 548,300,558,332,0 568,310,578,330,0 862,304,892,368,0 878,283,896,331,0 900,280,919,318,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/59baab72fc4f0d81.jpg 182,76,616,1024,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/b28eb29296e47b9f.jpg 0,20,1024,668,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/ddbf2d3a8fe3dfdf.jpg 308,118,511,360,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/60d83ca9dd9c25bf.jpg 71,353,110,459,0 113,366,133,451,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/17760a6977944ff8.jpg 95,111,683,1024,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/ff913093c0fb6898.jpg 0,67,694,768,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/e1a6a84489440f4e.jpg 9,167,40,278,0 31,171,68,282,0 62,174,98,281,0 95,162,166,344,0 172,167,241,343,0 230,180,278,290,0 281,180,304,247,0 408,179,433,256,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/16408882bd372651.jpg 0,115,1023,683,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/ee2f7c6421242ff2.jpg 64,163,105,346,0 216,187,254,233,0 236,171,282,223,0 778,211,792,226,0 792,203,815,258,0 808,211,823,259,0 828,188,880,302,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/d6a0d222cc0acb00.jpg 282,444,501,905,0 567,428,841,852,0 821,420,1024,767,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/40f62f7b78925df3.jpg 210,357,814,683,0 284,1,814,441,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/b767d73d6007b146.jpg 0,0,894,134,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/cc6ae9d5040ffa59.jpg 0,0,988,683,0 647,0,1024,683,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/b8851d7c62d5e73a.jpg 0,89,184,434,0 243,107,395,443,0 368,216,538,519,0 650,214,833,553,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/b216853939330ce4.jpg 425,32,782,502,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/25babea9b69c7246.jpg 0,305,768,1024,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/525bb91b1a691ca6.jpg 146,123,666,1024,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/b52fc7dcffc8d04c.jpg 841,63,913,173,0 848,0,890,90,0 878,404,948,446,0 911,35,953,144,0 973,380,1013,448,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/b1ea48285fe0cc37.jpg 0,114,1024,768,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/6accac65d3fe99fa.jpg 28,237,424,941,0 399,47,778,978,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/cf1f3142ad4bb20f.jpg 53,573,520,1024,0 54,576,490,952,0 69,90,647,932,0 499,497,768,977,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/0cc747bdee35809e.jpg 0,14,1009,462,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/d46c872825a2f9c5.jpg 0,0,1024,768,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/07d640546453776d.jpg 199,81,1024,564,0 202,0,944,489,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/e7c2f129e672c175.jpg 0,0,768,1023,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/381433641e6dcbcb.jpg 0,56,734,437,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/7df625e247007d89.jpg 247,144,904,768,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/e5a2cf493a84f0ea.jpg 110,8,484,1024,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/423c326276882f38.jpg 0,166,56,710,0 210,36,414,936,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/e472b3dca10b0c2b.jpg 1,2,1019,572,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/6d613dbbf1d8d812.jpg 0,100,1024,465,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/622e3c9c0ed0067b.jpg 0,1,1024,683,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/81785d54dc3dc7bc.jpg 451,217,632,662,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/33037f754fe2ed8f.jpg 0,0,1024,768,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/f48e2b8b5609e340.jpg 153,56,592,829,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/5d677d77474e6a9f.jpg 7,122,834,598,0 440,0,998,633,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/3f4d54ebbfdccd7b.jpg 169,318,480,932,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/3a33ee8db3db21c1.jpg 638,275,974,768,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/10f8edae04861e4a.jpg 0,634,173,768,0 16,188,481,644,0 666,175,1024,703,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/5e5fcd4b0eb4cfd7.jpg 523,199,651,310,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/0afc7719da632962.jpg 0,189,84,260,0 503,163,555,223,0 614,156,656,232,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/1c9a8cce764c7e53.jpg 65,328,88,402,0 81,334,111,409,0 420,307,538,655,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/0999bc8c5ac34370.jpg 0,0,1022,682,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/3a94cf9e2b838ec7.jpg 0,0,1010,223,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/fd3e06595e091bdd.jpg 40,97,466,245,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/c91e1f23514504a2.jpg 308,78,637,749,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/72ff88ebf2f73386.jpg 164,353,304,506,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/32a6c3c37ca2cac5.jpg 57,125,66,147,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/8f6ca6739a9bf414.jpg 0,113,1024,682,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/b80fb6615ea64085.jpg 0,0,1023,683,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/b361089ad5380a19.jpg 121,528,199,663,0 291,389,418,603,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/ea37a7712ba9801e.jpg 0,0,823,612,0 448,44,493,84,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/91df310c19cf54e4.jpg 0,0,767,431,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/007de8d56e59900a.jpg 67,189,489,919,0 166,148,555,900,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/2b2050579b793453.jpg 106,117,397,1024,0 329,40,665,1024,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/bf90764006ec19fe.jpg 2,579,121,686,0 153,21,513,868,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/d55bbf3cedb6f69d.jpg 25,166,479,887,0 204,8,1003,1023,0 266,289,954,553,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/d264bf4d0d09f28d.jpg 0,83,87,388,0 83,139,137,294,0 92,169,139,333,0 834,200,1024,431,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/1d5d696974606b1d.jpg 0,0,1024,768,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/42805630308e5252.jpg 0,75,1024,683,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/6021c7a7b1a4df68.jpg 242,8,912,683,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/9827eed312d2b4b5.jpg 0,83,1024,465,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/47bb6fea15d03225.jpg 377,270,623,566,0 602,315,733,553,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/5db13c49301b13f7.jpg 197,68,401,366,0 260,186,434,576,0 466,91,593,471,0 667,60,807,234,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/d8d6d3309f01fabd.jpg 255,364,393,617,0 760,213,971,768,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/6f0943b200cd3218.jpg 0,26,1024,684,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/7eddb90e3a01f1a1.jpg 233,253,602,996,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/c3c14ff3ba01bcb7.jpg 124,192,1024,316,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/9aafe7686ae9c36e.jpg 0,39,437,684,0 189,35,786,684,0 469,45,1024,684,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/a2d44c9a273d758d.jpg 164,159,446,683,0 196,38,322,262,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/ca491cda1a3c5839.jpg 0,142,123,662,0 322,150,441,644,0 364,164,384,212,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/53135f202f4340ab.jpg 0,29,1024,768,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/bf550a467d802a6f.jpg 101,66,648,768,0 603,0,1024,440,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/0d548e87655648aa.jpg 286,143,784,237,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/7689a4a4e7e4a767.jpg 16,203,1024,644,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/253853707d7821c5.jpg 110,150,983,636,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/38b1b3bbe15a8d9f.jpg 0,165,1024,681,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/a9316163565ca216.jpg 198,237,500,680,0 284,164,806,680,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/dad4f5183307aa3c.jpg 433,5,595,323,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/24380358486c3524.jpg 0,0,1024,1024,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/d28b5fb8642387ff.jpg 0,97,1024,682,0 313,336,658,681,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/fdf7a11f0a89a773.jpg 70,0,515,1013,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/439b41a6ba2c872a.jpg 0,84,1024,267,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/4dc1342abd6b261a.jpg 0,0,468,984,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/69ff15add2a30111.jpg 1,0,767,1024,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/047874dbf193f56c.jpg 0,132,155,767,0 109,0,1024,768,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/e962c7a6474a0cbc.jpg 23,369,681,696,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/7c3c20856c175c7a.jpg 66,152,235,465,0 85,188,231,367,0 263,152,417,503,0 329,198,396,312,0 571,176,802,428,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Person/72015bbf9f11fc86.jpg 34,87,71,120,0 76,72,137,118,0 133,109,236,300,0 144,94,153,110,0 326,100,345,155,0 354,98,364,143,0 362,100,373,141,0 371,108,389,151,0 402,102,414,117,0 472,161,527,227,0 500,108,531,136,0 634,105,652,132,0 654,107,674,131,0 671,107,691,135,0 717,112,739,140,0 927,130,956,212,0
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/3f509c6e7dfe559f.jpg 398,598,562,768,1 728,323,895,502,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/7d29c2a421c4f9e2.jpg 265,347,320,443,1 526,354,559,442,1 658,357,703,441,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/d4db5d6cacad2119.jpg 168,470,560,961,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/03dc14885fc31cb2.jpg 0,40,1024,768,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/f32426ed0989d208.jpg 750,229,878,469,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/13fb10a6d2718757.jpg 454,282,552,462,1 486,333,678,623,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/74bb0aeedf0c431b.jpg 119,292,523,604,1 379,313,788,676,1 889,366,1024,768,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/177b07564e5e03a9.jpg 0,237,167,457,1 163,256,335,441,1 166,468,608,897,1 558,202,679,396,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/e6061869c0511d84.jpg 45,539,586,1023,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/d53684a42dc8beb3.jpg 59,667,576,1024,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/b8018e4b1f81a6a2.jpg 0,0,1024,726,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/9f95077dcf985a4e.jpg 74,506,417,709,1 505,397,693,498,1 714,366,842,456,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/406811b82cbc182e.jpg 0,443,509,682,1 271,569,873,680,1 490,512,1024,682,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/0cd7694544c896db.jpg 417,327,1023,684,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/4c6ab3eaf5bccb51.jpg 83,192,796,674,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/074694b2b06afaa9.jpg 0,79,218,244,1 171,299,759,911,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/f745985c27418328.jpg 177,194,328,344,1 230,205,565,452,1 273,278,891,632,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/5a06cc680775df9c.jpg 339,641,987,681,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/df769d10d0f6ee63.jpg 158,26,385,226,1 174,26,351,264,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/43028c395ed649ef.jpg 14,298,549,753,1 46,672,311,827,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/5c659154e39378f2.jpg 95,194,520,668,1 541,199,1023,683,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/67d8f3c13a13124f.jpg 0,265,1024,768,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/209792909aa42e32.jpg 73,41,932,827,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/f860bbcd7ad6bf8f.jpg 0,0,1005,680,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/9df7b20aa187a03d.jpg 0,0,1024,768,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/4c289ea0745b43a1.jpg 98,197,197,383,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/dbed91844d434b7d.jpg 896,527,1006,614,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/d62b42c4e5e7ee36.jpg 203,287,830,652,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/3a6d9ac99a96dc89.jpg 0,113,946,683,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/7f15f0d21d956ef2.jpg 0,0,1023,682,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/9aebb4b4af4ddca2.jpg 6,79,996,723,1 706,410,1024,768,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/1b28a7f8ac4d7956.jpg 22,43,352,605,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/f26950194119272f.jpg 17,100,932,574,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/57f066abe1f1924c.jpg 2,136,834,607,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/b188dfe7a54efb32.jpg 178,463,525,956,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/00ca18f0b632408b.jpg 0,0,1024,680,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/7ac83fcc53e4a5a9.jpg 478,206,620,504,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/b4a3d624b2a819f0.jpg 4,105,956,677,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/894db63cb434326d.jpg 357,202,598,619,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/37afddf7216016f7.jpg 72,284,373,653,1 325,241,586,602,1 584,209,776,537,1 748,163,881,450,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/e9e6ab8ed6b26984.jpg 183,153,526,911,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/ecbc0c297c9ec8a1.jpg 0,392,964,687,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/3dae4151c49cb5be.jpg 0,0,1024,768,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/efd32bafad7ea945.jpg 75,465,172,642,1 190,429,283,606,1 211,395,276,522,1 276,390,361,526,1 365,383,426,512,1 426,383,460,501,1 437,431,512,589,1 521,381,617,517,1 588,397,660,540,1 647,408,732,589,1 739,433,828,583,1 830,451,944,617,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/f57299a55fcb6fd8.jpg 262,222,726,683,1 856,196,1024,426,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/2b3941ac173fd6dc.jpg 337,134,927,613,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/e9e375870b2d0cbe.jpg 190,926,580,1024,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/cc7cf0d0fac10591.jpg 0,22,891,683,1 261,238,364,297,1 272,36,928,576,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/b3d0585a91ef44cd.jpg 16,220,650,634,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/95f81bb26a0658ff.jpg 44,79,908,626,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/4b6ad7ec94989767.jpg 9,258,865,629,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/0aab7455155030cf.jpg 435,277,543,576,1 655,339,938,576,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/73bf01ae5d9aea95.jpg 96,181,288,504,1 222,43,464,294,1 722,200,937,599,1 773,223,909,594,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/785e94f7571930b5.jpg 352,619,595,790,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/7391f2c0c501b153.jpg 904,561,1024,712,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/58bd4ac694c31e25.jpg 83,55,1024,680,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/f9fa4a7c9f5c7b9e.jpg 0,0,419,357,1 0,2,458,413,1 0,5,768,768,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/959ddd93db15038a.jpg 54,0,840,649,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/355bc1ce582f0e96.jpg 323,353,728,600,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/9494433529a2bcf3.jpg 18,201,861,944,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/fe68a31f38a780b1.jpg 13,54,971,610,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/f30f3dd201a80885.jpg 922,236,1024,385,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/0bdc378272c98063.jpg 0,307,56,446,1 84,303,352,453,1 323,412,838,680,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/513d6796c322ced5.jpg 1,20,1024,767,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/daefb58910a704ca.jpg 84,342,1024,768,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/7064f08a23f73dac.jpg 107,428,594,992,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/46295c55077c68f2.jpg 215,358,629,576,1 319,267,543,530,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/64ec24e311d80b6a.jpg 38,266,516,558,1 403,256,999,640,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/36bf66b6a0a8fcbe.jpg 66,369,663,793,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/f03d7a001f308a87.jpg 424,513,600,717,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/1554f6fd493281ec.jpg 180,342,608,768,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/dc85f09b0e8c9be2.jpg 0,0,1024,683,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/9534dcd470194472.jpg 285,581,452,733,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/64294d928f12d0b9.jpg 56,284,615,634,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/dffaf8a4d9fc6c82.jpg 55,374,689,892,1 470,286,718,507,1 811,269,919,364,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/d63be9a6f0ace964.jpg 0,180,454,525,1 572,188,817,351,1 778,317,1024,591,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/b1845e14ee7ee3f2.jpg 276,256,807,627,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/9c564ac244634de7.jpg 0,55,399,414,1 179,187,844,562,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/46f89d5bba26cbcd.jpg 0,2,649,1024,1 618,0,745,333,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/99871b1ed7a05a8f.jpg 324,366,613,669,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/789e68d82e7f493c.jpg 30,205,369,649,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/9acd73b0833d8214.jpg 0,431,585,768,1 677,450,857,766,1 798,392,854,593,1 937,427,1024,768,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/441d9a7195d9fd2c.jpg 58,367,944,664,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/8c1e8c56319b75f6.jpg 0,196,683,633,1 327,435,622,927,1 534,334,683,542,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/a153975c2546aa5d.jpg 190,340,893,971,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/0d1902a8a0ccab84.jpg 0,302,414,683,1 0,24,419,294,1 442,316,544,378,1 587,308,1024,683,1 591,0,1024,328,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/e4f4e2c3a446d483.jpg 300,431,555,592,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/d3c42a079559ae38.jpg 0,0,836,683,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/deb4d11e1ecbab40.jpg 126,472,450,686,1 534,523,940,686,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/5fa244313bc8f898.jpg 124,31,996,765,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/128a8352e0d3944a.jpg 0,20,864,681,1 874,485,1024,681,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/e4c3e00be6ec34fd.jpg 76,50,495,639,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/2d1929b2d471ddc0.jpg 81,464,723,1023,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/293dadae7af213b8.jpg 201,0,1024,667,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/58edd5f8db740478.jpg 0,0,1024,768,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/28735e68348358c3.jpg 37,361,495,645,1 345,374,921,743,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/8aa98be99d4c9dc9.jpg 287,394,615,683,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/de955f72012f617a.jpg 665,270,942,558,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/a616335ed38e0764.jpg 0,61,221,335,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/8227818037e372a7.jpg 0,577,471,768,1 0,0,1024,750,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/d7a90c5b00ada5ae.jpg 90,145,549,709,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/ca9fcef7d17ea7b9.jpg 333,352,658,768,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/5957611f6889f656.jpg 42,72,953,528,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/85073b6d5ff8b6c6.jpg 0,197,194,438,1 0,0,245,151,1 207,341,968,765,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/2f0cd935147d2cda.jpg 98,538,685,943,1 141,432,648,757,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/0eeac3a4cb1a6992.jpg 0,0,927,742,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/d5efc1bdafc6da37.jpg 772,54,897,182,1 903,106,949,153,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/bad7c5338743e641.jpg 35,174,609,660,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/c181246f1817a73d.jpg 0,393,303,729,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/345a25af2eb65a6a.jpg 251,322,609,747,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/358206e3798f86bd.jpg 478,516,641,675,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/c06c4d6207481335.jpg 295,191,956,683,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/b1d541365ed78ce5.jpg 1,0,1023,685,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/35a6a0a34dee0461.jpg 0,0,1024,563,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/232702f664b7365f.jpg 0,0,1024,680,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/26807c264e63a562.jpg 0,544,79,644,1 167,530,235,654,1 770,523,840,639,1 979,520,1024,626,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/e8664bb408732c0f.jpg 34,760,723,1024,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/2a54f42700650725.jpg 0,0,624,768,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/c761f068ed048a43.jpg 32,17,732,1003,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/7f67f6051d99b447.jpg 2,274,32,318,1 138,276,290,376,1 157,180,216,218,1 280,292,442,352,1 319,187,348,226,1 518,179,533,222,1 532,182,578,220,1 637,190,660,238,1 757,224,872,318,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/a33070e7c5a3d444.jpg 70,391,351,980,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/a1382830c9eab4b8.jpg 0,520,97,683,1 28,440,246,677,1 382,438,596,648,1 747,388,935,517,1 837,370,966,506,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/46a0f932d0bf1211.jpg 0,0,660,681,1 642,294,955,594,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/13f0417ed3a015a6.jpg 9,96,1017,663,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/480d07a18f2e3f0f.jpg 1,491,238,768,1 415,681,737,768,1 677,421,825,566,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/5259544b581c3f88.jpg 0,0,1014,768,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/e2e92b59e1f23d15.jpg 317,91,687,324,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/c71e261e27db6c41.jpg 25,341,233,501,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/684b5fbfedae9a42.jpg 119,322,645,683,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/013fa6325ed13380.jpg 308,306,550,492,1 668,582,906,679,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/16e09bf18e5c37f1.jpg 88,107,974,702,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/97dbd0778e821866.jpg 194,301,616,786,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/516afa1958dc901d.jpg 178,232,1024,529,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/07d640546453776d.jpg 10,242,1024,631,1 22,146,1024,537,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/7a22551ea5c546af.jpg 0,41,1024,682,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/ba2d1297c2627f04.jpg 146,205,949,710,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/f14ca837fb2470d9.jpg 114,27,988,672,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/abc436f8778e1a82.jpg 171,166,300,243,1 391,252,715,541,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/bed06cb6b48579e5.jpg 231,307,876,691,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/e472b3dca10b0c2b.jpg 0,0,1024,768,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/861bf98f625154e2.jpg 348,720,622,924,1 360,221,673,480,1 551,151,809,383,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/78a6df7e84d7e269.jpg 57,295,715,575,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/88859419055de2c5.jpg 0,410,76,467,1 381,280,536,559,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/1d4349a1d5d56eef.jpg 214,305,462,465,1 639,305,832,430,1 648,305,812,458,1 761,317,894,487,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/ed8f5e49cb985142.jpg 0,0,1024,768,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/34fb027d7093fa48.jpg 0,0,1024,681,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/900c1eb079c083c7.jpg 0,1,1024,766,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/d6d26006de42f3ae.jpg 97,1,978,768,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/805f3e7f38e5c9d4.jpg 0,19,747,679,1 748,77,898,442,1 850,153,1024,530,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/f38ea39a9718d2a6.jpg 0,0,1024,683,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/f8d063dab5b7902a.jpg 753,492,992,672,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/924bb31f7297e70b.jpg 50,1,1024,683,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/092c979e8dbe8d71.jpg 0,154,608,259,1 575,167,802,302,1 717,147,904,282,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/ff32f2a3db72e122.jpg 254,339,331,421,1 477,280,692,627,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/003c2b6816ba9d22.jpg 252,240,877,602,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/c91e1f23514504a2.jpg 119,304,971,889,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/b4fb5fc189c9e45b.jpg 419,253,722,461,1 433,467,757,680,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/183a6bef0be4de52.jpg 221,556,917,683,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/fd7617ac7ee1936f.jpg 1,49,567,739,1 578,11,1021,764,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/d5351ef90f49407a.jpg 126,0,632,612,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/695b2f8b5b51fd34.jpg 0,120,51,161,1 134,108,186,150,1 670,142,679,192,1 699,227,767,430,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/4acf140baf27c62f.jpg 461,458,740,874,1 463,463,562,718,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/fab0ca45d233e701.jpg 0,121,1024,767,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/08ba24120b512b92.jpg 0,45,953,683,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/6723b02aa6ddc66d.jpg 139,251,678,768,1 804,0,1024,393,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/9e1e59fabd0bd88f.jpg 0,0,1024,683,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/2183540e1ae5f02d.jpg 33,194,313,586,1 296,106,524,574,1 521,158,729,583,1 647,253,919,576,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/001d1da154d00e83.jpg 203,615,449,861,1 437,731,504,797,1 561,612,798,853,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/65d9bb351d361a84.jpg 206,438,348,629,1 472,208,691,432,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/0c72c95ee8e4c6e6.jpg 279,467,601,768,1 685,332,727,408,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/0ee82ba833b2fbfe.jpg 586,203,802,339,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/9827eed312d2b4b5.jpg 0,194,145,362,1 403,173,534,264,1 420,212,683,399,1 452,250,867,506,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/267eac09ed941465.jpg 0,0,781,647,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/6a9aa875cd1189b0.jpg 147,5,596,943,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/2838286d929483f0.jpg 386,243,913,569,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/3db21597772850ec.jpg 269,220,723,583,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/fe0690619ff16738.jpg 204,34,698,560,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/b6d0c3de8bb2b548.jpg 11,421,643,1002,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/35a1dd1899c48c1c.jpg 78,0,994,768,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/661b35a9e44837a6.jpg 648,135,760,228,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/99abc988b351a1b8.jpg 228,113,949,630,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/bcc4c40953079648.jpg 346,110,817,584,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/7f6feb85352aa977.jpg 194,490,663,948,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/da45aadeb9be0d9a.jpg 140,97,490,640,1 365,387,658,768,1 802,163,972,441,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/53de264315f31cdc.jpg 368,390,707,768,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/808dd46e1dfcb591.jpg 0,0,1024,681,1 105,0,677,205,1 819,113,1024,428,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/6c5b28a7cef58733.jpg 0,0,948,683,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/4012db4437e6a0e8.jpg 0,314,57,625,1 61,496,659,681,1 326,248,530,543,1 414,424,1024,681,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/dad4f5183307aa3c.jpg 425,121,578,386,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/1b4217c6dc0e96b0.jpg 269,252,833,635,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/c669b972cb7374af.jpg 261,507,720,683,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/0e35b13e6a1bc70e.jpg 528,7,1023,679,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/d0857b012a1d17a8.jpg 339,202,581,385,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/1f8c7b5798fc5545.jpg 75,386,383,681,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/909e37725a6770c1.jpg 0,54,629,613,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/daf32c82df936860.jpg 314,259,808,653,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/80771de293af8362.jpg 217,559,382,674,1 284,78,677,525,1 608,557,715,667,1 849,554,974,669,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/63adc06bee1b873f.jpg 44,112,914,719,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/7c3c20856c175c7a.jpg 6,303,310,487,1 185,303,546,529,1 568,300,874,490,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bicycle/8ad4b66878f33ef4.jpg 0,111,1024,768,1
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/03a53ed6ab408b9f.jpg 242,0,2368,3568,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/94e7cd59df70bbdb.jpg 0,0,329,1024,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/79c83be4d9da32ea.jpg 1,0,768,1023,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/179d97b0d663dd60.jpg 0,0,1024,683,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/b84c69ea3c385d8b.jpg 0,0,921,146,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/eca812d74f2579b6.jpg 35,0,1024,768,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/34bcfc22f0f14d41.jpg 0,0,1024,713,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/2bfff0992b33d76c.jpg 0,0,1024,768,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/15fd7f97c12b32be.jpg 0,299,119,445,2 0,0,318,449,2 456,395,491,498,2 531,434,563,506,2 600,336,1024,582,2 872,0,1024,24,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/a430be5cb6ed472e.jpg 0,0,1024,768,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/729afbc89172154f.jpg 0,0,1024,630,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/1c728b61a17bb2cf.jpg 0,136,1024,231,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/c7bfa5d14ce88226.jpg 0,169,1024,415,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/d0ad0125dc515f79.jpg 0,278,118,526,2 721,24,1024,653,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/b5061d5baeace534.jpg 2,1,1022,786,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/905e0d0c54017903.jpg 0,200,615,657,2 902,519,1024,642,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/9953f505d2d420da.jpg 879,105,1024,277,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/b2450535feea1877.jpg 1,0,414,525,2 352,0,860,509,2 681,0,1024,302,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/4fe7d7f98fd2dad3.jpg 0,0,1024,368,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/2194b62305b0e22a.jpg 0,0,1024,683,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/2b6eb863d44d4527.jpg 0,0,1024,632,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/f723c82203c17004.jpg 190,0,1024,182,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/7a591e34485e87ba.jpg 1,1,845,793,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/08e8f76356b8a635.jpg 329,872,577,1024,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/a5a1e81277bfe8b4.jpg 649,0,897,768,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/3f8d0d4b296801fb.jpg 0,0,1024,768,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/ca0a967da1d99546.jpg 59,76,714,973,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/de3cd41ddb92cc8c.jpg 73,0,753,247,2 82,185,107,210,2 611,221,640,237,2 664,220,704,233,2 727,217,813,233,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/8639930189a42868.jpg 0,0,1024,501,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/989532067e3483bb.jpg 0,0,1023,333,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/873da0eeec105502.jpg 32,33,607,534,2 520,32,996,607,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/f8aee69ec39c85e8.jpg 0,0,768,1024,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/488e8b3eb35adb82.jpg 23,0,466,344,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/2d179c5d6bc2874c.jpg 1,0,1024,700,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/410b6b780a99e11c.jpg 0,251,171,416,2 436,0,639,192,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/d23fda0d14acee31.jpg 0,0,1024,672,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/764b4c477a29cb23.jpg 0,0,1024,661,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/34f2b37f1d5618e1.jpg 0,717,109,970,2 1,66,847,970,2 249,700,384,957,2 918,638,968,857,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/e976dd6b3df49c95.jpg 202,161,727,847,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/731783fb2c15c548.jpg 0,265,107,489,2 578,0,1024,768,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/52bd0abf2480dfcd.jpg 0,0,430,576,2 469,445,528,490,2 563,497,812,576,2 572,287,888,576,2 979,469,1019,519,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/d02165654fbace68.jpg 0,0,1024,410,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/f5878f1d4957c0a7.jpg 0,0,1023,768,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/9db9881c46c300ba.jpg 0,0,382,500,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/de7c2171ea897f89.jpg 0,0,1024,666,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/7c5573045b8b4d3a.jpg 0,0,913,153,2 568,319,700,508,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/27c89a308ce1c560.jpg 0,0,1024,768,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/732320891b071e3f.jpg 0,0,1024,531,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/fa7559130f63ae25.jpg 0,151,1024,467,2 886,186,1024,458,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/5326a0f7369f8c42.jpg 0,173,1024,768,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/3ab31cabe6e14f57.jpg 0,0,1024,768,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/89b32f9f4978817f.jpg 145,81,413,289,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/a59ad34dcd62b9b4.jpg 0,0,361,311,2 343,0,1024,342,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/8f3771df4d2b8def.jpg 0,0,1024,135,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/c3f40a1189c045a4.jpg 0,0,1024,611,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/7e06c57537790f2c.jpg 0,0,1024,947,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/900e4474b7e695a6.jpg 91,0,615,381,2 653,0,1024,404,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/473b4e4091aa954a.jpg 0,0,1024,336,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/4c671b78b114d176.jpg 0,0,813,465,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/abfeaf0ee3264ace.jpg 0,0,1024,386,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/ba9afb62a8560e2f.jpg 772,143,1024,439,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/ba37960a53661aac.jpg 0,0,1024,221,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/68fe61f1cf08ce36.jpg 2,92,650,771,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/55d0a0c0726ac856.jpg 0,0,768,1024,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/3a0f4cff4be5fac9.jpg 0,0,1024,768,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/cf91c7f279029463.jpg 180,0,1024,281,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/bb64f614d15a3d5b.jpg 45,0,1024,84,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/48cf0a097ce330dc.jpg 0,0,1024,240,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/32e071de65550bad.jpg 0,0,683,588,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/c5e41f80cdf63ccf.jpg 0,0,1024,466,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/72ae127fea18d735.jpg 0,0,886,468,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/3e5c1e6ead8f14c4.jpg 0,0,683,1024,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/ec24c98ab3538cf0.jpg 0,267,243,413,2 619,169,1024,402,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/128bc49c385d0ce0.jpg 0,0,804,756,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/87e21907773d804e.jpg 0,3,547,192,2 586,0,1024,129,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/1c5af1d984d53333.jpg 0,0,1024,502,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/59912247de2bb8a8.jpg 0,0,678,94,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/fdff0896af019bde.jpg 0,2,930,765,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/16fff39905ae8eb5.jpg 0,1,1024,768,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/67c9c47a03799b03.jpg 182,0,768,262,2 333,0,768,263,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/30028a323223f505.jpg 310,0,547,117,2 890,337,1024,452,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/30272be4b215c07d.jpg 0,406,191,896,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/7f95a1dabdb06d35.jpg 0,0,1024,683,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/1259abcb763e4532.jpg 0,0,1024,681,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/dddcd5536775b345.jpg 486,337,621,485,2 651,267,808,504,2 789,386,835,462,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/1c8dcef0ebf1947e.jpg 0,0,339,136,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/4c408d33c4d1f65e.jpg 0,0,926,1024,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/0ba4a702f67ab14d.jpg 0,0,1024,399,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/f2fea48c978c6059.jpg 0,0,1024,301,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/206f16d2a0ebd435.jpg 0,0,1024,217,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/27439b22bde87e0c.jpg 0,0,768,1024,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/fb4eba5ae4dc52c5.jpg 0,0,1024,1024,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/e7bb8e7905fa8959.jpg 72,170,176,215,2 280,150,395,208,2 562,270,736,379,2 827,315,856,325,2 923,312,972,323,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/8aa98be99d4c9dc9.jpg 0,0,1024,682,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/1a9c245885186b5b.jpg 0,0,922,1024,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/aef1a42597adc655.jpg 1,0,1024,768,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/2ad2c3c633e1eeb0.jpg 0,0,399,520,2 562,0,1024,492,2 873,331,999,495,2 971,389,1024,494,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/4367bbcd1fcf1a61.jpg 0,0,683,750,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/6733d7a815809a84.jpg 1,0,1024,552,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/d44377b5536f869f.jpg 1,0,1024,408,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/067a330043eb2f31.jpg 0,0,768,1024,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/60bd3a82fad0bc31.jpg 0,0,726,1022,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/fa34c90fac398b78.jpg 0,0,199,564,2 310,22,345,75,2 373,52,402,121,2 405,44,432,96,2 451,50,479,97,2 482,54,503,89,2 698,71,739,152,2 738,71,760,142,2 961,0,1024,544,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/b98ecd4cd5c3c5be.jpg 0,7,1024,515,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/e02a4720aa913ac8.jpg 160,0,1000,768,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/ca46ef64d7e0ad11.jpg 499,0,1023,397,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/c0903de35772c5f7.jpg 0,0,1024,691,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/c3905246ee954934.jpg 0,0,683,788,2 181,0,476,961,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/917c0bfc65e43839.jpg 0,0,1024,313,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/c6551bc99390fc1d.jpg 0,165,73,452,2 952,29,1024,306,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/54d665b09651fec7.jpg 0,0,1024,683,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/19387757d5d7d04b.jpg 0,0,1024,681,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/71f6da2cab5fc17b.jpg 3,2,545,254,2 647,44,678,77,2 762,118,1024,623,2 781,50,939,195,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/5f0f6ea3dd8ea14f.jpg 1,1,1023,660,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/4fb933a7f77dbf7b.jpg 2,0,1024,681,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/98dfb697df733ca1.jpg 0,0,1024,1024,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/508a8c99dbc63c40.jpg 453,266,626,479,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/14c9cbca115c2f4b.jpg 0,0,685,863,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/e183f1be1539aad2.jpg 0,395,574,689,2 276,175,1024,689,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/35059ef883ba8fac.jpg 288,0,1024,768,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/05fc797747b43738.jpg 2,0,768,1023,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/d976b5fc4f78f816.jpg 0,0,1024,648,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/b3536608e904f317.jpg 0,400,1024,683,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/c303b972172b2aed.jpg 0,0,1024,399,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/aba41a13e009dc85.jpg 23,0,441,684,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/b8cef0e5fe3a8163.jpg 1,0,880,661,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/762b9478041cb6e1.jpg 310,180,408,294,2 620,182,719,271,2 831,157,896,241,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/e6f580f4fe5a0e72.jpg 0,234,183,442,2 0,55,1024,341,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/b767d73d6007b146.jpg 78,0,1024,104,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/704c677e53cbc9c3.jpg 0,232,327,555,2 375,459,541,557,2 547,395,724,565,2 712,408,797,564,2 868,229,1024,500,2 923,523,959,570,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/b216853939330ce4.jpg 0,147,1024,406,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/b699be35dcd20c71.jpg 0,513,47,676,2 102,360,152,414,2 218,686,398,860,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/cdb5d49d915c683e.jpg 0,2,1024,412,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/362e032f36f5de9b.jpg 82,0,990,182,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/e7c2f129e672c175.jpg 59,0,571,464,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/52a01295505f6aca.jpg 0,0,1024,559,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/504b732ed4955e19.jpg 0,557,648,1024,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/b66c191774c9b124.jpg 0,16,1024,793,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/e1ec8828b2a6aa2f.jpg 0,0,1024,768,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/81785d54dc3dc7bc.jpg 0,0,1024,685,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/c51e5dc7c2394371.jpg 0,0,1024,66,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/4804ba9ffef64899.jpg 0,239,1024,452,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/3abe0c965fd49206.jpg 0,0,1024,590,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/5701a6137b181152.jpg 563,327,1024,598,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/e49346fe5fc005d1.jpg 0,0,1024,305,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/3f4d54ebbfdccd7b.jpg 0,0,685,1024,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/59557d161995d3f8.jpg 230,0,388,208,2 889,0,1024,277,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/3dbfc93cc1b0a207.jpg 0,82,896,1024,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/4c443261c375f56b.jpg 0,0,1024,646,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/1c77a13caf4647c7.jpg 0,0,490,208,2 559,0,1024,258,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/1dde43e75b4d35a4.jpg 339,155,690,726,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/85eeb979fe048d30.jpg 0,0,1024,334,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/553fe27afcad0149.jpg 0,0,1024,1024,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/62e2d79489e36b15.jpg 0,0,1024,262,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/ff32f2a3db72e122.jpg 0,0,1024,582,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/e9e792cd19267a73.jpg 0,0,1024,768,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/ce746f1304989096.jpg 0,0,165,178,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/de252f349053dacf.jpg 0,0,1024,425,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/22be35dedbff1d85.jpg 0,0,1024,630,2 0,436,1024,768,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/06567acccbe32d65.jpg 0,0,1024,768,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/67f4ca5bf76d6c63.jpg 0,0,1024,282,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/a06da47a3c931520.jpg 0,1,1023,768,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/00da7332b7397d6f.jpg 0,0,1020,768,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/19e234612551167b.jpg 580,102,705,134,2 644,81,774,113,2 821,108,872,125,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/6440acc78b8b0fb1.jpg 0,0,771,1024,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/dffd1edf2a50c720.jpg 0,0,685,913,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/d1f2238551f77197.jpg 0,0,768,341,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/b7e7050f73414888.jpg 1,2,768,1024,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/4f1e0fefedf1b32a.jpg 0,0,1024,768,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/a54c182d3e7a9f46.jpg 0,325,735,685,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/9e5160657896fa20.jpg 187,0,768,316,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/8414ebd6d62d7613.jpg 0,0,1024,768,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/59951af02eca1412.jpg 0,0,1024,680,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/d8d6d3309f01fabd.jpg 1,0,1024,642,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/a82e215227e8c85b.jpg 0,0,1024,403,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/9e1de0a7851e35c8.jpg 0,0,1024,179,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/d2187e704d82ece8.jpg 0,0,394,25,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/bacd90ecf8dec38c.jpg 0,0,863,108,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/247182b61dab7c2c.jpg 146,57,346,147,2 564,183,579,204,2 585,184,607,207,2 682,133,768,206,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/1b5983d521116075.jpg 0,0,768,1024,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/7839be05736f196c.jpg 0,0,1024,666,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/d091922ebe618ff7.jpg 0,0,1024,398,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/3ef9a8ea639d0d2f.jpg 0,0,1024,769,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/f744ea1c412d0581.jpg 0,141,250,670,2 53,327,231,409,2 599,0,1024,537,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/81d416fd2378ed66.jpg 47,85,714,301,2 845,136,1024,249,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/24d38da7a036e8fd.jpg 0,0,1024,499,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/d6ff191f4f09fe85.jpg 0,0,60,478,2 0,29,404,563,2 102,0,493,381,2 481,0,683,215,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/ec1417e0baf957e6.jpg 0,0,163,320,2 515,1,1024,580,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/565177f218aa869a.jpg 0,33,287,263,2 707,73,1024,263,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/7481fd71ffb6c74a.jpg 0,0,1024,1024,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/27caa90f83cd2444.jpg 0,0,269,66,2 272,0,483,103,2 485,0,584,105,2 754,0,875,77,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/1b9bb5575bd2aa27.jpg 0,0,1024,457,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/5da314822d7409f1.jpg 0,0,277,384,2 529,5,1024,416,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/fdcabf5f73688980.jpg 40,0,768,89,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/f2522d3818d0c51f.jpg 0,699,350,1024,2 430,432,731,1024,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/e2e643de95bbd5f9.jpg 0,0,1024,768,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/4aae4f3957e72beb.jpg 557,0,1021,636,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/e962c7a6474a0cbc.jpg 0,0,681,445,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/e49840eb869ce4cc.jpg 0,0,800,682,2 0,0,1024,682,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Tree/b38432b1233371ba.jpg 0,0,768,1024,2
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/226df1d4f22f9cca.jpg 0,217,1024,681,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/ebc1005c0588d7e7.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/62e41fd12ce8defc.jpg 0,0,1024,683,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/f721a0604afab425.jpg 60,46,978,313,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/8fd024c48ed0f8e9.jpg 26,19,393,438,3 26,111,943,1016,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/eca812d74f2579b6.jpg 0,66,1024,603,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/23147f0cc6118ba0.jpg 29,0,682,1024,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/4572c9240856128d.jpg 112,103,895,528,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/fa4ced6645e5f55e.jpg 1,1,1024,682,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/49dd1d651d50df52.jpg 0,342,134,587,3 36,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/308099485283d4b9.jpg 0,0,683,1024,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/81afd2b702d43e45.jpg 0,4,1024,758,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/fe5956b82ea1360d.jpg 0,0,768,1024,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/b4af2b5cf0ebbd25.jpg 1,85,1024,239,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/9ac44ee177489ab5.jpg 0,0,682,1024,3 3,0,466,984,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/92946aedc2ae0c40.jpg 0,0,1024,566,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/61d3666c8fee93ce.jpg 117,0,794,650,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/2d8f13ccb86d9eeb.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/9da1c6ba45ce5665.jpg 0,2,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/c7a8a2e1d8f80cd1.jpg 0,0,1024,683,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/a7ec0d1d87a6a454.jpg 0,1,768,1024,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/024e457bf63f6527.jpg 0,0,683,1024,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/5a7fbb04ef904705.jpg 0,1,1023,572,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/81d5870aa9841675.jpg 0,50,768,1024,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/2fbec860259b33b4.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/ffb9d4650de75a36.jpg 301,40,789,477,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/9f69ec5f2fb9e115.jpg 0,0,1024,683,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/a058c8c44fe935bc.jpg 0,20,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/a4274ef8911ae3a2.jpg 0,0,1024,683,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/85a74fd46ff10c63.jpg 0,65,683,1024,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/ec0264c9ceb2c818.jpg 0,0,1024,682,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/b376267f4ddb6ba1.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/4f7420786f7afd62.jpg 198,116,422,274,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/6c93bfd1ae9e5582.jpg 0,0,1024,651,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/0c69ca0199ffe172.jpg 0,0,1024,596,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/2945d781deb78681.jpg 0,0,1024,685,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/b9f13f10fbf1a243.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/97aa6289bf1be934.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/7ab8aca0a7950bff.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/cc05b998c919b9ed.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/7d03a502774275c6.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/6ed7a858d44f96cd.jpg 0,1,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/e0ca72d942fe98d8.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/80364dc170a91a85.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/1bcc4f38521cf717.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/77b04159b2908717.jpg 0,1,683,1024,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/5604ab4d6f9cb002.jpg 0,0,1024,1024,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/821f6bd270e77be1.jpg 0,0,1024,683,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/707e1cd1eba3309e.jpg 244,77,1024,525,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/1e6abe483cc6a47d.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/b9b1c4b53a6b30da.jpg 0,70,1024,624,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/4690d1ba421b36f9.jpg 0,1,419,253,3 0,3,1024,768,3 405,45,792,249,3 701,94,1024,364,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/564e2507a60d9023.jpg 0,157,1024,520,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/f9ffd9b27a0a0485.jpg 0,0,767,1022,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/ae1b176ca3f83440.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/c81d5d20ac47292c.jpg 0,0,1024,765,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/d437e9434d4ff032.jpg 11,4,1014,481,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/405ca7534c7be71e.jpg 0,0,1024,767,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/d5edc30d3c191dc0.jpg 0,226,122,370,3 98,205,291,373,3 265,146,721,476,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/57aac24a6ff04df7.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/2e5304edc58ac773.jpg 0,0,1024,1024,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/f003d29858ae2b17.jpg 131,45,973,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/06d67ce06ae11ab3.jpg 0,0,172,332,3 791,0,1005,256,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/a160300d17b52ae5.jpg 0,0,1024,827,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/d3631d11cdb72ea8.jpg 2,3,681,1023,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/12b528100474fbd3.jpg 0,0,1024,738,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/96078854683b9bd1.jpg 0,0,1024,683,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/e0296b2cc18e49e7.jpg 1,1,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/82dc3f24bc38b3c0.jpg 0,0,1024,683,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/0b66fb4eca6a5133.jpg 228,23,607,1000,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/441d9a7195d9fd2c.jpg 0,0,1024,780,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/b2f1023857fb96e6.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/10143009ff8acf3c.jpg 19,193,1023,578,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/2347c51f71fdc8d5.jpg 0,0,768,1024,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/bf1b609d75074dd1.jpg 0,29,1024,683,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/537201b11815d339.jpg 0,28,1002,461,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/6737c6e93bcec3dc.jpg 1,0,1024,737,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/d4e97c5fbd63d953.jpg 0,0,1023,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/cbb0afa7498b5aa8.jpg 0,0,1024,682,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/dddcd5536775b345.jpg 0,0,1024,493,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/b475a34216c99102.jpg 6,40,908,724,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/7f312a3cf241e544.jpg 0,0,1024,683,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/a0532ed466dc93f0.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/e37700a3a252c461.jpg 0,0,1023,1024,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/a31f8256bfdda98b.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/2ac93f3f559eb5b6.jpg 0,0,1024,473,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/37ff506923d56974.jpg 0,0,1024,1024,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/76f96dd17df03db5.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/a388d9881a74b32e.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/1defca26846fce97.jpg 0,42,1024,629,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/f0a9a13b9b736a91.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/459459d88a958acb.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/90d0fd8463225367.jpg 0,123,1024,560,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/131f1e50822e843f.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/d06383f5d79b5588.jpg 0,0,1023,673,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/59608798f3dca686.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/192643b349935cde.jpg 0,0,1024,710,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/e3c1d5c0ef2db402.jpg 321,266,1024,634,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/4a17d0be60db2ec0.jpg 0,0,1024,595,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/dd8f95355e3a7d95.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/073b8fa46b601901.jpg 4,364,603,526,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/9eefa12b83bb2e3b.jpg 0,0,1024,682,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/3ab39248aab724a8.jpg 0,0,1024,683,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/86a19aecb47103d6.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/60d83ca9dd9c25bf.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/ce31f6d86b75fcc4.jpg 0,0,1024,683,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/428904ac70ad4ac5.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/71cef27b7d46f8cf.jpg 0,0,933,655,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/ff690c0d0ced37fb.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/e1a6a84489440f4e.jpg 0,0,1024,356,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/33473f4f4f9e657d.jpg 0,0,1024,683,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/267d10714cfd3c22.jpg 0,0,1024,512,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/3c21d07de9a503cf.jpg 230,62,768,1024,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/380a9b20acca9651.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/c056b948752e72a6.jpg 0,0,1023,213,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/08080135b824bd85.jpg 0,8,767,798,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/86de3deb5154883f.jpg 0,0,1024,680,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/4fde0ae4776592d4.jpg 0,0,1024,683,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/49c22cd07d1b9b94.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/4ce07056031fabb2.jpg 0,0,1024,683,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/3870d0f5543f94be.jpg 0,0,576,430,3 501,0,1024,412,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/c9b1f0c5c808b21e.jpg 0,146,1024,580,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/073dbb6d5538d743.jpg 0,0,1024,627,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/76afe6dd74ce7791.jpg 0,247,1024,486,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/6d613dbbf1d8d812.jpg 0,0,161,170,3 203,0,1024,121,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/e7a81d6b4a91302b.jpg 0,0,1024,704,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/2e36d83a665b8b1f.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/5af95a219b62e146.jpg 0,0,768,1024,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/0134f2780183e5b9.jpg 0,0,1024,683,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/6d70b76a136c11b4.jpg 0,0,1024,521,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/95b7ac04e16beaae.jpg 0,0,1024,479,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/7ea79b41d75e6935.jpg 136,52,869,645,3 846,384,953,586,3 951,287,1024,586,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/a9515261e3790457.jpg 0,0,768,1024,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/4e517c270b0f7e4a.jpg 0,1,1024,683,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/7ae2a48f909960e1.jpg 12,119,739,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/3a33ee8db3db21c1.jpg 0,0,1024,767,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/c35ad8775f66ae88.jpg 0,0,88,76,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/ac8d04c8f9e90b87.jpg 35,39,997,599,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/7686f2da80620d60.jpg 0,0,1024,623,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/b1c542475122f234.jpg 0,0,1024,765,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/82397cd75822c942.jpg 0,0,1024,1024,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/3552334e07122617.jpg 0,119,767,753,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/39f088fd1cbeff9d.jpg 566,60,1024,228,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/53660b0238c2267b.jpg 0,0,975,417,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/1dde43e75b4d35a4.jpg 0,0,1024,687,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/67cd5820488ae9c7.jpg 8,8,1016,681,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/1efa8857585374db.jpg 1,1,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/e1c55b855ec33e57.jpg 0,0,1023,748,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/76ad2b2f503c604a.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/c8e8ae5329816ebb.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/612ed423832a3368.jpg 0,0,1024,683,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/daa62fa745f83a8e.jpg 0,0,1024,1024,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/85a0521fc97d1a38.jpg 0,161,1024,641,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/246af41baae227de.jpg 0,0,1024,1024,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/74f8429de7aae04c.jpg 0,0,1024,679,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/da474dd7f06fe7fb.jpg 34,17,981,213,3 982,147,1024,197,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/bccba4e83f42ee15.jpg 1,0,286,713,3 279,0,596,629,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/b80fb6615ea64085.jpg 1,0,1023,683,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/1cbae5ddd5b60e80.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/1f6b9a5e31f08679.jpg 0,0,1024,683,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/93d6c4469afcb292.jpg 0,66,847,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/97c78a227a08c18f.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/54e2cc36bda153ce.jpg 0,157,1024,476,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/6242f9d119f63c8d.jpg 68,31,1024,647,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/8ed56a1cdb6b4687.jpg 1,0,1024,681,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/e258d25a4493202b.jpg 0,0,1024,766,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/6852e6363c23c4e3.jpg 0,138,684,1024,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/a54c182d3e7a9f46.jpg 0,168,1023,685,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/147df8e9937cfc11.jpg 0,166,1024,888,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/0dea7913ba6661d8.jpg 0,0,1024,683,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/385072f91dd2b365.jpg 0,0,1024,683,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/bf862b8f59bf93ad.jpg 346,73,1024,375,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/3eb9eacd38e77de2.jpg 0,0,1024,577,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/1f5eeacdd6dc00e1.jpg 403,262,725,434,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/0bed6510c64eb0ef.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/4b2356a2d405e7d4.jpg 0,90,739,970,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/c3c14ff3ba01bcb7.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/f291d677045b5a38.jpg 1,0,1023,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/ca93064ad7341d63.jpg 0,0,1024,767,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/2e934cc6e0b29129.jpg 0,0,1024,642,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/e96c13177c77c2c1.jpg 31,163,1024,766,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/523bacb334a7f986.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/9b40a59b90eea080.jpg 0,0,1024,684,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/86a416588475bae5.jpg 2,0,683,1024,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/81c6865df3598718.jpg 0,0,1023,681,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/7689a4a4e7e4a767.jpg 0,0,1024,683,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/67ab78d8eca865a5.jpg 0,0,1023,576,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/78b3e28882b650b8.jpg 0,90,1024,557,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/f0239ccd7f1d7e71.jpg 0,129,871,331,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/42c8729b6af9b567.jpg 0,27,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/f744ea1c412d0581.jpg 228,218,824,431,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/624ecb5af71e94fb.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/27c03fe9b10189d4.jpg 0,51,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/d5008387b0dbcb5d.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/d61852ba84eec91d.jpg 0,0,1024,645,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/5798482b01040286.jpg 0,0,1024,681,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/b603a9d5511f2661.jpg 0,0,1024,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/f2522d3818d0c51f.jpg 169,124,624,1024,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/aa0fc9d6f82cee66.jpg 2,2,768,1022,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Building/8e12646354e97d27.jpg 1,125,1023,768,3
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/81ad10298ce57667.jpg 56,362,206,582,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/b6c2b0f45306bb2e.jpg 525,407,727,653,4 629,453,897,744,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/261b04d5471326c7.jpg 183,118,362,253,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/4e80992d0969178a.jpg 46,636,192,901,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/af5a1062956ecd41.jpg 26,367,126,486,4 62,418,240,621,4 187,373,269,534,4 384,291,410,322,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/fa4ced6645e5f55e.jpg 765,358,941,596,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/fcd4039598a6f517.jpg 17,256,145,461,4 135,252,281,455,4 144,220,242,310,4 238,209,292,295,4 341,242,429,330,4 410,227,503,344,4 511,231,567,348,4 594,219,635,290,4 631,219,698,278,4 722,243,805,409,4 775,244,889,402,4 855,216,897,251,4 874,236,951,331,4 885,220,932,274,4 927,232,1011,326,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/598507d5542057e8.jpg 0,268,254,549,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/9ab63c90197e9c34.jpg 176,102,851,760,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/5607aa028f4c5454.jpg 264,352,815,621,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/799caae585680751.jpg 0,320,1024,579,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/903229d2a3f2f41c.jpg 0,302,112,419,4 58,389,285,593,4 190,297,327,399,4 250,266,386,357,4 418,508,805,683,4 453,433,734,559,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/d8693746f798076a.jpg 93,32,926,987,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/c030f713b2e87583.jpg 0,416,1024,682,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/b7b1e1693959d8ee.jpg 0,434,87,743,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/70df06631b63e502.jpg 1,13,681,1024,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/02c221b14cbcc489.jpg 420,343,548,575,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/b35a116c3652afb9.jpg 37,29,200,245,4 324,0,578,193,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/8540f97669ba45e7.jpg 0,439,282,1024,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/8d00182e2b4eb9d4.jpg 0,474,1024,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/66971d46b0209da9.jpg 0,589,82,743,4 87,516,187,668,4 109,534,266,703,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/0fa7a90f325fdec4.jpg 329,167,598,567,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/097cf131b27372c0.jpg 0,484,105,725,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/c2c71a739b95310e.jpg 40,426,639,678,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/9b7ae90f0acb07cd.jpg 32,564,277,767,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/f663117b21233d0b.jpg 0,472,132,609,4 358,427,499,607,4 436,395,513,508,4 510,373,572,471,4 523,412,626,581,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/f9d9f5557fa62e08.jpg 0,683,271,768,4 495,358,710,665,4 765,364,952,740,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/13f501177fa2fd37.jpg 0,94,1008,683,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/aa0004b95b1bca58.jpg 427,467,626,714,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/c1df14812a861579.jpg 221,289,848,646,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/f2b21e6ef56240b4.jpg 362,301,508,534,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/db9a78967a5e5d5d.jpg 188,117,906,702,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/55ee7572b6d69e2c.jpg 27,208,93,349,4 82,286,211,491,4 184,322,398,528,4 480,290,664,532,4 716,457,1001,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/7e5dc738f7250f14.jpg 233,663,507,767,4 610,642,937,766,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/c9a13aff68ebb62b.jpg 109,1,895,681,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/72a9928a7e27d7a8.jpg 0,484,97,679,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/fb1ed00ecadbf6ea.jpg 726,319,1024,683,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/51a73c069fc0095f.jpg 929,509,1024,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/aaf3cefece6651b7.jpg 0,45,940,711,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/dfcad220fa27267c.jpg 185,426,283,527,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/af1b1dea65801496.jpg 116,219,469,742,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/ddfd60df42f23c60.jpg 248,263,592,579,4 527,354,708,639,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/860f243c758fcec1.jpg 0,717,123,1024,4 119,640,231,801,4 120,682,256,985,4 427,621,533,857,4 499,658,611,935,4 505,606,600,694,4 595,832,768,1024,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/d5c04c7533cf0ebb.jpg 23,335,916,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/e9666dc2b3331a83.jpg 659,369,774,534,4 717,351,827,504,4 825,389,962,577,4 897,415,1024,628,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/c3c116d091ac1ddd.jpg 95,485,484,672,4 208,324,399,465,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/6706eeba37d49dc2.jpg 0,625,172,896,4 265,528,345,642,4 340,521,411,649,4 409,522,480,644,4 601,525,676,639,4 678,526,733,631,4 747,521,823,645,4 821,610,1024,899,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/a57b9565a9aa4bd0.jpg 804,515,934,682,4 903,512,1024,692,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/6fe40a8bf07e3919.jpg 725,452,894,768,4 747,338,865,516,4 759,282,861,395,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/a727d6dbe94e0009.jpg 80,191,186,383,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/046c99f5b14dbfd2.jpg 262,387,628,876,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/582637c3c1556013.jpg 33,418,181,608,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/1bcc4f38521cf717.jpg 137,555,420,768,4 474,495,674,673,4 723,317,1024,545,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/27e2ad0c0ec88313.jpg 0,316,954,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/77b84e6f1997114d.jpg 41,48,768,1023,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/764e31f02b51f15d.jpg 571,639,699,840,4 631,188,731,274,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/ac524675812943e8.jpg 194,458,344,534,4 541,438,674,512,4 855,441,1004,524,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/b249cdc271987228.jpg 57,266,170,470,4 62,284,236,558,4 150,316,355,579,4 340,238,436,407,4 404,250,525,433,4 513,263,638,490,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/821f6bd270e77be1.jpg 46,453,244,650,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/09d368a4faa5d133.jpg 0,468,289,768,4 116,456,335,752,4 301,459,535,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/90034d5533c31783.jpg 335,493,452,692,4 387,492,545,751,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/54cc9ce2621aee71.jpg 0,0,104,187,4 529,0,717,115,4 764,0,884,140,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/6ebcab95e9f5c6a3.jpg 577,293,627,420,4 688,385,851,584,4 711,292,820,350,4 839,373,967,565,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/88ede79cd80d0421.jpg 210,463,339,596,4 385,464,478,584,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/0e24fcbf5258e639.jpg 190,25,988,1023,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/38e886631430918e.jpg 15,190,993,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/f9ffd9b27a0a0485.jpg 0,779,115,939,4 248,746,292,825,4 325,752,401,822,4 470,717,530,772,4 486,747,527,815,4 686,879,768,1024,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/a9f0cdafc2584bcc.jpg 0,799,382,1024,4 108,617,426,1024,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/63444712cde4cd1c.jpg 135,82,559,998,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/b19731b36617a18f.jpg 174,508,451,766,4 178,384,929,768,4 311,388,479,506,4 581,503,930,768,4 621,388,833,560,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/7d51f1be3e2e64f8.jpg 64,265,270,632,4 571,381,733,626,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/e7475de4e6558a9b.jpg 91,469,353,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/5871e9c190147b46.jpg 0,351,824,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/39f2c5bff9b37eae.jpg 32,27,994,1002,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/96d749295b71ddd5.jpg 0,0,63,247,4 33,1,152,210,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/6937fb3fb61eca16.jpg 0,459,42,486,4 0,530,76,614,4 0,556,106,696,4 8,485,66,511,4 12,470,56,494,4 70,586,193,740,4 71,511,127,553,4 228,453,273,517,4 257,472,314,537,4 296,488,364,570,4 309,467,343,489,4 339,511,416,601,4 345,468,372,488,4 374,483,425,543,4 421,504,497,577,4 421,525,515,657,4 456,569,572,704,4 516,514,591,575,4 549,582,692,755,4 587,555,689,653,4 678,555,792,733,4 717,643,903,755,4 854,617,991,752,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/8661be0a55e4c9e0.jpg 41,119,1024,506,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/dc8e3e5db717e88d.jpg 334,674,678,1024,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/9603b2be356913d7.jpg 64,25,504,736,4 411,281,856,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/1a1572c1a4abf91e.jpg 332,184,717,833,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/9c564ac244634de7.jpg 326,0,612,295,4 645,0,1020,334,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/13459d3468b05153.jpg 75,88,588,943,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/e94db48629124ee8.jpg 0,551,995,767,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/4f2de2c8d5919331.jpg 108,74,649,973,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/4ed0200ccc80b120.jpg 8,287,105,341,4 48,412,320,768,4 281,272,395,392,4 295,307,447,569,4 649,261,783,549,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/8f8dc479b7e29d88.jpg 37,340,919,768,4 253,255,951,722,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/b2f1023857fb96e6.jpg 0,333,1024,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/548d1da14d73e8c1.jpg 0,561,78,681,4 0,441,202,681,4 56,398,253,642,4 745,338,1015,624,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/e46ae5193b5b48dc.jpg 0,389,373,760,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/27968a68055e31fe.jpg 0,279,373,768,4 349,203,464,435,4 797,242,1024,522,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/5f2c0ab38d60dc42.jpg 340,515,759,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/3320a7f75fb70ac3.jpg 557,635,768,1024,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/ddc477847835a98b.jpg 564,797,645,1021,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/8f749dfde958de9b.jpg 0,371,1024,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/8821ce4398fc5674.jpg 123,351,238,544,4 166,390,325,655,4 350,392,713,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/79f5c9abc2ec28d8.jpg 1,539,254,1022,4 56,468,314,999,4 622,546,682,991,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/7f312a3cf241e544.jpg 144,397,296,619,4 645,421,794,611,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/5f63d5514f17159c.jpg 190,293,925,680,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/a0532ed466dc93f0.jpg 225,456,577,669,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/252fd3d18e11a198.jpg 0,111,43,146,4 53,109,99,143,4 129,110,146,139,4 271,93,314,149,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/6c60ea8475096198.jpg 92,421,488,768,4 357,360,673,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/4f4125cd4fbc51c1.jpg 26,386,1024,732,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/8083bfbf8082b361.jpg 366,366,558,633,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/94895538bcd8bc1b.jpg 876,222,985,444,4 989,235,1024,468,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/b429b71a2343584e.jpg 91,600,670,1024,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/e7e7c62827d2a802.jpg 117,424,317,677,4 229,403,408,680,4 310,376,425,631,4 423,376,589,677,4 647,364,786,579,4 800,358,936,595,4 891,348,964,542,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/c3d8157e781c86a8.jpg 179,290,484,642,4 925,454,1024,642,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/9c7aa7705002d2af.jpg 611,174,766,451,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/459459d88a958acb.jpg 171,312,564,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/24a29f88e8c02237.jpg 41,591,247,768,4 468,470,610,636,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/6c8508d1c3458860.jpg 0,402,23,682,4 550,398,817,680,4 674,538,883,654,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/8e871c969c22cf64.jpg 148,468,457,768,4 576,446,681,644,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/6189c8061ca9e924.jpg 0,0,158,245,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/a3aee4d8049a22ec.jpg 606,430,1024,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/2458f84143c16b9d.jpg 31,143,733,922,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/59972bee26ac2e17.jpg 0,583,50,654,4 9,588,104,670,4 444,517,492,568,4 492,511,538,567,4 787,503,827,557,4 819,522,847,560,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/3f043244f013b29c.jpg 66,359,879,667,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/cd52ef18713da49f.jpg 0,600,95,767,4 104,591,220,745,4 199,601,329,764,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/37cff1fd08553bb1.jpg 48,577,149,747,4 122,587,261,768,4 128,588,222,733,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/3ab39248aab724a8.jpg 281,256,690,384,4 790,273,1024,540,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/ff690c0d0ced37fb.jpg 0,512,1024,767,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/346e25dc107ac937.jpg 779,0,915,152,4 907,0,1024,311,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/fa38f5c9c05044bc.jpg 472,423,698,791,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/eb82b63e1e3389ac.jpg 1,547,225,897,4 312,517,550,826,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/1827c5751f89d075.jpg 0,2,680,1024,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/bed2c0a712e5ed83.jpg 29,146,617,920,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/73d3935f50d7ce45.jpg 45,97,702,768,4 534,55,965,522,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/248568a890a5397e.jpg 123,247,340,551,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/4f2c8c4c528abe2e.jpg 781,505,957,767,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/c0d85d81604a9c7d.jpg 10,338,1024,683,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/73449f84cf460d6c.jpg 740,437,856,682,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/e73adee34507e1f3.jpg 0,384,108,482,4 0,392,181,552,4 0,426,278,683,4 214,380,403,594,4 394,370,578,581,4 619,365,752,509,4 793,366,938,517,4 863,362,975,483,4 981,367,1024,485,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/83aa8c4b776aab07.jpg 0,325,1024,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/cbbe1baa3e94a9ab.jpg 0,461,1024,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/5788e44e8dce4138.jpg 0,634,235,980,4 244,638,441,968,4 557,632,738,964,4 794,643,1023,973,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/1244f57c2d5c27f2.jpg 122,311,271,526,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/30217745d33a5a14.jpg 29,503,475,1024,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/f5fa3c4d2d7c5e77.jpg 0,114,377,678,4 342,81,1022,677,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/2273e57565451305.jpg 103,309,380,659,4 118,278,252,424,4 305,302,528,585,4 496,322,800,682,4 629,316,886,635,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/ae9dfe7d2672eaee.jpg 293,356,1024,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/6f29b25227c313ab.jpg 726,345,1024,682,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/4407ec44f2327ca7.jpg 273,443,508,683,4 282,400,403,564,4 520,387,582,516,4 587,408,714,589,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/2e36d83a665b8b1f.jpg 0,332,981,722,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/7e926d1dbc780314.jpg 0,460,63,549,4 740,379,823,499,4 776,379,877,500,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/89d9811d8adcefd1.jpg 698,293,736,318,4 739,309,793,342,4 762,332,872,683,4 851,284,918,472,4 905,295,1024,512,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/eda46120ed2b5145.jpg 0,656,72,854,4 0,853,122,1024,4 218,597,520,1023,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/1dc824dc8ec3c508.jpg 112,86,860,983,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/b1c542475122f234.jpg 70,336,932,764,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/70f5feec38edf0b0.jpg 345,403,386,453,4 711,490,933,754,4 796,544,1024,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/e2e3d3948f911e04.jpg 356,29,781,727,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/8f36c89e3b1afa3e.jpg 0,0,226,1024,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/75d6c15cd116bc67.jpg 40,235,1024,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/6313f63faea960f2.jpg 174,72,393,237,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/e0dbaee065ecb839.jpg 0,926,25,1024,4 0,871,70,970,4 26,916,135,1024,4 73,876,155,1022,4 410,886,487,1024,4 435,937,543,1024,4 498,894,565,1006,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/f24d04be72d3fa6d.jpg 42,329,165,502,4 275,293,339,379,4 355,288,392,296,4 508,285,521,297,4 527,285,561,309,4 582,270,616,319,4 613,275,643,315,4 637,263,653,280,4 815,278,836,300,4 942,276,965,298,4 962,273,980,294,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/f039ec2ab4b55eab.jpg 0,362,109,677,4 83,330,192,511,4 287,322,1024,768,4 491,316,575,345,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/736168c26a7ffa3a.jpg 770,0,810,64,4 899,0,1024,113,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/81d20a4401006ab2.jpg 0,469,716,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/d251a23d7fdb4f76.jpg 151,230,1024,578,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/1f6b9a5e31f08679.jpg 201,380,657,683,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/03145a02239df7b6.jpg 646,286,865,477,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/2b780ccb9c6e100f.jpg 0,381,1024,680,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/c208286097f9f7f5.jpg 0,104,997,723,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/e8d2686237861e46.jpg 710,118,1021,526,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/db8bc5b8ef40187a.jpg 147,685,375,1021,4 479,605,566,825,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/d02a3a3e11444056.jpg 531,216,861,706,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/8599a181128a9ba9.jpg 187,339,461,605,4 331,419,678,738,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/3c55a471802c62ab.jpg 0,263,78,448,4 777,156,912,288,4 884,271,997,477,4 982,451,1024,662,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/e258d25a4493202b.jpg 0,391,1024,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/29c742032dc416b0.jpg 184,31,871,746,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/cbc6b2d540711845.jpg 0,428,263,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/bceab75f98ae41a8.jpg 0,81,1010,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/0dea7913ba6661d8.jpg 268,373,336,458,4 700,367,799,488,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/385072f91dd2b365.jpg 155,407,207,544,4 284,391,334,503,4 322,464,448,671,4 326,389,361,466,4 346,423,409,465,4 484,435,577,630,4 581,407,632,552,4 762,447,878,565,4 795,416,874,444,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/2108df19422f5163.jpg 107,78,538,883,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/3e0c8c781400919e.jpg 26,137,481,1010,4 504,133,973,1013,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/7e66fafb5e7c7301.jpg 0,398,1024,680,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/b1f457dd4e036a78.jpg 1,75,883,1007,4 553,41,1024,623,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/c3c14ff3ba01bcb7.jpg 3,191,1023,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/804480ba31b2ab50.jpg 198,255,400,546,4 458,331,723,661,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/82198d7f1baa40aa.jpg 0,110,648,1024,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/d091922ebe618ff7.jpg 213,343,337,483,4 308,375,462,535,4 583,340,716,509,4 651,357,802,514,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/5890451826dd9d32.jpg 275,259,349,451,4 423,233,807,418,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/5a3a86b34e03463a.jpg 104,346,396,692,4 601,324,875,646,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/1546e9f31eec6118.jpg 264,633,414,894,4 312,617,416,836,4 436,640,604,945,4 439,622,553,879,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/d9b3c4b52587aa8a.jpg 0,419,81,523,4 0,268,985,680,4 0,468,164,678,4 163,352,300,570,4 189,378,371,644,4 373,338,490,510,4 433,364,595,560,4 515,306,616,469,4 570,551,947,683,4 621,301,714,425,4 696,313,821,458,4 789,298,875,427,4 795,281,849,301,4 848,289,953,395,4 889,453,1024,653,4 919,275,983,382,4 1001,407,1024,486,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/bb6354d5a56debd5.jpg 247,26,779,998,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/a3c704a0f7d3a214.jpg 194,296,505,683,4 957,423,1024,670,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/ad0c23660042b30d.jpg 389,228,644,547,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/290f11214397da94.jpg 868,151,1024,465,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/83474ef69ee04e8b.jpg 394,102,693,586,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/1a156849a45ceb8f.jpg 115,180,651,626,4 378,194,899,670,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/13af4465a6f1197f.jpg 236,525,439,768,4 730,527,795,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/858839f98b7e4e9a.jpg 5,490,196,680,4 82,367,151,413,4 91,340,125,388,4 119,323,155,365,4 155,342,202,411,4 230,431,367,679,4 283,335,310,413,4 300,354,367,440,4 332,542,529,682,4 359,340,386,374,4 365,363,441,486,4 383,444,522,682,4 463,376,524,510,4 533,361,608,482,4 562,314,674,389,4 660,381,748,484,4 666,367,709,455,4 683,329,872,388,4 782,417,860,501,4 888,440,1024,557,4 965,387,1020,475,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/7dc160a1caee8bd1.jpg 0,592,124,765,4 36,526,261,765,4 159,515,348,765,4 645,522,866,765,4 859,525,1024,765,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/81689896f843d6f3.jpg 285,170,783,768,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/744d4922a533d4d3.jpg 689,102,796,233,4 796,100,920,278,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/204080c7e60da955.jpg 0,516,1024,683,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/0667ebe76e4ba9d9.jpg 245,458,388,554,4 595,481,700,646,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Chair/6782c73c5eed33a3.jpg 410,376,517,545,4 557,376,668,559,4 658,370,776,539,4
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/d6c1581e0c21915b.jpg 50,0,654,768,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/9ce5d5beefc691a2.jpg 173,99,494,715,5 528,89,840,709,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/244d041e96164f93.jpg 225,0,896,596,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/73a3679518f59c1f.jpg 171,0,854,681,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/b4637efd9aeff4b8.jpg 232,32,409,680,5 626,49,874,680,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/5276ea5e873ec191.jpg 294,58,505,678,5 539,14,783,562,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/e97134d017d97dec.jpg 332,0,637,1024,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/010006993a980b92.jpg 1,0,371,476,5 158,207,244,471,5 398,0,701,288,5 437,118,505,391,5 523,310,687,478,5 552,47,833,330,5 568,0,1024,681,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/49d96d167895b0df.jpg 0,0,1024,768,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/8e6bde30e46830eb.jpg 341,0,669,914,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/7f08aacf9d8fa4fd.jpg 632,0,807,256,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/69795f728ce91b4b.jpg 145,458,328,686,5 219,119,541,364,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/fe771761597be821.jpg 155,81,517,913,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/9022d5dbe4d7c851.jpg 438,334,470,429,5 642,318,688,456,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/eb36e2f9075d2c41.jpg 0,34,250,765,5 195,22,507,765,5 511,9,815,756,5 805,0,1024,726,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/1c0c8be916f0aa1f.jpg 0,0,1011,1024,5 700,0,1024,537,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/a0f005bbae6e2f11.jpg 0,0,768,835,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/f3810091b3aae3b7.jpg 230,150,355,653,5 280,119,365,593,5 344,105,438,559,5 458,84,560,543,5 584,101,663,550,5 642,114,719,546,5 648,135,776,644,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/6837cb47d1cf10a8.jpg 320,0,731,818,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/5a01d7c78a3bf61d.jpg 591,436,730,768,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/eb6a929172af5a8e.jpg 14,101,190,363,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/3b2ad72f79a67af1.jpg 240,0,747,1024,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/6aef7a11d43bf213.jpg 132,0,489,1024,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/86d8d20eef7d6360.jpg 878,447,925,567,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/8abdcea0613ddf9c.jpg 143,0,552,1011,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/6cffd73cf05fce05.jpg 86,125,948,640,5 526,271,949,635,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/93ba9b30bbb5ef46.jpg 46,83,874,593,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/2b1281e5d7bbd2d2.jpg 146,30,483,980,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/15db48b907d1725f.jpg 0,0,1024,768,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/3646df0b969235f4.jpg 99,123,260,507,5 318,213,484,606,5 672,127,845,513,5 749,20,895,396,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/7f83fa49acdb5ba4.jpg 89,152,939,632,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/18de0c150fd7672c.jpg 5,31,28,96,5 50,45,75,112,5 176,149,229,177,5 178,139,299,192,5 232,92,292,141,5 237,140,296,187,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/c91def7b8d6adfda.jpg 0,215,994,528,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/6e9995f5fe0a6717.jpg 0,0,1006,724,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/4da4c77c4fe66422.jpg 0,0,1024,732,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/bbe585e92271998d.jpg 65,0,510,681,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/7cc7da6a5ee70d59.jpg 0,23,1024,674,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/1204e15a4e5d6b86.jpg 75,0,669,1024,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/6b3be66ee526c1b2.jpg 134,381,271,681,5 333,444,472,666,5 538,358,677,682,5 711,381,853,669,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/4806bb35eb9038d1.jpg 758,64,948,644,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/91b2dec489a0f02d.jpg 234,141,467,962,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/26c4922f39ba3313.jpg 261,178,540,672,5 543,171,804,659,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/64c4ce3079fce934.jpg 120,0,589,1024,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/cb490b8a63050d2d.jpg 279,116,465,898,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/2b936cb164edc441.jpg 130,148,319,692,5 390,0,724,1024,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/e512ada7e1a28bd8.jpg 127,58,1024,576,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/afa76aa478cb7d17.jpg 0,0,245,768,5 259,0,661,767,5 647,0,1024,768,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/ed86032ef8a09efa.jpg 306,1,676,768,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/f351efbc9ae278f1.jpg 515,0,760,214,5 877,0,1024,177,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/c9c1b63cbfaa3721.jpg 191,0,690,1024,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/ac9d7205a2811d6e.jpg 0,0,1024,768,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/ecda061a268f9065.jpg 3,0,240,613,5 139,0,485,686,5 296,208,656,768,5 476,0,790,737,5 614,51,1024,768,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/e11d7fa85d8cb304.jpg 116,17,365,577,5 368,22,646,575,5 578,633,631,821,5 667,19,941,577,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/216b55d42645d011.jpg 216,0,606,959,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/fdf7612dc644ca9d.jpg 0,0,1023,767,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/ccda44d8a1911ccd.jpg 113,41,333,855,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/9b298486cfd0f9da.jpg 0,234,32,455,5 98,114,273,485,5 366,94,584,537,5 737,68,1024,591,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/ed1e627cbd8c9e05.jpg 120,201,828,390,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/dd7df0d4836d5380.jpg 172,204,438,558,5 216,433,263,495,5 549,447,589,509,5 602,443,649,511,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/6819b229e20ddff1.jpg 0,14,963,768,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/aa85204300e529e5.jpg 830,128,1024,540,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/746789f10dc28633.jpg 239,116,349,331,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/76249d14bbc07bba.jpg 436,37,833,768,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/bf63c9800fe85aec.jpg 314,29,703,955,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/7a99111e03560589.jpg 0,445,109,683,5 1,1,1019,677,5 165,350,302,601,5 291,269,414,428,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/1084e8a6a1af3dd5.jpg 0,0,1024,768,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/dd0750462450d9b6.jpg 11,239,294,666,5 400,231,669,682,5 741,231,1024,684,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/987149d70efd49b0.jpg 664,185,763,522,5 742,143,812,443,5 799,159,897,443,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/04c272c84b71c68e.jpg 0,0,1024,366,5 0,442,1024,683,5 0,0,1024,683,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/f9d51bef4029c20a.jpg 536,0,861,256,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/bc12a93a68990e05.jpg 228,52,539,993,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/283028bb9c3f5c38.jpg 111,349,267,808,5 301,374,463,939,5 458,77,557,533,5 500,129,624,658,5 504,336,683,868,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/a9c62aea377b6295.jpg 0,90,1024,768,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/00b729b5187a1898.jpg 355,97,525,874,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/3d045770d7284126.jpg 185,61,386,844,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/1e1c19218c32fd22.jpg 619,0,786,263,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/8b91d82a8b068e62.jpg 138,30,826,768,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/77b2a9d257145023.jpg 477,575,510,682,5 522,590,560,699,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/0b9edee2d367afd3.jpg 0,75,201,798,5 164,67,435,883,5 365,72,506,767,5 440,68,683,849,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/024fc048dd1cb61a.jpg 204,81,481,1006,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/9b9863c67ad1502c.jpg 168,0,447,716,5 415,60,678,691,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/4153a82ab8af9ba1.jpg 501,449,599,646,5 644,519,706,615,5 704,421,766,697,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/501727520e6af47d.jpg 1977,1555,3983,2113,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/d0ccaee9711f841d.jpg 330,1,718,681,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/3aa28e4b22e4c85c.jpg 12,184,1024,683,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/4587d0449b06d261.jpg 0,0,1024,714,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/781a6f4611f566b7.jpg 111,0,394,650,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/19cd5624a410e2ec.jpg 0,0,1024,726,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/cf3d520657c673ce.jpg 920,566,970,676,5 950,533,992,644,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/7c5f3776f588d7bb.jpg 47,15,291,520,5 396,23,625,452,5 719,74,973,613,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/274d721261c8e856.jpg 633,466,758,759,5 642,392,674,526,5 704,403,765,556,5 758,490,875,727,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/c513d9de623bf69a.jpg 0,353,330,486,5 0,167,335,315,5 0,514,348,692,5 454,332,722,460,5 454,182,737,295,5 466,479,750,647,5 865,450,1005,565,5 866,326,1019,429,5 867,196,1024,292,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/1458ece265475557.jpg 217,359,508,439,5 252,475,528,554,5 275,460,481,484,5 278,353,491,391,5 624,229,744,657,5 730,182,887,683,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/cc3c4409dda7126e.jpg 631,28,768,724,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/59efeac52a711955.jpg 57,125,1024,768,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/c2bbbdd8d9cb5818.jpg 577,0,826,647,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/b432764311041842.jpg 230,15,832,620,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/16de13993417cfd3.jpg 86,9,203,456,5 225,67,317,409,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/bdb9ba8526337326.jpg 0,0,1024,768,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/43ff290d16eca98c.jpg 160,17,592,1024,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/24cb2253ee37be83.jpg 265,39,451,402,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/6e3b7f53e8b75c69.jpg 146,422,347,609,5 155,186,347,386,5 305,622,347,690,5 362,201,573,381,5 364,400,568,611,5 364,0,571,157,5 366,627,416,749,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/398259f32f14d105.jpg 661,497,782,764,5 782,501,906,768,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/c19695a3595eba1c.jpg 0,0,1024,768,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/710f84bf43ca161d.jpg 471,54,628,661,5 633,76,836,768,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/bf60d88ccef3fa0f.jpg 155,82,360,851,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/32015d91ae70466a.jpg 0,0,1024,680,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/14516a229d784e57.jpg 513,89,824,633,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/a9b128063150b294.jpg 20,5,304,1000,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/f14f98756fd28d5a.jpg 101,1,854,768,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/9ef0bdc7ca97a8aa.jpg 0,376,738,752,5 349,759,477,1024,5 475,676,603,1024,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/d8d4da870c22d2c9.jpg 252,105,452,709,5 331,797,437,991,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/c6f809b9cc6f5dbc.jpg 141,95,401,852,5 409,120,676,829,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/26433f6803196e1b.jpg 155,135,580,748,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/b33d3fd85b77721a.jpg 0,0,1024,680,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/e8e126b8e4e37e01.jpg 37,17,439,947,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/a44fe5a482b78b28.jpg 0,0,269,615,5 249,0,513,855,5 523,295,683,1024,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/f7b80593eac7b08e.jpg 0,21,167,1024,5 117,0,602,1024,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/e9c081715727c0c7.jpg 37,314,392,586,5 42,150,428,203,5 66,752,273,833,5 211,700,392,807,5 225,688,411,774,5 261,586,335,681,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/ff913093c0fb6898.jpg 623,624,710,768,5 970,705,1023,768,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/158bf11b09e7cd6e.jpg 213,136,474,967,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/6c544cef5d8f439b.jpg 0,109,1024,682,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/505a374744c9d131.jpg 63,75,328,813,5 343,131,630,799,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/94d6d9b7e502d7e2.jpg 0,233,537,502,5 1,0,563,177,5 758,0,818,159,5 771,246,801,302,5 824,207,879,332,5 824,2,890,160,5 889,0,963,159,5 903,241,961,447,5 960,2,1024,157,5 960,297,1024,504,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/e387b0020c78395a.jpg 282,30,531,491,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/c4ae0fdebecbda93.jpg 142,94,269,683,5 276,288,437,772,5 455,299,635,791,5 633,495,671,619,5 712,517,766,635,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/e1f4f889b7c26667.jpg 144,94,550,925,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/d1e0e207600c1b10.jpg 615,491,763,759,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/68c6ff1edfdd79d7.jpg 286,25,616,980,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/3b2f249d2151c23f.jpg 103,14,701,1024,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/7be1142fa812a0b7.jpg 486,27,643,547,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/7869fb39d11ac515.jpg 0,0,723,504,5 778,0,919,335,5 832,105,1014,519,5 916,26,1024,369,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/4841959e5e9278ef.jpg 597,500,706,768,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/92c6701835d2a3ee.jpg 0,734,78,968,5 97,0,166,167,5 252,249,310,413,5 472,472,503,555,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/f907e5bc8660249c.jpg 387,31,632,735,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/226c1da5f2df11c7.jpg 272,121,504,843,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/5e38eaa878a0d4f1.jpg 108,19,404,1006,5 407,766,528,1024,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/44b8097716302e27.jpg 224,98,356,291,5 289,321,523,722,5 467,128,690,196,5 767,299,932,654,5 878,323,1024,689,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/634e9f64693faec4.jpg 168,157,437,950,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/dedf73d206b20bbd.jpg 232,84,490,882,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/d704cd9b87ddc748.jpg 0,1,634,1024,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/6a022a9e9f413293.jpg 38,19,236,894,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/eb7e9b3f324709c3.jpg 62,0,768,1024,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/d5476d97c71d051c.jpg 545,100,741,611,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/093f6863e99a8601.jpg 0,405,1024,717,5 0,40,1006,378,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/5effb13eaf829289.jpg 80,85,223,578,5 833,347,914,629,5 906,391,1014,609,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/b0ce5e06aea3537a.jpg 144,37,321,664,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/b28f5e0b6de18880.jpg 260,143,416,713,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/96085d8df850d3df.jpg 168,40,494,654,5 563,76,846,677,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/a9829f4bf3a79dab.jpg 61,89,986,846,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/0ca790da12c776d6.jpg 86,38,232,555,5 348,40,492,576,5 589,31,761,643,5 739,42,869,585,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/2f0dd35a85698ddb.jpg 146,96,275,497,5 300,58,344,261,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/b2403267542c6206.jpg 26,244,968,530,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/87d5252b867024aa.jpg 197,199,600,484,5 378,0,1024,628,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/27f95c99ca911a09.jpg 1,0,456,1024,5 10,0,947,1024,5 470,0,949,1024,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/de671cb30897fecc.jpg 0,0,579,680,5 733,0,1024,680,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/98bb82ba07d55501.jpg 220,107,425,717,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/de1a54d9078f4d6b.jpg 183,532,287,980,5 231,57,332,490,5 329,587,386,849,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/15b13736c4130494.jpg 35,0,215,303,5 829,0,1024,574,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/dab44270a9c79356.jpg 495,157,662,737,5 496,161,656,635,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/5838b213e80412de.jpg 150,33,373,863,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/4b418aaa7f6b8784.jpg 561,0,975,768,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/e9570e3197a98d3b.jpg 83,0,287,350,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/d49c6e373e852c2b.jpg 220,59,593,914,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/2bf0fc08c05715fa.jpg 0,0,1024,887,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/4ba5b0c3c04d2680.jpg 96,240,261,655,5 257,86,443,843,5 415,221,497,630,5 623,200,683,584,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/090dc3017fdc4219.jpg 0,10,1023,166,5 0,210,1024,337,5 0,394,1024,573,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/a393a65915aabe01.jpg 92,89,335,938,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/f454e8c8bec256ca.jpg 397,3,664,1022,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/4ff79076428f2f9d.jpg 92,88,335,939,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/7191c32c451c813a.jpg 165,9,379,752,5 435,32,706,785,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/0cda3f209a5461ed.jpg 219,63,374,681,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/c95dcaa35f454f83.jpg 230,163,492,959,5 543,164,822,978,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/98cf1c79d74b02ac.jpg 150,0,414,845,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/afb12f0a9115fa64.jpg 815,387,899,608,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/7636bfde54928891.jpg 91,44,880,331,5 100,394,863,671,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/cccc6a3bfeb65c58.jpg 239,0,431,428,5 579,0,768,529,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/798865de41edb8bd.jpg 20,0,994,724,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/01495549e1f4fd2e.jpg 204,27,523,953,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/2b6108544398c7fe.jpg 0,0,1024,715,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/6558d4bc24b018c3.jpg 74,35,759,768,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/b6df00aa1048b781.jpg 0,0,1024,683,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/08aa142f47a36b62.jpg 10,457,70,678,5 93,447,145,680,5 124,439,192,680,5 345,398,419,681,5 735,382,801,681,5 838,387,892,647,5 908,389,960,647,5 977,402,1023,651,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/5f8d3927e65e93fd.jpg 218,28,527,723,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/e8bbdb6c2ec88826.jpg 81,10,359,1006,5 350,30,610,1004,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/f5a5c5cccbe17269.jpg 0,0,1006,767,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/9e3f2894c677e22d.jpg 219,13,527,802,5 725,135,768,395,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/38c8ad6da6c4151b.jpg 0,0,934,672,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/da9aeca3cd9c5ce6.jpg 261,235,363,628,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/cbf1ce9eb40b7b6d.jpg 56,0,346,970,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/773daf22026c7add.jpg 38,4,339,487,5 108,561,324,1013,5 363,553,579,1024,5 371,0,682,483,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/3d67a2695df3ac22.jpg 169,144,458,909,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/a47d8017a8106c57.jpg 84,78,338,452,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/6f14ec453234b66f.jpg 274,19,495,748,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/13f24d0da44f0baf.jpg 0,543,24,885,5 48,422,174,943,5 249,284,414,972,5 479,424,615,963,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/0499037adbb9cdff.jpg 99,33,386,870,5 399,38,637,879,5 700,33,875,716,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/3f4c7f5c63e82ab5.jpg 136,76,454,767,5 470,69,674,764,5 701,133,854,762,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/db790358ad6b8f8a.jpg 539,0,1024,235,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/c267860e51fa0042.jpg 414,621,570,903,5 649,206,708,406,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Bottle/1821b8ba70aec299.jpg 179,69,313,494,5 326,403,566,652,5 392,177,544,436,5 529,267,645,598,5 723,179,826,485,5
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/c503a3f4e0819981.jpg 158,107,880,646,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/29612ad46b19a314.jpg 100,32,921,662,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/80bd05a3f348b0d7.jpg 47,79,994,685,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/d8ae3fe5ccff5e59.jpg 0,0,447,278,6 0,47,1024,714,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/dc0d956250c5ce81.jpg 252,191,830,546,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/586f2110906b7da3.jpg 0,137,441,759,6 204,451,573,713,6 439,92,776,352,6 511,301,916,677,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/42e4217f1202b8b2.jpg 51,124,1019,680,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/73b9e2490d36cb81.jpg 0,53,991,768,6 825,1,1024,101,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/c51d5fd6ebd6ce87.jpg 25,171,520,633,6 524,69,988,471,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/09ab0d53e66358c5.jpg 100,90,709,481,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/d5adde5b74d26baa.jpg 49,66,751,1024,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/dc6e8ce4c73b58d6.jpg 43,400,180,535,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/88fc9d01a56ef413.jpg 0,0,826,1024,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/958cffaf3962a91f.jpg 0,71,1024,768,6 280,80,1024,745,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/7807f238ecb1af77.jpg 111,8,871,675,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/b6469514e5240185.jpg 53,0,1024,703,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/82b9eed0d5f3789f.jpg 9,0,1024,703,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/a685066e9765e52b.jpg 0,0,590,753,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/46bd7510946f7886.jpg 147,134,607,930,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/e7718047a2159f42.jpg 265,96,724,618,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/673aece0c899d7bc.jpg 34,659,409,1007,6 47,35,436,410,6 664,136,978,464,6 718,511,942,1007,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/f72cb66ea611e07a.jpg 0,300,597,629,6 598,286,1023,733,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/33ff0ffe984d067c.jpg 33,52,976,995,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/81b0376fb82b2fe1.jpg 0,114,350,328,6 66,256,342,521,6 134,461,342,663,6 216,581,358,720,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/a4252299156e8541.jpg 2,76,683,953,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/d460ae1e40e3406e.jpg 185,11,892,638,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/4fda9ea8f6fe8837.jpg 20,13,1015,776,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/8bf2211ed7f1d9ef.jpg 70,93,461,497,6 560,27,989,547,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/b0f45fbef27728bb.jpg 180,170,913,683,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/a189df874ce2ad36.jpg 53,55,664,643,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/2f879773358dda44.jpg 460,0,1024,686,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/3e68eba661d7d771.jpg 40,26,985,645,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/9950d937e14f2f1e.jpg 269,136,805,557,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/4593e37d15bc3c68.jpg 0,337,251,642,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/cba95582b3b15d63.jpg 194,118,550,638,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/c6c46fb4b51381a7.jpg 0,0,1024,767,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/6bd0310b1fac352d.jpg 306,578,559,768,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/d27d3770f361769b.jpg 0,0,1024,1024,6 10,0,836,344,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/ee1977d5bbe22698.jpg 48,159,538,478,6 431,145,1024,411,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/b229a44088cc81ee.jpg 0,0,765,1024,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/2ca4fbe9127c2ad2.jpg 218,405,297,462,6 442,640,683,926,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/a0c8859076ab5747.jpg 74,406,304,557,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/1f56089e26350169.jpg 152,224,681,1012,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/a04b53610561dd36.jpg 0,186,1003,575,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/2fe8f7dce31d4004.jpg 699,141,820,419,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/1ba7b60fadf795b9.jpg 62,338,644,897,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/1c4f9afbae3d87bb.jpg 0,497,637,965,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/746789f10dc28633.jpg 67,5,961,293,6 76,198,967,666,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/318d7d2b6bc9c501.jpg 32,320,758,599,6 145,70,643,337,6 647,105,987,520,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/9569f03b1d996fab.jpg 25,23,812,817,6 44,840,247,1004,6 294,833,503,997,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/0591c19dfec6a487.jpg 108,37,860,715,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/76c498327c03d528.jpg 0,0,202,451,6 172,0,777,704,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/14bf40aca3f48f46.jpg 14,109,1024,723,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/21eac74cc306ee57.jpg 38,9,901,719,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/e1ec282ef80b727d.jpg 75,105,953,719,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/983e70b2779cfab7.jpg 20,73,1011,704,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/2be43a4a00facd11.jpg 0,37,1015,702,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/4736100d6746b54f.jpg 45,109,338,394,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/b695b7511167011a.jpg 609,65,764,170,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/8a58b5067e6d794c.jpg 146,235,821,953,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/364b5e8ec651841d.jpg 117,31,896,748,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/c4dc67dd1f294cf0.jpg 13,0,1018,526,6 81,312,987,911,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/26ade69b776615b9.jpg 76,1,987,987,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/962540f165ab6e75.jpg 14,23,558,804,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/8d5757f0fcbd777a.jpg 175,569,483,765,6 414,492,739,682,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/70d44305395e10f8.jpg 0,0,1024,677,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/06d3e8dbaa8580a9.jpg 92,35,532,588,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/94b5bbf01fe75e3e.jpg 571,328,824,473,6 748,238,974,417,6 937,415,1024,496,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/ed69b58089af0da3.jpg 5,313,988,962,6 394,0,1024,740,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/de684f4ecd0e7edd.jpg 9,9,1011,744,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/e8dd42c2cae0ef65.jpg 22,333,427,556,6 419,102,1023,584,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/78f0a0db764db8b0.jpg 0,0,1024,768,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/898f2dd130a0f88b.jpg 67,175,977,580,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/ddfb3fba300519b2.jpg 189,280,937,722,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/d175e509039ecdd3.jpg 1,1,1021,690,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/82e828f70c7c68a0.jpg 186,11,839,677,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/8ce4913c9e4ae0a2.jpg 17,17,986,1014,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/f111c2a8eabf8ba7.jpg 41,72,999,658,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/928fd2bcd160e1ef.jpg 41,189,954,709,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/6076acb6b42a2ce9.jpg 146,165,953,837,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/024f05451e4942bd.jpg 220,297,292,380,6 309,430,417,503,6 312,206,331,219,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/5040efe3a171dff9.jpg 360,123,810,682,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/e6df75e921a95b69.jpg 383,23,870,299,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/1dc8c1935d5f1b1e.jpg 0,1,1024,1023,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/1416e55e756c4367.jpg 53,155,677,900,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/31fab6273ad00566.jpg 40,44,995,610,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/fe0b1874c8706437.jpg 53,36,882,1002,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/68498a10c7f79c6f.jpg 5,215,768,931,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/9ec8767c03c86068.jpg 28,0,811,957,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/12f6118ac360737b.jpg 3,0,644,637,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/7fa0dd625495dae2.jpg 0,21,919,1024,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/2b0c7e98766e4d16.jpg 366,542,563,687,6 749,390,777,418,6 765,396,803,420,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/794f7cd9d39efc04.jpg 0,0,1023,765,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/dac919bdd82302c6.jpg 109,538,175,618,6 111,462,187,561,6 224,568,512,740,6 236,317,542,566,6 440,160,768,713,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/97dca9f1352f19d0.jpg 52,108,768,1024,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/351effda5aef584c.jpg 0,0,1024,768,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/7e8ea1af5d0de096.jpg 332,308,977,699,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/fd2eeb683f461525.jpg 89,236,948,606,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/2fa4e41a16af5037.jpg 0,87,768,867,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/55d737dc97c32e76.jpg 0,0,549,408,6 177,2,1024,680,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/b8bf9b84eeca0201.jpg 217,104,876,704,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/dfe143673226931e.jpg 79,167,599,851,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/7afd4b54e85e4ad6.jpg 0,77,768,934,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/4eeeda61c1c6360e.jpg 56,236,939,591,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/97eb4a59bd8d4eb5.jpg 33,84,576,583,6 478,306,830,674,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/ab60e90aaea28cb5.jpg 0,473,121,552,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/9c679ccad9140e33.jpg 109,366,948,906,6 210,105,958,591,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/8c2c909e40c82ff8.jpg 51,42,925,946,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/685b10df15cb8fb3.jpg 19,30,1001,1014,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/0f1a711381875066.jpg 121,113,915,681,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/48bd724301172b15.jpg 75,112,702,1024,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/90082c0d8a16e00b.jpg 11,19,652,1024,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/13d3287c4cac61c1.jpg 17,489,288,769,6 366,0,598,232,6 702,617,983,769,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/eb71b3080adf1e57.jpg 95,155,942,702,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/1b605d0e8b4f4872.jpg 92,7,946,745,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/58294f055d174fb5.jpg 40,322,698,768,6 47,67,580,396,6 557,25,1024,343,6 646,260,1024,683,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/b160ebeb15c5dd3c.jpg 0,0,1024,768,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/6e306e88f6446c83.jpg 25,91,995,943,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/6558ac6054a05270.jpg 147,214,588,774,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/4f7c524db6f6ec6f.jpg 0,26,1024,683,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/ba9c1491bf601461.jpg 8,200,1009,575,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/6456982155a4d193.jpg 39,102,496,329,6 80,246,528,473,6 109,470,507,632,6 153,15,492,140,6 155,533,504,712,6 530,609,562,768,6 538,436,916,768,6 571,334,997,697,6 576,56,1024,540,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/a25d7cff710d4527.jpg 107,459,534,996,6 199,63,474,617,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/5857c20c2cb7320a.jpg 58,85,598,669,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/4ce07056031fabb2.jpg 507,591,667,683,6 512,480,677,627,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/fb0fdc10dd5ebf25.jpg 97,685,463,872,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/df6890e542175def.jpg 93,66,738,951,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/c878505adebb85d7.jpg 31,11,1024,641,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/057677f8b281e963.jpg 2,0,681,540,6 281,114,1024,610,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/ff2949f8a95f66fc.jpg 120,210,225,225,6 159,462,300,623,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/acbe0345198116c4.jpg 447,551,596,671,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/2d042826ea39a23e.jpg 339,155,721,701,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/4036a8676a59acf8.jpg 72,0,749,751,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/e226e3ecf0e86165.jpg 180,80,864,666,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/ae71d415c8906ff7.jpg 69,0,1024,685,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/96818154b260e45b.jpg 34,0,940,683,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/36cac00b383af0fb.jpg 89,162,969,640,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/d1bb2ab817e490fb.jpg 129,52,884,624,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/a90612377474c675.jpg 60,72,969,604,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/75825779505083f2.jpg 0,0,1024,683,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/9e27c57a97ae2f56.jpg 6,2,689,1019,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/00371fbc0d38eab5.jpg 0,40,683,1022,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/eede41df6d7bba55.jpg 26,62,454,491,6 262,140,922,754,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/7e49d4e35c02e93d.jpg 276,164,474,252,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/2de7e17a3840950b.jpg 22,278,314,621,6 368,254,640,596,6 541,106,680,278,6 700,256,1018,579,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/9094a8c2452b9048.jpg 115,94,897,468,6 176,489,352,691,6 402,516,535,689,6 462,0,638,100,6 569,524,703,702,6 754,538,920,719,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/165a07a95aa90490.jpg 376,19,1005,651,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/403f168c72fdd1bb.jpg 0,0,1024,685,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/bdb8fc4bd57bc0cb.jpg 0,554,179,1024,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/159b0499772cbabf.jpg 151,112,960,682,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/fe1949975ba5b5f8.jpg 34,284,756,1024,6 182,27,603,371,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/bfca125316b37f5b.jpg 0,36,886,768,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/8bc13c6b0eac357a.jpg 49,72,979,610,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/ae2cfe0830cde3c7.jpg 50,0,842,686,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/e79baf4579217f68.jpg 0,0,1024,731,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/eeaba43c4abfce57.jpg 0,140,1024,1024,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/859e4923c2565ce7.jpg 0,887,768,1024,6 24,636,768,958,6 131,341,768,656,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/9108e6f4145b7b80.jpg 55,0,1024,683,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/fc3f0cc59eb790db.jpg 0,0,1024,768,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/c314c0db18e1aa0a.jpg 0,66,1024,765,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/1e2bd785e734f21c.jpg 72,238,557,651,6 440,208,974,683,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/2a26ab4f43340093.jpg 0,0,1003,768,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/84434da4f45f260b.jpg 40,3,1014,659,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/aaf39aa7d189d6f9.jpg 0,0,1024,516,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/519a7d595adecfe4.jpg 67,182,911,630,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/863c1268d7a0c394.jpg 55,658,193,768,6 752,386,1013,543,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/29575e8d34bac03c.jpg 30,116,671,608,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/ae60df8535b285b8.jpg 82,15,937,623,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/784aeb7f7bd7ecc8.jpg 0,56,682,860,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/7782ae31ea9fe278.jpg 26,0,943,736,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/f7a7bdbc4c2b3cdd.jpg 0,178,608,861,6 445,0,1024,417,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/01cfd6231b55de3c.jpg 81,85,698,909,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/977c739538c46d64.jpg 9,5,1024,680,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/ff2efbd114512147.jpg 47,1,643,891,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/19022bc62eb43546.jpg 188,76,824,516,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/ace56ac317c6f3b3.jpg 0,44,1024,820,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/1af65e8b45d92c88.jpg 615,637,690,666,6 677,658,723,685,6 725,609,871,768,6 788,628,966,768,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/e2514ca55fd39e28.jpg 0,173,428,635,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/d6c30774f35d7ade.jpg 501,239,724,528,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Box/6faf003c92707dbd.jpg 39,0,1024,781,6
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/afa734f6bb5714e7.jpg 0,0,137,82,7 29,58,930,594,7 64,30,189,136,7 518,86,585,129,7 748,205,1024,382,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/2aa39413c4495b0c.jpg 95,0,954,679,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/348824dd8c0c74e6.jpg 357,321,775,570,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/18c0a74f5f72e5f4.jpg 0,40,1024,639,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/5816e7186d1c97af.jpg 0,254,879,768,7 983,351,1024,434,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/f0b018ce550add28.jpg 60,108,985,546,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/7fa2989810afc96d.jpg 120,34,908,329,7 796,88,1024,204,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/8e111b2e94e0adad.jpg 0,0,1023,819,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/bd219b1d2f20074d.jpg 44,66,739,631,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/9b8febb88b945cb5.jpg 573,866,766,962,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/f7b80ea01429ab49.jpg 50,309,73,371,7 75,249,302,439,7 166,275,863,658,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/7600c15dafe88166.jpg 0,73,175,199,7 0,201,203,576,7 139,42,901,501,7 470,23,1024,333,7 489,13,656,44,7 887,3,1023,88,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/a1e3b12b252eaaf8.jpg 0,52,157,328,7 47,70,988,689,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/668a0944c8089812.jpg 55,150,944,477,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/7e82b0f562e3248e.jpg 36,270,992,694,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/6ad5881023a7de6f.jpg 0,0,174,45,7 77,1,1007,666,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/90599efdea391132.jpg 0,59,870,549,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/daa3b85d136dbd52.jpg 496,443,766,681,7 601,446,768,686,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/a629ed5405657c9a.jpg 13,96,448,195,7 102,50,948,576,7 503,77,1024,379,7 774,118,1024,219,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/8384d6c6ba75d317.jpg 345,159,715,453,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/2237dbeb1994b8d5.jpg 0,0,1024,768,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/ca8de4484aa70be5.jpg 0,0,1024,629,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/13de545f099ea325.jpg 0,0,398,110,7 43,23,1007,626,7 534,3,1019,143,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/5336ca923a6851e5.jpg 3,146,839,703,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/0dd879f75903b087.jpg 22,73,975,547,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/4157bf1d97ab218c.jpg 9,138,1004,661,7 917,155,1024,248,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/4bbe456081c4db6c.jpg 78,188,942,672,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/adf7c5958089973c.jpg 0,0,274,542,7 68,45,883,656,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/da008d5567f8b263.jpg 0,230,229,290,7 0,233,360,314,7 0,206,426,417,7 0,193,975,682,7 1,225,111,273,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/e2a3fb392d639749.jpg 1,0,990,646,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/0f85225850026490.jpg 0,59,589,456,7 50,64,995,653,7 911,138,1024,294,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/cb97e500e8f4404b.jpg 0,257,760,743,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/dbdc96c4574a43bb.jpg 0,37,1024,651,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/1b51facadc9adbbe.jpg 0,223,123,295,7 191,186,937,666,7 691,210,1024,447,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/eb6b1cc7859d1410.jpg 0,23,1024,511,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/064728f5860d55f4.jpg 0,0,1024,768,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/bf667a5b2bac3cba.jpg 44,144,1003,716,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/c7c2a5753e628bf1.jpg 0,354,514,517,7 500,347,857,467,7 838,340,1024,434,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/97519921d3542ca4.jpg 0,118,960,565,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/391f1ec1c3ccf4bf.jpg 32,107,995,659,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/afe9ac4bb53d29fe.jpg 53,200,957,639,7 216,86,359,210,7 569,103,736,183,7 789,110,852,187,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/6b43a9f00479b61c.jpg 139,257,167,292,7 161,205,224,344,7 187,132,935,586,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/843f1110ff37ad7b.jpg 46,300,169,396,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/d25831e5c1509b17.jpg 87,118,957,556,7 507,80,975,285,7 670,97,1024,266,7 846,78,1024,156,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/6a69ad582894b353.jpg 0,472,34,542,7 57,463,114,544,7 101,235,964,594,7 913,446,1024,542,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/14711e2cf3e9f16e.jpg 92,23,1016,667,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/bb164b5ca1c8666e.jpg 153,150,1024,604,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/fc789e937131b584.jpg 78,80,960,700,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/f331687180e398c3.jpg 286,422,643,601,7 636,420,945,570,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/9cdde8db70836a12.jpg 0,0,1024,764,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/bd3771f5d649cb05.jpg 0,11,1024,703,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/c52882862eb85903.jpg 0,152,841,582,7 754,154,880,249,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/498d31593a10f9c7.jpg 219,136,867,534,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/6531397a2380a8ec.jpg 63,243,1024,740,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/a16708426f3186ce.jpg 73,39,941,335,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/e14a2b085e247032.jpg 848,104,960,225,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/b96cd9b0f20ee3cf.jpg 40,132,1005,672,7 918,143,1024,230,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/6493e873f68b77a3.jpg 766,13,1024,351,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/9e6259700618b6f6.jpg 65,5,966,618,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/8d5a4dee0b224e49.jpg 88,303,911,603,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/b9804615bbd20c60.jpg 0,0,1024,557,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/1091c1c5a90fba65.jpg 16,15,1005,665,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/c34c82c5a842c114.jpg 8,329,29,439,7 119,14,885,615,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/781b60ce498b769b.jpg 56,68,982,710,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/70bb58bf62de8b6c.jpg 0,98,137,282,7 86,91,174,155,7 111,12,916,601,7 871,62,982,125,7 973,152,1024,291,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/c2a208675bbc5f59.jpg 110,178,774,452,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/26ecbaf87d1736d9.jpg 0,210,983,768,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/2c4f0213cb08854a.jpg 0,220,77,327,7 49,134,709,463,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/9284aaeb28708edf.jpg 400,42,672,181,7 681,40,992,184,7 747,670,994,791,7 748,800,872,903,7 875,804,990,905,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/fbbc3f56cfa52a83.jpg 0,0,1024,768,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/98e0d7a34452cde3.jpg 0,119,368,449,7 39,49,972,570,7 46,100,168,230,7 864,189,938,257,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/46ff159ae0b34796.jpg 190,0,307,12,7 847,34,1024,181,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/9ee207ec60bdd6e1.jpg 0,32,1024,551,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/7c80a1c03f915a4a.jpg 10,8,1015,758,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/cca4e6196eff3970.jpg 59,68,998,710,7 105,122,593,360,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/40b0e2db513fc029.jpg 25,34,999,543,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/f98ae374d84940f3.jpg 38,75,1016,643,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/6dbd42b4ff71af86.jpg 69,435,144,550,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/6eec7fc67071f1d8.jpg 0,0,1024,998,7 47,39,316,229,7 682,53,902,279,7 907,95,1007,242,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/38078678edc20549.jpg 96,178,782,639,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/dddcd5536775b345.jpg 885,434,1024,502,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/ca052d770a061542.jpg 70,282,842,498,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/483f23ab11ae24d6.jpg 0,20,998,742,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/6d34cddf04e76b00.jpg 0,0,1024,768,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/32c9c807238cae84.jpg 3,162,1024,569,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/dbcc301d4be99d43.jpg 53,276,994,653,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/db42863b0f382187.jpg 0,244,1017,797,7 469,176,579,236,7 633,160,811,229,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/bd2c89725722d24b.jpg 0,127,1024,647,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/a2f29d75fb80e23c.jpg 0,0,1024,768,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/9588e47b91a89987.jpg 79,185,947,651,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/e51e7c833f47c146.jpg 44,256,913,678,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/0bf64e55d046a453.jpg 0,128,1024,768,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/fc38fe60ffab8d8d.jpg 181,161,919,585,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/c181246f1817a73d.jpg 14,143,746,771,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/1547c76f5c13b2f8.jpg 0,255,213,328,7 0,246,410,558,7 48,185,941,763,7 672,428,1024,767,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/28d9faec55aaf22c.jpg 305,246,918,617,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/26632d51df7c6c5a.jpg 0,33,1024,651,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/d86c215a864a0987.jpg 120,0,959,700,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/d279acc696bf93c6.jpg 144,95,876,494,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/ee649dbe5c880596.jpg 65,266,693,602,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/57be63ca179e3191.jpg 0,24,207,293,7 58,53,965,493,7 611,2,1024,426,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/49f5880d3697bc14.jpg 0,195,1009,667,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/85b8bb02aae9ef41.jpg 51,8,1016,681,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/8088049836e1bccf.jpg 0,0,996,675,7 516,0,1024,292,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/dc780a483e5a5a10.jpg 78,162,1024,727,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/bb4b4efef718f590.jpg 50,171,977,592,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/05b15ae341cd6ec5.jpg 233,475,679,778,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/daad8eed62d6cf21.jpg 0,41,416,344,7 42,61,946,622,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/63199c23e2c487d6.jpg 0,337,133,527,7 102,300,875,595,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/d676badcadf23b81.jpg 54,48,975,481,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/3d5510bb1764322b.jpg 0,358,119,600,7 58,269,905,665,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/23180090fe91a4d4.jpg 0,286,1024,727,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/5612bbded0995f28.jpg 38,10,1016,928,7 874,97,1024,448,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/b1ce9cc408f59bdb.jpg 138,160,1024,744,7 616,49,757,97,7 633,83,831,165,7 798,53,938,130,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/57e2d16faf0df82b.jpg 184,123,695,592,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/c3e1449b3fb676d4.jpg 0,100,1024,576,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/daaaa2e5dc2c808c.jpg 194,321,728,571,7 843,455,1024,768,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/14c39c068949c91d.jpg 179,96,924,631,7 838,137,1024,247,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/ee2f7c6421242ff2.jpg 0,258,80,336,7 37,152,919,611,7 104,224,213,258,7 815,215,945,308,7 820,235,847,255,7 897,183,1024,321,7 947,236,1024,330,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/df53f53391127b56.jpg 0,271,950,645,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/8d7c325cc3ccac86.jpg 0,0,982,768,7 788,23,1024,508,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/8dfa42d4aacdb1ed.jpg 153,288,982,598,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/afc35354fd814704.jpg 0,0,1024,767,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/feba2aae64284e51.jpg 0,116,290,330,7 1,80,913,752,7 892,88,957,131,7 983,78,1024,125,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/b767d73d6007b146.jpg 0,57,1022,523,7 0,30,654,217,7 8,0,467,133,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/f23f4ed4fe58776c.jpg 51,175,887,675,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/7e157efea59e59ee.jpg 0,0,535,768,7 94,0,316,165,7 295,31,387,113,7 333,55,581,265,7 487,189,1024,768,7 554,131,748,227,7 572,114,678,140,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/27a119ff0e9517db.jpg 152,0,842,450,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/0e883c0f1ef93d72.jpg 42,3,511,233,7 53,6,261,101,7 60,17,1001,645,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/2b91cfcc79d10374.jpg 216,271,389,385,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/6b9c790a7ca6be69.jpg 0,73,146,216,7 42,164,999,452,7 229,84,397,194,7 485,76,656,206,7 776,105,980,214,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/0c2b82da80cae566.jpg 0,0,1024,833,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/da043312f3c0c66e.jpg 0,569,217,768,7 0,239,317,569,7 20,579,992,768,7 53,176,991,702,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/76afe6dd74ce7791.jpg 37,419,509,492,7 804,444,984,508,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/bb422b44e6048b73.jpg 0,227,207,768,7 108,290,299,456,7 237,246,746,574,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/7d9527eda3a8f857.jpg 0,140,101,281,7 67,120,931,632,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/3a7ae116a29da652.jpg 0,34,72,134,7 31,134,1016,605,7 492,16,653,79,7 832,36,969,118,7 917,54,1024,168,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/5d01d87e543231d4.jpg 0,92,123,269,7 80,0,940,505,7 604,65,1024,408,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/849d1773399ba28b.jpg 0,154,96,386,7 185,115,851,622,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/6464c61ec39dfac4.jpg 188,0,1024,531,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/a442917ae7573108.jpg 201,0,796,277,7 305,264,964,630,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/2bf43743f521a07e.jpg 0,124,171,331,7 57,138,962,575,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/719be2be3a8fd8f2.jpg 69,136,937,576,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/e5d90ea80d80e493.jpg 0,169,78,302,7 45,203,90,238,7 87,229,136,286,7 606,256,707,302,7 764,225,1024,359,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/2e0d98328390cdfe.jpg 0,0,1024,678,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/a6d159fa8091f44c.jpg 0,437,82,694,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/78e70f14d5ca40b6.jpg 0,293,208,505,7 749,270,976,417,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/01a0cb6c76d4bb10.jpg 43,187,202,381,7 177,136,959,707,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/2beaee087df542a6.jpg 0,210,1022,641,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/29f7226e4a7acffc.jpg 38,675,1020,946,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/3a94cf9e2b838ec7.jpg 0,137,22,230,7 0,72,129,150,7 44,139,987,606,7 255,44,470,141,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/3d91dbac40ef9300.jpg 287,234,854,695,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/7e4002f215e7f7c6.jpg 88,323,720,598,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/3f0ad47f825f860f.jpg 62,198,199,310,7 125,123,991,660,7 944,201,1012,256,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/0ebb49849b2634fb.jpg 105,268,938,658,7 917,326,1024,427,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/04ffba697e012a72.jpg 202,176,780,583,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/2a144cde613eaf5d.jpg 0,365,34,503,7 209,324,849,574,7 960,404,1024,517,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/e0c2b37bd4e83c6d.jpg 27,66,991,424,7 806,75,1024,206,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/414a01e6267d7961.jpg 19,521,963,1005,7 231,40,910,488,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/1c5cbf7248e2c7f9.jpg 99,246,820,522,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/502dcac5ec753663.jpg 0,231,170,768,7 168,88,935,768,7 523,70,1024,570,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/4ad77d06fa730c26.jpg 84,0,1024,634,7 729,0,1024,83,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/10c6f146fe957be4.jpg 0,190,181,240,7 0,175,453,402,7 49,146,979,645,7 945,172,1024,304,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/d264bf4d0d09f28d.jpg 67,0,966,649,7 762,204,987,336,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/e787305f332e2f57.jpg 159,97,430,245,7 247,140,945,572,7 655,86,1023,249,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/1882117add12586a.jpg 47,388,724,610,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/818b818eda1ce0d4.jpg 165,176,857,618,7 785,303,985,473,7 875,293,1024,439,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/3a55467421bb4f8e.jpg 59,108,968,579,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/c668683389bdc000.jpg 2,6,124,238,7 30,87,978,548,7 195,22,514,164,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/46ffbadf7a80fdf1.jpg 0,0,103,36,7 0,22,161,142,7 10,3,1014,593,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/57d89b038b345c98.jpg 97,285,757,829,7 731,295,824,569,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/19d10e54089299bb.jpg 0,129,460,768,7 276,119,367,136,7 395,125,465,156,7 466,116,547,139,7 520,94,1024,667,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/bbf03f5af1785365.jpg 136,0,1024,680,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/61c8c6fdde957ef4.jpg 15,1,1024,386,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/132a5e52a7b123b0.jpg 297,116,928,654,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/24cce6356a911ac5.jpg 0,88,423,282,7 1,105,117,154,7 268,88,942,498,7 411,134,467,170,7 879,101,950,156,7 941,101,992,144,7 989,102,1009,142,7 1010,114,1024,142,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/01d1c8c162ae025d.jpg 0,186,1024,768,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/88b2dfffd601697a.jpg 13,452,400,581,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/ed2699d93ad0e016.jpg 0,224,1007,655,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/dce5f5dca4c2a57d.jpg 0,215,147,430,7 65,186,858,641,7 621,177,1024,481,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/993a43816ece6bb8.jpg 0,91,132,232,7 73,30,955,650,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/53135f202f4340ab.jpg 129,80,410,300,7 195,81,963,704,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/5d6f27ff0c3f9404.jpg 2,139,935,768,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/419770d542dee2ce.jpg 89,102,1024,624,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/292bbfe276f317ea.jpg 144,52,881,716,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/b38f48c8f5a7cd83.jpg 0,90,83,157,7 20,17,937,434,7 236,86,379,121,7 495,63,730,111,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/81d416fd2378ed66.jpg 0,319,37,350,7 0,315,47,335,7 0,297,93,335,7 76,295,145,326,7 225,270,590,339,7 950,257,1024,339,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/d8991e5db805d93b.jpg 47,242,992,602,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/fdb803497ff87bc1.jpg 0,127,113,182,7 45,54,1024,612,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/7bd66837c364b49f.jpg 0,1,824,576,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/38cc2364d6626a10.jpg 89,139,952,593,7 179,156,608,268,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/3f91213574e54524.jpg 168,212,896,562,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/8a0f9d5ceca29b12.jpg 13,222,910,679,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/25b8fdc68b6e9e23.jpg 207,261,365,421,7 294,138,988,454,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/819dcd1ef033038e.jpg 33,165,998,613,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/1b9bb5575bd2aa27.jpg 193,198,753,464,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/439b41a6ba2c872a.jpg 0,118,322,213,7 32,5,1023,666,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/5711d33ac640a70d.jpg 6,69,265,295,7 198,189,791,561,7 319,79,535,194,7 501,131,763,278,7 655,137,1024,479,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/73a2c86f3d28c3cb.jpg 0,330,223,561,7 140,209,865,614,7
+/home/gul/TensorFlow-2.x-YOLOv3/OIDv4_ToolKit/OID/Dataset_1000/test/Car/72015bbf9f11fc86.jpg 0,88,378,289,7 75,132,913,655,7 896,122,1024,198,7

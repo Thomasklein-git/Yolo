@@ -1,0 +1,7 @@
+Person
+Tree
+Building
+Chair
+Bottle
+Box
+Car
