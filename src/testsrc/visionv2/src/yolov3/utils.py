@@ -95,7 +95,7 @@ def Load_Yolo_model(): #Used by detection_custom.py
             yolo.load_weights(YOLO_CUSTOM_WEIGHTS) # use custom weights
     return yolo
 
-def image_preprocess(image, target_size, gt_boxes=None): #Used by dataset.py
+def image_preprocess(image, target_size, gt_boxes=None): #Used by dataset.py and detection.py
     ih, iw    = target_size
     h,  w, _  = image.shape
 
@@ -115,7 +115,6 @@ def image_preprocess(image, target_size, gt_boxes=None): #Used by dataset.py
         gt_boxes[:, [0, 2]] = gt_boxes[:, [0, 2]] * scale + dw
         gt_boxes[:, [1, 3]] = gt_boxes[:, [1, 3]] * scale + dh
         return image_paded, gt_boxes
-
 
 def draw_bbox(image, bboxes, CLASSES=YOLO_COCO_CLASSES, show_label=True, show_confidence = True, Text_colors=(255,255,0), rectangle_colors='', tracking=False): # Used by detection_custom.py
     NUM_CLASS = read_class_names(CLASSES)
@@ -163,7 +162,6 @@ def draw_bbox(image, bboxes, CLASSES=YOLO_COCO_CLASSES, show_label=True, show_co
 
     return image
 
-
 def bboxes_iou(boxes1, boxes2):
     boxes1 = np.array(boxes1)
     boxes2 = np.array(boxes2)
@@ -180,7 +178,6 @@ def bboxes_iou(boxes1, boxes2):
     ious          = np.maximum(1.0 * inter_area / union_area, np.finfo(np.float32).eps)
 
     return ious
-
 
 def nms(bboxes, iou_threshold, sigma=0.3, method='nms'): # Used by detection_custom.py
     """
@@ -222,7 +219,6 @@ def nms(bboxes, iou_threshold, sigma=0.3, method='nms'): # Used by detection_cus
 
     return best_bboxes
 
-
 def postprocess_boxes(pred_bbox, original_image, input_size, score_threshold): #Used by detect_custom.py 
     valid_scale=[0, np.inf]
     pred_bbox = np.array(pred_bbox)
@@ -234,7 +230,7 @@ def postprocess_boxes(pred_bbox, original_image, input_size, score_threshold): #
     # 1. (x, y, w, h) --> (xmin, ymin, xmax, ymax)
     pred_coor = np.concatenate([pred_xywh[:, :2] - pred_xywh[:, 2:] * 0.5,
                                 pred_xywh[:, :2] + pred_xywh[:, 2:] * 0.5], axis=-1)
-    # 2. (xmin, ymin, xmax, ymax) -> (xmin_org, ymin_org, xmax_org, ymax_org)
+    # 2. (xmin, ymin, xmax, ymax) -> (xmin_org, ymin_org, xmax_org, ymax_org) (To match input image)
     org_h, org_w = original_image.shape[:2]
     resize_ratio = min(input_size / org_w, input_size / org_h)
 
@@ -263,14 +259,13 @@ def postprocess_boxes(pred_bbox, original_image, input_size, score_threshold): #
 
     return np.concatenate([coors, scores[:, np.newaxis], classes[:, np.newaxis]], axis=-1)
 
-
 def detect_image(Yolo, image_path, output_path, input_size=416, show=False, CLASSES=YOLO_COCO_CLASSES, score_threshold=0.3, iou_threshold=0.45, rectangle_colors=''):
     #original_image      = cv2.imread(image_path) # Ukommenteret Ændret
     #original_image      = cv2.cvtColor(original_image, cv2.COLOR_BGR2RGB) # Udkommenteret
     original_image      = cv2.cvtColor(image_path, cv2.COLOR_BGR2RGB) #Ændret
     original_image      = cv2.cvtColor(original_image, cv2.COLOR_BGR2RGB)
 
-    image_data = image_preprocess(np.copy(original_image), [input_size, input_size])
+    image_data = image_preprocess(np.copy(original_image), [input_size, input_size]) # Resize input image so it can be used for prediction
     image_data = image_data[np.newaxis, ...].astype(np.float32)
 
     if YOLO_FRAMEWORK == "tf":
@@ -293,7 +288,7 @@ def detect_image(Yolo, image_path, output_path, input_size=416, show=False, CLAS
         # To close the window after the required kill value was provided
         cv2.destroyAllWindows()
         
-    return image
+    return image, bboxes
 
 def Predict_bbox_mp(Frames_data, Predicted_data, Processing_times):
     gpus = tf.config.experimental.list_physical_devices('GPU')
@@ -543,31 +538,17 @@ def detect_realtime(Yolo, output_path, input_size=416, show=False, CLASSES=YOLO_
 
     cv2.destroyAllWindows()
 
-def Give_boundingbox_coor(image_path,input_size=416,score_threshold=0.3, iou_threshold=0.45): # Selv lavet
-    Yolo=Load_Yolo_model()
-
-    original_image      = cv2.imread(image_path)
-
-    image_data = image_preprocess(np.copy(original_image), [input_size, input_size])
-    image_data = image_data[np.newaxis, ...].astype(np.float32)
-
-    pred_bbox = Yolo.predict(image_data)
-    pred_bbox = [tf.reshape(x, (-1, tf.shape(x)[-1])) for x in pred_bbox]
-    pred_bbox = tf.concat(pred_bbox, axis=0)
-    
-    bboxes = postprocess_boxes(pred_bbox, original_image, input_size, score_threshold)
-    bboxes = nms(bboxes, iou_threshold, method='nms')
-
-    bx=[]
-    by=[]
-    bw=[]
-    bh=[]
-    C=[]
+def Give_boundingbox_coor_class(bboxes): # Selv lavet
+    x1=[] # Top left x-coor
+    y1=[] # Top left y-coor
+    x2=[] # Bottom right x-coor
+    y2=[] # Bottom right y-coor
+    C=[] # Class
     for i in range(len(bboxes)):
         boundingbox=bboxes[i]
-        bx.append(boundingbox[0])
-        by.append(boundingbox[1])
-        bw.append(boundingbox[2])
-        bh.append(boundingbox[3])
+        x1.append(boundingbox[0])
+        y1.append(boundingbox[1])
+        x2.append(boundingbox[2])
+        y2.append(boundingbox[3])
         C.append(boundingbox[5])
-    return bboxes,bx, by, bw, bh, C
+    return x1, y1, x2, y2, C
