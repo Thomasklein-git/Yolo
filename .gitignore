@@ -2,4 +2,5 @@
 devel
 build
 *.weights
-__pycache__
+*.pyc
+*.pyo
