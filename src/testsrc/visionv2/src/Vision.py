@@ -26,7 +26,7 @@ class image_converter:
 
   def callback(self,data):
     try:
-      cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
+      cv_image = self.bridge.imgmsg_to_cv2(data, data.encoding)
     except CvBridgeError as e:
       print(e)
 
