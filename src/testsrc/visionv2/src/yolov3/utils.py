@@ -263,7 +263,7 @@ def detect_image(Yolo, image_path, output_path, input_size=416, show=False, CLAS
     #original_image      = cv2.imread(image_path) # Ukommenteret Ændret
     #original_image      = cv2.cvtColor(original_image, cv2.COLOR_BGR2RGB) # Udkommenteret
     original_image      = cv2.cvtColor(image_path, cv2.COLOR_BGR2RGB) #Ændret
-    #original_image      = cv2.cvtColor(original_image, cv2.COLOR_BGR2RGB)
+    original_image      = cv2.cvtColor(original_image, cv2.COLOR_BGR2RGB)
 
     image_data = image_preprocess(np.copy(original_image), [input_size, input_size]) # Resize input image so it can be used for prediction
     image_data = image_data[np.newaxis, ...].astype(np.float32)

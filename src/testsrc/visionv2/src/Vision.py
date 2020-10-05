@@ -20,8 +20,8 @@ class image_converter:
     self.image_pub = rospy.Publisher("image_topic_2",Image)
 
     self.bridge = CvBridge()
-    self.image_sub = rospy.Subscriber("/usb_cam/image_raw",Image,self.callback)
-    #self.image_sub = rospy.Subscriber("/zed2/zed_node/left/image_rect_color",Image,self.callback)
+    #self.image_sub = rospy.Subscriber("/usb_cam/image_raw",Image,self.callback)
+    self.image_sub = rospy.Subscriber("/zed2/zed_node/left/image_rect_color",Image,self.callback)
     yolo = Load_Yolo_model()
 
   def callback(self,data):
@@ -35,7 +35,7 @@ class image_converter:
     cv_image, bboxes=detect_image(yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
     #cv_image=detect_image(yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, CLASSES=TRAIN_CLASSES, rectangle_colors=(255,0,0)) # Used later for custom weigths
     # bboxes are 
-    #print(bboxes)
+    print(bboxes)
     x1, y1, x2, y2, Score, C = Give_boundingbox_coor_class(bboxes)
     #print(x1)
     ####
