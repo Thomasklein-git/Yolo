@@ -1,10 +1,32 @@
-# Access to "tank"
-ssh tank@10.122.12.106
-Pass: thomas
+# IPs
+klein
+```
+10.122.12.69
+```
+??
+```
+10.122.12.25
+```
 
+ubuntu
+```
+10.122.12.159
+raspberry
+```
+tank
+```
+10.122.12.106
+thomas
+```
+# Access to "tank"
+```
+ssh tank@10.122.12.106
+```
+Pass: thomas
+```
 export ROS_MASTER_URI=http://10.122.12.106:11311
 export ROS_IP=10.122.12.106
-
+```
 
 # Yolo
 
