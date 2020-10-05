@@ -19,9 +19,14 @@ from cv_bridge import CvBridge, CvBridgeError
 from pyimagesearch.centroidtracker import CentroidTracker
 ###
 
+### New tracker
+from IDtracker import IDtracker
+from IDtracker import ObjectIdentifier
+
 ### Imports for Yolo
 from yolov3.utils import detect_image, Load_Yolo_model, Give_boundingbox_coor_class
 from yolov3.configs import *
+from yolov3.yolov3 import *
 ### 
 
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
@@ -32,6 +37,8 @@ class object_tracker:
 		self.bridge = CvBridge()
 		#self.cvd = cvdraw()
 		self.ct = CentroidTracker()
+		self.IDtracker = IDtracker()
+		self.OI = ObjectIdentifier()
 
 		print("[INFO] Loading videofeed...")
 		self.image_sub = rospy.Subscriber("/usb_cam/image_raw",Image,self.callback)
@@ -51,11 +58,22 @@ class object_tracker:
 			###############
 			cv_image2, bboxes=detect_image(yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
 			x1, y1, x2, y2, Score, C = Give_boundingbox_coor_class(bboxes)
+
+			
+			classes = read_class_names(YOLO_COCO_CLASSES)
+			classname = list(classes.values())
+
+			print(classname[1])
+			#i = 0
+			#for x in range(0,len(bboxes)):
+			#	Found_Objects[i] = self.OI.new_object(bboxes[i]) 
+			#	i += 1
+			#Found_Objects = self.OI.new_object(BOX)
+			#print(Found_Objects.score)
+			###############
 			rects = []
 			for i in range (0,len(x1)):
 				rects.append(np.array([x1[i],y1[i],x2[i],y2[i]],dtype=int))
-				#box = np.array(x1[i],y1[i],x2[i],y2[i])
-				#rects.append(box.astype("int"))
 
 			###############
 		#	frame = cv2.resize(cv_image, (W,H))
