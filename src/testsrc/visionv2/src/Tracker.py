@@ -16,7 +16,7 @@ from cv_bridge import CvBridge, CvBridgeError
 
 ### Imports for first tracking model
 #from trackutils import cvdraw
-#from  pyimagesearch.centroidtracker import CentroidTracker
+from pyimagesearch.centroidtracker import CentroidTracker
 ###
 
 ### Imports for Yolo
@@ -31,7 +31,7 @@ class object_tracker:
 		print("[INFO] Loading modules...")
 		self.bridge = CvBridge()
 		#self.cvd = cvdraw()
-		#self.ct = CentroidTracker()
+		self.ct = CentroidTracker()
 
 		print("[INFO] Loading videofeed...")
 		self.image_sub = rospy.Subscriber("/usb_cam/image_raw",Image,self.callback)
@@ -50,7 +50,12 @@ class object_tracker:
 			
 			###############
 			cv_image2, bboxes=detect_image(yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
-
+			x1, y1, x2, y2, Score, C = Give_boundingbox_coor_class(bboxes)
+			rects = []
+			for i in range (0,len(x1)):
+				rects.append(np.array([x1[i],y1[i],x2[i],y2[i]],dtype=int))
+				#box = np.array(x1[i],y1[i],x2[i],y2[i])
+				#rects.append(box.astype("int"))
 
 			###############
 		#	frame = cv2.resize(cv_image, (W,H))
@@ -66,11 +71,11 @@ class object_tracker:
 		#			(startX, startY, endX, endY) = box.astype("int")
 		#			cv2.rectangle(frame, (startX, startY), (endX, endY),(0, 255, 0), 2)  
 
-		#	objects = self.ct.update(rects)
-		#	for (objectID, centroid) in objects.items():
-		#		text = "ID {}".format(objectID)
-		#		cv2.putText(frame, text, (centroid[0] - 10, centroid[1] - 10),cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-		#		cv2.circle(frame, (centroid[0], centroid[1]), 4, (0, 255, 0), -1)
+			objects = self.ct.update(rects)
+			for (objectID, centroid) in objects.items():
+				text = "ID {}".format(objectID)
+				cv2.putText(cv_image2, text, (centroid[0] - 10, centroid[1] - 10),cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+				cv2.circle(cv_image2, (centroid[0], centroid[1]), 4, (0, 255, 0), -1)
 			################
 
 			cv2.imshow("Image_window", cv_image2)
