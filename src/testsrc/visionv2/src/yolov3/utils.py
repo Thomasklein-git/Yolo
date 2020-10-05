@@ -538,11 +538,12 @@ def detect_realtime(Yolo, output_path, input_size=416, show=False, CLASSES=YOLO_
 
     cv2.destroyAllWindows()
 
-def Give_boundingbox_coor_class(bboxes): # Selv lavet
+def Give_boundingbox_coor_class(bboxes): # (Selv lavet)
     x1=[] # Top left x-coor
     y1=[] # Top left y-coor
     x2=[] # Bottom right x-coor
     y2=[] # Bottom right y-coor
+    Score=[] # Class probabilities times objectness score
     C=[] # Class
     for i in range(len(bboxes)):
         boundingbox=bboxes[i]
@@ -550,5 +551,6 @@ def Give_boundingbox_coor_class(bboxes): # Selv lavet
         y1.append(boundingbox[1])
         x2.append(boundingbox[2])
         y2.append(boundingbox[3])
+        Score.append(boundingbox[4])
         C.append(boundingbox[5])
-    return x1, y1, x2, y2, C
+    return x1, y1, x2, y2, Score, C
