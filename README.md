@@ -8,7 +8,7 @@ roslaunch usb_cam usb_cam-test.launch
 ```
 - Open another terminal
 ```
-cd yolo/ws
+cd yolo_ws
 source devel/setup.bash
 rosrun visionv2 Vision.py
 ```
