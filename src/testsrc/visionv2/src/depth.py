@@ -23,13 +23,15 @@ class image_converter:
     self.image_pub = rospy.Publisher("image_topic_2",Image)
 
     self.bridge = CvBridge()
-    self.image_sub_camera = rospy.Subscriber("/zed2/zed_node/left/image_rect_color",Image,self.callback_cam)
-    self.image_sub = rospy.Subscriber("/zed2/zed_node/depth/depth_registered",Image,self.callback)
+    if flag=0:
+      self.image_sub_camera = rospy.Subscriber("/zed2/zed_node/left/image_rect_color",Image,self.callback_cam)
+    else  
+      self.image_sub = rospy.Subscriber("/zed2/zed_node/depth/depth_registered",Image,self.callback)
 
     yolo = Load_Yolo_model()
   
   def callback_cam(self,data):
-    global bboxes
+    global bboxes, flag
     try:
       cv_image = self.bridge.imgmsg_to_cv2(data, data.encoding)
       #self.image_sub = rospy.Subscriber("/zed2/zed_node/depth/depth_registered",Image,self.callback)
@@ -48,7 +50,7 @@ class image_converter:
 
     #cv2.imshow("Image window", cv_image)
     #cv2.waitKey(3)
-
+    flag=1
     try:
       self.image_pub.publish(self.bridge.cv2_to_imgmsg(cv_image, "bgr8"))
     except CvBridgeError as e:
@@ -98,6 +100,7 @@ class image_converter:
     
     cv2.imshow("Image window", cv_image_bbox_sub)
     cv2.waitKey(3)
+    flag=0
 
     
 
