@@ -22,7 +22,7 @@ class ObjectIdentifier():
         self.centroid_y.append(int((bbox[1] + bbox[3]) / 2.0))
         self.state = "Visible"
 
-    def update_object
+    def update_object(self):
 
 
     def V2D(object):
