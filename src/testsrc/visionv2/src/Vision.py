@@ -30,12 +30,11 @@ class image_converter:
     except CvBridgeError as e:
       print(e)
 
-
     ####
     cv_image, bboxes=detect_image(yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
     #cv_image=detect_image(yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, CLASSES=TRAIN_CLASSES, rectangle_colors=(255,0,0)) # Used later for custom weigths
     # bboxes are 
-    print(bboxes)
+    #print(bboxes)
     x1, y1, x2, y2, Score, C = Give_boundingbox_coor_class(bboxes)
     #print(x1)
     ####

@@ -20,6 +20,7 @@ class image_converter:
 
   def __init__(self):
     global yolo
+    self.show=1
     self.active=0
     self.cv_image_cam=[]
     self.cv_image_depth=[]
@@ -51,7 +52,12 @@ class image_converter:
       print(e)
     
     if self.active==0:
-      self.calculation()
+      imagecv_cam,cv_image_bbox_sub,bboxes=self.calculation()
+      if self.show==1:
+        cv2.imshow("Image cam window", imagecv_cam)
+        for i in range(len(bboxes)):
+          cv2.imshow("Image depth window"+str(i),cv_image_bbox_sub[i])
+          cv2.waitKey(3)
     ###
     #cv_image_nonan = np.where(np.isnan(cv_image),0, cv_image)
     #cv_image_nonan *= 255/cv_image_nonan.max()
@@ -71,24 +77,24 @@ class image_converter:
       imagecv_cam, bboxes=detect_image(yolo, imagecv_cam, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
       x1, y1, x2, y2, _, _ = Give_boundingbox_coor_class(bboxes)
       print(x1,y1,x2,y2)
-      #cv2.imshow("Image cam window", imagecv_cam)
-      #cv2.waitKey(3)
     if imagecv_depth != [] and imagecv_cam !=[]:
+      imagecv_depth_series=[]
       for i in range(len(bboxes)):
-        patch=(int(x2[i]-x1[i]),int(y2[i]-y1[i])) # gives width and height
-        center=(int(x1[i]+patch[0]/2),int(y1[i]+patch[1]/2)) # gives center coodintes of bbox
+        patch=(int(x2[i]-x1[i]),int(y2[i]-y1[i])) # gives width and height of bbox
+        center=(int(x1[i]+patch[0]/2),int(y1[i]+patch[1]/2)) # gives center coodintes of bbox global
         cv_image_bbox_sub=cv2.getRectSubPix(imagecv_depth,patch,center)
+        imagecv_depth_series.append(cv_image_bbox_sub)
         Distance_to_center_of_bbox_wrt_local=cv_image_bbox_sub[int(patch[1]/2),int(patch[0]/2)]
-        print(cv_image_bbox_sub.shape)
-        print(patch)
+        #print(cv_image_bbox_sub.shape)
+        #print(patch)
         Distance_to_center_of_bbox_wrt_global=imagecv_depth[center[1],center[0]] #height (y), width (x)
         print(Distance_to_center_of_bbox_wrt_local)
         print(Distance_to_center_of_bbox_wrt_global) 
-      #cv2.imshow("Image depth window", cv_image_bbox_sub)
-      #cv2.waitKey(3)
     self.active=0
-  
-  
+    #print(imagecv_depth_series)
+    #print(imagecv_cam)
+    return imagecv_cam, imagecv_depth_series, bboxes
+ 
 
 def main(args):
   ic = image_converter()
