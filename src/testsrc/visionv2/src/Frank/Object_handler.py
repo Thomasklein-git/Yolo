@@ -5,7 +5,7 @@ from scipy.spatial import distance as dist
 
 class Object_handler():
     def __init__(self,classNum):
-        self.OcclusionLimit = 50
+        self.OcclusionLimit = 25
         self.Current = []
         self.Known = []
         self.Lost = []
@@ -63,6 +63,7 @@ class Object_handler():
             else:
                 #print("Case 4")
                 Unique_Classes = self.Unique_List([row[0] for row in self.Current])
+                Unique_Known_Classes = self.Unique_List([row[2] for row in self.Known])
                 # For Loop over each Unique Class
                 Current_classes = [row[0] for row in self.Current] 
                 Known_classes   = [row[2] for row in self.Known]
@@ -71,41 +72,59 @@ class Object_handler():
                     Known_i   = [i for i, x in enumerate(Known_classes) if c == x]
                     Current_C = []
                     Known_C   = []
+                    UsedRow = []
+                    UsedCol = []
                     for i in Current_i:
                         Current_C.append(self.Current[i][1:3])
                         
                     for i in Known_i:
-                        Known_C.append(self.Known[i][3:5])
-
-                    D = dist.cdist(np.array(Current_C), np.array(Known_C))
-                    UsedRow = []
-                    UsedCol = []
-                    pairs = min(len(Current_i), len(Known_i))
-                    for i in range(0,pairs):
-                        D1 = np.where(D==D.min())
-                        UsedRow.append(D1[0][0])
-                        UsedCol.append(D1[1][0])
-                        D[UsedRow[i]][0:len(Known_i)] = 1000
-                        for j in range(0,len(Current_i)):
-                            D[j][UsedCol[i]] = 1000
+                        Known_C.append(self.Known[i][3:5])                   
+                    if len(Known_C) > 0:
+                        D = dist.cdist(np.array(Current_C), np.array(Known_C))
+                    
+                        pairs = min(len(Current_i), len(Known_i))
+                        for i in range(0,pairs):
+                            D1 = np.where(D==D.min())
+                            UsedRow.append(D1[0][0])
+                            UsedCol.append(D1[1][0])
+                            D[UsedRow[i]][0:len(Known_i)] = 1000
+                            for j in range(0,len(Current_i)):
+                                D[j][UsedCol[i]] = 1000
                     # Updating Known to match current pairs
+                    
                     for i in UsedRow:
                         for j in UsedCol:
                             Current_update = self.Current[Current_i[i]]
                             Known_update = self.Known[Known_i[j]][0]
-
                             self.update(Current_update,Known_update)
-                    ## Adding new points not matched with a known point
 
+                    # Adding new points not matched with a known points
                     if len(UsedRow) < len(Current_i):
                         New_Points = np.delete(Current_i,[UsedRow])
                         for i in New_Points:
                             self.upgrade(self.Current[i])
-                    
+                    # Add Occlusion to lost objects
                     if len(UsedCol) < len(Known_i):
                         Lost_Points = np.delete(Known_i,[UsedCol])
                         for i in Lost_Points:
-                            self.Known[i][10] += 1        
+                            self.Known[i][10] += 1  
+                
+                
+                # Add Occlusion to all classed not found
+                Unseen_Classes = Unique_Known_Classes
+                for i in Unique_Classes:
+                    try:
+                        Unseen_Classes.remove(i) 
+                    except ValueError:
+                        e = ValueError
+                for i in Unseen_Classes:
+                    for j in range(0,len(self.Known)):
+                        if self.Known[j][2] == i:
+                            self.Known[j][10] += 1
+
+
+
+
 
     def upgrade(self,Current):     
         ID, UID = self.incID(Current[0])
