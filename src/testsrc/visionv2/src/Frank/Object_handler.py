@@ -4,8 +4,7 @@ import numpy as np
 from scipy.spatial import distance as dist
 
 class Object_handler():
-    def __init__(self):
-        classNum = 3
+    def __init__(self,classNum):
         self.OcclusionLimit = 50
         self.Current = []
         self.Known = []
@@ -14,6 +13,7 @@ class Object_handler():
         self.ClassID = np.zeros(classNum,dtype = int)
 
         # [UID, ID, class,  cx, cy, Start_x, Start_y, End_x, End_y, Score, Occlusion]
+    
     def add(self,Objects):
         if len(Objects) > 0:
             for i in range(0,len(Objects)):

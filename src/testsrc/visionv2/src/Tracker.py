@@ -16,12 +16,11 @@ from cv_bridge import CvBridge, CvBridgeError
 
 ### Imports for first tracking model
 #from trackutils import cvdraw
-from pyimagesearch.centroidtracker import CentroidTracker
+#from pyimagesearch.centroidtracker import CentroidTracker
 ###
 
 ### New tracker
-from IDtracker import IDtracker
-from IDtracker import ObjectIdentifier
+from Frank.Object_handler import Object_handler
 
 ### Imports for Yolo
 from yolov3.utils import detect_image, Load_Yolo_model, Give_boundingbox_coor_class
@@ -33,19 +32,27 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
 class object_tracker:
 	def __init__(self):
+		print("[INFO] Loading model...")
+		global yolo
+		yolo = Load_Yolo_model()
+		classNum = len(list(read_class_names(YOLO_COCO_CLASSES).values()))
+
 		print("[INFO] Loading modules...")
 		self.bridge = CvBridge()
-		#self.cvd = cvdraw()
+		self.OH 	= Object_handler(classNum)
+
+		"""
+		self.cvd = cvdraw()
 		self.ct = CentroidTracker()
 		self.IDtracker = IDtracker()
 		self.OI = ObjectIdentifier()
+		"""
+
 
 		print("[INFO] Loading videofeed...")
 		self.image_sub = rospy.Subscriber("/usb_cam/image_raw",Image,self.callback)
 
-		print("[INFO] Loading model...")
-		global yolo
-		yolo = Load_Yolo_model()
+
 		#self.net = cv2.dnn.readNetFromCaffe(os.path.join(os.path.dirname(__file__),prototxt),os.path.join(os.path.dirname(__file__),model))
 		print("[INFO] Loading complete")
 
@@ -58,12 +65,10 @@ class object_tracker:
 			###############
 			cv_image2, bboxes=detect_image(yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
 			x1, y1, x2, y2, Score, C = Give_boundingbox_coor_class(bboxes)
-
-			
-			classes = read_class_names(YOLO_COCO_CLASSES)
-			classname = list(classes.values())
-
-			print(classname[1])
+			boxes = []
+			for i in range(0,len(x1)):
+				boxes = [x1[i], y1[i], x2[i], y2[i], Score[i], C]
+			self.OH.add(boxes)
 			#i = 0
 			#for x in range(0,len(bboxes)):
 			#	Found_Objects[i] = self.OI.new_object(bboxes[i]) 
@@ -71,9 +76,9 @@ class object_tracker:
 			#Found_Objects = self.OI.new_object(BOX)
 			#print(Found_Objects.score)
 			###############
-			rects = []
-			for i in range (0,len(x1)):
-				rects.append(np.array([x1[i],y1[i],x2[i],y2[i]],dtype=int))
+			#rects = []
+			#for i in range (0,len(x1)):
+			#	rects.append(np.array([x1[i],y1[i],x2[i],y2[i]],dtype=int))
 
 			###############
 		#	frame = cv2.resize(cv_image, (W,H))
@@ -88,14 +93,14 @@ class object_tracker:
 		#			rects.append(box.astype("int"))
 		#			(startX, startY, endX, endY) = box.astype("int")
 		#			cv2.rectangle(frame, (startX, startY), (endX, endY),(0, 255, 0), 2)  
-
+			"""
 			objects = self.ct.update(rects)
 			for (objectID, centroid) in objects.items():
 				text = "ID {}".format(objectID)
 				cv2.putText(cv_image2, text, (centroid[0] - 10, centroid[1] - 10),cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 				cv2.circle(cv_image2, (centroid[0], centroid[1]), 4, (0, 255, 0), -1)
 			################
-
+			"""
 			cv2.imshow("Image_window", cv_image2)
 			cv2.waitKey(3)
 		except CvBridgeError as e:
