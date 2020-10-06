@@ -20,73 +20,38 @@ class image_converter:
 
   def __init__(self):
     global yolo
+    self.active=0
+    self.cv_image_cam=[]
+    self.cv_image_depth=[]
     self.image_pub = rospy.Publisher("image_topic_2",Image)
-
     self.bridge = CvBridge()
     self.image_sub_camera = rospy.Subscriber("/zed2/zed_node/left/image_rect_color",Image,self.callback_cam)
-    self.image_sub = rospy.Subscriber("/zed2/zed_node/depth/depth_registered",Image,self.callback)
-
+    self.image_sub = rospy.Subscriber("/zed2/zed_node/depth/depth_registered",Image,self.callback_depth)
     yolo = Load_Yolo_model()
-  
+ 
   def callback_cam(self,data):
-    global bboxes
     try:
-      cv_image = self.bridge.imgmsg_to_cv2(data, data.encoding)
-      #self.image_sub = rospy.Subscriber("/zed2/zed_node/depth/depth_registered",Image,self.callback)
+      self.cv_image_cam = self.bridge.imgmsg_to_cv2(data, data.encoding)
     except CvBridgeError as e:
       print(e)
 
-
-    ####
-    cv_image, bboxes=detect_image(yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
-    #cv_image=detect_image(yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, CLASSES=TRAIN_CLASSES, rectangle_colors=(255,0,0)) # Used later for custom weigths
-    # bboxes are 
-    print(bboxes)
-    #x1, y1, x2, y2, Score, C = Give_boundingbox_coor_class(bboxes)
-    #print(x1)
-    ####
-
-    #cv2.imshow("Image window", cv_image)
-    #cv2.waitKey(3)
-
+    if self.active==1:
+      self.calculation()
+    """
     try:
       self.image_pub.publish(self.bridge.cv2_to_imgmsg(cv_image, "bgr8"))
     except CvBridgeError as e:
       print(e)
+    """
   
-  def callback(self,data):
-    #time1 = rospy.get_rostime()
+  def callback_depth(self,data):
     try:
-      cv_image = self.bridge.imgmsg_to_cv2(data, data.encoding)
+      self.cv_image_depth = self.bridge.imgmsg_to_cv2(data, data.encoding)
     except CvBridgeError as e:
       print(e)
     
-    """
-    packtime = data.header.stamp.secs + data.header.stamp.nsecs*10**-9
-    time2 = rospy.get_rostime()    
-
-    beforetime = time1.secs + time1.nsecs*10**-9
-    aftertime = time2.secs + time2.nsecs*10**-9
-
-
-    recievetime = beforetime - packtime
-    Evaltime = aftertime - beforetime
-
-    print("Time to recieve signal:", recievetime)
-    print("Time to evaluate signal:", Evaltime)
-    """
-    #print(bboxes,"hej")
-    # Bounding box (from detection)
-    #57.71543121, 228.3530426 , 562.47290039, 697.95489502
-    x_1=int(57.77075195)
-    y_1=int(228.1321106)
-    x_2=int(562.04992676)
-    y_2=int(697.75166321)
-    print(x_1)
-    patch=(x_2-x_1,y_2-y_1) # gives width and heigth
-    center=(x_1+patch[0]/2,y_1+patch[1]/2) # gives center coodintes of bbox
-    cv_image_bbox_sub=cv2.getRectSubPix(cv_image,patch,center)
-
+    if self.active==0:
+      self.calculation()
     ###
     #cv_image_nonan = np.where(np.isnan(cv_image),0, cv_image)
     #cv_image_nonan *= 255/cv_image_nonan.max()
@@ -96,10 +61,30 @@ class image_converter:
     #print(cv_image_norm[360,640])
     ###
     
-    cv2.imshow("Image window", cv_image_bbox_sub)
-    cv2.waitKey(3)
-
-    
+  def calculation(self):
+    self.active=1
+    imagecv_cam=[]
+    imagecv_depth=[] 
+    imagecv_cam=self.cv_image_cam
+    imagecv_depth=self.cv_image_depth
+    if imagecv_cam != []:
+      imagecv_cam, bboxes=detect_image(yolo, imagecv_cam, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
+      #print(bboxes)
+      x1, y1, x2, y2, _, _ = Give_boundingbox_coor_class(bboxes)
+      print(x1,y1,x2,y2)
+      print(bboxes)
+      #cv2.imshow("Image cam window", imagecv_cam)
+      #cv2.waitKey(3)
+    #if imagecv_depth != []:
+      #patch=(x2-x1,y2-y1) # gives width and heigth
+      #center=(x1+patch[0]/2,y1+patch[1]/2) # gives center coodintes of bbox
+      #print(center)
+      #cv_image_bbox_sub=cv2.getRectSubPix(imagecv_depth,patch,center)
+      #cv2.imshow("Image depth window", cv_image_bbox_sub)
+      #cv2.waitKey(3)
+    self.active=0
+  
+  
 
 def main(args):
   ic = image_converter()
