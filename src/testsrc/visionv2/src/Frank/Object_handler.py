@@ -6,6 +6,7 @@ from scipy.spatial import distance as dist
 class Object_handler():
     def __init__(self):
         classNum = 3
+        self.OcclusionLimit = 50
         self.Current = []
         self.Known = []
         self.Lost = []
@@ -37,13 +38,13 @@ class Object_handler():
             if len(self.Known) == 0:
                 print("Case 1")
 
-        ############## Case 2 ##############
-        # Current == 0 
-        # Known > 0
-        # No New Objects are present
-        # Add one to all Occlusion values
+            ############## Case 2 ##############
+            # Current == 0 
+            # Known > 0
+            # No New Objects are present
+            # Add one to all Occlusion values
             else:
-                print("Case 2")
+                #print("Case 2")
                 for i in range(0,len(self.Known)):
                     self.Known[i][10] += 1
 
@@ -52,13 +53,15 @@ class Object_handler():
         # Known == 0
         else:
             if len(self.Known) == 0:
-                    print("Case 3")
+                    #print("Case 3")
                     for i in range(0,len(self.Current)):
                         self.upgrade(self.Current[i])
 
-        ############## Case 4 ##############  
+        ############## Case 4 ##############
+        # Current > 0
+        # Known > 0
             else:
-                print("Case 4")
+                #print("Case 4")
                 Unique_Classes = self.Unique_List([row[0] for row in self.Current])
                 # For Loop over each Unique Class
                 Current_classes = [row[0] for row in self.Current] 
@@ -98,7 +101,11 @@ class Object_handler():
                         New_Points = np.delete(Current_i,[UsedRow])
                         for i in New_Points:
                             self.upgrade(self.Current[i])
-        
+                    
+                    if len(UsedCol) < len(Known_i):
+                        Lost_Points = np.delete(Known_i,[UsedCol])
+                        for i in Lost_Points:
+                            self.Known[i][10] += 1        
 
     def upgrade(self,Current):     
         ID, UID = self.incID(Current[0])
@@ -119,12 +126,15 @@ class Object_handler():
         self.Known[Knownrow][8] = Current[6]
         self.Known[Knownrow][9] = Current[7]
         self.Known[Knownrow][10] = 0
-        
-
 
     def clear(self):
-        self.Current = []
-        
+        self.Current = [] 
+        Lost_UID = []
+        for i in range(0,len(self.Known)):
+            if self.Known[i][10] == self.OcclusionLimit:
+                Lost_UID.append(self.Known[i][0])
+        for i in Lost_UID:
+            self.Remove(i)
     
     def incID(self,Class):
         UID = self.UID
@@ -139,6 +149,19 @@ class Object_handler():
             if x not in Unique_Entries: 
                 Unique_Entries.append(x)
         return Unique_Entries
-        
-            
+    
+    def Remove(self,Lost_UID):
+        indexes = []
+        for i in range(0,len(self.Known)):
+            if self.Known[i][0] == Lost_UID:
+                Lost_P = self.Known[i]
+                UID = self.Known[i][0]
+                ID = self.Known[i][1]
+                Class = self.Known[i][2]
+                Lost = [UID, ID, Class]
+                self.Lost.append(Lost)
+                indexes.append(i)
+        for index in sorted(indexes, reverse=True):
+            del self.Known[index]
+
         
