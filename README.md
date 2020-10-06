@@ -1,19 +1,19 @@
 # IPs
-Klein
+- Klein
 ```
 10.122.12.69
 ```
-Jakob
+- Jakob
 ```
 10.122.12.25
 ```
 
-ubuntu
+- ubuntu and password
 ```
 10.122.12.159
 raspberry
 ```
-tank
+- tank and password
 ```
 10.122.12.106
 thomas
@@ -37,7 +37,7 @@ roslaunch zed_wrapper zed2.launch
 # Yolo
 
 ## To start Vision.py from webcam
-- Open terminal
+- First open a terminal
 ```
 source /opt/ros/noetic/setup.bash
 roslaunch usb_cam usb_cam-test.launch
@@ -49,7 +49,7 @@ source devel/setup.bash
 rosrun visionv2 Vision.py
 ```
 ## To start Vision.py from zed2
-- First open one terminal and follow "Access to "tank""
+- First open a terminal and follow **Access to "tank"**
 - Open another terminal
 ```
 cd yolo_ws
