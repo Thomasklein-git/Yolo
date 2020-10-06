@@ -287,7 +287,6 @@ def detect_image(Yolo, image_path, output_path, input_size=416, show=False, CLAS
         cv2.waitKey(0)
         # To close the window after the required kill value was provided
         cv2.destroyAllWindows()
-        
     return image, bboxes
 
 def Predict_bbox_mp(Frames_data, Predicted_data, Processing_times):
@@ -547,6 +546,7 @@ def Give_boundingbox_coor_class(bboxes): # (Selv lavet)
     C=[] # Class
     for i in range(len(bboxes)):
         boundingbox=bboxes[i]
+        boundingbox=boundingbox.astype(int)
         x1.append(boundingbox[0])
         y1.append(boundingbox[1])
         x2.append(boundingbox[2])
