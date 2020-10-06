@@ -173,7 +173,7 @@ class Object_handler():
         indexes = []
         for i in range(0,len(self.Known)):
             if self.Known[i][0] == Lost_UID:
-                Lost_P = self.Known[i]
+                #Lost_P = self.Known[i]
                 UID = self.Known[i][0]
                 ID = self.Known[i][1]
                 Class = self.Known[i][2]

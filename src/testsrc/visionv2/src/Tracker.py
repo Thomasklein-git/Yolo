@@ -35,85 +35,44 @@ class object_tracker:
 		print("[INFO] Loading model...")
 		global yolo
 		yolo = Load_Yolo_model()
-		classNum = len(list(read_class_names(YOLO_COCO_CLASSES).values()))
+		
 
 		print("[INFO] Loading modules...")
 		self.bridge = CvBridge()
+		classNum = len(list(read_class_names(YOLO_COCO_CLASSES).values()))
+		self.ClassNames = read_class_names(YOLO_COCO_CLASSES)
 		self.OH 	= Object_handler(classNum)
-
-		"""
-		self.cvd = cvdraw()
-		self.ct = CentroidTracker()
-		self.IDtracker = IDtracker()
-		self.OI = ObjectIdentifier()
-		"""
-
 
 		print("[INFO] Loading videofeed...")
 		self.image_sub = rospy.Subscriber("/usb_cam/image_raw",Image,self.callback)
 
-
-		#self.net = cv2.dnn.readNetFromCaffe(os.path.join(os.path.dirname(__file__),prototxt),os.path.join(os.path.dirname(__file__),model))
 		print("[INFO] Loading complete")
 
 	def callback(self,data):
 		try:
 			W, H = YOLO_INPUT_SIZE, YOLO_INPUT_SIZE
 			cv_image = self.bridge.imgmsg_to_cv2(data, data.encoding)
-			#cv_image = cv2.cvtColor(cv_image, cv2.COLOR_BGR2RGB)
-			
-			###############
+
 			cv_image2, bboxes=detect_image(yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
 			x1, y1, x2, y2, Score, C = Give_boundingbox_coor_class(bboxes)
 
-		
-			#boxes.append([x1[0],y1[0]])
+
+
 			boxes = []
 			for i in range(0,len(x1)):
-				bbox = [x1[i], y1[i], x2[i], y2[i], Score[i], C[i]]
-				boxes.append(bbox)
+				boxes.append([x1[i], y1[i], x2[i], y2[i], Score[i], C[i]])
 			boxes = np.array(boxes)
 			self.OH.add(boxes)
 
 			for Object in self.OH.Known:
-				if Object[10] < 5:
+				if Object[10] <= 5:
 					cv2.rectangle(cv_image, (Object[5], Object[6]), (Object[7], Object[8]),(0, 255, 0), 2)
+					text = "Class: {}, ID {}".format(self.ClassNames.get(Object[2]),Object[1])
+					cv2.putText(cv_image, text, (Object[5], Object[6]-5),cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+					cv2.circle(cv_image, (Object[3], Object[4]), 4, (0, 255, 0), -1)
+				else:
+					cv2.circle(cv_image, (Object[3], Object[4]), 4, (255, 0, 0), -1)
 
-
-				#else:
-			#print(self.OH.Known)
-			#i = 0
-			#for x in range(0,len(bboxes)):
-			#	Found_Objects[i] = self.OI.new_object(bboxes[i]) 
-			#	i += 1
-			#Found_Objects = self.OI.new_object(BOX)
-			#print(Found_Objects.score)
-			###############
-			#rects = []
-			#for i in range (0,len(x1)):
-			#	rects.append(np.array([x1[i],y1[i],x2[i],y2[i]],dtype=int))
-
-			###############
-		#	frame = cv2.resize(cv_image, (W,H))
-		#	blob = cv2.dnn.blobFromImage(frame,1.0, (W,H),(104.0,177.0,123.0))
-		#	self.net.setInput(blob)
-		#	detections = self.net.forward()
-		#	rects = []
-
-		#	for i in range(0, detections.shape[2]):
-		#		if detections[0,0,i,2] > [0.5]:
-		#			box = detections[0, 0, i, 3:7] * np.array([W, H, W, H])
-		#			rects.append(box.astype("int"))
-		#			(startX, startY, endX, endY) = box.astype("int")
-		#			cv2.rectangle(frame, (startX, startY), (endX, endY),(0, 255, 0), 2)  
-			"""
-			objects = self.ct.update(rects)
-			for (objectID, centroid) in objects.items():
-				text = "ID {}".format(objectID)
-				cv2.putText(cv_image2, text, (centroid[0] - 10, centroid[1] - 10),cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-				cv2.circle(cv_image2, (centroid[0], centroid[1]), 4, (0, 255, 0), -1)
-			################
-			"""
 			cv2.imshow("Image_window", cv_image)
 			cv2.waitKey(3)
 		except CvBridgeError as e:
