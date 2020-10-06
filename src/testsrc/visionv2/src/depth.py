@@ -69,17 +69,21 @@ class image_converter:
     imagecv_depth=self.cv_image_depth
     if imagecv_cam != []:
       imagecv_cam, bboxes=detect_image(yolo, imagecv_cam, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
-      #print(bboxes)
       x1, y1, x2, y2, _, _ = Give_boundingbox_coor_class(bboxes)
       print(x1,y1,x2,y2)
-      print(bboxes)
       #cv2.imshow("Image cam window", imagecv_cam)
       #cv2.waitKey(3)
-    #if imagecv_depth != []:
-      #patch=(x2-x1,y2-y1) # gives width and heigth
-      #center=(x1+patch[0]/2,y1+patch[1]/2) # gives center coodintes of bbox
-      #print(center)
-      #cv_image_bbox_sub=cv2.getRectSubPix(imagecv_depth,patch,center)
+    if imagecv_depth != [] and imagecv_cam !=[]:
+      for i in range(len(bboxes)):
+        patch=(int(x2[i]-x1[i]),int(y2[i]-y1[i])) # gives width and height
+        center=(int(x1[i]+patch[0]/2),int(y1[i]+patch[1]/2)) # gives center coodintes of bbox
+        cv_image_bbox_sub=cv2.getRectSubPix(imagecv_depth,patch,center)
+        Distance_to_center_of_bbox_wrt_local=cv_image_bbox_sub[int(patch[1]/2),int(patch[0]/2)]
+        print(cv_image_bbox_sub.shape)
+        print(patch)
+        Distance_to_center_of_bbox_wrt_global=imagecv_depth[center[1],center[0]] #height (y), width (x)
+        print(Distance_to_center_of_bbox_wrt_local)
+        print(Distance_to_center_of_bbox_wrt_global) 
       #cv2.imshow("Image depth window", cv_image_bbox_sub)
       #cv2.waitKey(3)
     self.active=0

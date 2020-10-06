@@ -546,11 +546,11 @@ def Give_boundingbox_coor_class(bboxes): # (Selv lavet)
     C=[] # Class
     for i in range(len(bboxes)):
         boundingbox=bboxes[i]
-        boundingbox=boundingbox.astype(int)
-        x1.append(boundingbox[0])
-        y1.append(boundingbox[1])
-        x2.append(boundingbox[2])
-        y2.append(boundingbox[3])
+        boundingbox_int=boundingbox.astype(int)
+        x1.append(boundingbox_int[0])
+        y1.append(boundingbox_int[1])
+        x2.append(boundingbox_int[2])
+        y2.append(boundingbox_int[3])
         Score.append(boundingbox[4])
-        C.append(boundingbox[5])
+        C.append(boundingbox_int[5])
     return x1, y1, x2, y2, Score, C
