@@ -55,6 +55,6 @@ rosrun visionv2 Vision.py
 cd yolo_ws
 source devel/setup.bash
 export ROS_MASTER_URI=http://10.122.12.106:11311
-export ROS_IP=your.own.ip
+export ROS_IP=12.122.12.??
 rosrun visionv2 Vision.py
 ```
