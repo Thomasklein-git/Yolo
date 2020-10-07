@@ -14,11 +14,6 @@ from stereo_msgs.msg import DisparityImage
 from cv_bridge import CvBridge, CvBridgeError
 ###
 
-### Imports for first tracking model
-#from trackutils import cvdraw
-#from pyimagesearch.centroidtracker import CentroidTracker
-###
-
 ### New tracker
 from Object_handler import Object_handler
 

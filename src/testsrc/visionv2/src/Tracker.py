@@ -14,11 +14,6 @@ from stereo_msgs.msg import DisparityImage
 from cv_bridge import CvBridge, CvBridgeError
 ###
 
-### Imports for first tracking model
-#from trackutils import cvdraw
-#from pyimagesearch.centroidtracker import CentroidTracker
-###
-
 ### New tracker
 from Frank.Object_handler import Object_handler
 
@@ -36,7 +31,6 @@ class object_tracker:
 		global yolo
 		yolo = Load_Yolo_model()
 		
-
 		print("[INFO] Loading modules...")
 		self.bridge = CvBridge()
 		classNum = len(list(read_class_names(YOLO_COCO_CLASSES).values()))
