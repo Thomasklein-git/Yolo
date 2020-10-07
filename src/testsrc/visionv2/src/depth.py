@@ -20,7 +20,7 @@ class image_converter:
 
   def __init__(self):
     global yolo
-    self.show=1
+    self.show=1 # 0: don't show 1: show
     self.active=0
     self.cv_image_cam=[]
     self.cv_image_depth=[]
@@ -84,16 +84,19 @@ class image_converter:
         center=(int(x1[i]+patch[0]/2),int(y1[i]+patch[1]/2)) # gives center coodintes of bbox global
         cv_image_bbox_sub = cv2.getRectSubPix(imagecv_depth,patch,center) # Extract bbox in depth image
         cv_image_bbox_sub = np.where(np.isnan(cv_image_bbox_sub),0, cv_image_bbox_sub) # set nan to 0
-        Distance_to_center_of_bbox_wrt_local=cv_image_bbox_sub[int(patch[1]/2),int(patch[0]/2)] #height (y), width (x) gives distance to center coordinate of bbox
+        D_to_C_of_bbox_L=cv_image_bbox_sub[int(patch[1]/2),int(patch[0]/2)] #height (y), width (x) gives distance to center coordinate of bbox with resprct to local
         #Distance_to_center_of_bbox_wrt_global=imagecv_depth[center[1],center[0]] #height (y), width (x)
-        print(Distance_to_center_of_bbox_wrt_local)
+        print(D_to_C_of_bbox_L)
         #print(Distance_to_center_of_bbox_wrt_global) 
+        ## For plotting
         max_depth=20 #Maximum depth the camera can detect objects [m]
         cv_image_bbox_sub *= 255/(max_depth/cv_image_bbox_sub) # relate meter to pixels
         cv_image_bbox_sub = cv_image_bbox_sub.astype('uint8') # pixel float to int
-        Distance_to_center_of_bbox_wrt_local_pixel=cv_image_bbox_sub[int(patch[1]/2),int(patch[0]/2)]
-        print(Distance_to_center_of_bbox_wrt_local_pixel)
-        
+        D_to_C_of_bbox_L_p=cv_image_bbox_sub[int(patch[1]/2),int(patch[0]/2)]
+        print(D_to_C_of_bbox_L_p)
+        # 1 pixel is approx 7.5 cm
+        cv_image_bbox_sub = (np.where(cv_image_bbox_sub>(D_to_C_of_bbox_L_p+1),0,(np.where(cv_image_bbox_sub<(D_to_C_of_bbox_L_p-1),0,cv_image_bbox_sub)))) #makes every pixel black if outside thresshole
+        cv_image_bbox_sub = np.where(cv_image_bbox_sub>(D_to_C_of_bbox_L_p-2),255,cv_image_bbox_sub)
         #(cv_image_bbox_sub.shape)
 
         imagecv_depth_series.append(cv_image_bbox_sub)
@@ -114,3 +117,6 @@ def main(args):
 
 if __name__ == '__main__':
     main(sys.argv)
+
+#(np.where(a>8,0,(np.where(a<5,0,a))))
+#np.where(b>5,255,b)
