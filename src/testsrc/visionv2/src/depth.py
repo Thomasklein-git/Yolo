@@ -82,16 +82,23 @@ class image_converter:
       for i in range(len(bboxes)):
         patch=(int(x2[i]-x1[i]),int(y2[i]-y1[i])) # gives width and height of bbox
         center=(int(x1[i]+patch[0]/2),int(y1[i]+patch[1]/2)) # gives center coodintes of bbox global
-        cv_image_bbox_sub=cv2.getRectSubPix(imagecv_depth,patch,center)
-        imagecv_depth_series.append(cv_image_bbox_sub)
-        Distance_to_center_of_bbox_wrt_local=cv_image_bbox_sub[int(patch[1]/2),int(patch[0]/2)]
-        #print(cv_image_bbox_sub.shape)
-        #print(patch)
-        Distance_to_center_of_bbox_wrt_global=imagecv_depth[center[1],center[0]] #height (y), width (x)
+        cv_image_bbox_sub = cv2.getRectSubPix(imagecv_depth,patch,center) # Extract bbox in depth image
+        cv_image_bbox_sub = np.where(np.isnan(cv_image_bbox_sub),0, cv_image_bbox_sub) # set nan to 0
+        Distance_to_center_of_bbox_wrt_local=cv_image_bbox_sub[int(patch[1]/2),int(patch[0]/2)] #height (y), width (x) gives distance to center coordinate of bbox
+        #Distance_to_center_of_bbox_wrt_global=imagecv_depth[center[1],center[0]] #height (y), width (x)
         print(Distance_to_center_of_bbox_wrt_local)
-        print(Distance_to_center_of_bbox_wrt_global) 
+        #print(Distance_to_center_of_bbox_wrt_global) 
+        max_depth=20 #Maximum depth the camera can detect objects [m]
+        cv_image_bbox_sub *= 255/(max_depth/cv_image_bbox_sub) # relate meter to pixels
+        cv_image_bbox_sub = cv_image_bbox_sub.astype('uint8') # pixel float to int
+        Distance_to_center_of_bbox_wrt_local_pixel=cv_image_bbox_sub[int(patch[1]/2),int(patch[0]/2)]
+        print(Distance_to_center_of_bbox_wrt_local_pixel)
+        
+        #(cv_image_bbox_sub.shape)
+
+        imagecv_depth_series.append(cv_image_bbox_sub)
     self.active=0
-    #print(imagecv_depth_series)
+    print(imagecv_depth_series)
     #print(imagecv_cam)
     return imagecv_cam, imagecv_depth_series, bboxes
  
