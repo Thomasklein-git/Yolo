@@ -38,10 +38,72 @@ class object_tracker:
 		self.OH 	= Object_handler(classNum)
 
 		print("[INFO] Loading videofeed...")
+		
+		self.image_sub_camera = rospy.Subscriber("/zed2/zed_node/left/image_rect_color",Image,self.callback_cam)
+    	self.image_sub = rospy.Subscriber("/zed2/zed_node/depth/depth_registered",Image,self.callback_depth)
+		"""
 		self.image_sub = rospy.Subscriber("/usb_cam/image_raw",Image,self.callback)
+		"""
+		print("[INFO] initializing config")
+		self.show=1
+		self.active=0
+		self.cv_image_cam = []
+		self.cv_image_depth = []
 
 		print("[INFO] Loading complete")
 
+	
+	def callback_cam(self,data):
+		try:
+    		self.cv_image_cam = self.bridge.imgmsg_to_cv2(data, data.encoding)
+			self.cbca = 1
+    	except CvBridgeError as e:
+    		print(e)
+		
+		# If no new depth image and image is generated don't run, 
+		if self.active==1 and cbca = 1 and cbda = 1:
+      		self.calculation()
+		
+
+	def callback_depth(self,data):
+		try:
+      		self.cv_image_depth = self.bridge.imgmsg_to_cv2(data, data.encoding)
+			self.cbda = 1
+    	except CvBridgeError as e:
+      		print(e)
+
+	def calculation(self):
+		self.active = 1
+		imagecv_cam=self.cv_image_cam
+    	imagecv_depth=self.cv_image_depth
+		imagecv_cam, bboxes=detect_image(yolo, self.cv_image_cam, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
+      	x1, y1, x2, y2, Score, C = Give_boundingbox_coor_class(bboxes)
+		imagecv_depth_series=[]
+		for i in range(len(bboxes)):
+        	patch=(int(x2[i]-x1[i]),int(y2[i]-y1[i])) # gives width and height of bbox
+        	center=(int(x1[i]+patch[0]/2),int(y1[i]+patch[1]/2)) # gives center coodintes of bbox global
+        	cv_image_bbox_sub = cv2.getRectSubPix(imagecv_depth,patch,center) # Extract bbox in depth image
+        	cv_image_bbox_sub = np.where(np.isnan(cv_image_bbox_sub),0, cv_image_bbox_sub) # set nan to 0
+        	Distance_to_center_of_bbox_wrt_local=cv_image_bbox_sub[int(patch[1]/2),int(patch[0]/2)] #height (y), width (x) gives distance to center coordinate of bbox
+			"""
+			max_depth=20 #Maximum depth the camera can detect objects [m]
+        	cv_image_bbox_sub *= 255/(max_depth/cv_image_bbox_sub) # relate meter to pixels
+        	cv_image_bbox_sub = cv_image_bbox_sub.astype('uint8') # pixel float to int
+        	Distance_to_center_of_bbox_wrt_local_pixel=cv_image_bbox_sub[int(patch[1]/2),int(patch[0]/2)]
+			"""
+
+		boxes = []
+		for i in range(0,len(x1)):
+			boxes.append([x1[i], y1[i], x2[i], y2[i], Score[i], C[i]], Distance_to_center_of_bbox_wrt_local[i])
+		boxes = np.array(boxes)
+		self.OH.add(boxes)
+
+		imagecv_depth_series.append(cv_image_bbox_sub)
+		self.active=0
+		self.cbca = 0
+		self.cbda = 0
+		return 
+    """
 	def callback(self,data):
 		try:
 			W, H = YOLO_INPUT_SIZE, YOLO_INPUT_SIZE
@@ -49,7 +111,6 @@ class object_tracker:
 
 			cv_image2, bboxes=detect_image(yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
 			x1, y1, x2, y2, Score, C = Give_boundingbox_coor_class(bboxes)
-
 			boxes = []
 			for i in range(0,len(x1)):
 				boxes.append([x1[i], y1[i], x2[i], y2[i], Score[i], C[i]])
@@ -57,19 +118,20 @@ class object_tracker:
 			self.OH.add(boxes)
 
 			for Object in self.OH.Known:
-				if Object[10] <= 5:
-					cv2.rectangle(cv_image, (Object[5], Object[6]), (Object[7], Object[8]),(0, 255, 0), 2)
-					text = "Class: {}, ID {}".format(self.ClassNames.get(Object[2]),Object[1])
-					cv2.putText(cv_image, text, (Object[5], Object[6]-5),cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
-					cv2.circle(cv_image, (Object[3], Object[4]), 4, (0, 255, 0), -1)
+				if Object[self.OH.KnownOrder("Occlusion")] <= 5:
+					cv2.rectangle(cv_image, (Object[self.OH.KnownOrder("Start_x")], Object[self.OH.KnownOrder("Start_y")]), \
+						(Object[self.OH.KnownOrder("End_x")], Object[self.OH.KnownOrder("End_y")]),(0, 255, 0), 2)
+					text = "Class: {}, ID {}".format(self.ClassNames.get(Object[self.OH.KnownOrder("Class")]),Object[self.OH.KnownOrder("ID")])
+					cv2.putText(cv_image, text, (Object[self.OH.KnownOrder("Start_x")], Object[self.OH.KnownOrder("Start_y")]-5),cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+					cv2.circle(cv_image, (Object[self.OH.KnownOrder("cx")], Object[self.OH.KnownOrder("cy")]), 4, (0, 255, 0), -1)
 				else:
-					cv2.circle(cv_image, (Object[3], Object[4]), 4, (255, 0, 0), -1)
+					cv2.circle(cv_image, (Object[self.OH.KnownOrder("cx")], Object[self.OH.KnownOrder("cy")]), 4, (255, 0, 0), -1)
 
 			cv2.imshow("Image_window", cv_image)
 			cv2.waitKey(3)
 		except CvBridgeError as e:
 			print(e)
-
+	"""
 def main(args):
 	ot = object_tracker()
 	rospy.init_node('object_tracker', anonymous=True)
