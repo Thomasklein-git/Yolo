@@ -56,8 +56,6 @@ class object_tracker:
 			cv_image2, bboxes=detect_image(yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
 			x1, y1, x2, y2, Score, C = Give_boundingbox_coor_class(bboxes)
 
-
-
 			boxes = []
 			for i in range(0,len(x1)):
 				boxes.append([x1[i], y1[i], x2[i], y2[i], Score[i], C[i]])
