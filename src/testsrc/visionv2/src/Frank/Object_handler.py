@@ -122,10 +122,6 @@ class Object_handler():
                         if self.Known[j][2] == i:
                             self.Known[j][10] += 1
 
-
-
-
-
     def upgrade(self,Current):     
         ID, UID = self.incID(Current[0])
         Known = [UID, ID, Current[0],  Current[1], Current[2], Current[3], Current[4] ,Current[5] ,Current[6] ,Current[7], 0 ]          
