@@ -13,9 +13,9 @@ class Object_handler():
         self.UID = 0
         self.ClassID = np.zeros(classNum,dtype = int)
         self.CurrentOrder = {"Class": 0, "cx": 1, "cy": 2, "Start_x": 3, "Start_y": 4, "End_x": 5, \
-             "End_y": 6, "Score": 7, "Depth_C": 8}
+             "End_y": 6, "Score": 7, "Depth_X": 8, "Depth_Y": 9, "Depth_Z": 10}
         self.KnownOrder   = {"UID":  0, "ID": 1, "Class": 2, "cx": 3, "cy": 4, "Start_x": 5, "Start_y": 6, \
-             "End_x": 7, "End_y": 8, "Score": 9, "Occlusion": 10, "Depth_C": 11}
+             "End_x": 7, "End_y": 8, "Score": 9, "Occlusion": 10, "Depth_X": 11, "Depth_Y": 12, "Depth_Z": 13}
         self.LostOrder    = {"UID":  0, "ID": 1, "Class": 2}
 
         # [UID, ID, class,  cx, cy, Start_x, Start_y, End_x, End_y, Score, Occlusion]
@@ -32,7 +32,8 @@ class Object_handler():
                 Cx      = int((Start_x + End_x) / 2)
                 Cy      = int((Start_y + End_y) / 2)
                 Depth   = Objects[i,6]
-                Current = ([Class, Cx, Cy, Start_x, Start_y, End_x, End_y, Score, Depth])
+                DX, DY, DZ = self.D2P(Cx,Cy,Depth)
+                Current = ([Class, Cx, Cy, Start_x, Start_y, End_x, End_y, Score, DX, DY, DZ])
                 self.Current.append(Current)
         self.merge()
         self.clear()
@@ -86,17 +87,16 @@ class Object_handler():
                     for i in Current_i:
                         #Current_C.append([self.Current[i][self.CurrentOrder.get("cx")],self.Current[i][self.CurrentOrder.get("cy")]])
                         #Current_C.append(self.Current[i][1:3])
-                        Current_D.append(self.D2P(self.Current[i][self.CurrentOrder.get("cx")],self.Current[i][self.CurrentOrder.get("cy")],self.Current[i][self.CurrentOrder.get("Depth_C")]))
+                        Current_D.append([self.Current[i][self.CurrentOrder.get("Depth_X")],self.Current[i][self.CurrentOrder.get("Depth_Y")],self.Current[i][self.CurrentOrder.get("Depth_Z")]])
                         
                     for i in Known_i:
                         #Known_C.append([self.Known[i][self.KnownOrder.get("cx")],self.Known[i][self.KnownOrder.get("cy")]])
                         #Known_C.append(self.Known[i][3:5])  
-                        Known_D.append(self.D2P(self.Known[i][self.KnownOrder.get("cx")],self.Known[i][self.KnownOrder.get("cy")],self.Known[i][self.KnownOrder.get("Depth_C")]))          
+                        Known_D.append([self.Known[i][self.KnownOrder.get("Depth_X")],self.Known[i][self.KnownOrder.get("Depth_Y")],self.Known[i][self.KnownOrder.get("Depth_Z")]])         
                     
                     if len(Known_D) > 0:
                         #D = dist.cdist(np.array(Current_C), np.array(Known_C))
                         D = dist.cdist(np.array(Current_D), np.array(Known_D))
-
                         pairs = min(len(Current_i), len(Known_i))
                         for i in range(0,pairs):
                             D1 = np.where(D==D.min())
@@ -143,7 +143,8 @@ class Object_handler():
                 Current[self.CurrentOrder.get("cx")], Current[self.CurrentOrder.get("cy")], \
                 Current[self.CurrentOrder.get("Start_x")], Current[self.CurrentOrder.get("Start_y")], \
                 Current[self.CurrentOrder.get("End_x")] ,Current[self.CurrentOrder.get("End_y")], \
-                Current[self.CurrentOrder.get("Score")], 0, Current[self.CurrentOrder.get("Depth_C")] ]          
+                Current[self.CurrentOrder.get("Score")], 0, Current[self.CurrentOrder.get("Depth_X")], \
+                Current[self.CurrentOrder.get("Depth_Y")], Current[self.CurrentOrder.get("Depth_Z")]]          
         self.Known.append(Known)
 
     def update(self,Current,Known_update):
@@ -159,7 +160,9 @@ class Object_handler():
         self.Known[Knownrow][self.KnownOrder.get("End_x")] = Current[self.CurrentOrder.get("End_x")]
         self.Known[Knownrow][self.KnownOrder.get("End_y")] = Current[self.CurrentOrder.get("End_y")]
         self.Known[Knownrow][self.KnownOrder.get("Score")] = Current[self.CurrentOrder.get("Score")]
-        self.Known[Knownrow][self.KnownOrder.get("Depth_C")] = Current[self.CurrentOrder.get("Depth_C")]
+        self.Known[Knownrow][self.KnownOrder.get("Depth_X")] = Current[self.CurrentOrder.get("Depth_X")]
+        self.Known[Knownrow][self.KnownOrder.get("Depth_Y")] = Current[self.CurrentOrder.get("Depth_Y")]
+        self.Known[Knownrow][self.KnownOrder.get("Depth_Z")] = Current[self.CurrentOrder.get("Depth_Z")]
         self.Known[Knownrow][self.KnownOrder.get("Occlusion")] = 0
 
     def clear(self):
@@ -217,4 +220,4 @@ class Object_handler():
         X = (x-cx)*Z/fx
         Y = (y-cy)*Z/fy
         P = [X, Y, Z]
-        return P
+        return X, Y, Z
