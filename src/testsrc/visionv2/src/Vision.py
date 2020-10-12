@@ -22,8 +22,8 @@ class image_converter:
     self.image_pub = rospy.Publisher("image_topic_2",Image, queue_size=1)
 
     self.bridge = CvBridge()
-    self.image_sub = rospy.Subscriber("/usb_cam/image_raw",Image,self.callback)
-    #self.image_sub = rospy.Subscriber("/zed2/zed_node/left/image_rect_color",Image,self.callback)#, queue_size=1,buff_size=2**24)
+    #self.image_sub = rospy.Subscriber("/usb_cam/image_raw",Image,self.callback)
+    self.image_sub = rospy.Subscriber("/zed2/zed_node/left/image_rect_color",Image,self.callback)#, queue_size=1,buff_size=2**24)
     #self.image_sub = rospy.Subscriber("/zed2/zed_node/left/image_rect_color/compressed",CompressedImage,self.callback)#, queue_size=1,buff_size=2**8)
     yolo = Load_Yolo_model()
 

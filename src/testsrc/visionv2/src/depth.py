@@ -8,6 +8,7 @@ import cv2
 import numpy as np
 from std_msgs.msg import String
 from sensor_msgs.msg import Image
+from sensor_msgs.msg import CompressedImage
 from stereo_msgs.msg import DisparityImage
 from cv_bridge import CvBridge, CvBridgeError
 from yolov3.utils import detect_image, Load_Yolo_model, Give_boundingbox_coor_class
@@ -20,7 +21,7 @@ class image_converter:
 
   def __init__(self):
     global yolo
-    self.show=1 # 0: don't show 1: show
+    self.show=0 # 0: don't show 1: show
     self.active=0
     self.cv_image_cam=[]
     self.cv_image_depth=[]
@@ -28,11 +29,13 @@ class image_converter:
     self.bridge = CvBridge()
     self.image_sub_camera = rospy.Subscriber("/zed2/zed_node/left/image_rect_color",Image,self.callback_cam)
     self.image_sub = rospy.Subscriber("/zed2/zed_node/depth/depth_registered",Image,self.callback_depth)
+    #self.image_sub = rospy.Subscriber("/zed2/zed_node/depth/depth_registered/compressed",CompressedImage,self.callback_depth)
     yolo = Load_Yolo_model()
  
   def callback_cam(self,data):
     try:
       self.cv_image_cam = self.bridge.imgmsg_to_cv2(data, data.encoding)
+      print(self.cv_image_cam.shape,"cam")
     except CvBridgeError as e:
       print(e)
 
@@ -48,6 +51,8 @@ class image_converter:
   def callback_depth(self,data):
     try:
       self.cv_image_depth = self.bridge.imgmsg_to_cv2(data, data.encoding)
+      print(self.cv_image_depth.shape,"depth")
+      #self.cv_image_depth = self.bridge.compressed_imgmsg_to_cv2(data, "bgr8")
     except CvBridgeError as e:
       print(e)
     
@@ -86,14 +91,15 @@ class image_converter:
         cv_image_bbox_sub = np.where(np.isnan(cv_image_bbox_sub),0, cv_image_bbox_sub) # set nan to 0
         D_to_C_of_bbox_L=cv_image_bbox_sub[int(patch[1]/2),int(patch[0]/2)] #height (y), width (x) gives distance to center coordinate of bbox with resprct to local
         #Distance_to_center_of_bbox_wrt_global=imagecv_depth[center[1],center[0]] #height (y), width (x)
-        print(D_to_C_of_bbox_L)
+        #print(D_to_C_of_bbox_L)
         #print(Distance_to_center_of_bbox_wrt_global) 
         ## For plotting
         max_depth=20 #Maximum depth the camera can detect objects [m]
         cv_image_bbox_sub *= 255/(max_depth/cv_image_bbox_sub) # relate meter to pixels
         cv_image_bbox_sub = cv_image_bbox_sub.astype('uint8') # pixel float to int
         D_to_C_of_bbox_L_p=cv_image_bbox_sub[int(patch[1]/2),int(patch[0]/2)]
-        print(D_to_C_of_bbox_L_p)
+        print("dyb")
+        #print(D_to_C_of_bbox_L_p)
         # 1 pixel is approx 7.5 cm
         cv_image_bbox_sub = (np.where(cv_image_bbox_sub>(D_to_C_of_bbox_L_p+1),0,(np.where(cv_image_bbox_sub<(D_to_C_of_bbox_L_p-1),0,cv_image_bbox_sub)))) #makes every pixel black if outside thresshole
         cv_image_bbox_sub = np.where(cv_image_bbox_sub>(D_to_C_of_bbox_L_p-2),255,cv_image_bbox_sub)
@@ -101,7 +107,7 @@ class image_converter:
 
         imagecv_depth_series.append(cv_image_bbox_sub)
     self.active=0
-    print(imagecv_depth_series)
+    #print(imagecv_depth_series)
     #print(imagecv_cam)
     return imagecv_cam, imagecv_depth_series, bboxes
  
