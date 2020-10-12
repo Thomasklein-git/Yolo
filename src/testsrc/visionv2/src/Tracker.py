@@ -6,6 +6,7 @@ import rospy
 import cv2
 import numpy as np
 import os
+import time
 
 ### Imports for ROS ###
 from std_msgs.msg import String
@@ -43,6 +44,9 @@ class object_tracker:
 		self.image_sub_camera = rospy.Subscriber("/zed2/zed_node/left/image_rect_color/compressed",CompressedImage,self.callback_cam)
 		self.image_sub_depth = rospy.Subscriber("/zed2/zed_node/depth/depth_registered/compressed",CompressedImage,self.callback_depth)
 		#self.image_sub_depth = rospy.Subscriber("/zed2/zed_node/depth/depth_registered",Image,self.callback_depth)
+		#self.image_sub_camera = rospy.Subscriber("/Frank/ZED/Camera",CompressedImage,self.callback_cam)
+		#self.image_sub_depth = rospy.Subscriber("/Frank/ZED/Depth",CompressedImage,self.callback_depth)
+		
 		"""
 		self.image_sub = rospy.Subscriber("/usb_cam/image_raw",Image,self.callback)
 		"""
@@ -54,41 +58,39 @@ class object_tracker:
 		self.cbca = 0
 		self.cbda = 0 
 
+		#self.Update_Images()
 		print("[INFO] Loading complete")
 
-	
 	def callback_cam(self,data):
 		try:
 			#self.cv_image_cam = self.bridge.imgmsg_to_cv2(data, data.encoding)
 			np_arr = np.fromstring(data.data, np.uint8)
 			self.cv_image_cam = cv2.imdecode(np_arr, cv2.COLOR_BGR2RGB)
 			self.cbca = 1
-			print("cbca")
+			#print("Camera")
 		except CvBridgeError as e:
 			print(e)
+
+
+		#cam = self.cv_image_cam
 		
 		# If no new depth image and image is generated don't run, 
-		#if self.active==0 and self.cbca == 1 and self.cbda == 1:
-		#	self.calculation()
-		#	self.show_img()
 		if self.active==0 and self.cbca == 1 and self.cbda == 1:
 			self.calculation()
 			self.show_img()
-		
 
 	def callback_depth(self,data):
 		try:
 			self.cv_image_depth = self.bridge.compressed_imgmsg_to_cv2(data, "bgr8")
 			#self.cv_image_depth = self.bridge.imgmsg_to_cv2(data, data.encoding)
 			#self.cv_image_depth = self.bridge.compressed_imgmsg_to_cv2(data, "8brg")
-			#cv2.imshow("Image_window", self.cv_image_depth)
+			#cv2.imshow("Image_window2", self.cv_image_depth)
 			#cv2.waitKey(3)
 			self.cbda = 1
-			print("cbcd")
+			#print("Depth")
 		except CvBridgeError as e:
 			print(e)
 
-		
 
 	def calculation(self):
 		print("calc")

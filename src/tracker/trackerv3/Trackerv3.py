@@ -79,8 +79,6 @@ class object_tracker:
 		except CvBridgeError as e:
 			print(e)
 
-		
-
 	def calculation(self):
 		self.active = 1
 		imagecv_cam=self.cv_image_cam
