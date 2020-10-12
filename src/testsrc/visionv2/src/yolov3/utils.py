@@ -500,6 +500,7 @@ def detect_realtime(Yolo, output_path, input_size=416, show=False, CLASSES=YOLO_
         t1 = time.time()
         if YOLO_FRAMEWORK == "tf":
             pred_bbox = Yolo.predict(image_data)
+        """
         elif YOLO_FRAMEWORK == "trt":
             batched_input = tf.constant(image_data)
             result = Yolo(batched_input)
@@ -507,7 +508,7 @@ def detect_realtime(Yolo, output_path, input_size=416, show=False, CLASSES=YOLO_
             for key, value in result.items():
                 value = value.numpy()
                 pred_bbox.append(value)
-        
+        """
         t2 = time.time()
         
         pred_bbox = [tf.reshape(x, (-1, tf.shape(x)[-1])) for x in pred_bbox]
