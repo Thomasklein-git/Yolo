@@ -4,22 +4,22 @@ import cv2
 import rospy
 from cv_bridge import CvBridge, CvBridgeError
 import sys
-from sensor_msgs.msg import Image
-
+from sensor_msgs.msg import PointCloud2
+import numpy as np
+import sensor_msgs.point_cloud2 as pc2
+#from sensor_msgs import pc2
 
 class Simple_Image():
     def __init__(self):
-        self.bridge = CvBridge()
-        self.Topic1_sub = rospy.Subscriber("/usb_cam/image_raw",Image,self.callback_Topic1)
+        self.Topic1_sub = rospy.Subscriber("/zed2/zed_node/point_cloud/cloud_registered",PointCloud2,self.callback_Topic1)
 
     def callback_Topic1(self,data):
-        #print("Not working")
-        try:
-            self.Image1 = self.bridge.imgmsg_to_cv2(data, data.encoding)
-            cv2.imshow("Hurtig Jakob", self.Image1)
-            cv2.waitKey(3)
-        except CvBridgeError as e:
-            print(e)
+        pc = pc2.read_points(data, skip_nans=False, field_names=("x", "y", "z"))
+        pc_list = []
+        for p in pc:
+            pc_list.append( [p[0],p[1],p[2]] )
+        print(pc_list[200000])
+
 
 def main(args):
     SI = Simple_Image()
