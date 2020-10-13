@@ -11,7 +11,7 @@ from sensor_msgs.msg import Image
 from sensor_msgs.msg import CompressedImage
 from stereo_msgs.msg import DisparityImage
 from cv_bridge import CvBridge, CvBridgeError
-from yolov3.utils import detect_image, Load_Yolo_model, Give_boundingbox_coor_class
+from yolov3.utils import detect_image, Load_Yolo_model, Give_boundingbox_coor_class, k_means_depth
 from yolov3.configs import *
 
 import os
