@@ -23,6 +23,7 @@ class image_converter:
     global yolo
     self.show=1 # 0: don't show 1: show
     self.active=1
+    self.cam_active=1
     self.cv_image_cam=[]
     self.cv_image_depth=[]
     self.image_pub = rospy.Publisher("image_topic_2",Image)
@@ -33,6 +34,7 @@ class image_converter:
  
   def callback_cam(self,data):
     if self.active==1:
+      self.cam_active = 1
       try:
         self.cv_image_cam = self.bridge.imgmsg_to_cv2(data, data.encoding)
         print(self.cv_image_cam.shape,"cam")
@@ -41,6 +43,7 @@ class image_converter:
 
       imagecv_cam,cv_image_bbox_sub,bboxes=self.calculation()
       self.active=0
+      self.cam_active = 0
       if self.show==1:
         cv2.imshow("Image cam window", imagecv_cam)
         for i in range(len(bboxes)):
@@ -49,7 +52,7 @@ class image_converter:
       
   
   def callback_depth(self,data):
-    if self.active==0:
+    if self.cam_active==0:
       try:
         self.cv_image_depth = self.bridge.imgmsg_to_cv2(data, data.encoding)
         print(self.cv_image_depth.shape,"depth")
