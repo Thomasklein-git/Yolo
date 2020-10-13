@@ -37,7 +37,7 @@ class image_converter:
       self.cam_active = 1
       try:
         self.cv_image_cam = self.bridge.imgmsg_to_cv2(data, data.encoding)
-        print(self.cv_image_cam.shape,"cam")
+        #print(self.cv_image_cam.shape,"cam")
       except CvBridgeError as e:
         print(e)
 
@@ -46,16 +46,16 @@ class image_converter:
       self.cam_active = 0
       if self.show==1:
         cv2.imshow("Image cam window", imagecv_cam)
-        for i in range(len(bboxes)):
-          cv2.imshow("Image depth window"+str(i),cv_image_bbox_sub[i])
-          cv2.waitKey(3)
+        #for i in range(len(bboxes)):
+        #  cv2.imshow("Image depth window"+str(i),cv_image_bbox_sub[i])
+        cv2.waitKey(3)
       
   
   def callback_depth(self,data):
     if self.cam_active==0:
       try:
         self.cv_image_depth = self.bridge.imgmsg_to_cv2(data, data.encoding)
-        print(self.cv_image_depth.shape,"depth")
+        #print(self.cv_image_depth.shape,"depth")
       except CvBridgeError as e:
         print(e)
       self.active=1
@@ -68,17 +68,17 @@ class image_converter:
     imagecv_depth_series=[]
     if imagecv_cam != []:
       imagecv_cam, bboxes=detect_image(yolo, imagecv_cam, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
-      x1, y1, x2, y2, _, _ = Give_boundingbox_coor_class(bboxes)
-      print("Bounding box of object(s) = ",x1,y1,x2,y2)
+      x1, y1, x2, y2, _, C = Give_boundingbox_coor_class(bboxes)
+      print("Bounding box of object(s) = ",x1,y1,x2,y2,C)
     if imagecv_depth != []:
       for i in range(len(bboxes)):
         patch=(int(x2[i]-x1[i]),int(y2[i]-y1[i])) # gives width and height of bbox
         center=(int(x1[i]+patch[0]/2),int(y1[i]+patch[1]/2)) # gives center coodintes of bbox global
         cv_image_bbox_sub = cv2.getRectSubPix(imagecv_depth,patch,center) # Extract bbox in depth image
         cv_image_bbox_sub = np.where(np.isnan(cv_image_bbox_sub),0, cv_image_bbox_sub) # set nan to 0
-        cv2.imwrite("depth2"+str(i)+".png",(cv_image_bbox_sub*2**16).astype(np.uint16))
+        #cv2.imwrite("depth2"+str(i)+".png",(cv_image_bbox_sub*2**16).astype(np.uint16)) safe images
         D_to_C_of_bbox_L=cv_image_bbox_sub[int(patch[1]/2),int(patch[0]/2)] #height (y), width (x) gives distance to center coordinate of bbox with resprct to local
-        print("Distance to center of object [m]= ",D_to_C_of_bbox_L)
+        print("Distance to center of object [m]= ",D_to_C_of_bbox_L," Class number= ", C[i])
         #Distance_to_center_of_bbox_wrt_global=imagecv_depth[center[1],center[0]] #height (y), width (x)
         #print(Distance_to_center_of_bbox_wrt_global) 
         
