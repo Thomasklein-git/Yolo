@@ -62,8 +62,8 @@ class object_tracker:
 				print(e)
 
 			boxes=self.calculation()	
-			print(boxes)
 			self.OH.add(boxes)
+			
 			self.cal_active=0
 			self.dep_active = 0
 			self.show_img()
@@ -89,6 +89,7 @@ class object_tracker:
 			for i in range(len(bboxes)):
 				patch=(int(x2[i]-x1[i]),int(y2[i]-y1[i])) # gives width and height of bbox
 				center=(int(x1[i]+patch[0]/2),int(y1[i]+patch[1]/2)) # gives center coodintes of bbox global
+				print(center)
 				cv_image_bbox_sub = cv2.getRectSubPix(imagecv_depth,patch,center) # Extract bbox in depth image
 				cv_image_bbox_sub = np.where(np.isnan(cv_image_bbox_sub),self.min_depth, cv_image_bbox_sub) # set nan to 0
 				cv_image_bbox_sub = np.where(np.isinf(cv_image_bbox_sub),self.min_depth, cv_image_bbox_sub) # set +/-inf to 0

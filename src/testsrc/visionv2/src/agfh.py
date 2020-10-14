@@ -52,13 +52,29 @@ def Simple_Pinhole(P,D):
         D: Depth (m)
         c: Pricipal point
         f: Focal length
+        fx=529.085
+fy=528.38
+cx=645.815
+cy=376.6125
+k1=-0.0396842
+k2=0.00917941
+k3=-0.0047467
+p1=0.00010877
+p2=0.000124303
     '''
     f = [1058.17,1056.76]
     c = [974.63,576.225]
+    R = [[0, 0, 1],[0, 1, 0], [-1 , 0, 0]] # Rotation around y axis
 
     xm = (P[0]-c[0])/f[0]
     ym = (P[1]-c[1])/f[1]
 
     x = xm*D
     y = ym*D
-    return x, y
+
+    #Lc = [[x],[y],[d]]
+
+    #Gc = Lc*R 
+    #print(Gc)   
+    
+    return x, y , D
