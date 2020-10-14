@@ -3,6 +3,7 @@
 import numpy as np
 import math
 from scipy.spatial import distance as dist
+from agfh import *
 
 class Object_handler():
     def __init__(self,classNum):
@@ -32,8 +33,9 @@ class Object_handler():
                 Cx      = int((Start_x + End_x) / 2)
                 Cy      = int((Start_y + End_y) / 2)
                 Depth   = Objects[i,6]
-                DX, DY, DZ = self.D2P(Cx,Cy,Depth)
-                Current = ([Class, Cx, Cy, Start_x, Start_y, End_x, End_y, Score, DX, DY, DZ])
+                DX, DY  = Simple_Pinhole([Cx,Cy],Depth)
+                #DX, DY, DZ = self.D2P(Cx,Cy,Depth)
+                Current = ([Class, Cx, Cy, Start_x, Start_y, End_x, End_y, Score, DX, DY, Depth])
                 self.Current.append(Current)
         self.merge()
         self.clear()
