@@ -6,6 +6,7 @@ import rospy
 import cv2
 import numpy as np
 import os
+import time
 
 ### Imports for ROS ###
 from std_msgs.msg import String
@@ -22,6 +23,7 @@ from Object_handler import Object_handler
 from yolov3.utils import detect_image, Load_Yolo_model, Give_boundingbox_coor_class
 from yolov3.configs import *
 from yolov3.yolov3 import *
+from agfh import *
 ### 
 
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
@@ -38,71 +40,66 @@ class object_tracker:
 		self.ClassNames = read_class_names(YOLO_COCO_CLASSES)
 		self.OH 	= Object_handler(classNum)
 
-		print("[INFO] Loading videofeed...")
-		
-		self.image_sub_camera = rospy.Subscriber("/zed2/zed_node/left/image_rect_color/compressed",CompressedImage,self.callback_cam)
-		self.image_sub_depth = rospy.Subscriber("/zed2/zed_node/depth/depth_registered/compressed",CompressedImage,self.callback_depth)
-		
-		print("[INFO] initializing config")
-		self.show=1
-		self.active=0
-		self.cv_image_cam = []
-		self.cv_image_depth = []
-		self.cbca = 0
-		self.cbda = 0 
+		print("[INFO] Loading videofeed...")		
+		self.image_sub_depth = rospy.Subscriber("/zed2/zed_node/depth/depth_registered",Image,self.callback_depth)
+		self.image_sub_camera = rospy.Subscriber("/zed2/zed_node/left/image_rect_color",Image,self.callback_cam)
 
+		print("[INFO] initializing config...")
+		self.show=1
+		self.dep_active = 0
+		self.cal_active = 0
+		self.min_depth = 0.3
+
+		#self.Update_Images()
 		print("[INFO] Loading complete")
 
-	
 	def callback_cam(self,data):
-		try:
-			np_arr = np.fromstring(data.data, np.uint8)
-			self.cv_image_cam = cv2.imdecode(np_arr, cv2.COLOR_BGR2RGB)
-			#self.cv_image_depth = self.bridge.compressed_imgmsg_to_cv2(data, cv2.)
-			self.cbca = 1
-		except CvBridgeError as e:
-			print(e)
-		
-		# If no new depth image and image is generated don't run, 
-		#if self.active==0 and self.cbca == 1 and self.cbda == 1:
-		#	self.calculation()
-		#	self.show_img()
-		if self.active==0 and self.cbca == 1 and self.cbda == 1:
-			self.calculation()
+		if self.dep_active == 1:
+			self.cal_active = 1
+			try:
+				self.cv_image_cam = self.bridge.imgmsg_to_cv2(data, data.encoding)
+			except CvBridgeError as e:
+				print(e)
+
+			boxes=self.calculation()	
+			self.OH.add(boxes)
+			
+			self.cal_active=0
+			self.dep_active = 0
 			self.show_img()
-		
 
 	def callback_depth(self,data):
-		try:
-			self.cv_image_depth = self.bridge.compressed_imgmsg_to_cv2(data, "bgr8")
-			self.cbda = 1
-		except CvBridgeError as e:
-			print(e)
+		if self.cal_active ==0:
+			try:
+				self.cv_image_depth = self.bridge.imgmsg_to_cv2(data, data.encoding)
+			except CvBridgeError as e:
+				print(e)
+			self.dep_active=1
 
 	def calculation(self):
-		self.active = 1
 		imagecv_cam=self.cv_image_cam
-		self.Current_image = imagecv_cam
 		imagecv_depth=self.cv_image_depth
-		imagecv_cam, bboxes=detect_image(yolo, self.cv_image_cam, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
-		x1, y1, x2, y2, Score, C = Give_boundingbox_coor_class(bboxes)
 		imagecv_depth_series=[]
+		img_seg=[]
 		boxes = []
-		for i in range(len(bboxes)):
-			patch=(int(x2[i]-x1[i]),int(y2[i]-y1[i])) # gives width and height of bbox
-			center=(int(x1[i]+patch[0]/2),int(y1[i]+patch[1]/2)) # gives center coodintes of bbox global
-			cv_image_bbox_sub = cv2.getRectSubPix(imagecv_depth,patch,center) # Extract bbox in depth image
-			cv_image_bbox_sub = np.where(np.isnan(cv_image_bbox_sub),0.3, cv_image_bbox_sub) # set nan to 0
-			cv_image_bbox_sub = np.where(np.isinf(cv_image_bbox_sub),20, cv_image_bbox_sub) # set nan to 0
-			Distance_to_center_of_bbox_wrt_local=cv_image_bbox_sub[int(patch[1]/2),int(patch[0]/2)] #height (y), width (x) gives distance to center coordinate of bbox
-		
-			boxes.append([x1[i], y1[i], x2[i], y2[i], Score[i], C[i], Distance_to_center_of_bbox_wrt_local])
-		boxes = np.array(boxes)
-		self.OH.add(boxes)
+		if len(imagecv_cam)  != 0:
+			imagecv_cam, bboxes=detect_image(yolo, imagecv_cam, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
+			x1, y1, x2, y2, Score, C = Give_boundingbox_coor_class(bboxes)
+		if len(imagecv_depth) != 0:
+			for i in range(len(bboxes)):
+				patch=(int(x2[i]-x1[i]),int(y2[i]-y1[i])) # gives width and height of bbox
+				center=(int(x1[i]+patch[0]/2),int(y1[i]+patch[1]/2)) # gives center coodintes of bbox global
+				cv_image_bbox_sub = cv2.getRectSubPix(imagecv_depth,patch,center) # Extract bbox in depth image
+				cv_image_bbox_sub = np.where(np.isnan(cv_image_bbox_sub),self.min_depth, cv_image_bbox_sub) # set nan to 0
+				cv_image_bbox_sub = np.where(np.isinf(cv_image_bbox_sub),self.min_depth, cv_image_bbox_sub) # set +/-inf to 0
+				avg_depth,img_seg=k_means_depth(cv_image_bbox_sub)
+				D_to_C_of_bbox_L=cv_image_bbox_sub[int(patch[1]/2),int(patch[0]/2)] #height (y), width (x) gives distance to center coordinate of bbox with resprct to local
+				imagecv_depth_series.append(cv_image_bbox_sub)
+				
+				boxes.append([x1[i],y1[i],x2[i],y2[i],Score[i],C[i],avg_depth])
 
-		self.active=0
-		self.cbca = 0
-		self.cbda = 0
+		boxes = np.array(boxes)			
+		return boxes
 
 
 	def show_img(self):

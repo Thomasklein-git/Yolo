@@ -3,6 +3,7 @@
 import numpy as np
 import math
 from scipy.spatial import distance as dist
+from agfh import *
 
 class Object_handler():
     def __init__(self,classNum):
@@ -32,7 +33,7 @@ class Object_handler():
                 Cx      = int((Start_x + End_x) / 2)
                 Cy      = int((Start_y + End_y) / 2)
                 Depth   = Objects[i,6]
-                DX, DY, DZ = self.D2P(Cx,Cy,Depth)
+                DX, DY, DZ  = Simple_Pinhole([Cx,Cy],Depth)
                 Current = ([Class, Cx, Cy, Start_x, Start_y, End_x, End_y, Score, DX, DY, DZ])
                 self.Current.append(Current)
         self.merge()
@@ -45,6 +46,7 @@ class Object_handler():
         if len(self.Current) == 0:
             if len(self.Known) == 0:
                 print("Case 1")
+                #print("I see nothing, I know nothing, I am nothing")
 
             ############## Case 2 ##############
             # Current == 0 
@@ -52,7 +54,7 @@ class Object_handler():
             # No New Objects are present
             # Add one to all Occlusion values
             else:
-                #print("Case 2")
+                print("Case 2")
                 for i in range(0,len(self.Known)):
                     self.Known[i][self.KnownOrder.get("Occlusion")] += 1
 
@@ -61,7 +63,7 @@ class Object_handler():
         # Known == 0
         else:
             if len(self.Known) == 0:
-                    #print("Case 3")
+                    print("Case 3")
                     for i in range(0,len(self.Current)):
                         self.upgrade(self.Current[i])
 
@@ -69,7 +71,7 @@ class Object_handler():
         # Current > 0
         # Known > 0
             else:
-                #print("Case 4")
+                print("Case 4")
                 Unique_Classes = self.Unique_List([row[self.CurrentOrder.get("Class")] for row in self.Current])
                 Unique_Known_Classes = self.Unique_List([row[self.KnownOrder.get("Class")] for row in self.Known])
                 # For Loop over each Unique Class
@@ -85,17 +87,12 @@ class Object_handler():
                     UsedRow = []
                     UsedCol = []
                     for i in Current_i:
-                        #Current_C.append([self.Current[i][self.CurrentOrder.get("cx")],self.Current[i][self.CurrentOrder.get("cy")]])
-                        #Current_C.append(self.Current[i][1:3])
                         Current_D.append([self.Current[i][self.CurrentOrder.get("Depth_X")],self.Current[i][self.CurrentOrder.get("Depth_Y")],self.Current[i][self.CurrentOrder.get("Depth_Z")]])
                         
                     for i in Known_i:
-                        #Known_C.append([self.Known[i][self.KnownOrder.get("cx")],self.Known[i][self.KnownOrder.get("cy")]])
-                        #Known_C.append(self.Known[i][3:5])  
                         Known_D.append([self.Known[i][self.KnownOrder.get("Depth_X")],self.Known[i][self.KnownOrder.get("Depth_Y")],self.Known[i][self.KnownOrder.get("Depth_Z")]])         
                     
                     if len(Known_D) > 0:
-                        #D = dist.cdist(np.array(Current_C), np.array(Known_C))
                         D = dist.cdist(np.array(Current_D), np.array(Known_D))
                         pairs = min(len(Current_i), len(Known_i))
                         for i in range(0,pairs):
