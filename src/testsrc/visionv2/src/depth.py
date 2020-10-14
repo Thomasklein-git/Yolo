@@ -80,6 +80,7 @@ class image_converter:
         center=(int(x1[i]+patch[0]/2),int(y1[i]+patch[1]/2)) # gives center coodintes of bbox global
         cv_image_bbox_sub = cv2.getRectSubPix(imagecv_depth,patch,center) # Extract bbox in depth image
         cv_image_bbox_sub = np.where(np.isnan(cv_image_bbox_sub),0, cv_image_bbox_sub) # set nan to 0
+        cv_image_bbox_sub = np.where(np.isinf(cv_image_bbox_sub),0, cv_image_bbox_sub) # set +/-inf to 0
         #print(cv_image_bbox_sub)
         #avg_depth,img_seg=k_means_depth(cv_image_bbox_sub)
         avg_depth,img_seg=k_means_depth(cv_image_bbox_sub)
