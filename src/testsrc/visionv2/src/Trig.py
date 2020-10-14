@@ -48,8 +48,8 @@ def Advanced_Pinhole(P,D):
     ymm = (P[1]-c[1])/f[1]
 
     xm, ym = symbols('xm ym')
-    eq1 = Eq(xmm, xm*(1+k[0]*(xm^2+ym^2)+k[1]*(xm^4+ym^4)+k[2]*(xm^6+ym^6))+2*p[0]*xm*ym+p[1]*(xm^2*ym^2+2*xm^2))
-    eq2 = Eq(ymm, ym*(1+k[0]*(xm^2+ym^2)+k[1]*(xm^4+ym^4)+k[2]*(xm^6+ym^6))+2*p[1]*xm*ym+p[0]*(xm^2+ym^2+2*ym^2))
+    eq1 = Eq(xmm, xm*(1+k[0]*(xm**2+ym**2)+k[1]*(xm**4+ym**4)+k[2]*(xm**6+ym**6))+2*p[0]*xm*ym+p[1]*(xm**2*ym**2+2*xm**2))
+    eq2 = Eq(ymm, ym*(1+k[0]*(xm**2+ym**2)+k[1]*(xm**4+ym**4)+k[2]*(xm**6+ym**6))+2*p[1]*xm*ym+p[0]*(xm**2+ym**2+2*ym**2))
     solve((eq1,eq2),(xm,ym))
     print(xm, "xm")
     print(ym, "ym")

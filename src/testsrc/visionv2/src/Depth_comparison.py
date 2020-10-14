@@ -16,7 +16,7 @@ from sensor_msgs.msg import CompressedImage
 from stereo_msgs.msg import DisparityImage
 from yolov3.utils import detect_image, Load_Yolo_model, Give_boundingbox_coor_class
 from yolov3.configs import *
-from Trig import Simple_Pinhole
+from Trig import Simple_Pinhole, Advanced_Pinhole
 
 class Depth_Comparison():
     def __init__(self):
@@ -93,7 +93,7 @@ class Depth_Comparison():
                 #Distance_to_center_of_bbox_wrt_global=imagecv_depth[center[1],center[0]] #height (y), width (x)
                 #print(Distance_to_center_of_bbox_wrt_global) 
 
-                x, y =  Advanced_Pinhole(center,D_to_C_of_bbox_L)
+                x, y =  Simple_Pinhole(center,D_to_C_of_bbox_L)
                 print("X:",x,"Y:",y,"Z:",D_to_C_of_bbox_L)
 
 
