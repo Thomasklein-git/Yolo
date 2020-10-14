@@ -53,10 +53,10 @@ def Simple_Pinhole(P,D):
         c: Pricipal point
         f: Focal length
         
-fx=264.5425
-fy=264.19
-cx=338.4075
-cy=195.80625
+fx=529.085
+fy=528.38
+cx=645.815
+cy=376.6125
 k1=-0.0396842
 k2=0.00917941
 k3=-0.0047467
