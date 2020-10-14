@@ -33,6 +33,12 @@ cd tank_ws
 source devel/setup.bash
 roslaunch zed_wrapper zed2.launch
 ```
+# Record ROSBAG with multiple nodes
+- Open terminal and ssh to tank
+```
+cd tank_ws/bagfiles
+rosbag record -O name node1 node2 node3
+```
 
 # Yolo
 
