@@ -45,8 +45,8 @@ class Object_handler():
         # Known == 0
         if len(self.Current) == 0:
             if len(self.Known) == 0:
-                #print("Case 1")
-                print("I see nothing, I know nothing, I am nothing")
+                print("Case 1")
+                #print("I see nothing, I know nothing, I am nothing")
 
             ############## Case 2 ##############
             # Current == 0 
@@ -54,7 +54,7 @@ class Object_handler():
             # No New Objects are present
             # Add one to all Occlusion values
             else:
-                #print("Case 2")
+                print("Case 2")
                 for i in range(0,len(self.Known)):
                     self.Known[i][self.KnownOrder.get("Occlusion")] += 1
 
@@ -63,7 +63,7 @@ class Object_handler():
         # Known == 0
         else:
             if len(self.Known) == 0:
-                    #print("Case 3")
+                    print("Case 3")
                     for i in range(0,len(self.Current)):
                         self.upgrade(self.Current[i])
 
@@ -71,7 +71,7 @@ class Object_handler():
         # Current > 0
         # Known > 0
             else:
-                #print("Case 4")
+                print("Case 4")
                 Unique_Classes = self.Unique_List([row[self.CurrentOrder.get("Class")] for row in self.Current])
                 Unique_Known_Classes = self.Unique_List([row[self.KnownOrder.get("Class")] for row in self.Known])
                 # For Loop over each Unique Class
