@@ -11,7 +11,8 @@ from sensor_msgs.msg import Image
 from sensor_msgs.msg import CompressedImage
 from stereo_msgs.msg import DisparityImage
 from cv_bridge import CvBridge, CvBridgeError
-from yolov3.utils import detect_image, Load_Yolo_model, Give_boundingbox_coor_class, k_means_depth
+from yolov3.utils import detect_image, Load_Yolo_model#, Give_boundingbox_coor_class, k_means_depth
+from agfh import k_means_depth, Give_boundingbox_coor_class
 from yolov3.configs import *
 
 import os
@@ -21,7 +22,7 @@ class image_converter:
 
   def __init__(self):
     global yolo
-    self.show=1 # 0: don't show 1: show
+    self.show=0 # 0: don't show 1: show
     self.active=1
     self.cam_active=1
     self.cv_image_cam=[]
@@ -57,7 +58,7 @@ class image_converter:
     if self.cam_active==0:
       try:
         self.cv_image_depth = self.bridge.imgmsg_to_cv2(data, data.encoding)
-        #print(self.cv_image_depth.shape,"depth")
+        print(self.cv_image_depth.shape,"depth")
       except CvBridgeError as e:
         print(e)
       self.active=1
