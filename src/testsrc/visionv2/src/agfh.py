@@ -26,9 +26,7 @@ def k_means_depth(img,k=3,maxiter=1000,eps=0.1):
     imgre=np.float32(imgre) # cv2.kmeans needs float32
     criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER,1000, 0.1)
     k=3 # Number of segmented regions
-    print(min(imgre), max(imgre))
     _, label, center = cv2.kmeans(imgre, k, None, criteria, 100, cv2.KMEANS_RANDOM_CENTERS)
-    print(center)
     #print(center)
     # Calculated average depth of object
     Sort=Counter(label.flatten()).most_common()
