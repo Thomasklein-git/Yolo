@@ -1,5 +1,6 @@
 from collections import Counter
 import numpy as np
+import cv2
 
 
 def Give_boundingbox_coor_class(bboxes):
