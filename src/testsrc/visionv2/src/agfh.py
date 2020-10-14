@@ -1,4 +1,6 @@
 from collections import Counter
+import numpy as np
+
 
 def Give_boundingbox_coor_class(bboxes):
     x1=[] # Top left x-coor
@@ -38,3 +40,25 @@ def k_means_depth(img,k=3,maxiter=1000,eps=0.1):
     img_seg = res.reshape((img.shape)) #Segmented image
     
     return avg_depth, img_seg
+
+def Simple_Pinhole(P,D):
+    '''
+    Simple Pinhole Model to calculate physical position based on depth and pixel coordinates 
+    for Zed2 left camera FullHD. Numeric.
+    Assumed no rotation or translation
+    #https://docs.opencv.org/2.4/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html
+    Parameters:
+        P: Position (Pixel)
+        D: Depth (m)
+        c: Pricipal point
+        f: Focal length
+    '''
+    f = [1058.17,1056.76]
+    c = [974.63,576.225]
+
+    xm = (P[0]-c[0])/f[0]
+    ym = (P[1]-c[1])/f[1]
+
+    x = xm*D
+    y = ym*D
+    return x, y
