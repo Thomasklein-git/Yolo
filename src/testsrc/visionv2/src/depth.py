@@ -22,7 +22,7 @@ class image_converter:
 
   def __init__(self):
     global yolo
-    self.show=1 # 0: don't show 1: show
+    self.show=0 # 0: don't show 1: show
     self.dep_active=0
     self.cal_active=0
     self.cv_image_cam=[]
@@ -35,7 +35,7 @@ class image_converter:
  
   def callback_cam(self,data):
     if self.dep_active==1:
-      self.cam_active = 1
+      self.cal_active = 1
       try:
         self.cv_image_cam = self.bridge.imgmsg_to_cv2(data, data.encoding)
         #print(self.cv_image_cam.shape,"cam")
@@ -80,6 +80,7 @@ class image_converter:
         cv_image_bbox_sub = np.where(np.isnan(cv_image_bbox_sub),0.3, cv_image_bbox_sub) # set nan to 0
         cv_image_bbox_sub = np.where(np.isinf(cv_image_bbox_sub),0.3, cv_image_bbox_sub) # set +/-inf to 0
         #print(cv_image_bbox_sub)
+        #print(imagecv_depth.dtype)
         #avg_depth,img_seg=k_means_depth(cv_image_bbox_sub)
         avg_depth,img_seg=k_means_depth(cv_image_bbox_sub)
         print("Average depth of object [m]=", avg_depth)
