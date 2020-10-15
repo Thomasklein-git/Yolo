@@ -47,7 +47,8 @@ def k_means_depth(img,k=3,max_iter=1000,tol=1e-4):
 
 def k_means_pointcloud(img,k=3,max_iter=1000,tol=1e-4):
     """
-    xyz are xyz-coordinates for each pixel. It must have the shape of [nr of pixels,]
+    img is point cloud image with three channels corresponding to x, y and z coordinate for each pixel.
+    It must have the shape of [w,h,3]
     Coordinate system according to ZED2
     """
     imgre=img.reshape((-1,3)) # Flatten the image (pixel,3)
