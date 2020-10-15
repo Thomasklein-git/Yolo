@@ -14,7 +14,7 @@ class Image_grabber():
     def __init__(self):
         self.bridge = CvBridge()
         #self.image_sub = rospy.Subscriber("/zed2/zed_node/left/image_rect_color",Image,self.callback_cam)
-        image_sub = message_filters.Subscriber("/zed2/zed_node/left/image_rect_color",Image)ro
+        image_sub = message_filters.Subscriber("/zed2/zed_node/left/image_rect_color",Image)
         #self.depth_sub = rospy.Subscriber("/zed2/zed_node/depth/depth_registered",Image,self.callback_depth)
         depth_sub = message_filters.Subscriber("/zed2/zed_node/depth/depth_registered",Image)
         #self.cloud_sub = rospy.Subscriber("/zed2/zed_node/point_cloud/cloud_registered",PointCloud2,self.callback_cloud)

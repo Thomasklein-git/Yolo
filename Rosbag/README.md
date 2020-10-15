@@ -12,3 +12,7 @@ rosbag play name
 '''
 rosbag play -l name
 '''
+- Play one topic
+'''
+rosbag play name --topics /topic
+'''
