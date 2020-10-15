@@ -63,7 +63,7 @@ def k_means_depth(img,k=3,max_iter=1000,tol=1e-4):
     center_scale = np.float64(KM_scale.cluster_centers_)
     res_scale = center_scale[label.flatten()] 
     img_seg_scale = res_scale.reshape((img.shape)) #Segmented image
-    return avg_depth, img_seg
+    return avg_depth, img_seg_scale
 
 
 def Simple_Pinhole(P,D):
