@@ -22,9 +22,9 @@ class image_converter:
 
   def __init__(self):
     global yolo
-    self.show=0 # 0: don't show 1: show
-    self.active=1
-    self.cam_active=1
+    self.show=1 # 0: don't show 1: show
+    self.dep_active=0
+    self.cal_active=0
     self.cv_image_cam=[]
     self.cv_image_depth=[]
     self.image_pub = rospy.Publisher("image_topic_2",Image)
@@ -34,7 +34,7 @@ class image_converter:
     yolo = Load_Yolo_model()
  
   def callback_cam(self,data):
-    if self.active==1:
+    if self.dep_active==1:
       self.cam_active = 1
       try:
         self.cv_image_cam = self.bridge.imgmsg_to_cv2(data, data.encoding)
@@ -44,8 +44,8 @@ class image_converter:
 
       imagecv_cam,cv_image_bbox_sub,bboxes,img_seg=self.calculation()
       #cv2.imwrite("depth2.png",(cv_image_bbox_sub*2**16).astype(np.uint16))
-      self.active=0
-      self.cam_active = 0
+      self.cal_active=0
+      self.dep_active = 0
       if self.show==1:
         cv2.imshow("Image cam window", imagecv_cam)
         #cv2.imshow("Image seg",img_seg)
@@ -55,26 +55,24 @@ class image_converter:
       
   
   def callback_depth(self,data):
-    if self.cam_active==0:
+    if self.cal_active==0:
       try:
         self.cv_image_depth = self.bridge.imgmsg_to_cv2(data, data.encoding)
-        print(self.cv_image_depth.shape,"depth")
+        #print(self.cv_image_depth.shape,"depth")
       except CvBridgeError as e:
         print(e)
-      self.active=1
+      self.dep_active=1
     
   def calculation(self):
-    imagecv_cam=[]
-    imagecv_depth=[] 
     imagecv_cam=self.cv_image_cam
     imagecv_depth=self.cv_image_depth
     imagecv_depth_series=[]
     img_seg=[]
-    if imagecv_cam != []:
+    if len(imagecv_cam)  != 0:
       imagecv_cam, bboxes=detect_image(yolo, imagecv_cam, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
       x1, y1, x2, y2, _, C = Give_boundingbox_coor_class(bboxes)
       print("Bounding box of object(s) = ",x1,y1,x2,y2,C)
-    if imagecv_depth != []:
+    if len(imagecv_depth) != 0:
       for i in range(len(bboxes)):
         patch=(int(x2[i]-x1[i]),int(y2[i]-y1[i])) # gives width and height of bbox
         center=(int(x1[i]+patch[0]/2),int(y1[i]+patch[1]/2)) # gives center coodintes of bbox global
