@@ -24,26 +24,6 @@ def Give_boundingbox_coor_class(bboxes):
     return x1, y1, x2, y2, Score, C
 
 def k_means_depth(img,k=3,max_iter=1000,tol=1e-4):
-    """
-    imgre=img.reshape((-1,1)) # Flatten the image (pixels,1)
-    imgre=np.float32(imgre) # cv2.kmeans needs float32
-    criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER,1000, 0.1)
-    k=3 # Number of segmented regions
-    _, label, center = cv2.kmeans(imgre, k, None, criteria, 100, cv2.KMEANS_RANDOM_CENTERS)
-    #print(center)
-    # Calculated average depth of object
-    Sort=Counter(label.flatten()).most_common()
-    #print(Sort)
-    label_max=Sort[0][0]
-    avg_depth=center[label_max][0]
-
-    # For plotting of segmented image
-    center = np.float64(center)
-    res = center[label.flatten()] 
-    img_seg = res.reshape((img.shape)) #Segmented image
-    
-    return avg_depth, img_seg
-    """
     imgre=img.reshape((-1,1)) # Flatten the image (pixel,1)
     imgre_scale = StandardScaler().fit_transform(imgre)
     KM_scale = KMeans(n_clusters=k, max_iter=max_iter, tol=tol, random_state=0).fit(imgre_scale)
