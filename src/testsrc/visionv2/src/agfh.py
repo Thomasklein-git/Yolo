@@ -1,6 +1,8 @@
 from collections import Counter
 import numpy as np
 import cv2
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
 
 
 def Give_boundingbox_coor_class(bboxes):
@@ -21,7 +23,8 @@ def Give_boundingbox_coor_class(bboxes):
         C.append(boundingbox_int[5])
     return x1, y1, x2, y2, Score, C
 
-def k_means_depth(img,k=3,maxiter=1000,eps=0.1):
+def k_means_depth(img,k=3,max_iter=1000,tol=1e-4):
+    """
     imgre=img.reshape((-1,1)) # Flatten the image (pixels,1)
     imgre=np.float32(imgre) # cv2.kmeans needs float32
     criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER,1000, 0.1)
@@ -40,6 +43,28 @@ def k_means_depth(img,k=3,maxiter=1000,eps=0.1):
     img_seg = res.reshape((img.shape)) #Segmented image
     
     return avg_depth, img_seg
+    """
+    imgre=img.reshape((-1,1)) # Flatten the image (pixel,1)
+    imgre_scale = StandardScaler().fit_transform(imgre)
+    KM_scale = KMeans(n_clusters=k, max_iter=max_iter, tol=tol, random_state=0).fit(imgre_scale)
+    # Calculation of average depth
+    label=KM_scale.labels_
+    label=np.transpose(np.asarray([label])) # In order to concatenate
+    Sort=Counter(label.flatten()).most_common() 
+    label_max=Sort[0][0]
+    a=np.concatenate((label,imgre),axis=1) # Put label and imgre side by side
+    b=[] # Depth values from a which is at label_max
+    for i in range(len(a)):
+        if a[i,0]==label_max:
+            b.append(a[i,1])
+    avg_depth=np.mean(b)
+
+    # For plotting segmented image
+    center_scale = np.float64(KM_scale.cluster_centers_)
+    res_scale = center_scale[label.flatten()] 
+    img_seg_scale = res_scale.reshape((img.shape)) #Segmented image
+    return avg_depth, img_seg
+
 
 def Simple_Pinhole(P,D):
     '''
