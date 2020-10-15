@@ -1,7 +1,7 @@
 from collections import Counter
 import numpy as np
 import cv2
-from sklearn.cluster import KMeans
+from sklearn.cluster import KMeans, DBSCAN
 from sklearn.preprocessing import StandardScaler
 
 
