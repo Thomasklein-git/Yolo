@@ -22,7 +22,7 @@ class image_converter:
 
   def __init__(self):
     global yolo
-    self.show=1 # 0: don't show 1: show
+    self.show=0 # 0: don't show 1: show
     self.dep_active=0
     self.cal_active=0
     self.cv_image_cam=[]
@@ -35,7 +35,7 @@ class image_converter:
  
   def callback_cam(self,data):
     if self.dep_active==1:
-      self.cam_active = 1
+      self.cal_active = 1
       try:
         self.cv_image_cam = self.bridge.imgmsg_to_cv2(data, data.encoding)
         #print(self.cv_image_cam.shape,"cam")
@@ -77,15 +77,18 @@ class image_converter:
         patch=(int(x2[i]-x1[i]),int(y2[i]-y1[i])) # gives width and height of bbox
         center=(int(x1[i]+patch[0]/2),int(y1[i]+patch[1]/2)) # gives center coodintes of bbox global
         cv_image_bbox_sub = cv2.getRectSubPix(imagecv_depth,patch,center) # Extract bbox in depth image
-        cv_image_bbox_sub = np.where(np.isnan(cv_image_bbox_sub),0, cv_image_bbox_sub) # set nan to 0
-        cv_image_bbox_sub = np.where(np.isinf(cv_image_bbox_sub),0, cv_image_bbox_sub) # set +/-inf to 0
+        cv_image_bbox_sub = np.where(np.isnan(cv_image_bbox_sub),0.3, cv_image_bbox_sub) # set nan to 0
+        cv_image_bbox_sub = np.where(np.isinf(cv_image_bbox_sub),0.3, cv_image_bbox_sub) # set +/-inf to 0
         #print(cv_image_bbox_sub)
+        #print(imagecv_depth.dtype)
         #avg_depth,img_seg=k_means_depth(cv_image_bbox_sub)
         avg_depth,img_seg=k_means_depth(cv_image_bbox_sub)
         print("Average depth of object [m]=", avg_depth)
         #cv2.imwrite("depth2"+str(i)+".png",(cv_image_bbox_sub*2**16).astype(np.uint16)) #safe images
         #cv2.imwrite("depthclean"+str(i)+".png",cv_image_bbox_sub)
         #cv2.imwrite("depthseg"+str(i)+".png",img_seg)
+        print(imagecv_depth.shape)
+
         D_to_C_of_bbox_L=cv_image_bbox_sub[int(patch[1]/2),int(patch[0]/2)] #height (y), width (x) gives distance to center coordinate of bbox with resprct to local
         print("Distance to center of object [m]= ",D_to_C_of_bbox_L," Class number= ", C[i])
         #Distance_to_center_of_bbox_wrt_global=imagecv_depth[center[1],center[0]] #height (y), width (x)
