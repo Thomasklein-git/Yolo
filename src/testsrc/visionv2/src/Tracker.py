@@ -30,8 +30,8 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 class object_tracker:
 	def __init__(self):
 		print("[INFO] Loading model...")
-		global yolo
-		yolo = Load_Yolo_model()
+		#global yolo
+		self.yolo = Load_Yolo_model()
 		
 		print("[INFO] Loading modules...")
 		self.bridge = CvBridge()
@@ -53,91 +53,37 @@ class object_tracker:
 		print("[INFO] Initialize Display...")
 
 
-		#Frank = cv2.imread(os.path.join(os.path.dirname( __file__ ),"Frank/Frank.png"),cv2.IMREAD_COLOR)
+		Frank = cv2.imread(os.path.join(os.path.dirname( __file__ ),"Frank/Frank.png"),cv2.IMREAD_COLOR)
 		#cv2.imshow("Image_window",Frank)
+		#detect_image(yolo, Frank, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
 		#self.Update_Images()
 		print("[INFO] Loading complete")
-		mf = message_filters.ApproximateTimeSynchronizer([image_sub,depth_sub,cloud_sub],1,1)
+		mf = message_filters.ApproximateTimeSynchronizer([image_sub,depth_sub,cloud_sub],1,40)
 		mf.registerCallback(self.callback)
 
 	
 
 	def callback(self,image,depth,cloud):
+		print("start")
 		# Generate images from msgs
 		cv_image = self.bridge.imgmsg_to_cv2(image, image.encoding)
-		
 		cv_image_depth = self.bridge.imgmsg_to_cv2(depth, depth.encoding)
+		cv_image_pc = PC_dataxyz_to_PC_image(cloud,376,672)
 		# Yolo to get Boundary Boxes
-		_ , bboxes=detect_image(yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
+		_ , bboxes=detect_image(self.yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
 		# Convert Boundary boxes to readable values
-		#sub_images = give_subimages(pcl,bboxes)
-		x1, y1, x2, y2, Score, C = Give_boundingbox_coor_class(bboxes)
-		boxes = []
-		for i in range(len(bboxes)):
-			patch=(int(x2[i]-x1[i]),int(y2[i]-y1[i])) # gives width and height of bbox
-			center=(int(x1[i]+patch[0]/2),int(y1[i]+patch[1]/2)) # gives center coodintes of bbox global
-			cv_image_bbox_sub = cv2.getRectSubPix(cv_image_depth,patch,center) # Extract bbox in depth image
-			cv_image_bbox_sub = np.where(np.isnan(cv_image_bbox_sub),self.min_depth, cv_image_bbox_sub) # set nan to 0
-			cv_image_bbox_sub = np.where(np.isinf(cv_image_bbox_sub),self.min_depth, cv_image_bbox_sub) # set +/-inf to 0
-			avg_depth,img_seg=k_means_depth(cv_image_bbox_sub)
-			#D_to_C_of_bbox_L=cv_image_bbox_sub[int(patch[1]/2),int(patch[0]/2)] #height (y), width (x) gives distance to center coordinate of bbox with resprct to local
-			#imagecv_depth_series.append(cv_image_bbox_sub)
-				
-			boxes.append([x1[i],y1[i],x2[i],y2[i],Score[i],C[i],avg_depth])
+		PC_image_bbox_sub_series = Sub_pointcloud(cv_image_pc, bboxes)
+		avg_depth = k_means_pointcloud(PC_image_bbox_sub_series, bboxes)
 
+		x1, y1, x2, y2, Score, C = Give_boundingbox_coor_class(bboxes)
+		
+		
+		boxes = []
+		for i in range(len(bboxes)):	
+			boxes.append([x1[i],y1[i],x2[i],y2[i],Score[i],C[i],avg_depth[i]])
 		boxes = np.array(boxes)	
 		self.OH.add(boxes)
 		self.show_img(cv_image)
-
-	"""
-	def callback_cam(self,data):
-		if self.dep_active == 1:
-			self.cal_active = 1
-			try:
-				self.cv_image_cam = self.bridge.imgmsg_to_cv2(data, data.encoding)
-			except CvBridgeError as e:
-				print(e)
-
-			boxes=self.calculation()	
-			self.OH.add(boxes)
-			
-			self.cal_active=0
-			self.dep_active = 0
-			self.show_img()
-
-	def callback_depth(self,data):
-		if self.cal_active ==0:
-			try:
-				self.cv_image_depth = self.bridge.imgmsg_to_cv2(data, data.encoding)
-			except CvBridgeError as e:
-				print(e)
-			self.dep_active=1
-
-	def calculation(self):
-		imagecv_cam=self.cv_image_cam
-		imagecv_depth=self.cv_image_depth
-		imagecv_depth_series=[]
-		img_seg=[]
-		boxes = []
-		if len(imagecv_cam)  != 0:
-			imagecv_cam, bboxes=detect_image(yolo, imagecv_cam, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
-			x1, y1, x2, y2, Score, C = Give_boundingbox_coor_class(bboxes)
-		if len(imagecv_depth) != 0:
-			for i in range(len(bboxes)):
-				patch=(int(x2[i]-x1[i]),int(y2[i]-y1[i])) # gives width and height of bbox
-				center=(int(x1[i]+patch[0]/2),int(y1[i]+patch[1]/2)) # gives center coodintes of bbox global
-				cv_image_bbox_sub = cv2.getRectSubPix(imagecv_depth,patch,center) # Extract bbox in depth image
-				cv_image_bbox_sub = np.where(np.isnan(cv_image_bbox_sub),self.min_depth, cv_image_bbox_sub) # set nan to 0
-				cv_image_bbox_sub = np.where(np.isinf(cv_image_bbox_sub),self.min_depth, cv_image_bbox_sub) # set +/-inf to 0
-				avg_depth,img_seg=k_means_depth(cv_image_bbox_sub)
-				D_to_C_of_bbox_L=cv_image_bbox_sub[int(patch[1]/2),int(patch[0]/2)] #height (y), width (x) gives distance to center coordinate of bbox with resprct to local
-				imagecv_depth_series.append(cv_image_bbox_sub)
-				
-				boxes.append([x1[i],y1[i],x2[i],y2[i],Score[i],C[i],avg_depth])
-
-		boxes = np.array(boxes)			
-		return boxes
-	"""
 
 	def show_img(self,image):
 		for Object in self.OH.Known:
