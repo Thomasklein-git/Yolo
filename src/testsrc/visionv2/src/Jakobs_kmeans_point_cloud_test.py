@@ -71,8 +71,10 @@ class Depth_Comparison():
         
         if len(pc_image) != 0:
             PC_image_bbox_sub_series = Sub_pointcloud(pc_image, bboxes)
-            avg_depth = k_means_pointcloud(PC_image_bbox_sub_series, bboxes)
-            print(avg_depth, "K means depth")
+            avg_depth = k_means_pointcloud(PC_image_bbox_sub_series, bboxes, PC=True)
+            print(avg_depth, "K means depth PC=True")
+            avg_depth_false = k_means_pointcloud(PC_image_bbox_sub_series, bboxes, PC=False)
+            print(avg_depth, "K means depth PC=False")
 
         return imagecv_cam#, imagecv_depth_series, bboxes, img_seg    
 

@@ -46,7 +46,7 @@ def k_means_depth(img,k=3,max_iter=1000,tol=1e-4):
     img_seg_scale = res_scale.reshape((img.shape)) #Segmented image
     return avg_depth, img_seg_scale
 
-#def k_means_pointcloud_old(img,k=3,max_iter=1000,tol=1e-4):
+def k_means_pointcloud_old(img,k=3,max_iter=1000,tol=1e-4):
     """
     img is point cloud image with three channels corresponding to x, y and z coordinate for each pixel.
     It must have the shape of [w,h,3]
@@ -75,7 +75,7 @@ def k_means_depth(img,k=3,max_iter=1000,tol=1e-4):
     avg_depth=np.mean(b)
     return avg_depth
 
-#def DBSCAN_pointcloud_old(img, eps=0.5):
+def DBSCAN_pointcloud_old(img, eps=0.5):
     """
     img is point cloud image with three channels corresponding to x, y and z coordinate for each pixel.
     It must have the shape of [w,h,3]
@@ -137,6 +137,8 @@ def Sub_pointcloud(PC_image, bboxes):
 
 def k_means_pointcloud(img, bboxes, PC=True, k=3,max_iter=1000,tol=1e-4):
     """
+    PC=True use xzy from point cloud
+    PC=False use x from point cloud
     img = PC_image_bbox_sub_series
     img is point cloud image with three channels corresponding to x, y and z coordinate for each pixel.
     It must have the shape of [w,h,3]
@@ -167,6 +169,44 @@ def k_means_pointcloud(img, bboxes, PC=True, k=3,max_iter=1000,tol=1e-4):
                     b.append(a[i,1])
             avg_depth=np.mean(b)
             avg_depth_series.append(avg_depth)
+    elif PC==False:
+        avg_depth_series = []
+        for i in range(len(bboxes)):
+            # Extraxt depth data from point cloud
+            xcoord=[] 
+            for x in range(len(imgre_wo_nan)):
+                xcoord.append(imgre_wo_nan[x][0])
+            xcoord=np.transpose(np.array([xcoord])) # shape[xcoord,1]
+
+            imgre=xcoord[i].reshape((-1,1)) # Flatten the image (pixel,3)
+            imgre_wo_nan = imgre[~np.isnan(imgre).any(axis=1)] # remove rows with nan
+            #imgre_wo_nan_and_inf = imgre_wo_nan[~np.isinf(imgre_wo_nan).any(axis=1)] # remove rows with inf
+            imgre_scale = StandardScaler().fit_transform(imgre_wo_nan)
+            KM_scale = KMeans(n_clusters=k, max_iter=max_iter, tol=tol, random_state=0).fit(imgre_scale)
+            # Calculation of average depth
+            label=KM_scale.labels_
+            label=np.transpose(np.asarray([label])) # In order to concatenate shape[label,1]
+            Sort=Counter(label.flatten()).most_common() 
+            label_max=Sort[0][0]
+            """
+            # Extraxt depth data from point cloud
+            xcoord=[] 
+            for x in range(len(imgre_wo_nan)):
+                xcoord.append(imgre_wo_nan[x][0])
+            xcoord=np.transpose(np.array([xcoord])) # shape[xcoord,1] 
+            """
+            a=np.concatenate((label,xcoord),axis=1) # Put label and xcoord (depth) side by side shape[pixel,2]
+            b=[] # Depth values from a which is at label_max
+            for i in range(len(a)):
+                if a[i,0]==label_max:
+                    b.append(a[i,1])
+            avg_depth=np.mean(b)
+            avg_depth_series.append(avg_depth)
+    else:
+        print("PC must be True or False")
+        avg_depth_series=np.nan
+
+            
     
     return avg_depth_series
 
