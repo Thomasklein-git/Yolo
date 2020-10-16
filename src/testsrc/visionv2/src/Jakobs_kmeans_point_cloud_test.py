@@ -14,9 +14,9 @@ from sensor_msgs.msg import Image
 #from sensor_msgs.msg import CompressedImage
 #from stereo_msgs.msg import DisparityImage
 from sensor_msgs.msg import PointCloud2
-from yolov3.utils import detect_image, Load_Yolo_model, Give_boundingbox_coor_class
+from yolov3.utils import detect_image, Load_Yolo_model
 from yolov3.configs import *
-from agfh import k_means_pointcloud
+from agfh import PC_dataxyz_to_PC_image, Sub_pointcloud, k_means_pointcloud, Give_boundingbox_coor_class
 
 
 #from Trig import Simple_Pinhole, Advanced_Pinhole
@@ -24,7 +24,7 @@ from agfh import k_means_pointcloud
 class Depth_Comparison():
     def __init__(self):
         global yolo
-        self.show=1 # 0: don't show 1: show
+        self.show=0 # 0: don't show 1: show
         self.pc_active=0
         self.cal_active=0
         self.cv_image_cam=[]
@@ -58,36 +58,22 @@ class Depth_Comparison():
 
     def callback_cloud(self,data):
         if self.cal_active==0:
-            image_height=720
-            image_width=1280
-            pc = pc2.read_points(data, skip_nans=False, field_names=("x", "y", "z"))
-            pc_list = []
-            for p in pc:
-                pc_list.append( [p[0],p[1],p[2]])
-            pc_list=np.array(pc_list, dtype='float32') # Othervise cv2.getRectSubPix
-            self.pc_image=pc_list.reshape((image_height,image_width,3))
+            self.pc_image=PC_dataxyz_to_PC_image(data)
             self.pc_active=1
  
-    
     def calculation(self):
         imagecv_cam=self.cv_image_cam
         pc_image=self.pc_image
         if len(imagecv_cam)  != 0:
             imagecv_cam, bboxes=detect_image(yolo, imagecv_cam, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
-            x1, y1, x2, y2, _, C = Give_boundingbox_coor_class(bboxes)
-            print("Bounding box of object(s) = ",x1,y1,x2,y2,C)
+            #x1, y1, x2, y2, _, C = Give_boundingbox_coor_class(bboxes)
+            #print("Bounding box of object(s) = ",x1,y1,x2,y2,C)
         
         if len(pc_image) != 0:
-            for i in range(len(bboxes)):
-                patch=(int(x2[i]-x1[i]),int(y2[i]-y1[i])) # gives width and height of bbox
-                center=(int(x1[i]+patch[0]/2),int(y1[i]+patch[1]/2)) # gives center coodintes of bbox global
-                cv_image_bbox_sub = cv2.getRectSubPix(pc_image,patch,center) # Extract bbox in depth image
-                avg_depth_kmeans=k_means_pointcloud(cv_image_bbox_sub)
-                print(avg_depth_kmeans, "kmeans")
-                #avg_depth_kmeans2=k_means_pointcloud(cv_image_bbox_sub,k=2)
-                #print(avg_depth_kmeans2, "kmeans2")
+            PC_image_bbox_sub_series = Sub_pointcloud(pc_image, bboxes)
+            avg_depth = k_means_pointcloud(PC_image_bbox_sub_series, bboxes)
+            print(avg_depth, "K means depth")
 
-        
         return imagecv_cam#, imagecv_depth_series, bboxes, img_seg    
 
 def main(args):
