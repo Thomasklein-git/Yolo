@@ -144,6 +144,7 @@ def k_means_pointcloud(img, bboxes, PC=True, k=3,max_iter=1000,tol=1e-4):
     It must have the shape of [w,h,3]
     Coordinate system according to ZED2
     """
+    #https://stackoverflow.com/questions/5124376/convert-nan-value-to-zero?fbclid=IwAR3YAEuY_Iw3BoHqI7-BtsomqIyE0tTikTkB9znfihU0EBdqprjKeHHrjW0
     if PC==True:
         avg_depth_series = []
         for i in range(len(bboxes)):
@@ -172,16 +173,19 @@ def k_means_pointcloud(img, bboxes, PC=True, k=3,max_iter=1000,tol=1e-4):
     elif PC==False:
         avg_depth_series = []
         for i in range(len(bboxes)):
+            imgre=img[i].reshape((-1,3)) # Flatten the image (pixel,3)
+            imgre_wo_nan = imgre[~np.isnan(imgre).any(axis=1)] # remove rows with nan
+            #imgre_wo_nan_and_inf = imgre_wo_nan[~np.isinf(imgre_wo_nan).any(axis=1)] # remove rows with inf
             # Extraxt depth data from point cloud
             xcoord=[] 
             for x in range(len(imgre_wo_nan)):
                 xcoord.append(imgre_wo_nan[x][0])
             xcoord=np.transpose(np.array([xcoord])) # shape[xcoord,1]
 
-            imgre=xcoord[i].reshape((-1,1)) # Flatten the image (pixel,3)
-            imgre_wo_nan = imgre[~np.isnan(imgre).any(axis=1)] # remove rows with nan
+            #imgre=xcoord[i].reshape((-1,1)) # Flatten the image (pixel,3)
+            #imgre_wo_nan = imgre[~np.isnan(imgre).any(axis=1)] # remove rows with nan
             #imgre_wo_nan_and_inf = imgre_wo_nan[~np.isinf(imgre_wo_nan).any(axis=1)] # remove rows with inf
-            imgre_scale = StandardScaler().fit_transform(imgre_wo_nan)
+            imgre_scale = StandardScaler().fit_transform(xcoord)
             KM_scale = KMeans(n_clusters=k, max_iter=max_iter, tol=tol, random_state=0).fit(imgre_scale)
             # Calculation of average depth
             label=KM_scale.labels_
