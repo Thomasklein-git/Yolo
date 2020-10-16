@@ -40,8 +40,8 @@ class Image_grabber():
         print("[INFO] Loading videofeed...")
         image_sub = message_filters.Subscriber("/zed2/zed_node/left/image_rect_color",Image)
         cloud_sub = message_filters.Subscriber("/zed2/zed_node/point_cloud/cloud_registered",PointCloud2)
-        ts = message_filters.ApproximateTimeSynchronizer([image_sub,cloud_sub],1,10)
-        ts.registerCallback(self.callback)
+        mf = message_filters.ApproximateTimeSynchronizer([image_sub,cloud_sub],1,10)
+        mf.registerCallback(self.callback)
 
         print("INFO Initialize display")
 
@@ -54,7 +54,7 @@ class Image_grabber():
         cv_image = self.bridge.imgmsg_to_cv2(image, image.encoding)
         # Yolo to get Boundary Boxes
         _ , bboxes=detect_image(yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
-        
+
         
         
         cv2.imshow("Depth",cv_image)

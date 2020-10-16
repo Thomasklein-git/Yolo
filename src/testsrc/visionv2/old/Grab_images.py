@@ -35,21 +35,7 @@ class Image_grabber():
             cv2.waitKey(3)
         except CvBridgeError as e:
             print(e)
-         
-    """
-    def callback_image(self,data):
-        
-
-
-    def callback_depth(self,data):
-        try:
-            self.cv_image_depth = self.bridge.imgmsg_to_cv2(data, data.encoding)
-        except CvBridgeError as e:
-            print(e)
-
-    def callback_cloud(self,data):
-        pc = pc2.read_points(data, skip_nans=False, field_names=("x", "y", "z"))
-    """
+  
 def main(args):
     IG = Image_grabber()
     
