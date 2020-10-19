@@ -25,6 +25,7 @@ class Depth_Comparison():
     def __init__(self):
         global yolo
         self.show=0 # 0: don't show 1: show
+        self.depth_show=1
         self.pc_active=0
         self.cal_active=0
         self.cv_image_cam=[]
@@ -48,12 +49,15 @@ class Depth_Comparison():
             except CvBridgeError as e:
                 print(e)
 
-            imagecv_cam=self.calculation()
+            imagecv_cam, depth_plot_img=self.calculation()
             #cv2.imwrite("depth2.png",(cv_image_bbox_sub*2**16).astype(np.uint16))
             self.cal_active=0
             self.pc_active = 0
             if self.show==1:
                 cv2.imshow("Image cam window", imagecv_cam)
+                cv2.waitKey(3)
+            if self.depth_show==1:
+                cv2.imshow("depth",depth_plot_img)
                 cv2.waitKey(3)
 
     def callback_cloud(self,data):
@@ -71,12 +75,13 @@ class Depth_Comparison():
         
         if len(pc_image) != 0:
             PC_image_bbox_sub_series = Sub_pointcloud(pc_image, bboxes)
-            avg_depth = k_means_pointcloud(PC_image_bbox_sub_series, bboxes, PC=True)
+            avg_depth,depth_plot_img = k_means_pointcloud(PC_image_bbox_sub_series, bboxes, PC=True)
             print(avg_depth, "K means depth PC=True")
+
             #avg_depth_false = k_means_pointcloud(PC_image_bbox_sub_series, bboxes, PC=False)
             #print(avg_depth_false, "K means depth PC=False")
 
-        return imagecv_cam#, imagecv_depth_series, bboxes, img_seg    
+        return imagecv_cam,depth_plot_img#, imagecv_depth_series, bboxes, img_seg    
 
 def main(args):
     DC = Depth_Comparison()
