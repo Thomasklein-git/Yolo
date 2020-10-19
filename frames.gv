@@ -1,2 +1,8 @@
 digraph G {
-"no tf data recieved"}
+"map" -> "base"[label="Broadcaster: /base_map_tf\nAverage rate: 94.751 Hz\nMost recent transform: 1603123049.946 ( -0.003 sec old)\nBuffer length: 4.981 sec\n"];
+"base" -> "zed2_left_camera_frame"[label="Broadcaster: /zed_base_tf\nAverage rate: 94.751 Hz\nMost recent transform: 1603123049.946 ( -0.003 sec old)\nBuffer length: 4.981 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1603123049.944"[ shape=plaintext ] ;
+ }->"map";
+}

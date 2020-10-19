@@ -1,0 +1,5 @@
+<launch>
+   <!-- Launching static transforms -->
+   <node pkg="tf" type="static_transform_publisher" name="zed_base_tf" args="0 0 0.2 0 0 0 1 base zed2_left_camera_frame 10"/>
+   <node pkg="tf" type="static_transform_publisher" name="base_map_tf" args="0 0 0.2 0 0 0 1 map base 10"/>
+</launch>
