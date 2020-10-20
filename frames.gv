@@ -1,13 +1,8 @@
 digraph G {
-"zed2_left_camera_frame" -> "base"[label="Broadcaster: /zed_base_tf\nAverage rate: 10.166 Hz\nMost recent transform: 1603210181.118 ( -0.004 sec old)\nBuffer length: 4.820 sec\n"];
-"map" -> "zero"[label="Broadcaster: /zero_map_tf\nAverage rate: 10.161 Hz\nMost recent transform: 1603210181.137 ( -0.023 sec old)\nBuffer length: 4.822 sec\n"];
-"map" -> "BAM"[label="Broadcaster: /Move_base\nAverage rate: 1.333 Hz\nMost recent transform: 1603210180.115 ( 1.000 sec old)\nBuffer length: 3.000 sec\n"];
+"base" -> "zed2_left_camera_frame"[label="Broadcaster: /zed_base_tf\nAverage rate: 10.155 Hz\nMost recent transform: 1603211931.158 ( -0.055 sec old)\nBuffer length: 4.924 sec\n"];
+"map" -> "base"[label="Broadcaster: /Move_base\nAverage rate: 10.204 Hz\nMost recent transform: 1603211931.044 ( 0.059 sec old)\nBuffer length: 4.900 sec\n"];
 edge [style=invis];
  subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
-"Recorded at time: 1603210181.115"[ shape=plaintext ] ;
- }->"zed2_left_camera_frame";
-edge [style=invis];
- subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
-"Recorded at time: 1603210181.115"[ shape=plaintext ] ;
+"Recorded at time: 1603211931.103"[ shape=plaintext ] ;
  }->"map";
 }
