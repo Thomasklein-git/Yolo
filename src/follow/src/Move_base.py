@@ -1,7 +1,15 @@
-#!/usr/bin/env python3
-
 import rospy
+from tf import TransformBroadcaster, TransformListener
+
 from geometry_msgs.msg import PoseStamped
+
+class Base():
+    def __init__(self):
+        cvPose
+
+
+
+
 
 def talker(n):
     pub = rospy.Publisher('/Published_pose', PoseStamped, queue_size=1)

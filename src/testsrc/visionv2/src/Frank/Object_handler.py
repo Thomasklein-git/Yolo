@@ -33,7 +33,10 @@ class Object_handler():
                 Cx      = int((Start_x + End_x) / 2)
                 Cy      = int((Start_y + End_y) / 2)
                 Depth   = Objects[i,6]
-                DX, DY, DZ  = Simple_Pinhole([Cx,Cy],Depth)
+                DX = Objects[i,6][0]
+                DY = Objects[i,6][1]
+                DZ = Objects[i,6][2]
+                #DX, DY, DZ  = Simple_Pinhole([Cx,Cy],Depth)
                 Current = ([Class, Cx, Cy, Start_x, Start_y, End_x, End_y, Score, DX, DY, DZ])
                 self.Current.append(Current)
         self.merge()

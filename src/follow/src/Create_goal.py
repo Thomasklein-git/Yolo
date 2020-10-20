@@ -15,23 +15,25 @@ class Follow():
         self.tf = TransformListener()
         # Tolerances
         #self.distance_keep = 1 #[m]
-        #self.distance_threshold = 1 # Distance to a waypoint before it is discarded
+        self.distance_new = 1
+        self.distance_threshold = 1 # Distance to a waypoint before it is discarded
 
         # Subscribed topic
-        self.pub = rospy.Publisher('/Current_pose', PoseStamped, queue_size=1)
+        self.pub_Waypoints = rospy.Publisher('/Current_Waypoints', PoseStamped, queue_size=1)
+        self.pub_goal = rospy.Publisher('/Current_goal', PoseStamped, queue_size=1)
 
         rospy.Subscriber("/Published_pose",PoseStamped,self.New_input, queue_size=1)
         rospy.Subscriber("/Vehicle_pose",PoseStamped,self.Compare_pose,queue_size=1)
         
-        
     def New_input(self,Pose):
         print("A New input have been received")
         if self.Waypoints == []:
+            self.Waypoints.append(Pose)
             #print("There are no waypoints to follow")
-            pass
         else: 
             #cwp = self.Waypoints[0]
             cwp = Pose
+            self.tf.waitForTransform("map", Pose.header.frame_id, Pose.header.stamp, rospy.Duration(1.0))
             trans,rot = self.tf.lookupTransform("map", Pose.header.frame_id, Pose.header.stamp)
             cwp.header.frame_id = "map"
             cwp.pose.position.x += trans[0]#Pose.pose.position.x+trans[0]
@@ -45,20 +47,24 @@ class Follow():
             cwp.pose.orientation.z = q[3]
             cwp.pose.orientation.w = q[0]
             
-            #print( Pose.y+trans[1])
-        #dfromnp2cwp = 
-        #if distance2newpoint < self.distance_threshold:
-        self.Waypoints.append(Pose)
-        #print(self.Waypoints)
+            # cwdistance is distance between the latest added point and the newly found point
+            cwdistance = math.sqrt((cwp.pose.position.x-self.Waypoints[-1].pose.position.x)**2+(cwp.pose.position.y-self.Waypoints[-1].pose.position.y)**2)
+            if cwdistance > self.distance_new:
+                self.Waypoints.append(cwp)
 
-        # Distance to 
-
-        self.pub.publish(self.Waypoints[0])
-        #rospy.sleep(2)
-    
+        self.pub_Waypoints.publish(self.Waypoints)
 
     def Compare_pose(self,Pose):
         print("Comparing vehicle pose with current goal")
+        if distance2waypoint < self.distance_threshold:
+            self.Waypoints.pop(0)
+            if self.Waypoints = []:
+                print("Arrived at distination with safe distance.")
+            else:
+                self.pub_goal.publish(self.Waypoints[0])
+                print("New Waypoint given")
+
+        
 
 
 
