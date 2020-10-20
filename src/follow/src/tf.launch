@@ -2,4 +2,7 @@
    <!-- Launching static transforms -->
    <node pkg="tf" type="static_transform_publisher" name="zed_base_tf" args="0 0 0.2 0 0 0 1 zed2_left_camera_frame base 10"/>
    <node pkg="tf" type="static_transform_publisher" name="base_map_tf" args="0 0 0.2 0 0 0 1 map base 10"/>
+
+   <!-- Launching Move_base-->
+   <node name="Move_base" pkg="follow" type="Move_base.py" respawn="false" output="screen"/>
 </launch>

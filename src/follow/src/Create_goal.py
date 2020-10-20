@@ -52,13 +52,13 @@ class Follow():
             if cwdistance > self.distance_new:
                 self.Waypoints.append(cwp)
 
-        self.pub_Waypoints.publish(self.Waypoints)
+        #self.pub_Waypoints.publish(self.Waypoints)
 
     def Compare_pose(self,Pose):
         print("Comparing vehicle pose with current goal")
         if distance2waypoint < self.distance_threshold:
             self.Waypoints.pop(0)
-            if self.Waypoints = []:
+            if self.Waypoints == []:
                 print("Arrived at distination with safe distance.")
             else:
                 self.pub_goal.publish(self.Waypoints[0])

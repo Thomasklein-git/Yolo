@@ -1,15 +1,38 @@
+#!/usr/bin/env python3
+
 import rospy
 from tf import TransformBroadcaster, TransformListener
 
 from geometry_msgs.msg import PoseStamped
 
-class Base():
-    def __init__(self):
-        cvPose
+class Move_base():
+    def __init__(self): 
+        rospy.init_node('Base_Mover', anonymous=True)
+        Pose = PoseStamped()
+        Pose.header.stamp = rospy.Time.now()
+        Pose.header.frame_id = "/base"
+        Pose.pose.position.x    = float(0)
+        Pose.pose.position.y    = float(0)
+        Pose.pose.position.z    = float(0)
+        Pose.pose.orientation.x = float(0)
+        Pose.pose.orientation.y = float(0)
+        Pose.pose.orientation.z = float(0)
+        Pose.pose.orientation.w = float(1)
+        self.tfb = TransformBroadcaster()
+        #rospy.Subscriber("/Current_goal",PoseStamped,self.New_input, queue_size=1)
+        trans = Pose.pose.position
+        rot   = Pose.pose.orientation
+        self.tfb.sendTransform((trans.x,trans.y,trans.z),(rot.x,rot.y,rot.z,rot.w),rospy.Time.now(),"BAM","map")
+        print("passed")
 
+if __name__ == '__main__':
+    try:
+        Move_base()
+        rospy.spin()
+    except rospy.ROSInterruptException:
+        pass
 
-
-
+"""
 
 def talker(n):
     pub = rospy.Publisher('/Published_pose', PoseStamped, queue_size=1)
@@ -40,3 +63,4 @@ if __name__ == '__main__':
         talker(0)
     except rospy.ROSInterruptException:
         pass
+"""
