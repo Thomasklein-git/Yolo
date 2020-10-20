@@ -24,7 +24,7 @@ def talker(n):
         #hello_str = "hello world %s" % rospy.get_time()
         #rospy.loginfo(hello_str)
         pub.publish(pose)
-        rospy.sleep()
+        rate.sleep()
          
 
 if __name__ == '__main__':
