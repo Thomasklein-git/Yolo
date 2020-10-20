@@ -74,9 +74,9 @@ def k_means_pointcloud(img, bboxes, PC=True, k=3,max_iter=1000,tol=1e-4):
 
     OUTPUT:
     """
-    #https://stackoverflow.com/questions/5124376/convert-nan-value-to-zero?fbclid=IwAR3YAEuY_Iw3BoHqI7-BtsomqIyE0tTikTkB9znfihU0EBdqprjKeHHrjW0
     if PC==True:
         avg_depth_series = []
+        segmented_img_color_series = []
         for i in range(len(bboxes)):
             imgre=img[i].reshape((-1,3)) # Flatten the image (pixel,3)
             imgre_wo_nan = imgre[~np.isnan(imgre).any(axis=1)] # remove rows with nan
@@ -104,7 +104,7 @@ def k_means_pointcloud(img, bboxes, PC=True, k=3,max_iter=1000,tol=1e-4):
             avg_depth=np.mean(b)
             avg_depth_series.append(avg_depth)
             
-            #%% For plotting segmented image 
+            #%% For plotting segmented image (work only for k=3)
             depth_distance=[] 
             for depth_coord in range(len(imgre)):
                 depth_distance.append(imgre[depth_coord][0])
@@ -113,43 +113,32 @@ def k_means_pointcloud(img, bboxes, PC=True, k=3,max_iter=1000,tol=1e-4):
             labels = np.array(np.empty(len(depth_distance))) # Initialize labels array with the length of nr pixels in img
             labels[:] = np.nan # All index are nan
             labels[np.invert(np.isnan(depth_distance))]=label_for_plot
-            labels = np.where(np.isnan(labels), k ,labels)
-
+            labels = np.where(np.isnan(labels), k ,labels) # set nan to category 3
+            labels = np.where(np.isinf(labels), k ,labels) # set +- inf to category 3
             labels_img=np.array(labels.reshape(img[i].shape[0],img[i].shape[1],1)) # Convert labels into img one channel
             labels_img_3c=cv2.merge((labels_img,labels_img,labels_img)) # Convert label_img into three channels
-            #print(labels_img_3c)
 
             #Change labels_img_3c so ch 1 is seg1, ch2 is seg2 and ch3 is seg3 for segmented image
-            seg1=np.where((labels_img_3c[:,:,0]==0) & (labels_img_3c[:,:,1]==0) & (labels_img_3c[:,:,2]==0))
-            seg2=np.where((labels_img_3c[:,:,0]==1) & (labels_img_3c[:,:,1]==1) & (labels_img_3c[:,:,2]==1))
-            seg3=np.where((labels_img_3c[:,:,0]==2) & (labels_img_3c[:,:,1]==2) & (labels_img_3c[:,:,2]==2))
-            segnan=np.where((labels_img_3c[:,:,0]==3) & (labels_img_3c[:,:,1]==3) & (labels_img_3c[:,:,2]==3))
+            seg1=np.where((labels_img_3c[:,:,0]==0))# & (labels_img_3c[:,:,1]==0) & (labels_img_3c[:,:,2]==0))
+            seg2=np.where((labels_img_3c[:,:,0]==1))# & (labels_img_3c[:,:,1]==1) & (labels_img_3c[:,:,2]==1))
+            seg3=np.where((labels_img_3c[:,:,0]==2))# & (labels_img_3c[:,:,1]==2) & (labels_img_3c[:,:,2]==2))
+            segnaninf=np.where((labels_img_3c[:,:,0]==3))# & (labels_img_3c[:,:,1]==3) & (labels_img_3c[:,:,2]==3))
 
             segmented_img=labels_img_3c
             segmented_img[seg1]=(1,0,0)
             segmented_img[seg2]=(0,1,0)
             segmented_img[seg3]=(0,0,1)
-            segmented_img[segnan]=(0,0,0)
-            #print(segmented_img) 
-            #print(np.min(segmented_img),"min",np.max(segmented_img),"max")
+            segmented_img[segnaninf]=(0,0,0)
             
             # Create segmented image with depth data 
             depth_distance_img=np.array(depth_distance.reshape(img[i].shape[0],img[i].shape[1],1))
-            #print(depth_distance_img.shape)
-            segmented_img1=cv2.extractChannel(segmented_img,0)*depth_distance_img[:,:,0]
-            segmented_img2=cv2.extractChannel(segmented_img,1)*depth_distance_img[:,:,0]
-            segmented_img3=cv2.extractChannel(segmented_img,2)*depth_distance_img[:,:,0]
-            #print(np.nanmin(segmented_img1),"min1",np.nanmin(segmented_img2),"min2",np.nanmin(segmented_img3),"min3")
-            #print(np.nanmax(segmented_img1),"max1",np.nanmax(segmented_img2),"max2",np.nanmax(segmented_img3),"max3")
-            segmented_img_3c=cv2.merge((segmented_img1,segmented_img2,segmented_img3))
-            #print(np.nanmin(segmented_img_3c),"min",np.nanmax(segmented_img_3c),"max")
+
+            segmented_img_3c=segmented_img*depth_distance_img
             segmented_img_3c_norm=NormalizeData(segmented_img_3c) # Normalize segmented image
-            #print(np.nanmin(segmented_img_3c_norm),"min",np.nanmax(segmented_img_3c_norm),"max")
             segmented_img_color=segmented_img_3c_norm*255 # Tranfer into RGB
-            segmented_img_color[segnan]=(255,255,255) #Makes nan white
+            segmented_img_color[segnaninf]=(255,255,255) #Makes nan and ing white
             segmented_img_color=segmented_img_color.astype("uint8")
-            
-            depth_plot_img=segmented_img_color
+            segmented_img_color_series.append(segmented_img_color)
 
     elif PC==False:
         avg_depth_series = []
@@ -182,7 +171,7 @@ def k_means_pointcloud(img, bboxes, PC=True, k=3,max_iter=1000,tol=1e-4):
         print("PC must be True or False")
         avg_depth_series=np.nan
 
-    return avg_depth_series, depth_plot_img
+    return avg_depth_series, segmented_img_color_series
 
 def Simple_Pinhole(P,D):
     '''
