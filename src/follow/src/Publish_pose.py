@@ -9,7 +9,7 @@ def talker(n):
     rate = rospy.Rate(1) # 1hz
     
     while not rospy.is_shutdown():
-        n += 0.4
+        n += 0
         pose = PoseStamped()
         pose.header.stamp = rospy.Time.now()
         pose.header.frame_id = "/zed2_left_camera_frame"
