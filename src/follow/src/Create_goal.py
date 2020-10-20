@@ -3,6 +3,8 @@
 import rospy
 from geometry_msgs.msg import PoseStamped
 from tf import TransformListener
+import math
+from pyquaternion import Quaternion
 
 class Follow():
     def __init__(self):
@@ -28,7 +30,22 @@ class Follow():
             #print("There are no waypoints to follow")
             pass
         else: 
-            cwp = self.Waypoints[0]
+            #cwp = self.Waypoints[0]
+            cwp = Pose
+            trans,rot = self.tf.lookupTransform("map", Pose.header.frame_id, Pose.header.stamp)
+            cwp.header.frame_id = "map"
+            cwp.pose.position.x += trans[0]#Pose.pose.position.x+trans[0]
+            cwp.pose.position.y += trans[1]
+            cwp.pose.position.z += trans[2]
+            cwpq = Quaternion(cwp.pose.orientation.w,cwp.pose.orientation.x,cwp.pose.orientation.y,cwp.pose.orientation.z) # CurrentWayPointQuerternion
+            mapq = Quaternion([rot[3],rot[0],rot[1],rot[2]]) # Map2CurrentPoseQuerternion
+            q = cwpq*mapq
+            cwp.pose.orientation.x = q[1]
+            cwp.pose.orientation.y = q[2]
+            cwp.pose.orientation.z = q[3]
+            cwp.pose.orientation.w = q[0]
+            
+            #print( Pose.y+trans[1])
         #dfromnp2cwp = 
         #if distance2newpoint < self.distance_threshold:
         self.Waypoints.append(Pose)
@@ -36,7 +53,6 @@ class Follow():
 
         # Distance to 
 
-        if 
         self.pub.publish(self.Waypoints[0])
         #rospy.sleep(2)
     
