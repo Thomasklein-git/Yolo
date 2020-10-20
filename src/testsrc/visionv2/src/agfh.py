@@ -104,7 +104,7 @@ def k_means_pointcloud(img, bboxes, PC=True, k=3,max_iter=1000,tol=1e-4):
             avg_depth=np.mean(b)
             avg_depth_series.append(avg_depth)
             
-            # For plotting segmented image 
+            #%% For plotting segmented image 
             depth_distance=[] 
             for depth_coord in range(len(imgre)):
                 depth_distance.append(imgre[depth_coord][0])
@@ -149,53 +149,6 @@ def k_means_pointcloud(img, bboxes, PC=True, k=3,max_iter=1000,tol=1e-4):
             segmented_img_color[segnan]=(255,255,255) #Makes nan white
             segmented_img_color=segmented_img_color.astype("uint8")
             
-            """
-            seghej=segmented_img*depth_distance_img
-            seghej_norm=NormalizeData(seghej)
-
-            seghej_farver=seghej_norm*255
-            seghej_farver[segnan]=(255,255,255)
-            seghej_farver=seghej_farver.astype("uint8")
-            
-            print(np.nanmin(seghej))
-            print(np.nanmax(seghej))
-            print(seghej_norm)
-            print(np.nanmax(seghej_norm),np.nanmin(seghej_norm))
-            print(seghej_farver)
-            print(np.max(seghej_farver),np.min(seghej_farver))
-            """
-            
-                  
-            #print(labels_img_3c.shape)
-            #segmented_img=labels_img_3c
-            #segmented_img_test=np.where(0,255,cv2.extractChannel(segmented_img,0))
-            #print(segmented_img_test.shape)
-            #labels_norm=NormalizeData(labels)*255
-            #depth_plot_img=np.array(labels_norm.reshape(img[i].shape[0],img[i].shape[1],1),dtype=np.uint8)
-            #depth_plot_img_3c=cv2.merge((depth_plot_img,depth_plot_img,depth_plot_img))
-            #hej=cv2.extractChannel(depth_plot_img_3c,0)
-            #print(depth_plot_img.shape)
-            #print(depth_plot_img_3c.shape)
-            #print(hej.shape)
-            #print(labels,"labels")
-            #print(labels_plot,"norm")
-            #label_test=np.array(labels.reshape(img[i].shape[0],img[i].shape[1],1))
-            #label_test=np.where(0,[0,0,255],labels)
-            #print(img[i].shape,"img")
-            #print(label_test.shape,"label_test")
-            #print(label_for_plot.shape,"label")
-            #print(depth_plot.shape, "depth_plot")
-            #print(labels.shape, "labels")
-            #print(label_for_plot)
-            #print(labels)
-            #print(max(labels),"max")
-            #print(min(labels),"min")
-
-            """
-            depth_plot_img=depth_plot.reshape((img[i].shape[0],img[i].shape[1],1))
-            print(depth_plot_img.shape)
-            print(img[i].shape)
-            """
             depth_plot_img=segmented_img_color
 
     elif PC==False:
