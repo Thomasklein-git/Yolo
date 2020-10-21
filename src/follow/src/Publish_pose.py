@@ -2,6 +2,7 @@
 
 import rospy
 from geometry_msgs.msg import PoseStamped
+import random
 
 def talker(n):
     pub = rospy.Publisher('/Published_pose', PoseStamped, queue_size=1)
@@ -9,10 +10,10 @@ def talker(n):
     rate = rospy.Rate(1) # 1hz
     
     while not rospy.is_shutdown():
-        n += 0.4
+        n = 1.2
         pose = PoseStamped()
         pose.header.stamp = rospy.Time.now()
-        pose.header.frame_id = "/zed2_left_camera_frame"
+        pose.header.frame_id = "zed2_left_camera_frame"
         pose.pose.position.x    = float(n)
         pose.pose.position.y    = float(0)
         pose.pose.position.z    = float(0)
@@ -24,7 +25,7 @@ def talker(n):
         #hello_str = "hello world %s" % rospy.get_time()
         #rospy.loginfo(hello_str)
         pub.publish(pose)
-        rospy.sleep()
+        rate.sleep()
          
 
 if __name__ == '__main__':
