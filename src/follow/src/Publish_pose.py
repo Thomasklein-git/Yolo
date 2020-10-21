@@ -10,10 +10,10 @@ def talker(n):
     rate = rospy.Rate(1) # 1hz
     
     while not rospy.is_shutdown():
-        n = 1.2
+        n += 1.2
         pose = PoseStamped()
         pose.header.stamp = rospy.Time.now()
-        pose.header.frame_id = "zed2_left_camera_frame"
+        pose.header.frame_id = "map"
         pose.pose.position.x    = float(n)
         pose.pose.position.y    = float(0)
         pose.pose.position.z    = float(0)

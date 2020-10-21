@@ -25,11 +25,12 @@ class Follow():
         self.distance_threshold = 1 # Distance to a waypoint before it is discarded
 
         # Subscribed topic
-        self.pub_Waypoints = rospy.Publisher('/Current_Waypoints', PoseStamped, queue_size=1)
+        #self.pub_Waypoints = rospy.Publisher('/Current_Waypoints', PoseStamped, queue_size=1)
         self.pub_goal = rospy.Publisher('/Current_goal', PoseStamped, queue_size=1)
 
-        rospy.Subscriber("/Published_pose",PoseStamped,self.New_input, queue_size=1)
         rospy.Subscriber("/Vehicle_pose",PoseStamped,self.Compare_pose,queue_size=1)
+        rospy.Subscriber("/Published_pose",PoseStamped,self.New_input, queue_size=1)
+        
         
     def New_input(self,Pose):
         Waypoints = self.Waypoints
@@ -42,7 +43,7 @@ class Follow():
             transform_np = self.tf_buffer.lookup_transform("map", Pose.header.frame_id, rospy.Time(0), rospy.Duration(1.0))
             np_m = tf2_geometry_msgs.do_transform_pose(Pose, transform_np)
             if Waypoints == []:
-                np_m.pose.position.z = 10
+                #np_m.pose.position.z = 10
                 self.Waypoints.append(np_m)
                 self.pub_goal.publish(self.Waypoints[0])
                 print("Type 1")
@@ -54,32 +55,24 @@ class Follow():
                 #lp_m = tf2_geometry_msgs.do_transform_pose(Waypoints[-1], transform_lp) # Last Waypoint in map
                 lp_m = Waypoints[-1]
                 wpd = math.sqrt((np_m.pose.position.x-lp_m.pose.position.x)**2+(np_m.pose.position.y-lp_m.pose.position.y)**2)
-                print("npm",np_m.pose.position.x,"lpm", lp_m.pose.position.x)
-                print("wpd", wpd)
                 if wpd > self.distance_new:
                     self.Waypoints.append(np_m)
-                    #print("LEN",len(self.Waypoints))
-                    #for i in self.Waypoints:
-                    #    print(i.pose.position.x)
 
     def Compare_pose(self,Pose):
         if self.Waypoints == []:
-            print("Waiting for a purpose")
+            pass
         else:
-            print("Comparing vehicle pose with current goal")
             # https://answers.ros.org/question/222306/transform-a-pose-to-another-frame-with-tf2-in-python/
             Goal      = self.Waypoints[0]
-            transform = self.tf_buffer.lookup_transform("base",Goal.header.frame_id, rospy.Time(0), rospy.Duration(1.0))
+            transform = self.tf_buffer.lookup_transform("base",Goal.header.frame_id, Pose.header.stamp, rospy.Duration(1.0))
             Goal_b    = tf2_geometry_msgs.do_transform_pose(Goal, transform)
             distance2waypoint = math.sqrt(Goal_b.pose.position.x**2+Goal_b.pose.position.y**2)
             if distance2waypoint < self.distance_threshold:
                 self.Waypoints.pop(0)
                 if self.Waypoints == []:
-                    print("Arrived at distination with safe distance.")
+                    pass
                 else:
                     self.pub_goal.publish(self.Waypoints[0])
-                    #print(self.Waypoints[0], "Type 3")
-                    #print("New Waypoint given")
 
 if __name__ == '__main__':
     try:

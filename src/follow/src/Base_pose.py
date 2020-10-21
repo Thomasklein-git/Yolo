@@ -9,6 +9,13 @@ class Base_pose():
     def __init__(self):
         rospy.init_node('Base_position', anonymous=True)
         self.base_pub = rospy.Publisher('/Vehicle_pose', PoseStamped, queue_size=1)
+
+        self.br = TransformBroadcaster()
+        trans = (0,0,0)
+        rot   = (0,0,0,1)
+        stamp = rospy.Time.now()
+        self.br.sendTransform(trans, rot, stamp,"base","map")
+
         self.Current_goal = []
         self.Movedir = [0,0,0]
         self.VPose = PoseStamped()
@@ -39,8 +46,10 @@ class Base_pose():
             self.VPose.pose.position.x += self.Movedir[0]
             self.VPose.pose.position.y += self.Movedir[1]
             self.VPose.pose.position.z += self.Movedir[2]
-            print(self.Current_goal, "Goal")
-            print(self.VPose, "Movement")
+            self.br = TransformBroadcaster()
+            trans = (self.VPose.pose.position.x, self.VPose.pose.position.y, self.VPose.pose.position.z)
+            rot   = (self.VPose.pose.orientation.x, self.VPose.pose.orientation.y, self.VPose.pose.orientation.z, self.VPose.pose.orientation.w)
+            self.br.sendTransform(trans, rot, self.VPose.header.stamp,"base","map") #Pose.header.stamp,"base","map")
             self.base_pub.publish(self.VPose)
             rate.sleep()
 
