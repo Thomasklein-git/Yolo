@@ -16,7 +16,8 @@ import message_filters
 ###
 
 ### New tracker
-from Frank.Object_handler import Object_handler
+#from Frank.Object_handler import Object_handler
+from Frank.Object_handler_test_vel import Object_handler
 
 ### Imports for Yolo
 from yolov3.utils import detect_image, Load_Yolo_model
@@ -45,7 +46,7 @@ class object_tracker:
 		cloud_sub = message_filters.Subscriber("/zed2/zed_node/point_cloud/cloud_registered",PointCloud2)
 
 		print("[INFO] initializing config...")
-		self.show = True # Show tracker
+		self.show = False # Show tracker
 		self.seg_plot = True # Create segmentation plot
 		#self.dep_active = 0
 		#self.cal_active = 0
@@ -77,10 +78,16 @@ class object_tracker:
 		avg_depth, segmentation_img, xyzcoord_series = k_means_pointcloud(PC_image_bbox_sub_series, bboxes, PC=True, seg_plot=self.seg_plot)
 
 		x1, y1, x2, y2, Score, C = Give_boundingbox_coor_class(bboxes)
-
+		
+		Time = "%.6f" %  image.header.stamp.to_sec() # get time stamp for image in callback
+		#Time_c = "%.6f" %  cloud.header.stamp.to_sec()
+		#print(Time, "image")
+		#print(Time, "Cloud")
+		
 		boxes = []
 		for i in range(len(bboxes)):	
-			boxes.append([x1[i],y1[i],x2[i],y2[i],Score[i],C[i],xyzcoord_series[i]])
+			#boxes.append([x1[i],y1[i],x2[i],y2[i],Score[i],C[i],xyzcoord_series[i]])
+			boxes.append([x1[i],y1[i],x2[i],y2[i],Score[i],C[i],xyzcoord_series[i],Time])
 		boxes = np.array(boxes)	
 		self.OH.add(boxes)
 		
