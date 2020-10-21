@@ -16,10 +16,11 @@ import message_filters
 ###
 
 ### New tracker
-from Frank.Object_handler import Object_handler
+#from Frank.Object_handler import Object_handler
+from Frank.Object_handler_test_vel import Object_handler
 
 ### Imports for Yolo
-from yolov3.utils import detect_image, Load_Yolo_model, Give_boundingbox_coor_class
+from yolov3.utils import detect_image, Load_Yolo_model
 from yolov3.configs import *
 from yolov3.yolov3 import *
 from agfh import *
@@ -41,14 +42,15 @@ class object_tracker:
 
 		print("[INFO] Loading videofeed...")	
 		image_sub = message_filters.Subscriber("/zed2/zed_node/left/image_rect_color",Image)
-		depth_sub = message_filters.Subscriber("/zed2/zed_node/depth/depth_registered",Image)
+		#depth_sub = message_filters.Subscriber("/zed2/zed_node/depth/depth_registered",Image)
 		cloud_sub = message_filters.Subscriber("/zed2/zed_node/point_cloud/cloud_registered",PointCloud2)
 
 		print("[INFO] initializing config...")
-		self.show=1
-		self.dep_active = 0
-		self.cal_active = 0
-		self.min_depth = 0.3
+		self.show = True # Show tracker
+		self.seg_plot = False # Create segmentation plot
+		#self.dep_active = 0
+		#self.cal_active = 0
+		#self.min_depth = 0.3
 		
 		print("[INFO] Initialize Display...")
 
@@ -58,34 +60,38 @@ class object_tracker:
 		#detect_image(yolo, Frank, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
 		#self.Update_Images()
 		print("[INFO] Loading complete")
-		mf = message_filters.ApproximateTimeSynchronizer([image_sub,depth_sub,cloud_sub],1,40)
+		#mf = message_filters.ApproximateTimeSynchronizer([image_sub,depth_sub,cloud_sub],1,0.07)
+		mf = message_filters.ApproximateTimeSynchronizer([image_sub,cloud_sub],1,0.07) #Set close to zero in order to syncronize img and point cloud (be aware of frame rate) 
+		#mf = message_filters.TimeSynchronizer([image_sub,cloud_sub],1)
 		mf.registerCallback(self.callback)
 
-	
-
-	def callback(self,image,depth,cloud):
+	#def callback(self,image,depth,cloud):
+	def callback(self,image,cloud):
 		print("start")
+		#Time = float("%.6f" %  image.header.stamp.to_sec()) # get time stamp for image in callback
 		# Generate images from msgs
 		cv_image = self.bridge.imgmsg_to_cv2(image, image.encoding)
-		cv_image_depth = self.bridge.imgmsg_to_cv2(depth, depth.encoding)
-		cv_image_pc = PC_dataxyz_to_PC_image(cloud,376,672)
+		#cv_image_depth = self.bridge.imgmsg_to_cv2(depth, depth.encoding)
+		cv_image_pc = PC_dataxyz_to_PC_image(cloud,Org_img_height=376,Org_img_width=672)
 		# Yolo to get Boundary Boxes
 		_ , bboxes=detect_image(self.yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
 		# Convert Boundary boxes to readable values
 		PC_image_bbox_sub_series = Sub_pointcloud(cv_image_pc, bboxes)
-		avg_depth = k_means_pointcloud(PC_image_bbox_sub_series, bboxes)
+		avg_depth, segmentation_img, xyzcoord_series = k_means_pointcloud(PC_image_bbox_sub_series, bboxes, PC=True, seg_plot=self.seg_plot)
 
 		x1, y1, x2, y2, Score, C = Give_boundingbox_coor_class(bboxes)
-		
-		
+		Time = float("%.6f" %  image.header.stamp.to_sec()) # get time stamp for image in callback
 		boxes = []
 		for i in range(len(bboxes)):	
-			boxes.append([x1[i],y1[i],x2[i],y2[i],Score[i],C[i],avg_depth[i]])
+			#boxes.append([x1[i],y1[i],x2[i],y2[i],Score[i],C[i],xyzcoord_series[i]])
+			boxes.append([x1[i],y1[i],x2[i],y2[i],Score[i],C[i],xyzcoord_series[i],Time])
 		boxes = np.array(boxes)	
 		self.OH.add(boxes)
-		self.show_img(cv_image)
+		
+		if self.show == True:
+			self.show_img(cv_image,segmentation_img)
 
-	def show_img(self,image):
+	def show_img(self,image, segmented_image):
 		for Object in self.OH.Known:
 			if Object[self.OH.KnownOrder.get("Occlusion")] <= 5:
 				cv2.rectangle(image, (Object[self.OH.KnownOrder.get("Start_x")], Object[self.OH.KnownOrder.get("Start_y")]), \
@@ -101,6 +107,12 @@ class object_tracker:
 
 		cv2.imshow("Image_window", image)
 		cv2.waitKey(1)
+
+		if self.seg_plot==True:
+			for i in range(len(segmented_image)):
+				cv2.imshow("segmented "+str(i),segmented_image[i])
+			cv2.waitKey(3)
+
 
 def main(args):
 	rospy.init_node('object_tracker', anonymous=True)
