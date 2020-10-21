@@ -46,8 +46,8 @@ class object_tracker:
 		cloud_sub = message_filters.Subscriber("/zed2/zed_node/point_cloud/cloud_registered",PointCloud2)
 
 		print("[INFO] initializing config...")
-		self.show = False # Show tracker
-		self.seg_plot = True # Create segmentation plot
+		self.show = True # Show tracker
+		self.seg_plot = False # Create segmentation plot
 		#self.dep_active = 0
 		#self.cal_active = 0
 		#self.min_depth = 0.3
@@ -62,11 +62,13 @@ class object_tracker:
 		print("[INFO] Loading complete")
 		#mf = message_filters.ApproximateTimeSynchronizer([image_sub,depth_sub,cloud_sub],1,0.07)
 		mf = message_filters.ApproximateTimeSynchronizer([image_sub,cloud_sub],1,0.07) #Set close to zero in order to syncronize img and point cloud (be aware of frame rate) 
+		#mf = message_filters.TimeSynchronizer([image_sub,cloud_sub],1)
 		mf.registerCallback(self.callback)
 
 	#def callback(self,image,depth,cloud):
 	def callback(self,image,cloud):
 		print("start")
+		#Time = float("%.6f" %  image.header.stamp.to_sec()) # get time stamp for image in callback
 		# Generate images from msgs
 		cv_image = self.bridge.imgmsg_to_cv2(image, image.encoding)
 		#cv_image_depth = self.bridge.imgmsg_to_cv2(depth, depth.encoding)
@@ -78,12 +80,7 @@ class object_tracker:
 		avg_depth, segmentation_img, xyzcoord_series = k_means_pointcloud(PC_image_bbox_sub_series, bboxes, PC=True, seg_plot=self.seg_plot)
 
 		x1, y1, x2, y2, Score, C = Give_boundingbox_coor_class(bboxes)
-		
-		Time = "%.6f" %  image.header.stamp.to_sec() # get time stamp for image in callback
-		#Time_c = "%.6f" %  cloud.header.stamp.to_sec()
-		#print(Time, "image")
-		#print(Time, "Cloud")
-		
+		Time = float("%.6f" %  image.header.stamp.to_sec()) # get time stamp for image in callback
 		boxes = []
 		for i in range(len(bboxes)):	
 			#boxes.append([x1[i],y1[i],x2[i],y2[i],Score[i],C[i],xyzcoord_series[i]])
