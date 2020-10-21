@@ -22,7 +22,7 @@ class Base_pose():
         self.VPose.pose.orientation.z = float(0)
         self.VPose.pose.orientation.w = float(1)
 
-        rate = rospy.Rate(1) # 10hz
+        rate = rospy.Rate(0.5) # 10hz
 
         while not rospy.is_shutdown():
             rospy.Subscriber("/Current_goal", PoseStamped, self.Find_goal, queue_size=1)
