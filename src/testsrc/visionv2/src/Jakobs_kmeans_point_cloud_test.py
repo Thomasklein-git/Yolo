@@ -41,15 +41,15 @@ class object_tracker:
 
 		print("[INFO] Loading videofeed...")	
 		image_sub = message_filters.Subscriber("/zed2/zed_node/left/image_rect_color",Image)
-		depth_sub = message_filters.Subscriber("/zed2/zed_node/depth/depth_registered",Image)
+		#depth_sub = message_filters.Subscriber("/zed2/zed_node/depth/depth_registered",Image)
 		cloud_sub = message_filters.Subscriber("/zed2/zed_node/point_cloud/cloud_registered",PointCloud2)
 
 		print("[INFO] initializing config...")
-		self.show=1
+		#self.show=1
 		self.seg_plot=True
-		self.dep_active = 0
-		self.cal_active = 0
-		self.min_depth = 0.3
+		#self.dep_active = 0
+		#self.cal_active = 0
+		#self.min_depth = 0.3
 		
 		print("[INFO] Initialize Display...")
 
@@ -59,22 +59,23 @@ class object_tracker:
 		#detect_image(yolo, Frank, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
 		#self.Update_Images()
 		print("[INFO] Loading complete")
-		mf = message_filters.ApproximateTimeSynchronizer([image_sub,depth_sub,cloud_sub],1,0.07)
+		#mf = message_filters.ApproximateTimeSynchronizer([image_sub,depth_sub,cloud_sub],1,0.07)
+		mf = message_filters.ApproximateTimeSynchronizer([image_sub,cloud_sub],1,0.07)
 		mf.registerCallback(self.callback)
 
-	
 
-	def callback(self,image,depth,cloud):
+	#def callback(self,image,depth,cloud):
+	def callback(self,image,cloud):
 		print("start")
 		# Generate images from msgs
 		cv_image = self.bridge.imgmsg_to_cv2(image, image.encoding)
-		cv_image_depth = self.bridge.imgmsg_to_cv2(depth, depth.encoding)
+		#cv_image_depth = self.bridge.imgmsg_to_cv2(depth, depth.encoding)
 		cv_image_pc = PC_dataxyz_to_PC_image(cloud,Org_img_height=376,Org_img_width=672)
 		# Yolo to get Boundary Boxes
 		_ , bboxes=detect_image(self.yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
 		# Convert Boundary boxes to readable values
 		PC_image_bbox_sub_series = Sub_pointcloud(cv_image_pc, bboxes)
-		avg_depth, segmentation_img,xyzcoord_series = k_means_pointcloud(PC_image_bbox_sub_series, bboxes, PC=True, seg_plot=self.seg_plot)
+		avg_depth, segmentation_img, xyzcoord_series = k_means_pointcloud(PC_image_bbox_sub_series, bboxes, PC=True, seg_plot=self.seg_plot)
 		#avg_depth, segmentation_img,xyzcoord_series = k_means_pointcloud(PC_image_bbox_sub_series, bboxes, PC=False, seg_plot=self.seg_plot)
 		#print(xyzcoord_series)
 		x1, y1, x2, y2, Score, C = Give_boundingbox_coor_class(bboxes)

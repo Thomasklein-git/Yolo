@@ -115,8 +115,6 @@ def k_means_pointcloud(img, bboxes, PC=True, seg_plot=True, k=3,max_iter=1000,to
             min_x=np.min(b) # find minimum depth
             min_index=np.where(xcoord[:,0]==min_x) # Find index of min x in xcoord
             y_for_min_x = ycoord[min_index[0][0],0] # get y from at min_index
-            print(y_for_min_x)
-            print(min_x)
             z_for_min_x = zcoord[min_index[0][0],0] # get z from at min_index
             
             xyzcoord=[min_x,y_for_min_x,z_for_min_x]
