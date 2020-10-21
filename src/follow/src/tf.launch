@@ -14,7 +14,5 @@
 
    <!-- Launch Create_goal -->
    <node name="Create_goal" pkg="follow" type="Create_goal.py"/>
-
-
  
 </launch>
