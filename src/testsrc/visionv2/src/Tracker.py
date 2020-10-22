@@ -47,7 +47,7 @@ class object_tracker:
 
 		print("[INFO] initializing config...")
 		self.show = True # Show tracker
-		self.seg_plot = False # Create segmentation plot
+		self.seg_plot = True # Create segmentation plot
 		#self.dep_active = 0
 		#self.cal_active = 0
 		#self.min_depth = 0.3
@@ -68,7 +68,7 @@ class object_tracker:
 	#def callback(self,image,depth,cloud):
 	def callback(self,image,cloud):
 		print("start")
-		#Time = float("%.6f" %  image.header.stamp.to_sec()) # get time stamp for image in callback
+		Time = float("%.6f" %  image.header.stamp.to_sec()) # get time stamp for image in callback
 		# Generate images from msgs
 		cv_image = self.bridge.imgmsg_to_cv2(image, image.encoding)
 		#cv_image_depth = self.bridge.imgmsg_to_cv2(depth, depth.encoding)
@@ -79,8 +79,8 @@ class object_tracker:
 		PC_image_bbox_sub_series = Sub_pointcloud(cv_image_pc, bboxes)
 		avg_depth, segmentation_img, xyzcoord_series = k_means_pointcloud(PC_image_bbox_sub_series, bboxes, PC=True, seg_plot=self.seg_plot)
 
+
 		x1, y1, x2, y2, Score, C = Give_boundingbox_coor_class(bboxes)
-		Time = float("%.6f" %  image.header.stamp.to_sec()) # get time stamp for image in callback
 		boxes = []
 		for i in range(len(bboxes)):	
 			#boxes.append([x1[i],y1[i],x2[i],y2[i],Score[i],C[i],xyzcoord_series[i]])
