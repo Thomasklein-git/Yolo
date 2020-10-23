@@ -44,7 +44,7 @@ def Sub_pointcloud(PC_image, bboxes):
     """
     Extract sub images with the size of bounding box from point cloud image
 
-    PC_image: Point cloud image [w,h,3]
+    PC_image: Point cloud image [h,w,3]
     bboxes: Bounding boxes from yolov3
     """
     PC_image_bbox_sub_series = []
@@ -71,7 +71,7 @@ def k_means_pointcloud(img, bboxes, PC=True, seg_plot=True, k=3,max_iter=1000,to
     PC=False use x from point cloud (depth image)
     img = PC_image_bbox_sub_series
     img is a point cloud image with three channels corresponding to x, y and z coordinate for each pixel.
-    It must have the shape of [w,h,3]
+    It must have the shape of [h,w,3]
     Coordinate system according to ZED2
 
     OUTPUT:
