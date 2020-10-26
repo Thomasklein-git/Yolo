@@ -11,6 +11,7 @@ import time
 ### Imports for ROS ###
 from sensor_msgs.msg import Image
 from sensor_msgs.msg import PointCloud2
+from geometry_msgs.msg import PoseStamped
 from cv_bridge import CvBridge, CvBridgeError
 import message_filters
 ###
@@ -39,15 +40,17 @@ class object_tracker:
 		classNum = len(list(read_class_names(YOLO_COCO_CLASSES).values()))
 		self.ClassNames = read_class_names(YOLO_COCO_CLASSES)
 		self.OH 	= Object_handler(classNum)
+		self.pose = PoseStamped()
 
 		print("[INFO] Loading videofeed...")	
 		image_sub = message_filters.Subscriber("/zed2/zed_node/left/image_rect_color",Image)
 		#depth_sub = message_filters.Subscriber("/zed2/zed_node/depth/depth_registered",Image)
 		cloud_sub = message_filters.Subscriber("/zed2/zed_node/point_cloud/cloud_registered",PointCloud2)
+		self.pose_pub = rospy.Publisher('/Published_pose', PoseStamped, queue_size=1)
 
 		print("[INFO] initializing config...")
-		self.show = True # Show tracker
-		self.seg_plot = True # Create segmentation plot
+		self.show = False # Show tracker
+		self.seg_plot = False # Create segmentation plot
 		#self.dep_active = 0
 		#self.cal_active = 0
 		#self.min_depth = 0.3
@@ -61,8 +64,8 @@ class object_tracker:
 		#self.Update_Images()
 		print("[INFO] Loading complete")
 		#mf = message_filters.ApproximateTimeSynchronizer([image_sub,depth_sub,cloud_sub],1,0.07)
-		mf = message_filters.ApproximateTimeSynchronizer([image_sub,cloud_sub],1,0.07) #Set close to zero in order to syncronize img and point cloud (be aware of frame rate) 
-		#mf = message_filters.TimeSynchronizer([image_sub,cloud_sub],1)
+		#mf = message_filters.ApproximateTimeSynchronizer([image_sub,cloud_sub],1,0.07) #Set close to zero in order to syncronize img and point cloud (be aware of frame rate) 
+		mf = message_filters.TimeSynchronizer([image_sub,cloud_sub],1)
 		mf.registerCallback(self.callback)
 
 	#def callback(self,image,depth,cloud):
@@ -87,6 +90,17 @@ class object_tracker:
 			boxes.append([x1[i],y1[i],x2[i],y2[i],Score[i],C[i],xyzcoord_series[i],Time])
 		boxes = np.array(boxes)	
 		self.OH.add(boxes)
+		if self.OH.Known[0][self.OH.KnownOrder.get("UID")] == 0:
+			self.pose.header.stamp = rospy.Time.now()
+			self.pose.header.frame_id = "zed2_left_camera_frame" #"zed2_left_camera_frame"
+			self.pose.pose.position.x = self.OH.Known[0][self.OH.KnownOrder.get("Depth_X")]
+			self.pose.pose.position.y = self.OH.Known[0][self.OH.KnownOrder.get("Depth_Y")]
+			self.pose.pose.position.z = self.OH.Known[0][self.OH.KnownOrder.get("Depth_Z")]
+			self.pose.pose.orientation.x = float(0)
+			self.pose.pose.orientation.y = float(0)
+			self.pose.pose.orientation.z = float(0)
+			self.pose.pose.orientation.w = float(1)
+			self.pose_pub.publish(self.pose)
 		
 		if self.show == True:
 			self.show_img(cv_image,segmentation_img)
