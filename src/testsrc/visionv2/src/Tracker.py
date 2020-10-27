@@ -86,7 +86,10 @@ class object_tracker:
 		
 
 		if self.OH.Known[0][self.OH.KnownOrder.get("UID")] == 0:
-			print(len(pc_list))
+			Target 		= self.OH.Known[0]
+			TargetOrder = self.OH.KnownOrder.get
+			Reduced_PC  = PC_reduc(Target[TargetOrder("Start_x")],Target[TargetOrder("End_x")],Target[TargetOrder("Start_y")],Target[TargetOrder("End_y")], pc_list, cloud)
+			"""
 			bbox_i = []
 			for y in range(self.OH.Known[0][self.OH.KnownOrder.get("Start_y")],self.OH.Known[0][self.OH.KnownOrder.get("End_y")]):
 				sx = self.OH.Known[0][self.OH.KnownOrder.get("Start_x")]
@@ -94,35 +97,14 @@ class object_tracker:
 				bbox_i += list(range((y*672+sx)*3,(y*672+ex+1)*3))
 			pc_list = np.delete(pc_list, bbox_i)
 			pc_list = pc_list.reshape(int(len(pc_list)/3),3)
-			print(len(pc_list))
 			pc_list= pc_list[~np.isnan(pc_list).any(axis=1)]
-			print(len(pc_list))
 			pc_list= pc_list[~np.isinf(pc_list).any(axis=1)]
-			print(len(pc_list))
-			"""
-			pc_list_T = pc_list.T
-			pc_list_x = pc_list_T[0]
-			pc_list_y = pc_list_T[1]
-			pc_list_z = pc_list_T[2]
-			"""
-			#fields = [PointField('x', 0, PointField.FLOAT32, 1), PointField('y', 4, PointField.FLOAT32, 1), PointField('z', 8, PointField.FLOAT32, 1)]
 			header = cloud.header
 			points = pc2.create_cloud_xyz32(header,pc_list)
+			"""
 			self.reduc_cloud_pub.publish(points)
-			
 
 
-			"""
-			print(cloud.data[4042751])
-			for y in range(self.OH.Known[0][self.OH.KnownOrder.get("Start_y")],self.OH.Known[0][self.OH.KnownOrder.get("End_y")]):
-
-				sx = self.OH.Known[0][self.OH.KnownOrder.get("Start_x")]
-				ex = self.OH.Known[0][self.OH.KnownOrder.get("End_x")]
-				nanput = b"\xff\xff\xff\x7f\xff\xff\xff\x7f\xff\xff\xff\x7f\xff\xff\xff\x7f"*(ex-sx)
-				
-				cloud.data = cloud.data[:y*672*16+sx*16] + nanput + cloud.data[y*672*16+ex*16:]
-			print(cloud.data[4042751])
-			"""
 			self.pose.header.stamp = rospy.Time.now()
 			self.pose.header.frame_id = "zed2_left_camera_frame" #"zed2_left_camera_frame"
 			self.pose.pose.position.x = self.OH.Known[0][self.OH.KnownOrder.get("Depth_X")]

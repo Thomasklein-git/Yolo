@@ -274,3 +274,15 @@ def Simple_Pinhole(P,D):
     #print(Gc)   
     
     return x, y , D
+
+def PC_reduc(Start_x, End_X, Start_y, End_y, pc_list, cloud):
+    bbox_i = []
+    for y in range(Start_y,End_y):
+        bbox_i += list(range((y*672+Start_x)*3,(y*672+End_x+1)*3))
+        pc_list = np.delete(pc_list, bbox_i)
+        pc_list = pc_list.reshape(int(len(pc_list)/3),3)
+        pc_list= pc_list[~np.isnan(pc_list).any(axis=1)]
+        pc_list= pc_list[~np.isinf(pc_list).any(axis=1)]
+        header = cloud.header
+	Reduced_PC2 = pc2.create_cloud_xyz32(header, pc_list)
+    return Reduced_PC2
