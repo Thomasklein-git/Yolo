@@ -107,7 +107,6 @@ class Object_handler():
                         #print(Known_Time[0][0],"Known time")
                         #print(Current_Time[0][0],"current time")
                         V = D[0][0]/(Current_Time[0][0]-Known_Time[0][0]) #tilføjet
-                        print(V, "Velocity")
                         pairs = min(len(Current_i), len(Known_i))
                         for i in range(0,pairs):
                             D1 = np.where(D==D.min())

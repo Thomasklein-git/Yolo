@@ -38,7 +38,7 @@ def PC_dataxyz_to_PC_image(data,Org_img_height=720,Org_img_width=1280):
         pc_list.append([p[0],p[1],p[2]]) # Extract x,y and z coordinates from point cloud
     pc_list=np.array(pc_list, dtype='float32') # cv2.getRectSubPix need float32 (Sub_pointcloud function)
     PC_image=pc_list.reshape((Org_img_height,Org_img_width,3)) # Transform list into image
-    return PC_image
+    return pc_list, PC_image
 
 def Sub_pointcloud(PC_image, bboxes):   
     """

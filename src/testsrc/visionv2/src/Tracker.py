@@ -10,7 +10,7 @@ import time
 
 ### Imports for ROS ###
 from sensor_msgs.msg import Image
-from sensor_msgs.msg import PointCloud2
+from sensor_msgs.msg import PointCloud2, PointField
 from geometry_msgs.msg import PoseStamped
 from cv_bridge import CvBridge, CvBridgeError
 import message_filters
@@ -44,24 +44,18 @@ class object_tracker:
 
 		print("[INFO] Loading videofeed...")	
 		image_sub = message_filters.Subscriber("/zed2/zed_node/left/image_rect_color",Image)
-		#depth_sub = message_filters.Subscriber("/zed2/zed_node/depth/depth_registered",Image)
 		cloud_sub = message_filters.Subscriber("/zed2/zed_node/point_cloud/cloud_registered",PointCloud2)
 		self.pose_pub = rospy.Publisher('/Published_pose', PoseStamped, queue_size=1)
+		self.reduc_cloud_pub = rospy.Publisher("/Reduced_cloud", PointCloud2, queue_size=1)
 
 		print("[INFO] initializing config...")
 		self.show = False # Show tracker
 		self.seg_plot = False # Create segmentation plot
-		#self.dep_active = 0
-		#self.cal_active = 0
-		#self.min_depth = 0.3
 		
 		print("[INFO] Initialize Display...")
 
 
 		Frank = cv2.imread(os.path.join(os.path.dirname( __file__ ),"Frank/Frank.png"),cv2.IMREAD_COLOR)
-		#cv2.imshow("Image_window",Frank)
-		#detect_image(yolo, Frank, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
-		#self.Update_Images()
 		print("[INFO] Loading complete")
 		#mf = message_filters.ApproximateTimeSynchronizer([image_sub,depth_sub,cloud_sub],1,0.07)
 		#mf = message_filters.ApproximateTimeSynchronizer([image_sub,cloud_sub],1,0.07) #Set close to zero in order to syncronize img and point cloud (be aware of frame rate) 
@@ -70,12 +64,11 @@ class object_tracker:
 
 	#def callback(self,image,depth,cloud):
 	def callback(self,image,cloud):
-		print("start")
 		Time = float("%.6f" %  image.header.stamp.to_sec()) # get time stamp for image in callback
 		# Generate images from msgs
 		cv_image = self.bridge.imgmsg_to_cv2(image, image.encoding)
 		#cv_image_depth = self.bridge.imgmsg_to_cv2(depth, depth.encoding)
-		cv_image_pc = PC_dataxyz_to_PC_image(cloud,Org_img_height=376,Org_img_width=672)
+		pc_list, cv_image_pc = PC_dataxyz_to_PC_image(cloud,Org_img_height=376,Org_img_width=672)
 		# Yolo to get Boundary Boxes
 		_ , bboxes=detect_image(self.yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
 		# Convert Boundary boxes to readable values
@@ -90,7 +83,46 @@ class object_tracker:
 			boxes.append([x1[i],y1[i],x2[i],y2[i],Score[i],C[i],xyzcoord_series[i],Time])
 		boxes = np.array(boxes)	
 		self.OH.add(boxes)
+		
+
 		if self.OH.Known[0][self.OH.KnownOrder.get("UID")] == 0:
+			print(len(pc_list))
+			bbox_i = []
+			for y in range(self.OH.Known[0][self.OH.KnownOrder.get("Start_y")],self.OH.Known[0][self.OH.KnownOrder.get("End_y")]):
+				sx = self.OH.Known[0][self.OH.KnownOrder.get("Start_x")]
+				ex = self.OH.Known[0][self.OH.KnownOrder.get("End_x")]
+				bbox_i += list(range((y*672+sx)*3,(y*672+ex+1)*3))
+			pc_list = np.delete(pc_list, bbox_i)
+			pc_list = pc_list.reshape(int(len(pc_list)/3),3)
+			print(len(pc_list))
+			pc_list= pc_list[~np.isnan(pc_list).any(axis=1)]
+			print(len(pc_list))
+			pc_list= pc_list[~np.isinf(pc_list).any(axis=1)]
+			print(len(pc_list))
+			"""
+			pc_list_T = pc_list.T
+			pc_list_x = pc_list_T[0]
+			pc_list_y = pc_list_T[1]
+			pc_list_z = pc_list_T[2]
+			"""
+			#fields = [PointField('x', 0, PointField.FLOAT32, 1), PointField('y', 4, PointField.FLOAT32, 1), PointField('z', 8, PointField.FLOAT32, 1)]
+			header = cloud.header
+			points = pc2.create_cloud_xyz32(header,pc_list)
+			self.reduc_cloud_pub.publish(points)
+			
+
+
+			"""
+			print(cloud.data[4042751])
+			for y in range(self.OH.Known[0][self.OH.KnownOrder.get("Start_y")],self.OH.Known[0][self.OH.KnownOrder.get("End_y")]):
+
+				sx = self.OH.Known[0][self.OH.KnownOrder.get("Start_x")]
+				ex = self.OH.Known[0][self.OH.KnownOrder.get("End_x")]
+				nanput = b"\xff\xff\xff\x7f\xff\xff\xff\x7f\xff\xff\xff\x7f\xff\xff\xff\x7f"*(ex-sx)
+				
+				cloud.data = cloud.data[:y*672*16+sx*16] + nanput + cloud.data[y*672*16+ex*16:]
+			print(cloud.data[4042751])
+			"""
 			self.pose.header.stamp = rospy.Time.now()
 			self.pose.header.frame_id = "zed2_left_camera_frame" #"zed2_left_camera_frame"
 			self.pose.pose.position.x = self.OH.Known[0][self.OH.KnownOrder.get("Depth_X")]
