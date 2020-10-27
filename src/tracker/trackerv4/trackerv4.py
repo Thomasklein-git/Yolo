@@ -92,7 +92,7 @@ class object_tracker:
 		self.OH.add(boxes)
 		if self.OH.Known[0][self.OH.KnownOrder.get("UID")] == 0:
 			self.pose.header.stamp = rospy.Time.now()
-			self.pose.header.frame_id = "zed2_left_camera_frame" #"zed2_left_camera_frame"
+			self.pose.header.frame_id = "zed2_left_camera_frame"
 			self.pose.pose.position.x = self.OH.Known[0][self.OH.KnownOrder.get("Depth_X")]
 			self.pose.pose.position.y = self.OH.Known[0][self.OH.KnownOrder.get("Depth_Y")]
 			self.pose.pose.position.z = self.OH.Known[0][self.OH.KnownOrder.get("Depth_Z")]

@@ -42,6 +42,7 @@ class Follow():
 
             transform_np = self.tf_buffer.lookup_transform("map", Pose.header.frame_id, rospy.Time(0), rospy.Duration(1.0))
             np_m = tf2_geometry_msgs.do_transform_pose(Pose, transform_np)
+            np_m.pose.position.z = 0
             if Waypoints == []:
                 #np_m.pose.position.z = 10
                 self.Waypoints.append(np_m)
@@ -51,8 +52,8 @@ class Follow():
                 transform_np   = self.tf_buffer.lookup_transform("map", Pose.header.frame_id, rospy.Time(0), rospy.Duration(1.0))
                 #transform_lp   = self.tf_buffer.lookup_transform("map", Waypoints[-1].header.frame_id, rospy.Time(0), rospy.Duration(1.0))
                 
-                np_m = tf2_geometry_msgs.do_transform_pose(Pose, transform_np) # New Waypoint in map
-                np_m.pose.position.z = 0
+                #np_m = tf2_geometry_msgs.do_transform_pose(Pose, transform_np) # New Waypoint in map
+                
                 #lp_m = tf2_geometry_msgs.do_transform_pose(Waypoints[-1], transform_lp) # Last Waypoint in map
                 lp_m = Waypoints[-1]
                 wpd = math.sqrt((np_m.pose.position.x-lp_m.pose.position.x)**2+(np_m.pose.position.y-lp_m.pose.position.y)**2)
