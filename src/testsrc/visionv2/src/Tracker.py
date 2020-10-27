@@ -40,7 +40,6 @@ class object_tracker:
 		classNum = len(list(read_class_names(YOLO_COCO_CLASSES).values()))
 		self.ClassNames = read_class_names(YOLO_COCO_CLASSES)
 		self.OH 	= Object_handler(classNum)
-		self.pose = PoseStamped()
 
 		print("[INFO] Loading videofeed...")	
 		image_sub = message_filters.Subscriber("/zed2/zed_node/left/image_rect_color",Image)
@@ -87,9 +86,10 @@ class object_tracker:
 		if self.OH.Known[0][self.OH.KnownOrder.get("UID")] == 0:
 			Target 		= self.OH.Known[0]
 			TargetOrder = self.OH.KnownOrder.get
-			Reduced_PC  = PC_reduc(Target[TargetOrder("Start_x")],Target[TargetOrder("End_x")],Target[TargetOrder("Start_y")],Target[TargetOrder("End_y")], pc_list, cloud)
-			
-			Pose 		= Waypoint_planter(Target, "zed2_left_camera_frame", rospy.Time.now())
+			Reduced_PC  = PC_reduc(Target, TargetOrder, pc_list, cloud)
+			self.reduc_cloud_pub.publish(Reduced_PC)
+			Pose 		= Waypoint_planter(Target, TargetOrder, "zed2_left_camera_frame", rospy.Time.now())
+			self.pose_pub.publish(Pose)
 
 			"""
 			bbox_i = []
@@ -104,7 +104,7 @@ class object_tracker:
 			header = cloud.header
 			points = pc2.create_cloud_xyz32(header,pc_list)
 			"""
-			self.reduc_cloud_pub.publish(Reduced_PC)
+			
 
 			"""
 			self.pose.header.stamp = rospy.Time.now()
@@ -117,7 +117,7 @@ class object_tracker:
 			self.pose.pose.orientation.z = float(0)
 			self.pose.pose.orientation.w = float(1)
 			"""
-			self.pose_pub.publish(self.pose)
+			
 		
 		if self.show == True:
 			self.show_img(cv_image,segmentation_img)
