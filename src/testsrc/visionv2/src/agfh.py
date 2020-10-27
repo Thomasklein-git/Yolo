@@ -4,6 +4,8 @@ import cv2
 from sklearn.cluster import KMeans, DBSCAN
 from sklearn.preprocessing import StandardScaler
 import sensor_msgs.point_cloud2 as pc2
+from geometry_msgs.msg import PoseStamped
+from Object_handler_test_vel import Object_handler
 
 
 def Give_boundingbox_coor_class(bboxes):
@@ -275,7 +277,7 @@ def Simple_Pinhole(P,D):
     
     return x, y , D
 
-def PC_reduc(Start_x, End_X, Start_y, End_y, pc_list, cloud):
+def PC_reduc(Start_x, End_x, Start_y, End_y, pc_list, cloud):
     bbox_i = []
     for y in range(Start_y,End_y):
         bbox_i += list(range((y*672+Start_x)*3,(y*672+End_x+1)*3))
@@ -284,5 +286,20 @@ def PC_reduc(Start_x, End_X, Start_y, End_y, pc_list, cloud):
         pc_list= pc_list[~np.isnan(pc_list).any(axis=1)]
         pc_list= pc_list[~np.isinf(pc_list).any(axis=1)]
         header = cloud.header
-	Reduced_PC2 = pc2.create_cloud_xyz32(header, pc_list)
+    Reduced_PC2 = pc2.create_cloud_xyz32(header, pc_list)
     return Reduced_PC2
+
+def Waypoint_planter(Target, Frame_id, Time):
+    OH = Object_handler()
+    Pose = PoseStamped()
+    Pose.header.stamp = Time
+    Pose.header.frame_id = Image.header.frame_id #"zed2_left_camera_frame"
+    Pose.pose.position.x = Target[OH.KnownOrder.get("Depth_X")]
+    Pose.pose.position.y = Target[OH.KnownOrder.get("Depth_Y")]
+    Pose.pose.position.z = Target[OH.KnownOrder.get("Depth_Z")]
+    Pose.pose.orientation.x = float(0)
+    Pose.pose.orientation.y = float(0)
+    Pose.pose.orientation.z = float(0)
+    Pose.pose.orientation.w = float(1)
+    return Pose
+    

@@ -53,9 +53,8 @@ class object_tracker:
 		self.seg_plot = False # Create segmentation plot
 		
 		print("[INFO] Initialize Display...")
-
-
 		Frank = cv2.imread(os.path.join(os.path.dirname( __file__ ),"Frank/Frank.png"),cv2.IMREAD_COLOR)
+
 		print("[INFO] Loading complete")
 		#mf = message_filters.ApproximateTimeSynchronizer([image_sub,depth_sub,cloud_sub],1,0.07)
 		#mf = message_filters.ApproximateTimeSynchronizer([image_sub,cloud_sub],1,0.07) #Set close to zero in order to syncronize img and point cloud (be aware of frame rate) 
@@ -89,6 +88,9 @@ class object_tracker:
 			Target 		= self.OH.Known[0]
 			TargetOrder = self.OH.KnownOrder.get
 			Reduced_PC  = PC_reduc(Target[TargetOrder("Start_x")],Target[TargetOrder("End_x")],Target[TargetOrder("Start_y")],Target[TargetOrder("End_y")], pc_list, cloud)
+			
+			Pose 		= Waypoint_planter(Target, "zed2_left_camera_frame", rospy.Time.now())
+
 			"""
 			bbox_i = []
 			for y in range(self.OH.Known[0][self.OH.KnownOrder.get("Start_y")],self.OH.Known[0][self.OH.KnownOrder.get("End_y")]):
@@ -102,9 +104,9 @@ class object_tracker:
 			header = cloud.header
 			points = pc2.create_cloud_xyz32(header,pc_list)
 			"""
-			self.reduc_cloud_pub.publish(points)
+			self.reduc_cloud_pub.publish(Reduced_PC)
 
-
+			"""
 			self.pose.header.stamp = rospy.Time.now()
 			self.pose.header.frame_id = "zed2_left_camera_frame" #"zed2_left_camera_frame"
 			self.pose.pose.position.x = self.OH.Known[0][self.OH.KnownOrder.get("Depth_X")]
@@ -114,6 +116,7 @@ class object_tracker:
 			self.pose.pose.orientation.y = float(0)
 			self.pose.pose.orientation.z = float(0)
 			self.pose.pose.orientation.w = float(1)
+			"""
 			self.pose_pub.publish(self.pose)
 		
 		if self.show == True:
