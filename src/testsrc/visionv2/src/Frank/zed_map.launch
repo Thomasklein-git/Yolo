@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="tf" type="static_transform_publisher" name="zed_base_tf" args="0 0 0 0 0 0 1 map zed2_left_camera_frame 10"/>
+</launch>
