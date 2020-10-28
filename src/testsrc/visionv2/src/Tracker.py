@@ -86,8 +86,10 @@ class object_tracker:
 		if self.OH.Known[0][self.OH.KnownOrder.get("UID")] == 0:
 			Target 		= self.OH.Known[0]
 			TargetOrder = self.OH.KnownOrder.get
+			
 			Reduced_PC  = PC_reduc(Target, TargetOrder, pc_list, cloud)
 			self.reduc_cloud_pub.publish(Reduced_PC)
+
 			Pose 		= Waypoint_planter(Target, TargetOrder, "zed2_left_camera_frame", rospy.Time.now())
 			self.pose_pub.publish(Pose)
 
