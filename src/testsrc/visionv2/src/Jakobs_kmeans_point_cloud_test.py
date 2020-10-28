@@ -46,7 +46,7 @@ class object_tracker:
 
 		print("[INFO] initializing config...")
 		#self.show=1
-		self.seg_plot=True
+		#self.seg_plot=True
 		#self.dep_active = 0
 		#self.cal_active = 0
 		#self.min_depth = 0.3
@@ -75,22 +75,27 @@ class object_tracker:
 		_ , bboxes=detect_image(self.yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
 		# Convert Boundary boxes to readable values
 		PC_image_bbox_sub_series = Sub_pointcloud(cv_image_pc, bboxes)
-		avg_depth, segmentation_img, xyzcoord_series = k_means_pointcloud(PC_image_bbox_sub_series, bboxes, PC=True, seg_plot=self.seg_plot)
+		#avg_depth, segmentation_img, xyzcoord_series = k_means_pointcloud(PC_image_bbox_sub_series, bboxes, PC=True, seg_plot=self.seg_plot)
+		avg_depth = DBSCAN_pointcloud(PC_image_bbox_sub_series,bboxes,eps=0.5,min_samples=5)
+		print(avg_depth)
 		#avg_depth, segmentation_img,xyzcoord_series = k_means_pointcloud(PC_image_bbox_sub_series, bboxes, PC=False, seg_plot=self.seg_plot)
 		#print(xyzcoord_series)
 		x1, y1, x2, y2, Score, C = Give_boundingbox_coor_class(bboxes)
 
+		"""
 		if self.seg_plot==True:
 			for i in range(len(bboxes)):
 				cv2.imshow("segmented"+str(i),segmentation_img[i])
 			cv2.waitKey(3)
-
+		"""
+		"""
 		boxes = []
 		for i in range(len(bboxes)):	
 			boxes.append([x1[i],y1[i],x2[i],y2[i],Score[i],C[i],xyzcoord_series[i]])
 		boxes = np.array(boxes)	
 		self.OH.add(boxes)
 		self.show_img(cv_image)
+		"""
 
 	def show_img(self,image):
 		for Object in self.OH.Known:
