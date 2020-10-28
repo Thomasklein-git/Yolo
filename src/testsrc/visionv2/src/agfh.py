@@ -61,6 +61,36 @@ def Sub_pointcloud(PC_image, bboxes):
 def NormalizeData(data):
     return (data - np.nanmin(data)) / (np.nanmax(data) - np.nanmin(data))
 
+def DBSCAN_pointcloud(img, bboxes, eps=0.5, min_samples=5):
+    for i in range(len(bboxes)):
+        imgre=img[i].reshape((-1,3)) # Flatten the image (pixel,3)
+        imgre_wo_nan = imgre[~np.isnan(imgre).any(axis=1)] # remove rows with nan
+        imgre_wo_nan_inf = imgre_wo_nan[~np.isinf(imgre_wo_nan).any(axis=1)] # remove rows with inf
+        # Perform kmeans with xyz data
+        imgre_scale = StandardScaler().fit_transform(imgre_wo_nan_inf)
+        DBSCAN_scale = DBSCAN(eps=eps, min_samples=min_samples).fit(imgre_scale)
+        # Calculation of average depth
+        label=DBSCAN_scale.labels_
+        label=np.transpose(np.asarray([label])) # In order to concatenate shape[label,1]
+        Sort=Counter(label.flatten()).most_common() 
+        print(Sort)
+        label_max=Sort[0][0]
+
+        xcoord=[]
+        for x in range(len(imgre_wo_nan_inf)):
+            xcoord.append(imgre_wo_nan_inf[x][0])
+        xcoord=np.transpose(np.array([xcoord])) # shape[xcoord,1]
+
+        a=np.concatenate((label,xcoord),axis=1) # Put label and xcoord (depth) side by side shape[pixel,2]
+        b=[] # Depth values from a which is at label_max
+        for len_a in range(len(a)):
+            if a[len_a,0]==label_max:
+                b.append(a[len_a,1])
+        avg_depth=np.mean(b)
+
+    return avg_depth
+
+
 def k_means_pointcloud(img, bboxes, PC=True, seg_plot=True, k=3,max_iter=1000,tol=1e-4):
     """
     Performs kmeans on point cloud in order to segment object
