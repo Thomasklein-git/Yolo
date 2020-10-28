@@ -82,11 +82,12 @@ class object_tracker:
 		boxes = np.array(boxes)	
 		self.OH.add(boxes)
 		
+		TrackID = 0
 
-		if self.OH.Known[0][self.OH.KnownOrder.get("UID")] == 0:
-			Target 		= self.OH.Known[0]
+		if len(self.OH.Known) > 0: #self.OH.Known[TrackID][self.OH.KnownOrder.get("UID")] == TrackID:
+			Target 		= self.OH.Known[TrackID]
 			TargetOrder = self.OH.KnownOrder.get
-			
+
 			Reduced_PC  = PC_reduc(Target, TargetOrder, pc_list, cloud)
 			self.reduc_cloud_pub.publish(Reduced_PC)
 
