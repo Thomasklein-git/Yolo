@@ -1,0 +1,11 @@
+local_costmap:
+  global_frame: map
+  robot_base_frame: base_link
+  update_frequency: 4.0
+  publish_frequency: 2.0
+  rolling_window: true # Should be true
+  width: 12.0
+  height: 12.0
+  resolution: 0.05
+  map_type: costmap
+ 

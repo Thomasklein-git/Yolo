@@ -1,0 +1,26 @@
+<launch>
+
+
+   <master auto="start"/>
+ <!-- Run the map server 
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find my_map_package)/my_map.pgm my_map_resolution"/>
+-->
+
+ <!--- Run AMCL  
+    <include file="$(find amcl)/examples/amcl_diff.launch" />
+-->
+
+
+
+   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <rosparam file="$(find tank_2dnav)/22okt/costmap_common_params22okt.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find tank_2dnav)/22okt/costmap_common_params22okt.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find tank_2dnav)/22okt/local_costmap_params22okt.yaml" command="load" />
+    <rosparam file="$(find tank_2dnav)/22okt/global_costmap_params22okt.yaml" command="load" /> 
+    <rosparam file="$(find tank_2dnav)/22okt/dwa_local_planner_params22okt.yaml" command="load" />
+    <param name="base_global_planer" type="string" value=" navfn/NavfnROS" />
+    <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS" />
+    <param name="controller_frequency" type="double" value="10.0" />
+ </node>
+
+</launch>

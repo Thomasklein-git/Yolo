@@ -1,0 +1,22 @@
+DWAPlannerROS:
+  max_vel_x: 0.2
+  min_vel_x: -0.05
+ # max_vel_y: 0
+ # min_vel_y: 0
+
+# escape _vel: -0.2 # is this a valid parameter in this package?
+  
+  max_vel_theta: 3.0
+  min_in_place_vel_theta: 0.3
+
+  acc_lim_theta: 1.5
+  acc_lim_x: 1.25
+  acc_lim_y: 1.25
+  
+  xy_goal_tolerance: 0.2
+  yaw_goal_tolerence: 0.2
+
+  holonomic_robot: false
+  
+  publish_cost_grid: true
+#  forward_point_distance: 0
