@@ -61,6 +61,89 @@ def Sub_pointcloud(PC_image, bboxes):
 def NormalizeData(data):
     return (data - np.nanmin(data)) / (np.nanmax(data) - np.nanmin(data))
 
+def DBSCAN_pointcloud(img, bboxes, seg_plot=True, eps=0.046, procent=0.0011):
+    avg_depth_series = []
+    segmented_img_color_series = []
+    xyzcoord_series =[]
+    for i in range(len(bboxes)):
+        imgre=img[i].reshape((-1,3)) # Flatten the image (pixel,3)
+        min_samples=int(len(imgre)*procent)
+        imgre_wo_nan = imgre[~np.isnan(imgre).any(axis=1)] # remove rows with nan
+        imgre_wo_nan_inf = imgre_wo_nan[~np.isinf(imgre_wo_nan).any(axis=1)] # remove rows with inf
+        # Perform kmeans with xyz data
+        imgre_scale = StandardScaler().fit_transform(imgre_wo_nan_inf)
+        DBSCAN_scale = DBSCAN(eps=eps, min_samples=min_samples).fit(imgre_scale)
+        # Calculation of average depth
+        label=DBSCAN_scale.labels_
+        label_for_plot=np.array(label) #[label,]
+        label=np.transpose(np.asarray([label])) # In order to concatenate shape[label,1]
+        Sort=Counter(label.flatten()).most_common() 
+        label_max=Sort[0][0]
+
+        xcoord=[]
+        ycoord=[]
+        zcoord=[]
+        for xyz in range(len(imgre_wo_nan_inf)):
+            xcoord.append(imgre_wo_nan_inf[xyz][0])
+            ycoord.append(imgre_wo_nan_inf[xyz][1])
+            zcoord.append(imgre_wo_nan_inf[xyz][2])
+        xcoord=np.transpose(np.array([xcoord])) # shape[xcoord,1] 
+        ycoord=np.transpose(np.array([ycoord])) # shape[ycoord,1] 
+        zcoord=np.transpose(np.array([zcoord])) # shape[zcoord,1]
+
+        a=np.concatenate((label,xcoord),axis=1) # Put label and xcoord (depth) side by side shape[pixel,2]
+        b=[] # Depth values from a which is at label_max
+        for len_a in range(len(a)):
+            if a[len_a,0]==label_max:
+                b.append(a[len_a,1])
+        
+        min_x=np.min(b) # find minimum depth in object
+        min_index=np.where(xcoord[:,0]==min_x) # Find index of min x in xcoord
+        y_for_min_x = ycoord[min_index[0][0],0] # get y from min_index
+        z_for_min_x = zcoord[min_index[0][0],0] # get z from min_index
+            
+        xyzcoord=[min_x,y_for_min_x,z_for_min_x]
+        xyzcoord_series.append(xyzcoord)
+        
+        avg_depth=np.mean(b)
+        avg_depth_series.append(avg_depth)
+        
+        if seg_plot==True:
+            depth_distance=[] 
+            for depth_coord in range(len(imgre)):
+                depth_distance.append(imgre[depth_coord][0])
+            depth_distance=np.array(depth_distance)
+            
+            labels = np.array(np.empty(len(depth_distance))) # Initialize labels array with the length of nr pixels in img
+            labels[:] = np.nan # All index are nan
+            labels[np.invert(np.isnan(depth_distance))]=label_for_plot
+            labels = np.where(np.isnan(labels), 1000 ,labels) #
+            labels = np.where(np.isinf(labels), 1000 ,labels) # 
+            for clust in range(-1,len(Sort)-1,1):
+                if clust != label_max:
+                    labels = np.where(labels==clust,2000,labels)
+            
+            labels_img=np.array(labels.reshape(img[i].shape[0],img[i].shape[1],1)) # Convert labels into img one channel
+            labels_img_3c=cv2.merge((labels_img,labels_img,labels_img)) # Convert label_img into three channels
+
+            #Change labels_img_3c so ch 2 is max clust, ch3 is rest for segmented image
+            seg1=np.where((labels_img_3c[:,:,0]==label_max))
+            seg3=np.where((labels_img_3c[:,:,0]==2000))
+            segnaninf=np.where((labels_img_3c[:,:,0]==1000))
+
+            segmented_img=labels_img_3c
+            segmented_img[seg1]=(0,1,0)
+            segmented_img[seg3]=(0,0,1)
+            segmented_img[segnaninf]=(0,0,0)
+            
+            # Create segmented image
+            segmented_img_color=segmented_img*255 # Tranfer into RGB
+            segmented_img_color[segnaninf]=(255,255,255) #Makes nan and inf white
+            segmented_img_color=segmented_img_color.astype("uint8") # Change type
+            segmented_img_color_series.append(segmented_img_color)
+
+    return avg_depth_series, segmented_img_color_series, xyzcoord_series
+
 def k_means_pointcloud(img, bboxes, PC=True, seg_plot=True, k=3,max_iter=1000,tol=1e-4):
     """
     Performs kmeans on point cloud in order to segment object
@@ -115,8 +198,8 @@ def k_means_pointcloud(img, bboxes, PC=True, seg_plot=True, k=3,max_iter=1000,to
             
             min_x=np.min(b) # find minimum depth
             min_index=np.where(xcoord[:,0]==min_x) # Find index of min x in xcoord
-            y_for_min_x = ycoord[min_index[0][0],0] # get y from at min_index
-            z_for_min_x = zcoord[min_index[0][0],0] # get z from at min_index
+            y_for_min_x = ycoord[min_index[0][0],0] # get y from min_index
+            z_for_min_x = zcoord[min_index[0][0],0] # get z from min_index
             
             xyzcoord=[min_x,y_for_min_x,z_for_min_x]
             xyzcoord_series.append(xyzcoord)
@@ -152,12 +235,12 @@ def k_means_pointcloud(img, bboxes, PC=True, seg_plot=True, k=3,max_iter=1000,to
                 segmented_img[segnaninf]=(0,0,0)
             
                 # Create segmented image with depth data 
-                depth_distance_img=np.array(depth_distance.reshape(img[i].shape[0],img[i].shape[1],1))
+                #depth_distance_img=np.array(depth_distance.reshape(img[i].shape[0],img[i].shape[1],1))
 
-                segmented_img_3c=segmented_img*depth_distance_img
-                segmented_img_3c_norm=NormalizeData(segmented_img_3c) # Normalize segmented image
-                segmented_img_color=segmented_img_3c_norm*255 # Tranfer into RGB
-                segmented_img_color[segnaninf]=(255,255,255) #Makes nan and ing white
+                #segmented_img_3c=segmented_img*depth_distance_img
+                #segmented_img_3c_norm=NormalizeData(segmented_img_3c) # Normalize segmented image
+                segmented_img_color=segmented_img*255 # Tranfer into RGB
+                segmented_img_color[segnaninf]=(255,255,255) #Makes nan and inf white
                 segmented_img_color=segmented_img_color.astype("uint8")
                 segmented_img_color_series.append(segmented_img_color)
     
