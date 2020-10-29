@@ -94,10 +94,15 @@ class object_tracker:
 		#_, segmentation_img_DBSCAN_0_05 = DBSCAN_pointcloud(PC_image_bbox_sub_series,bboxes, seg_plot=self.seg_plot ,eps=0.05)
 		#_, segmentation_img_DBSCAN_0_047 = DBSCAN_pointcloud(PC_image_bbox_sub_series,bboxes, seg_plot=self.seg_plot ,eps=0.047)
 		t1=time.time()
-		avg_depth_dbscan, segmentation_img_DBSCAN_0_046,_ = DBSCAN_pointcloud(PC_image_bbox_sub_series,bboxes, seg_plot=self.seg_plot ,eps=0.046)
+		avg_depth_dbscan, segmentation_img_DBSCAN,xyzcoord_DBSCAN = DBSCAN_pointcloud(PC_image_bbox_sub_series,bboxes, seg_plot=self.seg_plot)
 		t2=time.time()
-		print(avg_depth_dbscan)
-		print(t2-t1,"time for dbscan")
+		
+		t3=time.time()
+		avg_depth_kmean, segmentation_img_Kmeans,xyzcoord_Kmeans = k_means_pointcloud(PC_image_bbox_sub_series, bboxes, PC=True, seg_plot=self.seg_plot)
+		t4=time.time()
+		#print(avg_depth_kmean,"Kmeans", avg_depth_dbscan,"DBSCAN")
+		#print(xyzcoord_Kmeans,"Kmeans", xyzcoord_DBSCAN,"DBSCAN")
+		#print(t4-t3, "time for kmean",t2-t1,"time for dbscan")
 		#_, segmentation_img_DBSCAN_0_045 = DBSCAN_pointcloud(PC_image_bbox_sub_series,bboxes, seg_plot=self.seg_plot ,eps=0.045)
 		#_, segmentation_img_DBSCAN_0_04 = DBSCAN_pointcloud(PC_image_bbox_sub_series,bboxes, seg_plot=self.seg_plot ,eps=0.04)
 		#_, segmentation_img_DBSCAN_0_05_80 = DBSCAN_pointcloud(PC_image_bbox_sub_series,bboxes, seg_plot=self.seg_plot ,eps=0.05,min_samples=80)
@@ -110,6 +115,7 @@ class object_tracker:
 		
 		if self.seg_plot==True:
 			cv2.imshow("detected img", image_detec)
+			cv2.imwrite("detected_img.png",image_detec)
 			for i in range(len(bboxes)):
 				#cv2.imshow("segmented_DBSCAN_eps0.1_sam50"+str(0),segmentation_img_DBSCAN_0_1[0])
 				#cv2.imshow("segmented_DBSCAN_eps0.1_sam100"+str(0),segmentation_img_DBSCAN_0_1_100[0])
@@ -117,13 +123,15 @@ class object_tracker:
 				#cv2.imshow("segmented_DBSCAN_eps0.05_sam80"+str(0),segmentation_img_DBSCAN_0_05_80[0])
 				#cv2.imshow("segmented_DBSCAN_eps0.04",segmentation_img_DBSCAN_0_04[0])
 				#cv2.imshow("segmented_DBSCAN_eps0.045",segmentation_img_DBSCAN_0_045[0])
-				cv2.imshow("segmented_DBSCAN_eps0.046 "+str(i),segmentation_img_DBSCAN_0_046[i])
+				cv2.imshow("segmented_DBSCAN "+str(0),segmentation_img_DBSCAN[0])
+				cv2.imwrite("segmented_DBSCAN_"+str(i)+".png",segmentation_img_DBSCAN[i])
 				#cv2.imshow("segmented_DBSCAN_eps0.047",segmentation_img_DBSCAN_0_047[0])
 				#cv2.imshow("segmented_DBSCAN_eps0.05",segmentation_img_DBSCAN_0_05[0])
 				#cv2.imshow("segmented_DBSCAN_eps0.055 "+str(i),segmentation_img_DBSCAN_0_055[i])
 				#cv2.imshow("segmented_DBSCAN_eps0.06",segmentation_img_DBSCAN_0_06[0])
 				#cv2.imshow("segmented_DBSCAN_eps0.07",segmentation_img_DBSCAN_0_07[0])
-				#cv2.imshow("segmented_kmeans"+str(0),segmentation_img_kmeans[0])
+				#cv2.imshow("segmented_Kmeans"+str(i),segmentation_img_Kmeans[i])
+				cv2.imwrite("segmented_Kmean_"+str(i)+".png",segmentation_img_Kmeans[i])
 			cv2.waitKey(3)
 		
 		"""
