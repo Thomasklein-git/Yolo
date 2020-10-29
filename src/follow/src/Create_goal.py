@@ -19,12 +19,12 @@ class Follow():
 
         self.tf = TransformListener()
         # Tolerances
-        #self.distance_keep = 1 #[m]
-        self.distance_new = 0.5
-        self.distance_threshold = 1 # Distance to a waypoint before it is discarded
+        self.distance_keep = 0.5 #[m]
+        self.distance_new = 1
+        self.distance_threshold = 0.5 # Distance to a waypoint before it is discarded
 
         # Subscribed topic
-        self.pub_goal = rospy.Publisher('/Current_goal', PoseStamped, queue_size=1)
+        self.pub_goal = rospy.Publisher('/move_base_simple/goal', PoseStamped, queue_size=1)
 
         rospy.Subscriber("/Vehicle_pose",PoseStamped,self.Compare_pose,queue_size=1)
         rospy.Subscriber("/Published_pose",PoseStamped,self.New_input, queue_size=1)
@@ -53,29 +53,39 @@ class Follow():
                     self.Waypoints.append(np_m)
 
     def Compare_pose(self,Pose):
-        # If there are no waypoints Publish the current vehicle position as the goal
+        # https://answers.ros.org/question/222306/transform-a-pose-to-another-frame-with-tf2-in-python/
         if len(self.Waypoints) == 0:
-            self.pub_goal.publish(Pose)
+            pass
         else:
-            Goal      = self.Waypoints[0]
-            transform = self.tf_buffer.lookup_transform("base",Goal.header.frame_id, Pose.header.stamp, rospy.Duration(1.0))
-            Goal_b    = tf2_geometry_msgs.do_transform_pose(Goal, transform)
-            if len(self.Waypoints) == 1
 
-            else 
-
-
-            # https://answers.ros.org/question/222306/transform-a-pose-to-another-frame-with-tf2-in-python/
-            Goal      = self.Waypoints[0]
-            transform = self.tf_buffer.lookup_transform("base",Goal.header.frame_id, Pose.header.stamp, rospy.Duration(1.0))
-            Goal_b    = tf2_geometry_msgs.do_transform_pose(Goal, transform)
+            # Calculate the distance to all current waiting waypoints
+            d2pb = []
+            transform_bm = self.tf_buffer.lookup_transform(self.Waypoints[0].header.frame_id,Pose.header.frame_id, Pose.header.stamp, rospy.Duration(1.0))
+            transform_mb = self.tf_buffer.lookup_transform(Pose.header.frame_id,self.Waypoints[0].header.frame_id, Pose.header.stamp, rospy.Duration(1.0))
+            for Point_m in self.Waypoints:
+                Point_b = tf2_geometry_msgs.do_transform_pose(Point_m, transform_mb)
+                d2pb.append(math.sqrt(Point_b.pose.position.x**2+Point_b.pose.position.y**2))
+            minpos = d2pb.index(min(d2pb))
+            
+            # If any waypoints in the list is closer to the base discard all waypoints up to the closest point 
+            if minpos > 0:
+                for i in range(0,minpos):
+                    del self.Waypoints[0]
+            # If distance to the current first Waypoint is less than the threshhold
+            Goal_m      = self.Waypoints[0]
+            Goal_b    = tf2_geometry_msgs.do_transform_pose(Goal_m, transform_mb)
             distance2waypoint = math.sqrt(Goal_b.pose.position.x**2+Goal_b.pose.position.y**2)
             if distance2waypoint < self.distance_threshold:
-                self.Waypoints.pop(0)
-                if self.Waypoints == []:
-                    pass
-                else:
+                if len(self.Waypoints)  == 1:
+                    # Calculate the direction to the point from the base and subtract keep distance to that Pose
+                    Goal_m_k = 
+                    Pose_m = tf2_geometry_msgs.do_transform_pose(Pose, transform_bm)
+                    self.pub_goal.publish(Pose_m)
+                    del self.Waypoints[0]
+                else: 
+                    del self.Waypoints[0]
                     self.pub_goal.publish(self.Waypoints[0])
+
 
 if __name__ == '__main__':
     try:
