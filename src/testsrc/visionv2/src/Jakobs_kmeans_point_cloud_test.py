@@ -94,7 +94,7 @@ class object_tracker:
 		#_, segmentation_img_DBSCAN_0_05 = DBSCAN_pointcloud(PC_image_bbox_sub_series,bboxes, seg_plot=self.seg_plot ,eps=0.05)
 		#_, segmentation_img_DBSCAN_0_047 = DBSCAN_pointcloud(PC_image_bbox_sub_series,bboxes, seg_plot=self.seg_plot ,eps=0.047)
 		t1=time.time()
-		avg_depth_dbscan, segmentation_img_DBSCAN_0_046 = DBSCAN_pointcloud(PC_image_bbox_sub_series,bboxes, seg_plot=self.seg_plot ,eps=0.046)
+		avg_depth_dbscan, segmentation_img_DBSCAN_0_046,_ = DBSCAN_pointcloud(PC_image_bbox_sub_series,bboxes, seg_plot=self.seg_plot ,eps=0.046)
 		t2=time.time()
 		print(avg_depth_dbscan)
 		print(t2-t1,"time for dbscan")
