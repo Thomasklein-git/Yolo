@@ -10,7 +10,7 @@ import time
 
 ### Imports for ROS ###
 from sensor_msgs.msg import Image
-from sensor_msgs.msg import PointCloud2
+from sensor_msgs.msg import PointCloud2, PointField
 from geometry_msgs.msg import PoseStamped
 from cv_bridge import CvBridge, CvBridgeError
 import message_filters
@@ -18,7 +18,7 @@ import message_filters
 
 ### New tracker
 #from Frank.Object_handler import Object_handler
-from Object_handler_test_vel import Object_handler
+from Frank.Object_handler_test_vel import Object_handler
 
 ### Imports for Yolo
 from yolov3.utils import detect_image, Load_Yolo_model
@@ -40,67 +40,55 @@ class object_tracker:
 		classNum = len(list(read_class_names(YOLO_COCO_CLASSES).values()))
 		self.ClassNames = read_class_names(YOLO_COCO_CLASSES)
 		self.OH 	= Object_handler(classNum)
-		self.pose = PoseStamped()
 
 		print("[INFO] Loading videofeed...")	
 		image_sub = message_filters.Subscriber("/zed2/zed_node/left/image_rect_color",Image)
-		#depth_sub = message_filters.Subscriber("/zed2/zed_node/depth/depth_registered",Image)
 		cloud_sub = message_filters.Subscriber("/zed2/zed_node/point_cloud/cloud_registered",PointCloud2)
 		self.pose_pub = rospy.Publisher('/Published_pose', PoseStamped, queue_size=1)
+		self.reduc_cloud_pub = rospy.Publisher("/Reduced_cloud", PointCloud2, queue_size=1)
 
 		print("[INFO] initializing config...")
 		self.show = False # Show tracker
 		self.seg_plot = False # Create segmentation plot
-		#self.dep_active = 0
-		#self.cal_active = 0
-		#self.min_depth = 0.3
 		
 		print("[INFO] Initialize Display...")
-
-
 		Frank = cv2.imread(os.path.join(os.path.dirname( __file__ ),"Frank/Frank.png"),cv2.IMREAD_COLOR)
-		#cv2.imshow("Image_window",Frank)
-		#detect_image(yolo, Frank, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
-		#self.Update_Images()
+
 		print("[INFO] Loading complete")
-		#mf = message_filters.ApproximateTimeSynchronizer([image_sub,depth_sub,cloud_sub],1,0.07)
-		#mf = message_filters.ApproximateTimeSynchronizer([image_sub,cloud_sub],1,0.07) #Set close to zero in order to syncronize img and point cloud (be aware of frame rate) 
 		mf = message_filters.TimeSynchronizer([image_sub,cloud_sub],1)
 		mf.registerCallback(self.callback)
 
-	#def callback(self,image,depth,cloud):
 	def callback(self,image,cloud):
-		print("start")
 		Time = float("%.6f" %  image.header.stamp.to_sec()) # get time stamp for image in callback
 		# Generate images from msgs
 		cv_image = self.bridge.imgmsg_to_cv2(image, image.encoding)
 		#cv_image_depth = self.bridge.imgmsg_to_cv2(depth, depth.encoding)
-		cv_image_pc = PC_dataxyz_to_PC_image(cloud,Org_img_height=376,Org_img_width=672)
+		pc_list, cv_image_pc = PC_dataxyz_to_PC_image(cloud,Org_img_height=376,Org_img_width=672)
 		# Yolo to get Boundary Boxes
 		_ , bboxes=detect_image(self.yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
 		# Convert Boundary boxes to readable values
 		PC_image_bbox_sub_series = Sub_pointcloud(cv_image_pc, bboxes)
-		avg_depth, segmentation_img, xyzcoord_series = k_means_pointcloud(PC_image_bbox_sub_series, bboxes, PC=True, seg_plot=self.seg_plot)
+		_, _, xyzcoord_series = DBSCAN_pointcloud(PC_image_bbox_sub_series, bboxes, seg_plot=self.seg_plot)
 
 
 		x1, y1, x2, y2, Score, C = Give_boundingbox_coor_class(bboxes)
 		boxes = []
 		for i in range(len(bboxes)):	
-			#boxes.append([x1[i],y1[i],x2[i],y2[i],Score[i],C[i],xyzcoord_series[i]])
 			boxes.append([x1[i],y1[i],x2[i],y2[i],Score[i],C[i],xyzcoord_series[i],Time])
 		boxes = np.array(boxes)	
 		self.OH.add(boxes)
-		if self.OH.Known[0][self.OH.KnownOrder.get("UID")] == 0:
-			self.pose.header.stamp = rospy.Time.now()
-			self.pose.header.frame_id = "zed2_left_camera_frame"
-			self.pose.pose.position.x = self.OH.Known[0][self.OH.KnownOrder.get("Depth_X")]
-			self.pose.pose.position.y = self.OH.Known[0][self.OH.KnownOrder.get("Depth_Y")]
-			self.pose.pose.position.z = self.OH.Known[0][self.OH.KnownOrder.get("Depth_Z")]
-			self.pose.pose.orientation.x = float(0)
-			self.pose.pose.orientation.y = float(0)
-			self.pose.pose.orientation.z = float(0)
-			self.pose.pose.orientation.w = float(1)
-			self.pose_pub.publish(self.pose)
+		
+		TrackID = 0
+
+		if len(self.OH.Known) > 0: 
+			Target 		= self.OH.Known[TrackID]
+			TargetOrder = self.OH.KnownOrder.get
+
+			Reduced_PC  = PC_reduc(Target, TargetOrder, pc_list, cloud)
+			self.reduc_cloud_pub.publish(Reduced_PC)
+
+			Pose 		= Waypoint_planter(Target, TargetOrder, "zed2_left_camera_frame", rospy.Time.now())
+			self.pose_pub.publish(Pose)
 		
 		if self.show == True:
 			self.show_img(cv_image,segmentation_img)
