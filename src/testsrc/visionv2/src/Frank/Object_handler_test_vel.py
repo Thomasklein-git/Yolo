@@ -96,7 +96,7 @@ class Object_handler():
                     for i in Current_i:
                         Current_D.append([self.Current[i][self.CurrentOrder.get("Depth_X")],self.Current[i][self.CurrentOrder.get("Depth_Y")],self.Current[i][self.CurrentOrder.get("Depth_Z")]])
                         Current_Time.append([self.Current[i][self.CurrentOrder.get("Time")]]) #tilføjet
-                        
+
                     for i in Known_i:
                         Known_D.append([self.Known[i][self.KnownOrder.get("Depth_X")],self.Known[i][self.KnownOrder.get("Depth_Y")],self.Known[i][self.KnownOrder.get("Depth_Z")]])         
                         Known_Time.append([self.Known[i][self.KnownOrder.get("Time")]]) #tilføjet

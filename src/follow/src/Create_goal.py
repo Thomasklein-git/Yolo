@@ -26,13 +26,13 @@ class Follow():
         # Subscribed topic
         self.pub_goal = rospy.Publisher('/move_base_simple/goal', PoseStamped, queue_size=1)
 
-        rospy.Subscriber("/Vehicle_pose",PoseStamped,self.Compare_pose,queue_size=1)
+        rospy.Subscriber("/odometry/filtered_map",PoseStamped,self.Compare_pose,queue_size=1)
         rospy.Subscriber("/Published_pose",PoseStamped,self.New_input, queue_size=1)
         
         
     def New_input(self,Pose):
         Waypoints = self.Waypoints
-        transform = self.tf_buffer.lookup_transform("base", Pose.header.frame_id, rospy.Time(0), rospy.Duration(1.0))
+        transform = self.tf_buffer.lookup_transform("base_link", Pose.header.frame_id, rospy.Time(0), rospy.Duration(1.0))
         np_b = tf2_geometry_msgs.do_transform_pose(Pose, transform) # New Waypoint in base
         npd = math.sqrt((np_b.pose.position.x)**2+(np_b.pose.position.y)**2)
 

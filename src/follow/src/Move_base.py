@@ -13,7 +13,7 @@ class Sync_base():
         stamp = rospy.Time.now()
         self.br.sendTransform(trans, rot, stamp,"base","map")
 
-        rospy.Subscriber("/Vehicle_pose", PoseStamped, self.base_pose, queue_size=1)
+        rospy.Subscriber("/odometry/filtered_map", PoseStamped, self.base_pose, queue_size=1)
     
     def base_pose(self,Pose):
         self.br = TransformBroadcaster()

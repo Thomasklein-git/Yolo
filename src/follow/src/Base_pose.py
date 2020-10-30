@@ -8,13 +8,13 @@ import math
 class Base_pose():
     def __init__(self):
         rospy.init_node('Base_position', anonymous=True)
-        self.base_pub = rospy.Publisher('/Vehicle_pose', PoseStamped, queue_size=1)
+        self.base_pub = rospy.Publisher('/odometry/filtered_map', PoseStamped, queue_size=1)
 
         self.br = TransformBroadcaster()
         trans = (0,0,0)
         rot   = (0,0,0,1)
         stamp = rospy.Time.now()
-        self.br.sendTransform(trans, rot, stamp,"base","map")
+        self.br.sendTransform(trans, rot, stamp,"base_link","map")
 
         self.Current_goal = []
         self.Movedir = [0,0,0]
@@ -32,7 +32,7 @@ class Base_pose():
         rate = rospy.Rate(0.5) # 10hz
 
         while not rospy.is_shutdown():
-            rospy.Subscriber("/Current_goal", PoseStamped, self.Find_goal, queue_size=1)
+            rospy.Subscriber("/move_base/Current_goal", PoseStamped, self.Find_goal, queue_size=1)
             if self.Current_goal == []:
                 self.Movedir = [0,0,0]
             else:

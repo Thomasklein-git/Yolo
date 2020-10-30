@@ -93,33 +93,6 @@ class object_tracker:
 
 			Pose 		= Waypoint_planter(Target, TargetOrder, "zed2_left_camera_frame", rospy.Time.now())
 			self.pose_pub.publish(Pose)
-
-			"""
-			bbox_i = []
-			for y in range(self.OH.Known[0][self.OH.KnownOrder.get("Start_y")],self.OH.Known[0][self.OH.KnownOrder.get("End_y")]):
-				sx = self.OH.Known[0][self.OH.KnownOrder.get("Start_x")]
-				ex = self.OH.Known[0][self.OH.KnownOrder.get("End_x")]
-				bbox_i += list(range((y*672+sx)*3,(y*672+ex+1)*3))
-			pc_list = np.delete(pc_list, bbox_i)
-			pc_list = pc_list.reshape(int(len(pc_list)/3),3)
-			pc_list= pc_list[~np.isnan(pc_list).any(axis=1)]
-			pc_list= pc_list[~np.isinf(pc_list).any(axis=1)]
-			header = cloud.header
-			points = pc2.create_cloud_xyz32(header,pc_list)
-			"""
-			
-
-			"""
-			self.pose.header.stamp = rospy.Time.now()
-			self.pose.header.frame_id = "zed2_left_camera_frame" #"zed2_left_camera_frame"
-			self.pose.pose.position.x = self.OH.Known[0][self.OH.KnownOrder.get("Depth_X")]
-			self.pose.pose.position.y = self.OH.Known[0][self.OH.KnownOrder.get("Depth_Y")]
-			self.pose.pose.position.z = self.OH.Known[0][self.OH.KnownOrder.get("Depth_Z")]
-			self.pose.pose.orientation.x = float(0)
-			self.pose.pose.orientation.y = float(0)
-			self.pose.pose.orientation.z = float(0)
-			self.pose.pose.orientation.w = float(1)
-			"""
 			
 		
 		if self.show == True:
