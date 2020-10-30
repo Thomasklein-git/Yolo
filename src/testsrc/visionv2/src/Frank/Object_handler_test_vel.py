@@ -95,7 +95,7 @@ class Object_handler():
                     UsedCol = []
                     for i in Current_i:
                         Current_D.append([self.Current[i][self.CurrentOrder.get("Depth_X")],self.Current[i][self.CurrentOrder.get("Depth_Y")],self.Current[i][self.CurrentOrder.get("Depth_Z")]])
-                        Current_Time.append([self.Current[i][self.CurrentOrder.get("Time")]]) #tilføjet
+                        Current_Time=([self.Current[i][self.CurrentOrder.get("Time")]]) #tilføjet
 
                     for i in Known_i:
                         Known_D.append([self.Known[i][self.KnownOrder.get("Depth_X")],self.Known[i][self.KnownOrder.get("Depth_Y")],self.Known[i][self.KnownOrder.get("Depth_Z")]])         
@@ -103,10 +103,15 @@ class Object_handler():
 
                     if len(Known_D) > 0:
                         D = dist.cdist(np.array(Current_D), np.array(Known_D))
-                        #print(D[0][0],"distance")
-                        #print(Known_Time[0][0],"Known time")
-                        #print(Current_Time[0][0],"current time")
-                        V = D[0][0]/(Current_Time[0][0]-Known_Time[0][0]) #tilføjet
+                        
+                        V_obj_car=np.array([]) # Velocity of object relative to Vehicle
+                        for i in range(D.shape[1]):
+                            V=D[:,i]/(np.array(Current_Time)-np.array(Known_Time[i]))
+                            V_obj_car=np.append(V_obj_car,V)
+                        V_obj_car=np.transpose(np.reshape(V_obj_car,D.shape))
+                        
+                        print(V_obj_car)
+                        
                         pairs = min(len(Current_i), len(Known_i))
                         for i in range(0,pairs):
                             D1 = np.where(D==D.min())
@@ -155,7 +160,7 @@ class Object_handler():
                 Current[self.CurrentOrder.get("End_x")] ,Current[self.CurrentOrder.get("End_y")], \
                 Current[self.CurrentOrder.get("Score")], 0, Current[self.CurrentOrder.get("Depth_X")], \
                 Current[self.CurrentOrder.get("Depth_Y")], Current[self.CurrentOrder.get("Depth_Z")], \
-                Current[self.CurrentOrder.get('Time')]]          
+                Current[self.CurrentOrder.get('Time')]]           
         self.Known.append(Known)
 
     def update(self,Current,Known_update):
