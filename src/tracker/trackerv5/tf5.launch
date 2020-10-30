@@ -1,0 +1,12 @@
+<launch>
+   <!-- Launching static transforms -->
+   <node pkg="tf" type="static_transform_publisher" name="zed_base_tf" args="0 0 0.2 0 0 0 1 base_link zed2_left_camera_frame 10"/>
+   <!--<node pkg="tf" type="static_transform_publisher" name="zero_map_tf" args="0 0 0 0 0 0 1 zero zero 10"/>-->
+
+   <!-- Launch Vehicle mover -->
+   <node name="Base_pose" pkg="tracker" type="Base_posev5.py"/>
+
+   <!-- Launch Create_goal -->
+   <node name="Create_goal" pkg="tracker" type="Create_goalv5.py"/>
+ 
+</launch>
