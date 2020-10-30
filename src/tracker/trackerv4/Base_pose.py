@@ -14,7 +14,7 @@ class Base_pose():
         trans = (0,0,0)
         rot   = (0,0,0,1)
         stamp = rospy.Time.now()
-        self.br.sendTransform(trans, rot, stamp,"base","map")
+        self.br.sendTransform(trans, rot, stamp,"base_link","map")
 
         self.Current_goal = []
         self.Movedir = [0,0,0]
@@ -49,7 +49,7 @@ class Base_pose():
             self.br = TransformBroadcaster()
             trans = (self.VPose.pose.position.x, self.VPose.pose.position.y, self.VPose.pose.position.z)
             rot   = (self.VPose.pose.orientation.x, self.VPose.pose.orientation.y, self.VPose.pose.orientation.z, self.VPose.pose.orientation.w)
-            self.br.sendTransform(trans, rot, self.VPose.header.stamp,"base","map") #Pose.header.stamp,"base","map")
+            self.br.sendTransform(trans, rot, self.VPose.header.stamp,"base_link","map") #Pose.header.stamp,"base","map")
             self.base_pub.publish(self.VPose)
             rate.sleep()
 
