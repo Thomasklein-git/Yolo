@@ -2,6 +2,7 @@
 
 import rospy
 from geometry_msgs.msg import PoseStamped
+from nav_msgs.msg import Odometry
 import tf2_ros
 import tf2_geometry_msgs
 from tf import TransformListener
@@ -26,7 +27,7 @@ class Follow():
         # Subscribed topic
         self.pub_goal = rospy.Publisher('/move_base_simple/goal', PoseStamped, queue_size=1)
 
-        rospy.Subscriber("/odometry/filtered_map",PoseStamped,self.Compare_pose,queue_size=1)
+        rospy.Subscriber("/odometry/filtered_map",Odometry,self.Compare_pose,queue_size=1)
         rospy.Subscriber("/Published_pose",PoseStamped,self.New_input, queue_size=1)
         rospy.Subscriber("/move_base_simple/goal",PoseStamped,self.Current_goal, queue_size=1)
         
@@ -77,9 +78,7 @@ class Follow():
             # Check if the current Waypoint in 
             Goal_m      = self.Waypoints[0]
             Goal_b    = tf2_geometry_msgs.do_transform_pose(Goal_m, transform_mb)
-            print(Goal_b)
             distance2waypoint = math.sqrt(Goal_b.pose.position.x**2+Goal_b.pose.position.y**2)
-            print(distance2waypoint)
             # if the waypoint is further away than distance threshold, check if point is the current goal or else publish as current goal
             if distance2waypoint > self.distance_threshold:
                 # If current waypoint is the same as goal, pass

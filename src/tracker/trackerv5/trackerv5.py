@@ -81,13 +81,16 @@ class object_tracker:
 			boxes.append([x1[i],y1[i],x2[i],y2[i],Score[i],C[i],xyzcoord_series[i],Time])
 		boxes = np.array(boxes)	
 		self.OH.add(boxes)
+
 		fp = True
+		Track = 0
 		for known in self.OH.Known:
 			find_person = known[self.OH.KnownOrder.get("Class")]
 			if find_person == 0 and fp == True:
-				TrackID = known[self.OH.KnownOrder.get("UID")]
+				TrackID = Track
 				fp = False
-
+			Track += 1
+		print(TrackID)
 		#if any(self.OH.Known[self.OH.KnownOrder.get("Class")] == )
 		if fp == False: #len(self.OH.Known) > 0: #self.OH.Known[TrackID][self.OH.KnownOrder.get("UID")] == TrackID:
 			Target 		= self.OH.Known[TrackID]
