@@ -127,11 +127,19 @@ class Object_handler():
 
                         V_obj=V_obj_car+V_car
 
-                        print(V_obj_car, "Velocity object relative to vehicle")
-                        print(V_car, "Velocity vehicle")
-                        print(V_obj, "Velocity object")
+                        #print(V_obj_car, "Velocity object relative to vehicle")
+                        #print(V_car, "Velocity vehicle")
+                        #print(V_obj, "Velocity object")
                         
                         pairs = min(len(Current_i), len(Known_i))
+                        for i in range(0,pairs):
+                            V_obj1 = np.where(V_obj==V_obj.min())
+                            UsedRow.append(V_obj1[0][0])
+                            UsedCol.append(V_obj1[1][0])
+                            V_obj[UsedRow[i]][0:len(Known_i)] = 1000
+                            for j in range(0,len(Current_i)):
+                                V_obj[j][UsedCol[i]] = 1000
+                        """
                         for i in range(0,pairs):
                             D1 = np.where(D==D.min())
                             UsedRow.append(D1[0][0])
@@ -139,6 +147,7 @@ class Object_handler():
                             D[UsedRow[i]][0:len(Known_i)] = 1000
                             for j in range(0,len(Current_i)):
                                 D[j][UsedCol[i]] = 1000
+                        """
                     # Updating Known to match current pairs
                     
                     for i in UsedRow:
