@@ -18,7 +18,7 @@ import message_filters
 
 ### New tracker
 #from Frank.Object_handler import Object_handler
-from Frank.Object_handler import Object_handler
+from Frank.Object_handler_test_vel import Object_handler
 
 ### Imports for Yolo
 from yolov3.utils import detect_image, Load_Yolo_model
@@ -81,10 +81,15 @@ class object_tracker:
 			boxes.append([x1[i],y1[i],x2[i],y2[i],Score[i],C[i],xyzcoord_series[i],Time])
 		boxes = np.array(boxes)	
 		self.OH.add(boxes)
-		
-		TrackID = 0
+		fp = True
+		for known in self.OH.Known:
+			find_person = known[self.OH.KnownOrder.get("Class")]
+			if find_person == 0 and fp == True:
+				TrackID = known[self.OH.KnownOrder.get("UID")]
+				fp = False
 
-		if len(self.OH.Known) > 0: #self.OH.Known[TrackID][self.OH.KnownOrder.get("UID")] == TrackID:
+		#if any(self.OH.Known[self.OH.KnownOrder.get("Class")] == )
+		if fp == False: #len(self.OH.Known) > 0: #self.OH.Known[TrackID][self.OH.KnownOrder.get("UID")] == TrackID:
 			Target 		= self.OH.Known[TrackID]
 			TargetOrder = self.OH.KnownOrder.get
 
