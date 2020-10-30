@@ -11,6 +11,7 @@ import time
 ### Imports for ROS ###
 from sensor_msgs.msg import Image
 from sensor_msgs.msg import PointCloud2, PointField
+from nav_msgs.msg import Odometry
 from geometry_msgs.msg import PoseStamped
 from cv_bridge import CvBridge, CvBridgeError
 import message_filters
@@ -44,6 +45,8 @@ class object_tracker:
 		print("[INFO] Loading videofeed...")	
 		image_sub = message_filters.Subscriber("/zed2/zed_node/left/image_rect_color",Image)
 		cloud_sub = message_filters.Subscriber("/zed2/zed_node/point_cloud/cloud_registered",PointCloud2)
+		#Odometry_sub = message_filters.Subscriber('/odometry/filtered_map', Odometry)
+		self.vehicle_pose = rospy.Subscriber('/odometry/filtered_map', Odometry, self.callback_odom)
 		self.pose_pub = rospy.Publisher('/Published_pose', PoseStamped, queue_size=1)
 		self.reduc_cloud_pub = rospy.Publisher("/Reduced_cloud", PointCloud2, queue_size=1)
 
@@ -78,7 +81,7 @@ class object_tracker:
 		boxes = []
 		for i in range(len(bboxes)):	
 			#boxes.append([x1[i],y1[i],x2[i],y2[i],Score[i],C[i],xyzcoord_series[i]])
-			boxes.append([x1[i],y1[i],x2[i],y2[i],Score[i],C[i],xyzcoord_series[i],Time])
+			boxes.append([x1[i],y1[i],x2[i],y2[i],Score[i],C[i],xyzcoord_series[i],Time,self.vehicle_pose])
 		boxes = np.array(boxes)	
 		self.OH.add(boxes)
 		fp = True
@@ -102,6 +105,13 @@ class object_tracker:
 		
 		if self.show == True:
 			self.show_img(cv_image,segmentation_img)
+
+	def callback_odom(self,odometry):
+		x_vehicle=odometry.pose.pose.position.x
+		y_vehicle=odometry.pose.pose.position.y
+		z_vehicle=odometry.pose.pose.position.z
+		self.vehicle_pose=[x_vehicle,y_vehicle,z_vehicle]
+
 
 	def show_img(self,image, segmented_image):
 		for Object in self.OH.Known:
