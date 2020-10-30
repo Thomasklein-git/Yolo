@@ -360,20 +360,23 @@ def Simple_Pinhole(P,D):
     return x, y , D
 
 def PC_reduc(Target, TargetOrder, pc_list, cloud):
-    Start_x = Target[TargetOrder("Start_x")]
-    Start_y = Target[TargetOrder("Start_y")]
-    End_x   = Target[TargetOrder("End_x")]
-    End_y   = Target[TargetOrder("End_y")]
+    if Target == None:
+        Reduced_PC2 = cloud
+    else:
+        Start_x = Target[TargetOrder("Start_x")]
+        Start_y = Target[TargetOrder("Start_y")]
+        End_x   = Target[TargetOrder("End_x")]
+        End_y   = Target[TargetOrder("End_y")]
 
-    bbox_i = []
-    for y in range(Start_y,End_y):
-        bbox_i += list(range((y*672+Start_x)*3,(y*672+End_x+1)*3))
-    pc_list = np.delete(pc_list, bbox_i)
-    pc_list = pc_list.reshape(int(len(pc_list)/3),3)
-    pc_list= pc_list[~np.isnan(pc_list).any(axis=1)]
-    pc_list= pc_list[~np.isinf(pc_list).any(axis=1)]
-    header = cloud.header
-    Reduced_PC2 = pc2.create_cloud_xyz32(header, pc_list)
+        bbox_i = []
+        for y in range(Start_y,End_y):
+            bbox_i += list(range((y*672+Start_x)*3,(y*672+End_x+1)*3))
+        pc_list = np.delete(pc_list, bbox_i)
+        pc_list = pc_list.reshape(int(len(pc_list)/3),3)
+        pc_list= pc_list[~np.isnan(pc_list).any(axis=1)]
+        pc_list= pc_list[~np.isinf(pc_list).any(axis=1)]
+        header = cloud.header
+        Reduced_PC2 = pc2.create_cloud_xyz32(header, pc_list)
     return Reduced_PC2
 
 def Waypoint_planter(Target, TargetOrder, Frame_id, Time):
@@ -388,4 +391,24 @@ def Waypoint_planter(Target, TargetOrder, Frame_id, Time):
     Pose.pose.orientation.z = float(0)
     Pose.pose.orientation.w = float(1)
     return Pose
+
+def Choose_target(OH, Target_class):
+    # Find the UID associated with the first found target from Target_class
+    fp = True
+    Target_Found = False
+    Target_UID = []
+    for Target in OH.Known:
+        if Target[OH.KnownOrder.get("Class")] == Target_class and fp == True:
+            Target_UID = Target[OH.KnownOrder.get("UID")]
+            Target_Found = True
+            fp == False
+    return Target_UID, Target_Found
     
+def Find_target(OH, Target_UID):
+    Index = []
+    Occlusion = []
+    for i in range(0,len(OH.Known)):
+        if OH.Known[i][OH.KnownOrder.get("UID")] == Target_UID:
+            Index = i
+            Occlusion = OH.Known[i][OH.KnownOrder.get("Occlusion")]
+    return Index, Occlusion

@@ -48,6 +48,9 @@ class object_tracker:
 		self.reduc_cloud_pub = rospy.Publisher("/Reduced_cloud", PointCloud2, queue_size=1)
 
 		print("[INFO] initializing config...")
+		self.Target_class = 0 # Class 0 is person
+		self.Target_Found = False
+		self.Target_UID = []
 		self.show = False # Show tracker
 		self.seg_plot = False # Create segmentation plot
 		
@@ -56,12 +59,13 @@ class object_tracker:
 
 		print("[INFO] Loading complete")
 		#mf = message_filters.ApproximateTimeSynchronizer([image_sub,depth_sub,cloud_sub],1,0.07)
-		#mf = message_filters.ApproximateTimeSynchronizer([image_sub,cloud_sub],1,0.07) #Set close to zero in order to syncronize img and point cloud (be aware of frame rate) 
-		mf = message_filters.TimeSynchronizer([image_sub,cloud_sub],1)
+		mf = message_filters.ApproximateTimeSynchronizer([image_sub,cloud_sub],1,5) #Set close to zero in order to syncronize img and point cloud (be aware of frame rate) 
+		#mf = message_filters.TimeSynchronizer([image_sub,cloud_sub],1)
 		mf.registerCallback(self.callback)
 
 	#def callback(self,image,depth,cloud):
 	def callback(self,image,cloud):
+		print("cb")
 		Time = float("%.6f" %  image.header.stamp.to_sec()) # get time stamp for image in callback
 		# Generate images from msgs
 		cv_image = self.bridge.imgmsg_to_cv2(image, image.encoding)
@@ -82,25 +86,33 @@ class object_tracker:
 		boxes = np.array(boxes)	
 		self.OH.add(boxes)
 
-		fp = True
-		Track = 0
-		for known in self.OH.Known:
-			find_person = known[self.OH.KnownOrder.get("Class")]
-			if find_person == 0 and fp == True:
-				TrackID = Track
-				fp = False
-			Track += 1
-		print(TrackID)
-		#if any(self.OH.Known[self.OH.KnownOrder.get("Class")] == )
-		if fp == False: #len(self.OH.Known) > 0: #self.OH.Known[TrackID][self.OH.KnownOrder.get("UID")] == TrackID:
-			Target 		= self.OH.Known[TrackID]
-			TargetOrder = self.OH.KnownOrder.get
 
-			Reduced_PC  = PC_reduc(Target, TargetOrder, pc_list, cloud)
+
+		# Find UID to a target
+		if self.Target_Found == False:
+			self.Target_UID, self.Target_Found = Choose_target(self.OH, self.Target_class)
+
+		# If target 
+		if self.Target_Found == True:
+			Target_I, Target_Occlusion = Find_target(self.OH, self.Target_UID)
+			if Target_I == []:
+				print("Target is Lost")
+			elif Target_Occlusion > 0:
+				print("Target was occluded {} frames ago".format(Target_Occlusion))
+			else:
+				Target = self.OH.Known[Target_I]
+				TargetOrder = self.OH.KnownOrder.get
+
+				Reduced_PC  = PC_reduc(Target, TargetOrder, pc_list, cloud)
+				self.reduc_cloud_pub.publish(Reduced_PC)
+
+				Pose 		= Waypoint_planter(Target, TargetOrder, "zed2_left_camera_frame", rospy.Time.now())
+				self.pose_pub.publish(Pose)
+		else: 
+			Reduced_PC  = PC_reduc(None, None, pc_list, cloud)
 			self.reduc_cloud_pub.publish(Reduced_PC)
 
-			Pose 		= Waypoint_planter(Target, TargetOrder, "zed2_left_camera_frame", rospy.Time.now())
-			self.pose_pub.publish(Pose)
+			
 			
 		
 		if self.show == True:

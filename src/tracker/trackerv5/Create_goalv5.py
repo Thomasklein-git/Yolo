@@ -74,7 +74,6 @@ class Follow():
                 for i in range(0,minpos):
                     del self.Waypoints[0]
 
-
             # Check if the current Waypoint in 
             Goal_m      = self.Waypoints[0]
             Goal_b    = tf2_geometry_msgs.do_transform_pose(Goal_m, transform_mb)
