@@ -398,6 +398,7 @@ def Choose_target(OH, Target_class):
     Target_Found = False
     Target_UID = []
     for Target in OH.Known:
+        print(Target[OH.KnownOrder.get("Class")])
         if Target[OH.KnownOrder.get("Class")] == Target_class and fp == True:
             Target_UID = Target[OH.KnownOrder.get("UID")]
             Target_Found = True
