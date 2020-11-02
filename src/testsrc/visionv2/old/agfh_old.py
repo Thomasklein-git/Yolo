@@ -90,3 +90,41 @@ def DBSCAN_pointcloud_old(img, eps=0.5):
     #avg_depth=1
     return avg_depth
 
+def Simple_Pinhole(P,D):
+    '''
+    Simple Pinhole Model to calculate physical position based on depth and pixel coordinates 
+    for Zed2 left camera FullHD. Numeric.
+    Assumed no rotation or translation
+    #https://docs.opencv.org/2.4/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html
+    Parameters:
+        P: Position (Pixel)
+        D: Depth (m)
+        c: Pricipal point
+        f: Focal length
+        
+    fx=529.085
+    fy=528.38
+    cx=645.815
+    cy=376.6125
+    k1=-0.0396842
+    k2=0.00917941
+    k3=-0.0047467
+    p1=0.00010877
+    p2=0.000124303
+    '''
+    f = [529.085,528.38]
+    c = [645.815,376.6125]
+    R = [[0, 0, 1],[0, 1, 0], [-1 , 0, 0]] # Rotation around y axis
+
+    xm = (P[0]-c[0])/f[0]
+    ym = (P[1]-c[1])/f[1]
+
+    x = xm*D
+    y = ym*D
+
+    #Lc = [[x],[y],[d]]
+
+    #Gc = Lc*R 
+    #print(Gc)   
+    
+    return x, y , D

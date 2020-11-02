@@ -320,45 +320,6 @@ def k_means_pointcloud(img, bboxes, PC=True, seg_plot=True, k=3,max_iter=1000,to
 
     return avg_depth_series, segmented_img_color_series, xyzcoord_series
 
-def Simple_Pinhole(P,D):
-    '''
-    Simple Pinhole Model to calculate physical position based on depth and pixel coordinates 
-    for Zed2 left camera FullHD. Numeric.
-    Assumed no rotation or translation
-    #https://docs.opencv.org/2.4/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html
-    Parameters:
-        P: Position (Pixel)
-        D: Depth (m)
-        c: Pricipal point
-        f: Focal length
-        
-    fx=529.085
-    fy=528.38
-    cx=645.815
-    cy=376.6125
-    k1=-0.0396842
-    k2=0.00917941
-    k3=-0.0047467
-    p1=0.00010877
-    p2=0.000124303
-    '''
-    f = [529.085,528.38]
-    c = [645.815,376.6125]
-    R = [[0, 0, 1],[0, 1, 0], [-1 , 0, 0]] # Rotation around y axis
-
-    xm = (P[0]-c[0])/f[0]
-    ym = (P[1]-c[1])/f[1]
-
-    x = xm*D
-    y = ym*D
-
-    #Lc = [[x],[y],[d]]
-
-    #Gc = Lc*R 
-    #print(Gc)   
-    
-    return x, y , D
-
 def PC_reduc(Target, TargetOrder, pc_list, cloud):
     Start_x = Target[TargetOrder("Start_x")]
     Start_y = Target[TargetOrder("Start_y")]
@@ -389,3 +350,24 @@ def Waypoint_planter(Target, TargetOrder, Frame_id, Time):
     Pose.pose.orientation.w = float(1)
     return Pose
     
+def Choose_target(OH, Target_class):
+    # Find the UID associated with the first found target from Target_class
+    fp = True
+    Target_Found = False
+    Target_UID = []
+    for Target in OH.Known:
+        print(Target[OH.KnownOrder.get("Class")])
+        if Target[OH.KnownOrder.get("Class")] == Target_class and fp == True:
+            Target_UID = Target[OH.KnownOrder.get("UID")]
+            Target_Found = True
+            fp == False
+    return Target_UID, Target_Found
+    
+def Find_target(OH, Target_UID):
+    Index = []
+    Occlusion = []
+    for i in range(0,len(OH.Known)):
+        if OH.Known[i][OH.KnownOrder.get("UID")] == Target_UID:
+            Index = i
+            Occlusion = OH.Known[i][OH.KnownOrder.get("Occlusion")]
+    return Index, Occlusion
