@@ -50,17 +50,23 @@ class object_tracker:
 		self.pose_pub = rospy.Publisher('/Published_pose', PoseStamped, queue_size=1)
 		self.reduc_cloud_pub = rospy.Publisher("/Reduced_cloud", PointCloud2, queue_size=1)
 
+		self.timed_cloud_pub = rospy.Publisher("/Timed_cloud", PointCloud2, queue_size=1)
+		self.boxed_image_pub = rospy.Publisher("/Boxed_image", Image, queue_size=1)
+
 		print("[INFO] initializing config...")
-		self.show = False # Show tracker
-		self.seg_plot = False # Create segmentation plot
+		self.Target_class = 0 # Class 0 is person
+		self.Target_Found = False
+		self.Target_UID = []
+		self.show = True # Show tracker
+		self.seg_plot = True # Create segmentation plot
 		
 		print("[INFO] Initialize Display...")
 		Frank = cv2.imread(os.path.join(os.path.dirname( __file__ ),"Frank/Frank.png"),cv2.IMREAD_COLOR)
 
 		print("[INFO] Loading complete")
 		#mf = message_filters.ApproximateTimeSynchronizer([image_sub,depth_sub,cloud_sub],1,0.07)
-		#mf = message_filters.ApproximateTimeSynchronizer([image_sub,cloud_sub],1,0.07) #Set close to zero in order to syncronize img and point cloud (be aware of frame rate) 
-		mf = message_filters.TimeSynchronizer([image_sub,cloud_sub],1)
+		mf = message_filters.ApproximateTimeSynchronizer([image_sub,cloud_sub],1,5) #Set close to zero in order to syncronize img and point cloud (be aware of frame rate) 
+		#mf = message_filters.TimeSynchronizer([image_sub,cloud_sub],1)
 		mf.registerCallback(self.callback)
 
 	#def callback(self,image,depth,cloud):
@@ -74,7 +80,7 @@ class object_tracker:
 		_ , bboxes=detect_image(self.yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
 		# Convert Boundary boxes to readable values
 		PC_image_bbox_sub_series = Sub_pointcloud(cv_image_pc, bboxes)
-		_, segmentation_img, xyzcoord_series = DBSCAN_pointcloud(PC_image_bbox_sub_series, bboxes, seg_plot=self.seg_plot)
+		_, segmentation_img, xyzcoord_series, labels_series = DBSCAN_pointcloud(PC_image_bbox_sub_series, bboxes, seg_plot=self.seg_plot)
 
 
 		x1, y1, x2, y2, Score, C = Give_boundingbox_coor_class(bboxes)
@@ -85,26 +91,44 @@ class object_tracker:
 		boxes = np.array(boxes)	
 		self.OH.add(boxes)
 		fp = True
-		for known in self.OH.Known:
-			find_person = known[self.OH.KnownOrder.get("Class")]
-			if find_person == 0 and fp == True:
-				TrackID = known[self.OH.KnownOrder.get("UID")]
-				fp = False
 
-		#if any(self.OH.Known[self.OH.KnownOrder.get("Class")] == )
-		if fp == False: #len(self.OH.Known) > 0: #self.OH.Known[TrackID][self.OH.KnownOrder.get("UID")] == TrackID:
-			Target 		= self.OH.Known[TrackID]
-			TargetOrder = self.OH.KnownOrder.get
+		# Find UID to a target
+		if self.Target_Found == False:
+			self.Target_UID, self.Target_Found = Choose_target(self.OH, self.Target_class)
 
-			Reduced_PC  = PC_reduc(Target, TargetOrder, pc_list, cloud)
+		# If target 
+		if self.Target_Found == True:
+			Target_I, Target_Occlusion = Find_target(self.OH, self.Target_UID)
+			if Target_I == []:
+				print("Target is Lost")
+			elif Target_Occlusion > 0:
+				print("Target was occluded {} frames ago".format(Target_Occlusion))
+			else:
+				Target = self.OH.Known[Target_I]
+				TargetOrder = self.OH.KnownOrder.get
+				SegID = Target[self.OH.KnownOrder.get("Current_listing")]
+
+				Seg = labels_series[SegID]
+				bbox = boxes[SegID]
+
+				
+				
+				#Reduced_PC  = PC_reduc_seg()
+				Reduced_PC = PC_reduc_seg(bbox, Seg ,pc_list,cloud)
+
+				#Reduced_PC  = PC_reduc(Target, TargetOrder, pc_list, cloud)
+				self.reduc_cloud_pub.publish(Reduced_PC)
+				self.timed_cloud_pub.publish(cloud)
+
+				Pose 		= Waypoint_planter(Target, TargetOrder, "zed2_left_camera_frame", rospy.Time.now())
+				self.pose_pub.publish(Pose)
+		else: 
+			Reduced_PC  = PC_reduc(None, None, pc_list, cloud)
 			self.reduc_cloud_pub.publish(Reduced_PC)
+			self.timed_cloud_pub.publish(cloud)
 
-			Pose 		= Waypoint_planter(Target, TargetOrder, "zed2_left_camera_frame", rospy.Time.now())
-			self.pose_pub.publish(Pose)
-			
-		
 		if self.show == True:
-			self.show_img(cv_image,segmentation_img)
+			self.show_img(cv_image,segmentation_img, image)
 
 	def callback_odom(self,odometry):
 		x_vehicle=odometry.pose.pose.position.x
@@ -113,27 +137,42 @@ class object_tracker:
 		self.vehicle_pose=[x_vehicle,y_vehicle,z_vehicle]
 
 
-	def show_img(self,image, segmented_image):
+	def show_img(self,image, segmented_image,imagemsg):
 		for Object in self.OH.Known:
 			if Object[self.OH.KnownOrder.get("Occlusion")] <= 5:
-				cv2.rectangle(image, (Object[self.OH.KnownOrder.get("Start_x")], Object[self.OH.KnownOrder.get("Start_y")]), \
-					(Object[self.OH.KnownOrder.get("End_x")], Object[self.OH.KnownOrder.get("End_y")]),(0, 255, 0), 2)
+				if Object[self.OH.KnownOrder.get("UID")] == self.Target_UID:
+					cv2.rectangle(image, (Object[self.OH.KnownOrder.get("Start_x")], Object[self.OH.KnownOrder.get("Start_y")]), \
+						(Object[self.OH.KnownOrder.get("End_x")], Object[self.OH.KnownOrder.get("End_y")]),(0, 0, 255), 2)
+				else:
+					cv2.rectangle(image, (Object[self.OH.KnownOrder.get("Start_x")], Object[self.OH.KnownOrder.get("Start_y")]), \
+						(Object[self.OH.KnownOrder.get("End_x")], Object[self.OH.KnownOrder.get("End_y")]),(255, 0, 0), 2)
 				text = "Class: {}, ID {}".format(self.ClassNames.get(Object[self.OH.KnownOrder.get("Class")]),Object[self.OH.KnownOrder.get("ID")])
-				cv2.putText(image, text, (Object[self.OH.KnownOrder.get("Start_x")], Object[self.OH.KnownOrder.get("Start_y")]-5),cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+				cv2.putText(image, text, (Object[self.OH.KnownOrder.get("Start_x")], Object[self.OH.KnownOrder.get("End_y")]-5),cv2.FONT_HERSHEY_PLAIN, 1, (0, 0, 255), 2)
 				cv2.circle(image, (Object[self.OH.KnownOrder.get("cx")], Object[self.OH.KnownOrder.get("cy")]), 4, (0, 255, 0), -1)
-				Position = "X: {}, Y: {}, Z: {}".format(round(Object[self.OH.KnownOrder.get("Depth_X")],2),round(Object[self.OH.KnownOrder.get("Depth_Y")],2),round(Object[self.OH.KnownOrder.get("Depth_Z")],2))
-				cv2.putText(image, Position, (Object[self.OH.KnownOrder.get("cx")], Object[self.OH.KnownOrder.get("cy")]-5),cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+				Nd = 3
+				
+				Posx = str(round(Object[self.OH.KnownOrder.get("Depth_X")], Nd))
+				Posy = str(round(Object[self.OH.KnownOrder.get("Depth_Y")], Nd))
+				#print(Posy)
+				Posz = str(round(Object[self.OH.KnownOrder.get("Depth_Z")], Nd))
+				
+				#Position = "X: {}, Y: {}, Z: {}".format(str(round(Object[self.OH.KnownOrder.get("Depth_X")], Nd)),str(round(Object[self.OH.KnownOrder.get("Depth_Y")], Nd)),str(round(Object[self.OH.KnownOrder.get("Depth_Z")], Nd)))
+				Position = "X: {}, Y: {}, Z: {}".format(Posx,Posy,Posz)
+				cv2.putText(image, Position, (Object[self.OH.KnownOrder.get("cx")], Object[self.OH.KnownOrder.get("cy")]-5),cv2.FONT_HERSHEY_PLAIN, 1, (0, 0, 255), 2)
 				
 			else:
 				cv2.circle(image, (Object[self.OH.KnownOrder.get("cx")], Object[self.OH.KnownOrder.get("cy")]), 4, (255, 0, 0), -1)
 
-		cv2.imshow("Image_window", image)
-		cv2.waitKey(1)
+		#cv2.imshow("Image_window", image)
+		#cv2.waitKey(1)
+		Boxed_image = self.bridge.cv2_to_imgmsg(image, imagemsg.encoding)
+		Boxed_image.header = imagemsg.header
+		self.boxed_image_pub.publish(Boxed_image)
 
-		if self.seg_plot==True:
-			for i in range(len(segmented_image)):
-				cv2.imshow("segmented "+str(i),segmented_image[i])
-			cv2.waitKey(3)
+		#if self.seg_plot==True:
+		#	for i in range(len(segmented_image)):
+		#		cv2.imshow("segmented "+str(i),segmented_image[i])
+		#	cv2.waitKey(3)
 
 
 def main(args):

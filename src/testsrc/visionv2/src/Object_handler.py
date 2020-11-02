@@ -15,10 +15,10 @@ class Object_handler():
         self.ClassID = np.zeros(classNum,dtype = int)
         self.CurrentOrder = {"Class": 0, "cx": 1, "cy": 2, "Start_x": 3, "Start_y": 4, "End_x": 5, \
              "End_y": 6, "Score": 7, "Depth_X": 8, "Depth_Y": 9, "Depth_Z": 10, "Time": 11, \
-                 "Vehicle_X": 12, "Vehicle_Y": 13, "Vehicle_Z": 14} #Tilføjet time and vehicle XYZ
+                 "Vehicle_X": 12, "Vehicle_Y": 13, "Vehicle_Z": 14, "Current_listing": 15} #Tilføjet time and vehicle XYZ
         self.KnownOrder   = {"UID":  0, "ID": 1, "Class": 2, "cx": 3, "cy": 4, "Start_x": 5, "Start_y": 6, \
              "End_x": 7, "End_y": 8, "Score": 9, "Occlusion": 10, "Depth_X": 11, "Depth_Y": 12, "Depth_Z": 13, \
-             "Time": 14, "Vehicle_X": 15, "Vehicle_Y": 16, "Vehicle_Z": 17} #Tilføjet time and vehicle XYZ
+             "Time": 14, "Vehicle_X": 15, "Vehicle_Y": 16, "Vehicle_Z": 17, "Current_listing": 18} #Tilføjet time and vehicle XYZ
         self.LostOrder    = {"UID":  0, "ID": 1, "Class": 2}
 
         # [UID, ID, class,  cx, cy, Start_x, Start_y, End_x, End_y, Score, Occlusion]
@@ -43,7 +43,7 @@ class Object_handler():
                 DVY = Objects[i,8][1] #Tilføjet
                 DVZ = Objects[i,8][2] # Tilføjet
                 #DX, DY, DZ  = Simple_Pinhole([Cx,Cy],Depth)
-                Current = ([Class, Cx, Cy, Start_x, Start_y, End_x, End_y, Score, DX, DY, DZ, Time, DVX, DVY, DVZ]) #Tilføjet time and vehicle
+                Current = ([Class, Cx, Cy, Start_x, Start_y, End_x, End_y, Score, DX, DY, DZ, Time, DVX, DVY, DVZ, i]) #Tilføjet time and vehicle
                 self.Current.append(Current)
         self.merge()
         self.clear()
@@ -113,17 +113,18 @@ class Object_handler():
                         D = dist.cdist(np.array(Current_D), np.array(Known_D))
                         DV = dist.cdist(np.array(Current_DV), np.array(Known_DV)) # tilføjet
 
+
                         V_obj_car=np.array([]) # Velocity of object relative to Vehicle
                         for i in range(D.shape[1]):
                             V=D[:,i]/(np.array(Current_Time)-np.array(Known_Time[i]))
                             V_obj_car=np.append(V_obj_car,V)
-                        V_obj_car=np.transpose(np.reshape(V_obj_car,D.shape))
+                        V_obj_car=np.reshape(V_obj_car,D.shape)
                         
                         V_car=np.array([])
                         for i in range(DV.shape[1]):
                             V=DV[:,i]/(np.array(Current_Time)-np.array(Known_Time[i]))
                             V_car=np.append(V_car,V)
-                        V_car=np.transpose(np.reshape(V_car,DV.shape))
+                        V_car=np.reshape(V_car,DV.shape)
 
                         V_obj=V_obj_car+V_car
 
@@ -166,6 +167,7 @@ class Object_handler():
                         Lost_Points = np.delete(Known_i,[UsedCol])
                         for i in Lost_Points:
                             self.Known[i][self.KnownOrder.get("Occlusion")] += 1  
+                            self.Known[i][self.KnownOrder.get("Current_listing")] = float("nan")
                 
                 
                 # Add Occlusion to all classed not found
@@ -179,6 +181,7 @@ class Object_handler():
                     for j in range(0,len(self.Known)):
                         if self.Known[j][self.KnownOrder.get("Class")] == i:
                             self.Known[j][self.KnownOrder.get("Occlusion")] += 1
+                            self.Known[j][self.KnownOrder.get("Current_listing")] = float("nan")
 
     def upgrade(self,Current): #Tilføjet time and vehicle xyz
         ID, UID = self.incID(Current[self.CurrentOrder.get("Class")])
@@ -189,7 +192,8 @@ class Object_handler():
                 Current[self.CurrentOrder.get("Score")], 0, Current[self.CurrentOrder.get("Depth_X")], \
                 Current[self.CurrentOrder.get("Depth_Y")], Current[self.CurrentOrder.get("Depth_Z")], \
                 Current[self.CurrentOrder.get("Time")], Current[self.CurrentOrder.get("Vehicle_X")], \
-                Current[self.CurrentOrder.get("Vehicle_Y")], Current[self.CurrentOrder.get("Vehicle_Z")]]           
+                Current[self.CurrentOrder.get("Vehicle_Y")], Current[self.CurrentOrder.get("Vehicle_Z")], \
+                Current[self.CurrentOrder.get("Current_listing")]]   
         self.Known.append(Known)
 
     def update(self,Current,Known_update):
@@ -213,6 +217,7 @@ class Object_handler():
         self.Known[Knownrow][self.KnownOrder.get("Vehicle_X")] = Current[self.CurrentOrder.get("Vehicle_X")]
         self.Known[Knownrow][self.KnownOrder.get("Vehicle_Y")] = Current[self.CurrentOrder.get("Vehicle_Y")]
         self.Known[Knownrow][self.KnownOrder.get("Vehicle_Z")] = Current[self.CurrentOrder.get("Vehicle_Z")]
+        self.Known[Knownrow][self.KnownOrder.get("Current_listing")] = Current[self.CurrentOrder.get("Current_listing")]
 
     def clear(self):
         self.Current = [] 

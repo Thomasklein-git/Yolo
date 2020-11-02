@@ -62,6 +62,7 @@ def NormalizeData(data):
     return (data - np.nanmin(data)) / (np.nanmax(data) - np.nanmin(data))
 
 def DBSCAN_pointcloud(img, bboxes, seg_plot=True, eps=0.046, procent=0.0011):
+    labels_series = []
     avg_depth_series = []
     segmented_img_color_series = []
     xyzcoord_series =[]
@@ -79,6 +80,9 @@ def DBSCAN_pointcloud(img, bboxes, seg_plot=True, eps=0.046, procent=0.0011):
         label=np.transpose(np.asarray([label])) # In order to concatenate shape[label,1]
         Sort=Counter(label.flatten()).most_common() 
         label_max=Sort[0][0]
+
+        tf_labels = np.where((label == label_max), True, False)
+        labels_series.append(tf_labels)
 
         xcoord=[]
         ycoord=[]
@@ -142,7 +146,11 @@ def DBSCAN_pointcloud(img, bboxes, seg_plot=True, eps=0.046, procent=0.0011):
             segmented_img_color=segmented_img_color.astype("uint8") # Change type
             segmented_img_color_series.append(segmented_img_color)
 
-    return avg_depth_series, segmented_img_color_series, xyzcoord_series
+
+            
+            
+
+    return avg_depth_series, segmented_img_color_series, xyzcoord_series, labels_series
 
 def k_means_pointcloud(img, bboxes, PC=True, seg_plot=True, k=3,max_iter=1000,tol=1e-4):
     """
@@ -321,21 +329,66 @@ def k_means_pointcloud(img, bboxes, PC=True, seg_plot=True, k=3,max_iter=1000,to
     return avg_depth_series, segmented_img_color_series, xyzcoord_series
 
 def PC_reduc(Target, TargetOrder, pc_list, cloud):
-    Start_x = Target[TargetOrder("Start_x")]
-    Start_y = Target[TargetOrder("Start_y")]
-    End_x   = Target[TargetOrder("End_x")]
-    End_y   = Target[TargetOrder("End_y")]
+    if Target == None:
+        Reduced_PC2 = cloud
+    else:
+        Start_x = Target[TargetOrder("Start_x")]
+        Start_y = Target[TargetOrder("Start_y")]
+        End_x   = Target[TargetOrder("End_x")]
+        End_y   = Target[TargetOrder("End_y")]
 
-    bbox_i = []
-    for y in range(Start_y,End_y):
-        bbox_i += list(range((y*672+Start_x)*3,(y*672+End_x+1)*3))
-    pc_list = np.delete(pc_list, bbox_i)
-    pc_list = pc_list.reshape(int(len(pc_list)/3),3)
-    pc_list= pc_list[~np.isnan(pc_list).any(axis=1)]
-    pc_list= pc_list[~np.isinf(pc_list).any(axis=1)]
-    header = cloud.header
-    Reduced_PC2 = pc2.create_cloud_xyz32(header, pc_list)
+        bbox_i = []
+        for y in range(Start_y,End_y):
+            bbox_i += list(range((y*672+Start_x)*3,(y*672+End_x+1)*3))
+        print(len(bbox_i), "bbox_i")
+        pc_list = np.delete(pc_list, bbox_i)
+        pc_list = pc_list.reshape(int(len(pc_list)/3),3)
+        pc_list= pc_list[~np.isnan(pc_list).any(axis=1)]
+        pc_list= pc_list[~np.isinf(pc_list).any(axis=1)]
+        header = cloud.header
+        Reduced_PC2 = pc2.create_cloud_xyz32(header, pc_list)
     return Reduced_PC2
+
+def PC_reduc_seg(bbox, Segmented_labels ,pc_list,cloud):
+    if Target == None:
+        reduced_PC2 = cloud
+    else:
+        """
+        Start_x = Target[TargetOrder("Start_x")]
+        Start_y = Target[TargetOrder("Start_y")]
+        End_x   = Target[TargetOrder("End_x")]
+        End_y   = Target[TargetOrder("End_y")]
+
+        """
+        Start_x = bbox[0]
+        End_x   = bbox[2]
+        Start_y = bbox[1]
+        End_y   = bbox[3]
+
+        bbox_i = []
+        Seg_index = 0
+        print(Segmented_labels.shape,"seg")
+        print(np.count_nonzero(Segmented_labels),"true")
+        print(End_y-Start_y, "y")
+        print(End_x-Start_x, "x")
+
+        for y in range(Start_y,End_y):
+            for x in range(Start_x,End_x-1):
+                pc_index = (y*672+x)*3
+                if Segmented_labels[Seg_index][0] == True:
+                    for i in [0,1,2]:
+                        bbox_i.append(pc_index+i)
+                Seg_index += 1
+        if len(bbox_i) == 0:
+            print(Segmented_labels)
+        pc_list = np.delete(pc_list, bbox_i)
+        pc_list = pc_list.reshape(int(len(pc_list)/3),3)
+        pc_list= pc_list[~np.isnan(pc_list).any(axis=1)]
+        pc_list= pc_list[~np.isinf(pc_list).any(axis=1)]
+        header = cloud.header
+        Reduced_PC2 = pc2.create_cloud_xyz32(header, pc_list)
+    return Reduced_PC2
+
 
 def Waypoint_planter(Target, TargetOrder, Frame_id, Time):
     Pose = PoseStamped()
@@ -356,7 +409,6 @@ def Choose_target(OH, Target_class):
     Target_Found = False
     Target_UID = []
     for Target in OH.Known:
-        print(Target[OH.KnownOrder.get("Class")])
         if Target[OH.KnownOrder.get("Class")] == Target_class and fp == True:
             Target_UID = Target[OH.KnownOrder.get("UID")]
             Target_Found = True
@@ -371,3 +423,10 @@ def Find_target(OH, Target_UID):
             Index = i
             Occlusion = OH.Known[i][OH.KnownOrder.get("Occlusion")]
     return Index, Occlusion
+
+def Unique_in_List(List):  
+    Unique_Entries = []
+    for x in List: 
+        if x not in Unique_Entries: 
+            Unique_Entries.append(x)
+    return Unique_Entries
