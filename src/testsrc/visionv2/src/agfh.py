@@ -5,6 +5,9 @@ from sklearn.cluster import KMeans, DBSCAN
 from sklearn.preprocessing import StandardScaler
 import sensor_msgs.point_cloud2 as pc2
 from geometry_msgs.msg import PoseStamped
+import tf2_ros
+import tf2_geometry_msgs
+from tf import TransformListener
 
 
 def Give_boundingbox_coor_class(bboxes):
@@ -430,3 +433,34 @@ def Unique_in_List(List):
         if x not in Unique_Entries: 
             Unique_Entries.append(x)
     return Unique_Entries
+
+def Create_PoseStamped_msg(coordinates, coordinate_frame, Time)
+    Pose = PoseStamped()
+    Pose.header.stamp = Time
+    Pose.header.frame_id = coordinate_frame
+    Pose.pose.position.x = coordinates[0]
+    Pose.pose.position.y = coordinates[1]
+    Pose.pose.position.z = coordinates[2]
+    Pose.pose.orientation.x = float(0)
+    Pose.pose.orientation.y = float(0)
+    Pose.pose.orientation.z = float(0)
+    Pose.pose.orientation.w = float(1)
+    
+    return Pose
+
+def Transform_between_frames(coordinates,Current_frame,Target_frame,Time):
+    """
+    Input:
+    coordinates=[x, y, z]
+    Current frame = name of current frame (format: string)
+    Target frame = name of target frame (format: string)
+    Time = Timestamp for PoseStamped msg (format: float)
+    """
+    Pose = Create_PoseStamped_msg(coordinates,Current_frame,Time)
+    # Transform pose to target frame
+    tf_buffer = tf2_ros.Buffer(rospy.Duration(1200.0)) #tf buffer length
+    transform = self.tf_buffer.lookup_transform(Target_frame, Pose.header.frame_id, rospy.Time(0), rospy.Duration(1.0))
+    Trans_Pose = tf2_geometry_msgs.do_transform_pose(Pose, transform)
+    
+    return Trans_Pose
+
