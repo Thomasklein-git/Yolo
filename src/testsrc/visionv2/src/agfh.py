@@ -84,9 +84,6 @@ def DBSCAN_pointcloud(img, bboxes, seg_plot=True, eps=0.046, procent=0.0011):
         Sort=Counter(label.flatten()).most_common() 
         label_max=Sort[0][0]
 
-        tf_labels = np.where((label == label_max), True, False)
-        labels_series.append(tf_labels)
-
         xcoord=[]
         ycoord=[]
         zcoord=[]
@@ -150,6 +147,8 @@ def DBSCAN_pointcloud(img, bboxes, seg_plot=True, eps=0.046, procent=0.0011):
             segmented_img_color_series.append(segmented_img_color)
 
 
+            tf_labels = np.where((labels == label_max), True, False)
+            labels_series.append(tf_labels)
             
             
 
@@ -353,7 +352,7 @@ def PC_reduc(Target, TargetOrder, pc_list, cloud):
     return Reduced_PC2
 
 def PC_reduc_seg(bbox, Segmented_labels ,pc_list,cloud):
-    if Target == None:
+    if bbox == []:
         reduced_PC2 = cloud
     else:
         """
@@ -370,21 +369,16 @@ def PC_reduc_seg(bbox, Segmented_labels ,pc_list,cloud):
 
         bbox_i = []
         Seg_index = 0
-        print(Segmented_labels.shape,"seg")
-        print(np.count_nonzero(Segmented_labels),"true")
-        print(End_y-Start_y, "y")
-        print(End_x-Start_x, "x")
-
         for y in range(Start_y,End_y):
-            for x in range(Start_x,End_x-1):
+            for x in range(Start_x,End_x):
                 pc_index = (y*672+x)*3
-                if Segmented_labels[Seg_index][0] == True:
+                if Segmented_labels[Seg_index] == True:
                     for i in [0,1,2]:
                         bbox_i.append(pc_index+i)
                 Seg_index += 1
-        if len(bbox_i) == 0:
-            print(Segmented_labels)
+        print(pc_list.shape)
         pc_list = np.delete(pc_list, bbox_i)
+        print(pc_list.shape)
         pc_list = pc_list.reshape(int(len(pc_list)/3),3)
         pc_list= pc_list[~np.isnan(pc_list).any(axis=1)]
         pc_list= pc_list[~np.isinf(pc_list).any(axis=1)]
