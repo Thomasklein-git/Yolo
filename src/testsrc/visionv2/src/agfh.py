@@ -5,6 +5,7 @@ from sklearn.cluster import KMeans, DBSCAN
 from sklearn.preprocessing import StandardScaler
 import sensor_msgs.point_cloud2 as pc2
 from geometry_msgs.msg import PoseStamped
+import rospy
 import tf2_ros
 import tf2_geometry_msgs
 from tf import TransformListener
@@ -342,7 +343,7 @@ def PC_reduc(Target, TargetOrder, pc_list, cloud):
         bbox_i = []
         for y in range(Start_y,End_y):
             bbox_i += list(range((y*672+Start_x)*3,(y*672+End_x+1)*3))
-        print(len(bbox_i), "bbox_i")
+        #print(len(bbox_i), "bbox_i")
         pc_list = np.delete(pc_list, bbox_i)
         pc_list = pc_list.reshape(int(len(pc_list)/3),3)
         pc_list= pc_list[~np.isnan(pc_list).any(axis=1)]
@@ -376,9 +377,9 @@ def PC_reduc_seg(bbox, Segmented_labels ,pc_list,cloud):
                     for i in [0,1,2]:
                         bbox_i.append(pc_index+i)
                 Seg_index += 1
-        print(pc_list.shape)
+        #print(pc_list.shape)
         pc_list = np.delete(pc_list, bbox_i)
-        print(pc_list.shape)
+        #print(pc_list.shape)
         pc_list = pc_list.reshape(int(len(pc_list)/3),3)
         pc_list= pc_list[~np.isnan(pc_list).any(axis=1)]
         pc_list= pc_list[~np.isinf(pc_list).any(axis=1)]
@@ -428,7 +429,7 @@ def Unique_in_List(List):
             Unique_Entries.append(x)
     return Unique_Entries
 
-def Create_PoseStamped_msg(coordinates, coordinate_frame, Time)
+def Create_PoseStamped_msg(coordinates, coordinate_frame, Time):
     Pose = PoseStamped()
     Pose.header.stamp = Time
     Pose.header.frame_id = coordinate_frame
@@ -442,7 +443,7 @@ def Create_PoseStamped_msg(coordinates, coordinate_frame, Time)
     
     return Pose
 
-def Transform_between_frames(coordinates,Current_frame,Target_frame,Time):
+def Transform_Pose_between_frames(coordinates,Current_frame,Target_frame,Time):
     """
     Input:
     coordinates=[x, y, z]
@@ -453,8 +454,17 @@ def Transform_between_frames(coordinates,Current_frame,Target_frame,Time):
     Pose = Create_PoseStamped_msg(coordinates,Current_frame,Time)
     # Transform pose to target frame
     tf_buffer = tf2_ros.Buffer(rospy.Duration(1200.0)) #tf buffer length
-    transform = self.tf_buffer.lookup_transform(Target_frame, Pose.header.frame_id, rospy.Time(0), rospy.Duration(1.0))
+    tf_listener = tf2_ros.TransformListener(tf_buffer)
+    transform = tf_buffer.lookup_transform(Target_frame, Pose.header.frame_id, rospy.Time(0), rospy.Duration(1.0))
     Trans_Pose = tf2_geometry_msgs.do_transform_pose(Pose, transform)
     
     return Trans_Pose
 
+def Transform_Coordinates_between_frames(xyzcoord_series, Current_frame,Target_frame,Time):
+    xyzcoord_trans_series = []
+    for i in range(len(xyzcoord_series)):
+        Trans_pose = Transform_Pose_between_frames(xyzcoord_series[i], Current_frame, Target_frame, Time)	
+        Trans_coord = [Trans_pose.pose.position.x,Trans_pose.pose.position.y,Trans_pose.pose.position.z]
+        xyzcoord_trans_series.append(Trans_coord)
+    
+    return xyzcoord_trans_series
