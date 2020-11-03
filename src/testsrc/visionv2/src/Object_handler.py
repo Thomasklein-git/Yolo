@@ -119,7 +119,8 @@ class Object_handler():
                             V=D[:,i]/(np.array(Current_Time)-np.array(Known_Time[i]))
                             V_obj_car=np.append(V_obj_car,V)
                         V_obj_car=np.reshape(V_obj_car,D.shape)
-                        
+                        V_obj=V_obj_car
+                        """
                         V_car=np.array([])
                         for i in range(DV.shape[1]):
                             V=DV[:,i]/(np.array(Current_Time)-np.array(Known_Time[i]))
@@ -127,10 +128,10 @@ class Object_handler():
                         V_car=np.reshape(V_car,DV.shape)
 
                         V_obj=V_obj_car+V_car
-
+                        """
                         #print(V_obj_car, "Velocity object relative to vehicle")
                         #print(V_car, "Velocity vehicle")
-                        #print(V_obj, "Velocity object")
+                        print(V_obj, "Velocity object")
                         
                         pairs = min(len(Current_i), len(Known_i))
                         for i in range(0,pairs):

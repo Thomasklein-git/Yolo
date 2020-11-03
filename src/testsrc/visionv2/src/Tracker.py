@@ -71,7 +71,7 @@ class object_tracker:
 
 	#def callback(self,image,depth,cloud):
 	def callback(self,image,cloud):
-		Time = float("%.6f" %  image.header.stamp.to_sec()) # get time stamp for image in callback
+		Time = float("%.6f" %  cloud.header.stamp.to_sec()) # get time stamp for image in callback
 		# Generate images from msgs
 		cv_image = self.bridge.imgmsg_to_cv2(image, image.encoding)
 		#cv_image_depth = self.bridge.imgmsg_to_cv2(depth, depth.encoding)
@@ -82,12 +82,27 @@ class object_tracker:
 		PC_image_bbox_sub_series = Sub_pointcloud(cv_image_pc, bboxes)
 		_, segmentation_img, xyzcoord_series, labels_series = DBSCAN_pointcloud(PC_image_bbox_sub_series, bboxes, seg_plot=self.seg_plot)
 
+		#print(xyzcoord_series[0])
+		#print(xyzcoord_series[0][0])
+		#Pose_Test=Create_PoseStamped_msg([2,2,2],"zed2_left_camera_frame",Time)
+		#print(Pose_Test)
+		#Trans_pose = Transform_between_frames([2,2,2],"zed2_left_camera_frame","map" , Time=Time)
+		#print(Trans_pose)
+		
+		"""
+		xyzcoord_trans = []
+		for i in range(len(xyzcoord_series)):
+			Trans_pose = Transform_Pose_between_frames(xyzcoord_series[i],Current_frame="zed2_left_camera_frame",Target_frame="map" , Time=Time)	
+			Trans_coord = [Trans_pose.pose.position.x,Trans_pose.pose.position.y,Trans_pose.pose.position.z]
+			xyzcoord_trans.append(Trans_coord)
+		"""
+		xyzcoord_trans_series = Transform_Coordinates_between_frames(xyzcoord_series,"zed2_left_camera_frame","map",Time)
 
 		x1, y1, x2, y2, Score, C = Give_boundingbox_coor_class(bboxes)
 		boxes = []
 		for i in range(len(bboxes)):	
 			#boxes.append([x1[i],y1[i],x2[i],y2[i],Score[i],C[i],xyzcoord_series[i]])
-			boxes.append([x1[i],y1[i],x2[i],y2[i],Score[i],C[i],xyzcoord_series[i],Time,self.vehicle_pose])
+			boxes.append([x1[i],y1[i],x2[i],y2[i],Score[i],C[i],xyzcoord_trans_series[i],Time,self.vehicle_pose])
 		boxes = np.array(boxes)	
 		self.OH.add(boxes)
 		fp = True
