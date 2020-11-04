@@ -2,7 +2,6 @@
 import sys
 import rospy
 
-from sensor_msgs.msg import Image
 from sensor_msgs.msg import CompressedImage
 from vision_msgs.msg import Detection2DArray, Detection2D, ObjectHypothesisWithPose
 from cv_bridge import CvBridge, CvBridgeError
@@ -18,10 +17,10 @@ class object_detector:
         self.bridge = CvBridge()
 
         self.bbox_pub = rospy.Publisher("/yolo/bboxes",Detection2DArray, queue_size=1)
-        self.time_pub = rospy.Publisher("/yolo/Time",Image, queue_size=1)
+        self.time_pub = rospy.Publisher("/yolo/Time",CompressedImage, queue_size=1)
 
-        time_sub  = rospy.Subscriber("/zed2/zed_node/left/image_rect_color",Image,self.callback_images)
-        some_sub  = rospy.Subscriber("/yolo/Time",Image,self.callback_yolo)
+        time_sub  = rospy.Subscriber("/zed2/zed_node/left/image_rect_color/compressed",CompressedImage,self.callback_images)
+        some_sub  = rospy.Subscriber("/yolo/Time",CompressedImage,self.callback_yolo)
 
     def callback_images(self, image):
         self.image = image
@@ -30,7 +29,7 @@ class object_detector:
     
     def callback_yolo(self, image):
         image = self.image
-        cv_image = self.bridge.imgmsg_to_cv2(image, image.encoding)
+        cv_image = self.bridge.compressed_imgmsg_to_cv2(image, "bgr8")
 
         _ , bboxes=detect_image(self.yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
         detect = Detection2DArray()
