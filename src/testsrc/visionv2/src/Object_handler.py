@@ -20,7 +20,10 @@ class Object_handler():
              "End_x": 7, "End_y": 8, "Score": 9, "Occlusion": 10, "Depth_X": 11, "Depth_Y": 12, "Depth_Z": 13, \
              "Time": 14, "Vehicle_X": 15, "Vehicle_Y": 16, "Vehicle_Z": 17, "Current_listing": 18} #Tilføjet time and vehicle XYZ
         self.LostOrder    = {"UID":  0, "ID": 1, "Class": 2}
-
+        self.Dynsta = np.zeros(classNum, dtype=bool) # Dynamic class true, Static class flass (everything is false)
+        self.Dynsta[np.array([0,2])] = True # Make person and car dynamic 
+        self.static_V = 0.5 #1.8km/h
+        self.dynamic_V = 3 #10.8km/h
         # [UID, ID, class,  cx, cy, Start_x, Start_y, End_x, End_y, Score, Occlusion]
     
     def add(self,Objects):
@@ -111,15 +114,15 @@ class Object_handler():
 
                     if len(Known_D) > 0:
                         D = dist.cdist(np.array(Current_D), np.array(Known_D))
-                        DV = dist.cdist(np.array(Current_DV), np.array(Known_DV)) # tilføjet
+                        #DV = dist.cdist(np.array(Current_DV), np.array(Known_DV)) # tilføjet
 
 
-                        V_obj_car=np.array([]) # Velocity of object relative to Vehicle
+                        V_obj=np.array([]) # Velocity of object relative to Vehicle
                         for i in range(D.shape[1]):
                             V=D[:,i]/(np.array(Current_Time)-np.array(Known_Time[i]))
-                            V_obj_car=np.append(V_obj_car,V)
-                        V_obj_car=np.reshape(V_obj_car,D.shape)
-                        V_obj=V_obj_car
+                            V_obj=np.append(V_obj,V)
+                        V_obj=np.reshape(V_obj,D.shape)
+                    
                         """
                         V_car=np.array([])
                         for i in range(DV.shape[1]):
@@ -131,16 +134,24 @@ class Object_handler():
                         """
                         #print(V_obj_car, "Velocity object relative to vehicle")
                         #print(V_car, "Velocity vehicle")
-                        print(V_obj, "Velocity object")
+                        #print(V_obj, "Velocity object")
                         
                         pairs = min(len(Current_i), len(Known_i))
                         for i in range(0,pairs):
-                            V_obj1 = np.where(V_obj==V_obj.min())
-                            UsedRow.append(V_obj1[0][0])
-                            UsedCol.append(V_obj1[1][0])
-                            V_obj[UsedRow[i]][0:len(Known_i)] = 1000
-                            for j in range(0,len(Current_i)):
-                                V_obj[j][UsedCol[i]] = 1000
+                            if self.Dynsta[c]==False:
+                                v_thres=self.static_V
+                            else:
+                                v_thres=self.dynamic_V
+                            if V_obj[0][i]<=v_thres:
+                                V_obj1 = np.where(V_obj==V_obj.min())
+                                UsedRow.append(V_obj1[0][0])
+                                UsedCol.append(V_obj1[1][0])
+                                V_obj[UsedRow[i]][0:len(Known_i)] = 1000
+                                for j in range(0,len(Current_i)):
+                                    V_obj[j][UsedCol[i]] = 1000
+                            
+
+                            
                         """
                         for i in range(0,pairs):
                             D1 = np.where(D==D.min())
