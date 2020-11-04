@@ -82,20 +82,6 @@ class object_tracker:
 		PC_image_bbox_sub_series = Sub_pointcloud(cv_image_pc, bboxes)
 		_, segmentation_img, xyzcoord_series, labels_series = DBSCAN_pointcloud(PC_image_bbox_sub_series, bboxes, seg_plot=self.seg_plot)
 
-		#print(xyzcoord_series[0])
-		#print(xyzcoord_series[0][0])
-		#Pose_Test=Create_PoseStamped_msg([2,2,2],"zed2_left_camera_frame",Time)
-		#print(Pose_Test)
-		#Trans_pose = Transform_between_frames([2,2,2],"zed2_left_camera_frame","map" , Time=Time)
-		#print(Trans_pose)
-		
-		"""
-		xyzcoord_trans = []
-		for i in range(len(xyzcoord_series)):
-			Trans_pose = Transform_Pose_between_frames(xyzcoord_series[i],Current_frame="zed2_left_camera_frame",Target_frame="map" , Time=Time)	
-			Trans_coord = [Trans_pose.pose.position.x,Trans_pose.pose.position.y,Trans_pose.pose.position.z]
-			xyzcoord_trans.append(Trans_coord)
-		"""
 		xyzcoord_trans_series = Transform_Coordinates_between_frames(xyzcoord_series,"zed2_left_camera_frame","map",Time)
 
 		x1, y1, x2, y2, Score, C = Give_boundingbox_coor_class(bboxes)

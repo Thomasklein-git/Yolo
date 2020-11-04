@@ -468,3 +468,17 @@ def Transform_Coordinates_between_frames(xyzcoord_series, Current_frame,Target_f
         xyzcoord_trans_series.append(Trans_coord)
     
     return xyzcoord_trans_series
+
+def get_new_orientation(Waypoint_old, Waypoint_new):
+    #https://stackoverflow.com/questions/1171849/finding-quaternion-representing-the-rotation-from-one-vector-to-another
+    Waypoint_old_xyz = np.array([Waypoint_old.pose.position.x,Waypoint_old.pose.position.y,Waypoint_old.pose.position.z])
+    Waypoint_new_xyz = np.array([Waypoint_new.pose.position.x,Waypoint_new.pose.position.y,Waypoint_new.pose.position.z])
+    Vec_old_new = Waypoint_new_xyz-Waypoint_old_xyz
+    Vec_ref = np.array([1,0,0]) 
+    Complex_ele = np.cross(Vec_ref,Vec_old_new) # X, Y, Z vector part
+    Real_ele = np.sqrt((np.linalg.norm(Vec_ref)**2)*(np.linalg.norm(Vec_old_new)**2))+np.dot(Vec_ref,Vec_old_new) # W scalar part
+    
+    q=np.append(Complex_ele,Real_ele)
+    q_norm=q/np.linalg.norm(q)
+    
+    return q_norm
