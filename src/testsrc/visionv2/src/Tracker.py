@@ -66,8 +66,8 @@ class object_tracker:
 
 		print("[INFO] Loading complete")
 		#mf = message_filters.ApproximateTimeSynchronizer([image_sub,depth_sub,cloud_sub],1,0.07)
-		mf = message_filters.ApproximateTimeSynchronizer([image_sub,cloud_sub],1,5) #Set close to zero in order to syncronize img and point cloud (be aware of frame rate) 
-		#mf = message_filters.TimeSynchronizer([image_sub,cloud_sub],1)
+		#mf = message_filters.ApproximateTimeSynchronizer([image_sub,cloud_sub],1,5) #Set close to zero in order to syncronize img and point cloud (be aware of frame rate) 
+		mf = message_filters.TimeSynchronizer([image_sub,cloud_sub],1)
 		mf.registerCallback(self.callback)
 
 	#def callback(self,image,depth,cloud):
@@ -93,8 +93,8 @@ class object_tracker:
 		boxes = np.array(boxes)	
 		self.OH.add(boxes)
 		fp = True
-
-		self.seg_plot_pub.publish(segmentation_img)
+		segimg = self.bridge.cv2_to_imgmsg(segmentation_img[0], "bgr8")
+		self.seg_plot_pub.publish(segimg)
 		# Find UID to a target
 		if self.Target_Found == False:
 			self.Target_UID, self.Target_Found = Choose_target(self.OH, self.Target_class)
