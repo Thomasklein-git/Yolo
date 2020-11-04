@@ -6,6 +6,7 @@ import tf2_ros
 import tf2_geometry_msgs
 from tf import TransformListener
 import math
+from agfh import *
 
 class Follow():
     def __init__(self):
@@ -46,9 +47,22 @@ class Follow():
             # If the waypoint is further away than distance_threshold and Waypoint list is empty add point to waypoints
             # If list is not empty compare new waypoint with the latest added waypoint to ensure that distance between the two points are greater than distance_new
             if Waypoints == []:
+                vec_new_old=np.array([np_b.pose.position.x,np_b.pose.position.y,np_b.pose.position.z])
+                quaternion=get_new_orientation(0,0,vec_new_old,Points=False)
+                np_m.pose.orientation.x=quaternion[0]
+                np_m.pose.orientation.y=quaternion[1]
+                np_m.pose.orientation.z=quaternion[2]
+                np_m.pose.orientation.w=quaternion[3]
+                #print(np_m,"empty")
                 self.Waypoints.append(np_m)
             else: 
                 lp_m = Waypoints[-1]
+                quaternion=get_new_orientation(lp_m,np_m,0,Points=True)
+                np_m.pose.orientation.x=quaternion[0]
+                np_m.pose.orientation.y=quaternion[1]
+                np_m.pose.orientation.z=quaternion[2]
+                np_m.pose.orientation.w=quaternion[3]
+                #print(np_m,"not empty")
                 wpd = math.sqrt((np_m.pose.position.x-lp_m.pose.position.x)**2+(np_m.pose.position.y-lp_m.pose.position.y)**2)
                 if wpd > self.distance_new:
                     self.Waypoints.append(np_m)

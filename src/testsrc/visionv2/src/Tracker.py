@@ -49,6 +49,7 @@ class object_tracker:
 		self.vehicle_pose = rospy.Subscriber('/odometry/filtered_map', Odometry, self.callback_odom)
 		self.pose_pub = rospy.Publisher('/Published_pose', PoseStamped, queue_size=1)
 		self.reduc_cloud_pub = rospy.Publisher("/Reduced_cloud", PointCloud2, queue_size=1)
+		self.seg_plot_pub = rospy.Publisher("/seg_img",Image,queue_size=1)
 
 		self.timed_cloud_pub = rospy.Publisher("/Timed_cloud", PointCloud2, queue_size=1)
 		self.boxed_image_pub = rospy.Publisher("/Boxed_image", Image, queue_size=1)
@@ -93,6 +94,7 @@ class object_tracker:
 		self.OH.add(boxes)
 		fp = True
 
+		self.seg_plot_pub.publish(segmentation_img)
 		# Find UID to a target
 		if self.Target_Found == False:
 			self.Target_UID, self.Target_Found = Choose_target(self.OH, self.Target_class)
