@@ -7,7 +7,7 @@ from agfh import *
 
 class Object_handler():
     def __init__(self,classNum):
-        self.OcclusionLimit = 25
+        self.OcclusionLimit = 5
         self.Current = []
         self.Known = []
         self.Lost = []
@@ -23,7 +23,7 @@ class Object_handler():
         self.Dynsta = np.zeros(classNum, dtype=bool) # Dynamic class true, Static class flass (everything is false)
         self.Dynsta[np.array([0])] = True # Make person and car (2) dynamic 
         self.static_V = 0.5 #1.8km/h
-        self.dynamic_V = 3 #10.8km/h
+        self.dynamic_V = 1.5 #10.8km/h
         # [UID, ID, class,  cx, cy, Start_x, Start_y, End_x, End_y, Score, Occlusion]
     
     def add(self,Objects):
@@ -111,7 +111,7 @@ class Object_handler():
                             V=D[:,i]/(np.array(Current_Time)-np.array(Known_Time[i]))
                             V_obj=np.append(V_obj,V)
                         V_obj=np.reshape(V_obj,D.shape)
-                        #print(D,"distance")
+                        print(D,"distance")
                         #print(V_obj, "Velocity object")
                         #print(len(V_obj))
 
@@ -124,8 +124,9 @@ class Object_handler():
 
                         pairs = min(len(Current_i), len(Known_i))
                         for i in range(0,pairs):
-                            if V_obj.min()<=v_thres:
-                                D1 = np.where(D==D.min())
+                            #V_obj1=np.where(V_obj==V_obj.min())
+                            if V_obj.min()<=v_thres:# and D[V_obj1[0][0],V_obj1[1][0]]<3:# and D.min()<1:
+                                D1 = np.where(D==D.min())   
                                 UsedRow.append(D1[0][0])
                                 UsedCol.append(D1[1][0])
                                 D[UsedRow[i]][0:len(Known_i)] = 1000

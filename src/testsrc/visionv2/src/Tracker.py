@@ -134,14 +134,22 @@ class object_tracker:
 			self.show_img(cv_image,segmentation_img, image)
 
 	def show_img(self,image, segmented_image,imagemsg):
-		for Object in self.OH.Known:
+		#print(self.Target_UID, "target")
+		for i in range(len(self.OH.Known)):
+			#print(i)
+			Object = self.OH.Known[i][:]
+			#print(Object)
+			#print(self.OH.Known,"OH")
+			#print(self.OH.Known[:][i],"OH række")
 			if Object[self.OH.KnownOrder.get("Occlusion")] <= 5:
 				if Object[self.OH.KnownOrder.get("UID")] == self.Target_UID:
+					print("target")
 					cv2.rectangle(image, (Object[self.OH.KnownOrder.get("Start_x")], Object[self.OH.KnownOrder.get("Start_y")]), \
 						(Object[self.OH.KnownOrder.get("End_x")], Object[self.OH.KnownOrder.get("End_y")]),(0, 0, 255), 2)
 				else:
+				#	print("not target")
 					cv2.rectangle(image, (Object[self.OH.KnownOrder.get("Start_x")], Object[self.OH.KnownOrder.get("Start_y")]), \
-						(Object[self.OH.KnownOrder.get("End_x")], Object[self.OH.KnownOrder.get("End_y")]),(255, 0, 0), 2)
+						(Object[self.OH.KnownOrder.get("End_x")], Object[self.OH.KnownOrder.get("End_y")]),(0, 255, 0), 1)
 				text = "Class: {}, ID {}".format(self.ClassNames.get(Object[self.OH.KnownOrder.get("Class")]),Object[self.OH.KnownOrder.get("ID")])
 				cv2.putText(image, text, (Object[self.OH.KnownOrder.get("Start_x")], Object[self.OH.KnownOrder.get("End_y")]-5),cv2.FONT_HERSHEY_PLAIN, 1, (0, 0, 255), 2)
 				cv2.circle(image, (Object[self.OH.KnownOrder.get("cx")], Object[self.OH.KnownOrder.get("cy")]), 4, (0, 255, 0), -1)
