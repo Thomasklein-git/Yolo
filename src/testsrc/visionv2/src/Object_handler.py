@@ -21,7 +21,7 @@ class Object_handler():
              "Time": 14, "Current_listing": 15} #Tilføjet time and vehicle XYZ
         self.LostOrder    = {"UID":  0, "ID": 1, "Class": 2}
         self.Dynsta = np.zeros(classNum, dtype=bool) # Dynamic class true, Static class flass (everything is false)
-        self.Dynsta[np.array([0,2])] = True # Make person and car dynamic 
+        self.Dynsta[np.array([0])] = True # Make person and car (2) dynamic 
         self.static_V = 0.5 #1.8km/h
         self.dynamic_V = 3 #10.8km/h
         # [UID, ID, class,  cx, cy, Start_x, Start_y, End_x, End_y, Score, Occlusion]
@@ -105,30 +105,35 @@ class Object_handler():
 
                     if len(Known_D) > 0:
                         D = dist.cdist(np.array(Current_D), np.array(Known_D))
-
+                        #print(np.min(D))
                         V_obj=np.array([]) # Velocity of object relative to Vehicle
                         for i in range(D.shape[1]):
                             V=D[:,i]/(np.array(Current_Time)-np.array(Known_Time[i]))
                             V_obj=np.append(V_obj,V)
                         V_obj=np.reshape(V_obj,D.shape)
-                    
-                        print(V_obj, "Velocity object")
-                        
+                        #print(D,"distance")
+                        #print(V_obj, "Velocity object")
+                        #print(len(V_obj))
+
+                        if self.Dynsta[c]==False:
+                            v_thres=self.static_V
+                            #print(v_thres,"sta")
+                        else:
+                            v_thres=self.dynamic_V
+                            #print(v_thres,"dyn")
+
                         pairs = min(len(Current_i), len(Known_i))
                         for i in range(0,pairs):
-                            if self.Dynsta[c]==False:
-                                v_thres=self.static_V
-                            else:
-                                v_thres=self.dynamic_V
-                            if V_obj[0][i]<=v_thres:
-                                V_obj1 = np.where(V_obj==V_obj.min())
-                                UsedRow.append(V_obj1[0][0])
-                                UsedCol.append(V_obj1[1][0])
+                            if V_obj.min()<=v_thres:
+                                D1 = np.where(D==D.min())
+                                UsedRow.append(D1[0][0])
+                                UsedCol.append(D1[1][0])
+                                D[UsedRow[i]][0:len(Known_i)] = 1000
                                 V_obj[UsedRow[i]][0:len(Known_i)] = 1000
                                 for j in range(0,len(Current_i)):
+                                    D[j][UsedCol[i]] = 1000
                                     V_obj[j][UsedCol[i]] = 1000
-                            
-
+                       
                             
                         """
                         for i in range(0,pairs):
