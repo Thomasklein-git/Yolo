@@ -14,22 +14,26 @@ from yolov3.yolov3 import *
 
 class object_detector:
     def __init__(self):
+        # Name the ROS node 
+        rospy.init_node('YOLO', anonymous=True)
+
+        # Load modules
         self.yolo = Load_Yolo_model()
         self.bridge = CvBridge()
 
+        # Create local variables
+
+        # Create Topics to publish
         self.bbox_pub = rospy.Publisher("/yolo/bboxes",Detection2DArray, queue_size=1)
-        self.time_pub = rospy.Publisher("/yolo/Time",Image, queue_size=1,tcp_nodelay=True)
 
-        rospy.Subscriber("/zed2/zed_node/left/image_rect_color",Image,self.callback_images)
-        rospy.Subscriber("/yolo/Time",Image,self.callback_yolo,tcp_nodelay=True)
+        # Create subscriptions
+        #rospy.wait_for_message("/zed2/zed_node/left/image_rect_color",Image)
 
-    def callback_images(self, image):
-        self.image = image
-        self.time_pub.publish()
+        # Init callback
+        self.callback()
 
-    
-    def callback_yolo(self, image):
-        image = self.image
+    def callback(self):
+        image = rospy.wait_for_message("/zed2/zed_node/left/image_rect_color",Image)
         cv_image = self.bridge.imgmsg_to_cv2(image, image.encoding)
 
         _ , bboxes=detect_image(self.yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
@@ -71,15 +75,14 @@ class object_detector:
             detect.detections.append(detection)
 
         self.bbox_pub.publish(detect)
+        # Reload the callback loop 
+        self.callback()
+
+
+        
 
 def main(args):
-	rospy.init_node('YOLO', anonymous=True)
-	yolo = object_detector()
-	
-	try:
-		rospy.spin()
-	except KeyboardInterrupt:
-		print("Shutting down")
+    yolo = object_detector()
 
 if __name__ =='__main__':
 	main(sys.argv)
