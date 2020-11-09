@@ -3,7 +3,8 @@ import sys
 import rospy
 
 from sensor_msgs.msg import Image
-from sensor_msgs.msg import CompressedImage
+#from sensor_msgs.msg import CompressedImage
+from std_msgs.msg import Time
 from vision_msgs.msg import Detection2DArray, Detection2D, ObjectHypothesisWithPose
 from cv_bridge import CvBridge, CvBridgeError
 import message_filters
@@ -14,29 +15,41 @@ from yolov3.yolov3 import *
 
 class object_detector:
     def __init__(self):
-        # Name the ROS node 
+        print("[INFO] Initializing ROS...")
         rospy.init_node('YOLO', anonymous=True)
 
-        # Load modules
+        print("[INFO] Loading modules...")
         self.yolo = Load_Yolo_model()
         self.bridge = CvBridge()
 
+        print("[INFO] Loading config...")
         # Create local variables
+        self.timer = Image()
 
+        print("[INFO] Initialize ROS publisher...")
         # Create Topics to publish
-        self.bbox_pub = rospy.Publisher("/yolo/bboxes",Detection2DArray, queue_size=1)
+        self.boxes_pub = rospy.Publisher("/yolo/bboxes",Detection2DArray, queue_size=1)
+        self.timer_pub = rospy.Publisher("/yolo/Timer",Image, queue_size=1)
 
+        print("[INFO] Initialize ROS Subscribers...")
         # Create subscriptions
         #rospy.wait_for_message("/zed2/zed_node/left/image_rect_color",Image)
 
+        print("[INFO] Loading complete")
         # Init callback
         self.callback()
 
     def callback(self):
         image = rospy.wait_for_message("/zed2/zed_node/left/image_rect_color",Image)
+        self.timer.header = image.header
+        self.timer_pub.publish(self.timer)
+        #time1 = rospy.Time.now().to_sec()
         cv_image = self.bridge.imgmsg_to_cv2(image, image.encoding)
-
+        #time2 = rospy.Time.now().to_sec()
         _ , bboxes=detect_image(self.yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
+        #time3 = rospy.Time.now().to_sec()
+        #print(time2-time1, "Bridge")
+        #print(time3-time2, "YOLO")
         detect = Detection2DArray()
         detect.header = image.header
 
@@ -74,7 +87,7 @@ class object_detector:
             detection.results = [hypo,]
             detect.detections.append(detection)
 
-        self.bbox_pub.publish(detect)
+        self.boxes_pub.publish(detect)
         # Reload the callback loop 
         self.callback()
 
@@ -83,6 +96,7 @@ class object_detector:
 
 def main(args):
     yolo = object_detector()
+    rospy.spin()
 
 if __name__ =='__main__':
 	main(sys.argv)
