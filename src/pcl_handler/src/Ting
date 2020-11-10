@@ -1,0 +1,34 @@
+
+
+ Første kommando
+void toROSMsg(const sensor_msgs::PointCloud2 &cloud, sensor_msgs::Image &image)
+{
+pcl::PCLPointCloud2 pcl_cloud;                      Definerer pcl_cloud objektet som et PCLPointcloud2 objekt
+pcl_conversions::toPCL(cloud, pcl_cloud);           Se Anden kommando
+pcl::PCLImage pcl_image;                            Definerer pcl_image som et PCLImage objekt
+pcl::toPCLPointCloud2(pcl_cloud, pcl_image);        Se Tredje kommando
+pcl_conversions::moveFromPCL(pcl_image, image);     Se Fjerde kommando
+}
+
+ Anden kommando
+void toPCL(const sensor_msgs::PointCloud2 &pc2, pcl::PCLPointCloud2 &pcl_pc2)
+{
+copyPointCloud2MetaData(pc2, pcl_pc2);
+pcl_pc2.data = pc2.data;
+}
+
+void copyPointCloud2MetaData(const sensor_msgs::PointCloud2 &pc2, pcl::PCLPointCloud2 &pcl_pc2)
+{
+toPCL(pc2.header, pcl_pc2.header);
+pcl_pc2.height = pc2.height;
+pcl_pc2.width = pc2.width;
+toPCL(pc2.fields, pcl_pc2.fields);
+pcl_pc2.is_bigendian = pc2.is_bigendian;
+pcl_pc2.point_step = pc2.point_step;
+pcl_pc2.row_step = pc2.row_step;
+pcl_pc2.is_dense = pc2.is_dense;
+}
+
+ Tredje kommando
+
+ Fjerde kommando
