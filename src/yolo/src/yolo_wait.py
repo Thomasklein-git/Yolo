@@ -2,7 +2,7 @@
 import sys
 import rospy
 
-from sensor_msgs.msg import Image
+from sensor_msgs.msg import Image, CompressedImage
 #from sensor_msgs.msg import CompressedImage
 from std_msgs.msg import Time
 from vision_msgs.msg import Detection2DArray, Detection2D, ObjectHypothesisWithPose
@@ -33,23 +33,18 @@ class object_detector:
 
         print("[INFO] Initialize ROS Subscribers...")
         # Create subscriptions
-        #rospy.wait_for_message("/zed2/zed_node/left/image_rect_color",Image)
 
         print("[INFO] Loading complete")
         # Init callback
         self.callback()
 
     def callback(self):
-        image = rospy.wait_for_message("/zed2/zed_node/left/image_rect_color",Image)
+        #image = rospy.wait_for_message("/zed2/zed_node/left/image_rect_color",Image)
+        image = rospy.wait_for_message("/zed2/zed_node/left/image_rect_color/compressed",CompressedImage)
         self.timer.header = image.header
         self.timer_pub.publish(self.timer)
-        #time1 = rospy.Time.now().to_sec()
-        cv_image = self.bridge.imgmsg_to_cv2(image, image.encoding)
-        #time2 = rospy.Time.now().to_sec()
+        cv_image = self.bridge.compressed_imgmsg_to_cv2(image, "bgr8")
         _ , bboxes=detect_image(self.yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
-        #time3 = rospy.Time.now().to_sec()
-        #print(time2-time1, "Bridge")
-        #print(time3-time2, "YOLO")
         detect = Detection2DArray()
         detect.header = image.header
 
@@ -85,6 +80,7 @@ class object_detector:
 
 
             detection.results = [hypo,]
+            detection.is_tracking = False
             detect.detections.append(detection)
 
         self.boxes_pub.publish(detect)

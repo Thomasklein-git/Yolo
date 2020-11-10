@@ -1,9 +1,10 @@
 <launch>
     <!-- Launch image detection -->
-    <node pkg="yolo" type="yolo.py">
+    <node pkg="yolo" type="yolo_wait.py"/>
     <!-- Launch Pointcloud2 to Image cpp-->
-    
+    <node pkg="pcl_handler" type="cloudsubscriber"/>
     <!-- Launch boundary box segmentation-->
+    <node pkg="segmentation" type="DBSCAN_wait.py"/>
     <!-- Launch Tracker -->
     <!-- Launch set goal -->
     <!-- -->

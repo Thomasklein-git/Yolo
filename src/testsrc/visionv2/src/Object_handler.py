@@ -3,6 +3,7 @@
 import numpy as np
 import math
 from scipy.spatial import distance as dist
+from scipy.optimize import linear_sum_assignment
 from agfh import *
 
 class Object_handler():
@@ -23,7 +24,7 @@ class Object_handler():
         self.Dynsta = np.zeros(classNum, dtype=bool) # Dynamic class true, Static class flass (everything is false)
         self.Dynsta[np.array([0])] = True # Make person and car (2) dynamic 
         self.static_V = 0.5 #1.8km/h
-        self.dynamic_V = 1.5 #10.8km/h
+        self.dynamic_V = 10 #10.8km/h
         # [UID, ID, class,  cx, cy, Start_x, Start_y, End_x, End_y, Score, Occlusion]
     
     def add(self,Objects):
@@ -65,6 +66,7 @@ class Object_handler():
                 print("Case 2")
                 for i in range(0,len(self.Known)):
                     self.Known[i][self.KnownOrder.get("Occlusion")] += 1
+                    self.Known[i][self.KnownOrder.get("Current_listing")] = float("nan")
 
         ############## Case 3 ##############
         # Current > 0
@@ -100,18 +102,21 @@ class Object_handler():
                         Current_Time=([self.Current[i][self.CurrentOrder.get("Time")]]) #tilføjet
 
                     for i in Known_i:
-                        Known_D.append([self.Known[i][self.KnownOrder.get("Depth_X")],self.Known[i][self.KnownOrder.get("Depth_Y")],self.Known[i][self.KnownOrder.get("Depth_Z")]])         
+                        Known_D.append([self.Known[i][self.KnownOrder.get("Depth_X")],self.Known[i][self.KnownOrder.get("Depth_Y")],self.Known[i][self.KnownOrder.get("Depth_Z")]])      
                         Known_Time.append([self.Known[i][self.KnownOrder.get("Time")]]) #tilføjet
 
                     if len(Known_D) > 0:
                         D = dist.cdist(np.array(Current_D), np.array(Known_D))
+                        UsedRow, UsedCol = linear_sum_assignment(D)
+
+                        """
                         #print(np.min(D))
                         V_obj=np.array([]) # Velocity of object relative to Vehicle
                         for i in range(D.shape[1]):
                             V=D[:,i]/(np.array(Current_Time)-np.array(Known_Time[i]))
-                            V_obj=np.append(V_obj,V)
+                            V_obj=np.append(V_obj,V)    
                         V_obj=np.reshape(V_obj,D.shape)
-                        print(D,"distance")
+                        #print(D,"distance")
                         #print(V_obj, "Velocity object")
                         #print(len(V_obj))
 
@@ -123,6 +128,8 @@ class Object_handler():
                             #print(v_thres,"dyn")
 
                         pairs = min(len(Current_i), len(Known_i))
+                        
+                        
                         for i in range(0,pairs):
                             #V_obj1=np.where(V_obj==V_obj.min())
                             if V_obj.min()<=v_thres:# and D[V_obj1[0][0],V_obj1[1][0]]<3:# and D.min()<1:
@@ -134,30 +141,41 @@ class Object_handler():
                                 for j in range(0,len(Current_i)):
                                     D[j][UsedCol[i]] = 1000
                                     V_obj[j][UsedCol[i]] = 1000
+                    """
+                    
                        
                             
-                        """
+                    """
                         for i in range(0,pairs):
+                            print(D, "D")
                             D1 = np.where(D==D.min())
                             UsedRow.append(D1[0][0])
                             UsedCol.append(D1[1][0])
                             D[UsedRow[i]][0:len(Known_i)] = 1000
                             for j in range(0,len(Current_i)):
                                 D[j][UsedCol[i]] = 1000
-                        """
+                    """
                     # Updating Known to match current pairs
-                    
+                    for i in range(len(UsedRow)):
+                        Row = UsedRow[i]
+                        Col = UsedCol[i]
+                        Current_update = self.Current[Current_i[Row]]
+                        Known_update = self.Known[Known_i[Col]][self.KnownOrder.get("UID")]
+                        self.update(Current_update,Known_update)
+                    """
                     for i in UsedRow:
                         for j in UsedCol:
                             Current_update = self.Current[Current_i[i]]
                             Known_update = self.Known[Known_i[j]][self.KnownOrder.get("UID")]
                             self.update(Current_update,Known_update)
+                    """
 
                     # Adding new points not matched with a known points
                     if len(UsedRow) < len(Current_i):
                         New_Points = np.delete(Current_i,[UsedRow])
                         for i in New_Points:
                             self.upgrade(self.Current[i])
+
                     # Add Occlusion to lost objects
                     if len(UsedCol) < len(Known_i):
                         Lost_Points = np.delete(Known_i,[UsedCol])

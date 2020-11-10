@@ -8,17 +8,12 @@ import numpy as np
 import os
 import time
 
-### Imports for ROS ###
-#from sensor_msgs.msg import Image, CompressedImage, PointCloud2, PointField
 from vision_msgs.msg import Detection2DArray
-#from nav_msgs.msg import Odometry
-#from geometry_msgs.msg import PoseStamped
-#from cv_bridge import CvBridge, CvBridgeError
 import message_filters
 
 from agfh import *
 
-from yolov3.utils import detect_image, Load_Yolo_model
+#from yolov3.utils import detect_image, Load_Yolo_model
 from yolov3.configs import *
 from yolov3.yolov3 import *
 
@@ -26,11 +21,9 @@ from yolov3.yolov3 import *
 from Object_handler import Object_handler
 
 
-#os.environ['CUDA_VISIBLE_DEVICES'] = '0'
-
 class object_tracker:
     def __init__(self):
-        #print("[INFO] Loading modules...")
+        print("[INFO] Loading modules...")
         classNum        = len(list(read_class_names(YOLO_COCO_CLASSES).values()))
         self.ClassNames = read_class_names(YOLO_COCO_CLASSES)
         self.OH 	    = Object_handler(classNum)
@@ -39,24 +32,53 @@ class object_tracker:
         self.Target_class = 0 # Class 0 is person
         self.Target_Found = False
         self.Target_UID = []
+        self.show = False
 
-        #print("[INFO] Loading ROS topics")
+        print("[INFO] Loading ROS topics")
         self.Tracking_list = rospy.Publisher("/yolo/Trackedbboxes", Detection2DArray, queue_size=1)
+
         rospy.Subscriber("/yolo/Segbboxes", Detection2DArray, self.callback, queue_size=1)
 
         print("[INFO] Loading complete")
 
     def callback(self,boxes):
+        Time = float("%.6f" %  boxes.header.stamp.to_sec())
+        boxes_OH = box_for_OH(boxes,Time)
+        self.OH.add(boxes_OH)
 
-        boxes_OH = box_for_OH(boxes)
-        print(boxes_OH)
-            
+        if self.Target_Found == False:
+            self.Target_UID, self.Target_Found = Choose_target(self.OH, self.Target_class)
 
-        pass
+        if self.Target_Found == True:
+            Target_I, Target_Occlusion = Find_target(self.OH, self.Target_UID)
+            if Target_I == []:
+                print("Target is Lost")
+            elif Target_Occlusion > 0:
+                print("Target was occluded {} frames ago".format(Target_Occlusion))
+            else:
+                Target = self.OH.Known[Target_I]
+                SegID = Target[self.OH.KnownOrder.get("Current_listing")]
+                boxes.detections[SegID].is_tracking = True
 
-        #self.Tracking_list.publish(boxes)
+                
+        
+        for Object in self.OH.Known:
+            Current_list = Object[self.OH.KnownOrder.get("Current_listing")]
+            if np.isnan(Current_list):
+                pass
+            else:
+                boxes.detections[Current_list].UID = str(Object[self.OH.KnownOrder.get("UID")])
 
-def box_for_OH(boxes):
+
+        
+        self.Tracking_list.publish(boxes)
+
+
+        if self.show == True:
+            self.show_img(cv_image)
+
+
+def box_for_OH(boxes,Time):
         # Takes boxes in the format of Detection2DArray.msg and converts it to fit the format Object_handler
         boxes_OH = []
         for box in boxes.detections:
@@ -65,13 +87,21 @@ def box_for_OH(boxes):
             cy = box.bbox.center.y # Center y
             sy = box.bbox.size_y   # Size y
 
+
             Start_x = int(cx - sx/2)
             End_x   = int(cx + sx/2)
             Start_y = int(cy - sy/2)
             End_y   = int(cy + sy/2)
             Score   = box.results[0].score
             Class   = box.results[0].id
-            boxes_OH.append([Start_x,End_x,Start_y,End_y,Score,Class])
+
+
+            x = box.results[0].pose.pose.position.x
+            y = box.results[0].pose.pose.position.y
+            z = box.results[0].pose.pose.position.z
+            xyz = [x,y,z]
+
+            boxes_OH.append([Start_x,End_x,Start_y,End_y,Score,Class,xyz,Time])
         boxes_OH = np.array(boxes_OH)
         return boxes_OH
 

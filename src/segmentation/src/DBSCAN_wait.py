@@ -52,13 +52,11 @@ class Cloud_segmentation:
         for time in self.time_list:
             if time == boxes.header.stamp.to_sec():
                 image = True
-                pc_list  = self.pc_list[i]
+                #pc_list  = self.pc_list[i]
                 cv_image = self.cv_image[i]
                 break
             i += 1
         # Maybe add delete of all pc_list and cv image from before time stamp.
-        
-
         
         if image == True:
             PC_image_bbox_sub_series = []
@@ -73,8 +71,6 @@ class Cloud_segmentation:
             
             self.bboxes_pub.publish(boxes)
         time2 = rospy.Time.now().to_sec()
-        #print(time2-time1, "Segmentation time")
-        print("Loop 1")
         self.callback_segmentation()
 
     def callback_timer(self,image,timer):
@@ -86,20 +82,19 @@ class Cloud_segmentation:
 
         time3 = rospy.Time.now().to_sec()
         self.time_list.append(image.header.stamp.to_sec())
-        self.pc_list.append(pc_list)
+        #self.pc_list.append(pc_list)
         self.cv_image.append(cv_image)
 
         time4 = rospy.Time.now().to_sec()
         if len(self.time_list) > self.queue_lim:
             del self.time_list[0]
-            del self.pc_list[0]
+            #del self.pc_list[0]
             del self.cv_image[0]
         time5 = rospy.Time.now().to_sec()
         #print(time2-time1 , "Time1")
         #print(time3-time2 , "Time2")
         #print(time4-time3 , "Time3")
         #print(time5-time4 , "Time4")
-        print("Loop 2")
 
     def callback_cpp(self,image):
         time1 = rospy.Time.now().to_sec()
@@ -117,7 +112,6 @@ class Cloud_segmentation:
         
 
 def main(args):
-	#rospy.init_node('Cloud_segmentation', anonymous=True)
 	segmentation = Cloud_segmentation()
 	
 	try:
