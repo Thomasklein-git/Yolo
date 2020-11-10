@@ -18,7 +18,7 @@ class object_detector:
         self.bridge = CvBridge()
 
         self.bbox_pub = rospy.Publisher("/yolo/bboxes",Detection2DArray, queue_size=1)
-        self.time_pub = rospy.Publisher("/yolo/Time",Image, queue_size=1,tcp_nodelay=True)
+        self.time_pub = rospy.Publisher("/yolo/Timer",Image, queue_size=1,tcp_nodelay=True)
 
         rospy.Subscriber("/zed2/zed_node/left/image_rect_color",Image,self.callback_images)
         rospy.Subscriber("/yolo/Time",Image,self.callback_yolo,tcp_nodelay=True)

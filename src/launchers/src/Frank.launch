@@ -1,0 +1,10 @@
+<launch>
+    <!-- Launch image detection -->
+    <node pkg="yolo" type="yolo.py">
+    <!-- Launch Pointcloud2 to Image cpp-->
+    
+    <!-- Launch boundary box segmentation-->
+    <!-- Launch Tracker -->
+    <!-- Launch set goal -->
+    <!-- -->
+</launch>
