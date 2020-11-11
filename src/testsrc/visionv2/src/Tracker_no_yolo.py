@@ -10,6 +10,8 @@ import time
 
 from sensor_msgs.msg import TimeReference
 from vision_msgs.msg import Detection2DArray
+from geometry_msgs.msg import PoseStamped
+
 import message_filters
 
 from agfh import *
@@ -36,6 +38,7 @@ class object_tracker:
 
         print("[INFO] Loading ROS topics")
         self.Tracking_list = rospy.Publisher("/yolo/Trackedbboxes", Detection2DArray, queue_size=1)
+        self.pose_pub = rospy.Publisher('/Published_pose', PoseStamped, queue_size=1)
 
         #rospy.Subscriber("/yolo/Segbboxes", Detection2DArray, self.callback, queue_size=1)
         boxes_sub = message_filters.Subscriber("/yolo/Segbboxes", Detection2DArray, queue_size=1)
@@ -50,12 +53,43 @@ class object_tracker:
         boxes_OH = box_for_OH(boxes,Time)
         # Coordinates from BB to other coordinate set
         #xyzcoord_trans_series = Transform_Coordinates_between_frames(xyzcoord_series,"zed2_left_camera_frame","map",Time)
-
         self.OH.add(boxes_OH)
 
+        # If there are no current or previous target, run Choose_target to search for a new target
         if self.Target_Found == False:
             self.Target_UID, self.Target_Found = Choose_target(self.OH, self.Target_class)
+        # If there are a current or previous target run find target to search for the target in the current boxes
+        if self.Target_Found == True:
+            TargetList = Find_target(self.OH, self.Target_UID)
+        else:
+            TargetList = []
 
+        for Object in self.OH.Known:
+            # Search Known Objects for their number in the current bbox list
+            Current_list = Object[self.OH.KnownOrder.get("Current_listing")]
+            if np.isnan(Current_list):
+                # If listnumber is nan skip Object
+                pass
+            else:
+                # If listnumber is a number add the UID to boxes
+                boxes.detections[Current_list].UID = str(Object[self.OH.KnownOrder.get("UID")])
+                if Current_list == TargetList:
+                    # If Currentlist is the target change is_tracking to True and publish the pose
+                    boxes.detections[Current_list].is_tracking = True
+
+                    Pose = PoseStamped()
+                    Pose.header = boxes.header
+                    Pose.pose   = boxes.detections[Current_list].results[0].pose.pose
+                    self.pose_pub.publish(Pose)
+
+        self.Tracking_list.publish(boxes)
+
+        time2 = rospy.Time.now().to_sec()
+        print(time2-timer.time_ref.to_sec(),"Time delay")
+
+
+
+        """
         if self.Target_Found == True:
             Target_I, Target_Occlusion = Find_target(self.OH, self.Target_UID)
             if Target_I == []:
@@ -65,21 +99,8 @@ class object_tracker:
             else:
                 Target = self.OH.Known[Target_I]
                 SegID = Target[self.OH.KnownOrder.get("Current_listing")]
-                boxes.detections[SegID].is_tracking = True
-
-                
-        
-        for Object in self.OH.Known:
-            Current_list = Object[self.OH.KnownOrder.get("Current_listing")]
-            if np.isnan(Current_list):
-                pass
-            else:
-                boxes.detections[Current_list].UID = str(Object[self.OH.KnownOrder.get("UID")])
-        time2 = rospy.Time.now().to_sec()
-        print(time2-timer.time_ref.to_sec(),"Time delay")
-        
-        self.Tracking_list.publish(boxes)
-
+                #boxes.detections[SegID].is_tracking = True
+        """
 
 def box_for_OH(boxes,Time):
         # Takes boxes in the format of Detection2DArray.msg and converts it to fit the format Object_handler

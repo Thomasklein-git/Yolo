@@ -429,12 +429,22 @@ def Choose_target(OH, Target_class):
     
 def Find_target(OH, Target_UID):
     Index = []
-    Occlusion = []
+    Listing = []
+    #Occlusion = []
+    
     for i in range(0,len(OH.Known)):
         if OH.Known[i][OH.KnownOrder.get("UID")] == Target_UID:
             Index = i
             Occlusion = OH.Known[i][OH.KnownOrder.get("Occlusion")]
-    return Index, Occlusion
+            break
+    if Index == []:
+        print("Target is Lost")
+    else:
+        if Occlusion > 0:
+            print("Target was occluded {} frames ago".format(Occlusion))
+        else:
+           Listing = OH.Known[Index][OH.KnownOrder.get("Current_listing")] 
+    return Listing
 
 def Unique_in_List(List):  
     Unique_Entries = []

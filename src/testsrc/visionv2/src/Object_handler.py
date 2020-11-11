@@ -24,7 +24,7 @@ class Object_handler():
         self.Dynsta = np.zeros(classNum, dtype=bool) # Dynamic class true, Static class flass (everything is false)
         self.Dynsta[np.array([0])] = True # Make person and car (2) dynamic 
         self.static_V = 0.5 #1.8km/h
-        self.dynamic_V = 2 #10.8km/h
+        self.dynamic_V = 10 #10.8km/h
         # [UID, ID, class,  cx, cy, Start_x, Start_y, End_x, End_y, Score, Occlusion]
     
     def add(self,Objects):
