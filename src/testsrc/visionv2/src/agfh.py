@@ -505,3 +505,11 @@ def get_new_orientation(Waypoint_old, Waypoint_new, vec_old_new, Points=True):
         q_norm=q/np.linalg.norm(q)
     
     return q_norm
+
+def read_class_names(class_file_name):
+    # loads class name from a file
+    names = {}
+    with open(class_file_name, 'r') as data:
+        for ID, name in enumerate(data):
+            names[ID] = name.strip('\n')
+    return names

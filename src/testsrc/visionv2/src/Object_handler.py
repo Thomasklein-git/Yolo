@@ -24,7 +24,7 @@ class Object_handler():
         self.Dynsta = np.zeros(classNum, dtype=bool) # Dynamic class true, Static class flass (everything is false)
         self.Dynsta[np.array([0])] = True # Make person and car (2) dynamic 
         self.static_V = 0.5 #1.8km/h
-        self.dynamic_V = 10 #10.8km/h
+        self.dynamic_V = 2 #10.8km/h
         # [UID, ID, class,  cx, cy, Start_x, Start_y, End_x, End_y, Score, Occlusion]
     
     def add(self,Objects):
@@ -106,8 +106,34 @@ class Object_handler():
                         Known_Time.append([self.Known[i][self.KnownOrder.get("Time")]]) #tilføjet
 
                     if len(Known_D) > 0:
+                        # Select velocity threshold 
+                        if self.Dynsta[c]==False:
+                            v_thres=self.static_V
+                        else:
+                            v_thres=self.dynamic_V
+                        # Calculate distance between pairs
                         D = dist.cdist(np.array(Current_D), np.array(Known_D))
+                        # Calculate pairs for lowest cost 
                         UsedRow, UsedCol = linear_sum_assignment(D)
+                        
+                        print(UsedRow, "Row")
+                        print(UsedCol, "Col")
+                        dellist = np.array([])
+                        for i in range(len(UsedCol)):
+                            # Calculate velocity of lowest cost pairs
+                            v_obj = (D[UsedRow[i]][UsedCol[i]])/(np.array(Current_Time)-np.array(Known_Time[UsedCol[i]]))
+                            print(v_obj, "v_obj")
+                            # If pair exceed velocity threshold, remove pair
+                            if v_obj > v_thres:
+                                dellist = np.append(dellist,i)
+                        
+                        # Remove unwanted pairs
+                        print(dellist)
+                        UsedRow = np.delete(UsedRow,dellist)
+                        UsedCol = np.delete(UsedCol,dellist)
+                        print(UsedRow, "Row2")
+                        print(UsedCol, "Col2")
+                        
 
                         """
                         #print(np.min(D))

@@ -15,7 +15,7 @@ from agfh import *
 
 #from yolov3.utils import detect_image, Load_Yolo_model
 from yolov3.configs import *
-from yolov3.yolov3 import *
+#from yolov3.yolov3 import read_class_names
 
 ### New tracker ###
 from Object_handler import Object_handler
@@ -44,6 +44,9 @@ class object_tracker:
     def callback(self,boxes):
         Time = float("%.6f" %  boxes.header.stamp.to_sec())
         boxes_OH = box_for_OH(boxes,Time)
+        # Coordinates from BB to other coordinate set
+        #xyzcoord_trans_series = Transform_Coordinates_between_frames(xyzcoord_series,"zed2_left_camera_frame","map",Time)
+
         self.OH.add(boxes_OH)
 
         if self.Target_Found == False:
