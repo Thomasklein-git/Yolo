@@ -96,6 +96,20 @@ def DBSCAN_pointcloud(img, bboxes, seg_plot=True, eps=0.046, procent=0.0011):
         ycoord=np.transpose(np.array([ycoord])) # shape[ycoord,1] 
         zcoord=np.transpose(np.array([zcoord])) # shape[zcoord,1]
 
+        a=np.concatenate((label,xcoord,ycoord,zcoord),axis=1) # Put label xcoord,ycoord,zcoord side by side shape[pixel,4]
+        x_clust=[] # x coordinates from a which is at label_max
+        y_clust=[] # y coordinates from a which is at label_max
+        z_clust=[] # z coordinates from a which is at label_max
+        for len_a in range(len(a)):
+            if a[len_a,0]==label_max:
+                x_clust.append(a[len_a,1])
+                y_clust.append(a[len_a,2])
+                z_clust.append(a[len_a,3])
+        min_x=np.min(x_clust)
+        avg_y=np.mean(y_clust)
+        avg_z=np.mean(z_clust)
+        xyzcoord=[min_x,avg_y,avg_z]
+        """
         a=np.concatenate((label,xcoord),axis=1) # Put label and xcoord (depth) side by side shape[pixel,2]
         b=[] # Depth values from a which is at label_max
         for len_a in range(len(a)):
@@ -108,6 +122,7 @@ def DBSCAN_pointcloud(img, bboxes, seg_plot=True, eps=0.046, procent=0.0011):
         z_for_min_x = zcoord[min_index[0][0],0] # get z from min_index
             
         xyzcoord=[min_x,y_for_min_x,z_for_min_x]
+        """
         xyzcoord_series.append(xyzcoord)
         
         avg_depth=np.mean(b)
@@ -122,9 +137,9 @@ def DBSCAN_pointcloud(img, bboxes, seg_plot=True, eps=0.046, procent=0.0011):
             labels = np.array(np.empty(len(depth_distance))) # Initialize labels array with the length of nr pixels in img
             labels[:] = np.nan # All index are nan
             labels[np.invert(np.isnan(depth_distance))]=label_for_plot
-            labels = np.where(np.isnan(labels), 1000 ,labels) #
-            labels = np.where(np.isinf(labels), 1000 ,labels) # 
-            for clust in range(-1,len(Sort)-1,1):
+            labels = np.where(np.isnan(labels), 1000 ,labels) # Set nan to 1000
+            labels = np.where(np.isinf(labels), 1000 ,labels) # Set +- inf to 1000
+            for clust in range(-1,len(Sort)-1,1): # Set all clusters which are not the largest cluster to 2000
                 if clust != label_max:
                     labels = np.where(labels==clust,2000,labels)
             
@@ -386,7 +401,6 @@ def PC_reduc_seg(bbox, Segmented_labels ,pc_list,cloud):
         header = cloud.header
         Reduced_PC2 = pc2.create_cloud_xyz32(header, pc_list)
     return Reduced_PC2
-
 
 def Waypoint_planter(Target, TargetOrder, Frame_id, Time):
     Pose = PoseStamped()
