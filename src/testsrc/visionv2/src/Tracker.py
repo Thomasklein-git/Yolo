@@ -67,11 +67,12 @@ class object_tracker:
 		print("[INFO] Loading complete")
 		#mf = message_filters.ApproximateTimeSynchronizer([image_sub,depth_sub,cloud_sub],1,0.07)
 		#mf = message_filters.ApproximateTimeSynchronizer([image_sub,cloud_sub],1,5) #Set close to zero in order to syncronize img and point cloud (be aware of frame rate) 
-		mf = message_filters.TimeSynchronizer([image_sub,cloud_sub],1)
+		mf = message_filters.TimeSynchronizer([image_sub,cloud_sub],10)
 		mf.registerCallback(self.callback)
 
 	#def callback(self,image,depth,cloud):
 	def callback(self,image,cloud):
+		time1 = rospy.Time.now().to_sec()
 		Time = float("%.6f" %  cloud.header.stamp.to_sec()) # get time stamp for image in callback
 		# Generate images from msgs
 		cv_image = self.bridge.imgmsg_to_cv2(image, image.encoding)
@@ -83,13 +84,13 @@ class object_tracker:
 		PC_image_bbox_sub_series = Sub_pointcloud(cv_image_pc, bboxes)
 		_, segmentation_img, xyzcoord_series, labels_series = DBSCAN_pointcloud(PC_image_bbox_sub_series, bboxes, seg_plot=self.seg_plot)
 
-		xyzcoord_trans_series = Transform_Coordinates_between_frames(xyzcoord_series,"zed2_left_camera_frame","map",Time)
+		#xyzcoord_trans_series = Transform_Coordinates_between_frames(xyzcoord_series,"zed2_left_camera_frame","map",Time)
 
 		x1, y1, x2, y2, Score, C = Give_boundingbox_coor_class(bboxes)
 		boxes = []
 		for i in range(len(bboxes)):	
 			#boxes.append([x1[i],y1[i],x2[i],y2[i],Score[i],C[i],xyzcoord_series[i]])
-			boxes.append([x1[i],y1[i],x2[i],y2[i],Score[i],C[i],xyzcoord_trans_series[i],Time])
+			boxes.append([x1[i],y1[i],x2[i],y2[i],Score[i],C[i],xyzcoord_series[i],Time])
 		boxes = np.array(boxes)	
 		self.OH.add(boxes)
 		fp = True
@@ -129,7 +130,8 @@ class object_tracker:
 			Reduced_PC  = PC_reduc(None, None, pc_list, cloud)
 			self.reduc_cloud_pub.publish(Reduced_PC)
 			self.timed_cloud_pub.publish(cloud)
-
+		time2 = rospy.Time.now().to_sec()
+		print(time2-time1, "Delay time")
 		if self.show == True:
 			self.show_img(cv_image,segmentation_img, image)
 

@@ -115,24 +115,16 @@ class Object_handler():
                         D = dist.cdist(np.array(Current_D), np.array(Known_D))
                         # Calculate pairs for lowest cost 
                         UsedRow, UsedCol = linear_sum_assignment(D)
-                        
-                        print(UsedRow, "Row")
-                        print(UsedCol, "Col")
                         dellist = np.array([])
                         for i in range(len(UsedCol)):
                             # Calculate velocity of lowest cost pairs
                             v_obj = (D[UsedRow[i]][UsedCol[i]])/(np.array(Current_Time)-np.array(Known_Time[UsedCol[i]]))
-                            print(v_obj, "v_obj")
                             # If pair exceed velocity threshold, remove pair
                             if v_obj > v_thres:
                                 dellist = np.append(dellist,i)
-                        
                         # Remove unwanted pairs
-                        print(dellist)
                         UsedRow = np.delete(UsedRow,dellist)
                         UsedCol = np.delete(UsedCol,dellist)
-                        print(UsedRow, "Row2")
-                        print(UsedCol, "Col2")
                         
 
                         """

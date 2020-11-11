@@ -3,7 +3,7 @@ import sys
 import rospy
 import cv2
 
-from sensor_msgs.msg import PointCloud2, Image
+from sensor_msgs.msg import PointCloud2, Image, TimeReference
 from vision_msgs.msg import Detection2DArray, Detection2D, ObjectHypothesisWithPose
 from cv_bridge import CvBridge, CvBridgeError
 import message_filters
@@ -22,7 +22,7 @@ class Cloud_segmentation:
         self.time_list = []
         self.pc_list = []
         self.cv_image = []
-        self.queue_lim = 10
+        self.queue_lim = 30
 
 
         print("[INFO] Initializing ROS publisher...")
@@ -33,7 +33,7 @@ class Cloud_segmentation:
         #rospy.Subscriber("yolo/CloudImage",Image,self.callback_cpp,queue_size=1)
         #rospy.Subscriber("/zed2/zed_node/point_cloud/cloud_registered",PointCloud2,self.callback_pyt,queue_size=1)
         cloud_sub = message_filters.Subscriber("/yolo/CloudImage", Image, queue_size=1)
-        timer_sub = message_filters.Subscriber("/yolo/Timer", Image, queue_size=1)
+        timer_sub = message_filters.Subscriber("/yolo/Timer", TimeReference, queue_size=1)
         mf = message_filters.TimeSynchronizer([cloud_sub,timer_sub],queue_size=15)
         mf.registerCallback(self.callback_timer)
 
@@ -71,6 +71,7 @@ class Cloud_segmentation:
             
             self.bboxes_pub.publish(boxes)
         time2 = rospy.Time.now().to_sec()
+        print(time2-time1, "Time DBScan")
         self.callback_segmentation()
 
     def callback_timer(self,image,timer):

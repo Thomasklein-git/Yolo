@@ -8,6 +8,7 @@ import numpy as np
 import os
 import time
 
+from sensor_msgs.msg import TimeReference
 from vision_msgs.msg import Detection2DArray
 import message_filters
 
@@ -32,16 +33,19 @@ class object_tracker:
         self.Target_class = 0 # Class 0 is person
         self.Target_Found = False
         self.Target_UID = []
-        self.show = False
 
         print("[INFO] Loading ROS topics")
         self.Tracking_list = rospy.Publisher("/yolo/Trackedbboxes", Detection2DArray, queue_size=1)
 
-        rospy.Subscriber("/yolo/Segbboxes", Detection2DArray, self.callback, queue_size=1)
+        #rospy.Subscriber("/yolo/Segbboxes", Detection2DArray, self.callback, queue_size=1)
+        boxes_sub = message_filters.Subscriber("/yolo/Segbboxes", Detection2DArray, queue_size=1)
+        timer_sub = message_filters.Subscriber("/yolo/Timer", TimeReference, queue_size=1)
+        mf = message_filters.TimeSynchronizer([boxes_sub,timer_sub],queue_size=40)
+        mf.registerCallback(self.callback)
 
         print("[INFO] Loading complete")
 
-    def callback(self,boxes):
+    def callback(self,boxes,timer):
         Time = float("%.6f" %  boxes.header.stamp.to_sec())
         boxes_OH = box_for_OH(boxes,Time)
         # Coordinates from BB to other coordinate set
@@ -71,14 +75,10 @@ class object_tracker:
                 pass
             else:
                 boxes.detections[Current_list].UID = str(Object[self.OH.KnownOrder.get("UID")])
-
-
+        time2 = rospy.Time.now().to_sec()
+        print(time2-timer.time_ref.to_sec(),"Time delay")
         
         self.Tracking_list.publish(boxes)
-
-
-        if self.show == True:
-            self.show_img(cv_image)
 
 
 def box_for_OH(boxes,Time):

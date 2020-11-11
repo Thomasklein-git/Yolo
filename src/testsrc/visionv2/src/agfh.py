@@ -125,7 +125,7 @@ def DBSCAN_pointcloud(img, bboxes, seg_plot=True, eps=0.046, procent=0.0011):
         """
         xyzcoord_series.append(xyzcoord)
         
-        avg_depth=np.mean(b)
+        avg_depth=np.mean(x_clust)
         avg_depth_series.append(avg_depth)
         
         if seg_plot==True:

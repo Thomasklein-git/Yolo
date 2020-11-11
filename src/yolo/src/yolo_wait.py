@@ -2,7 +2,7 @@
 import sys
 import rospy
 
-from sensor_msgs.msg import Image, CompressedImage
+from sensor_msgs.msg import Image, CompressedImage, TimeReference
 #from sensor_msgs.msg import CompressedImage
 from std_msgs.msg import Time
 from vision_msgs.msg import Detection2DArray, Detection2D, ObjectHypothesisWithPose
@@ -24,12 +24,12 @@ class object_detector:
 
         print("[INFO] Loading config...")
         # Create local variables
-        self.timer = Image()
+        self.timer = TimeReference()
 
         print("[INFO] Initialize ROS publisher...")
         # Create Topics to publish
         self.boxes_pub = rospy.Publisher("/yolo/bboxes",Detection2DArray, queue_size=1)
-        self.timer_pub = rospy.Publisher("/yolo/Timer",Image, queue_size=1)
+        self.timer_pub = rospy.Publisher("/yolo/Timer",TimeReference, queue_size=1)
 
         print("[INFO] Initialize ROS Subscribers...")
         # Create subscriptions
@@ -41,7 +41,9 @@ class object_detector:
     def callback(self):
         #image = rospy.wait_for_message("/zed2/zed_node/left/image_rect_color",Image)
         image = rospy.wait_for_message("/zed2/zed_node/left/image_rect_color/compressed",CompressedImage)
+        time1 = rospy.Time.now().to_sec()
         self.timer.header = image.header
+        self.timer.time_ref = rospy.Time.now() 
         self.timer_pub.publish(self.timer)
         cv_image = self.bridge.compressed_imgmsg_to_cv2(image, "bgr8")
         _ , bboxes=detect_image(self.yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
@@ -85,6 +87,9 @@ class object_detector:
 
         self.boxes_pub.publish(detect)
         # Reload the callback loop 
+        time2 = rospy.Time.now().to_sec()
+        print(time2-time1, "Yolo Time")
+
         self.callback()
 
 
