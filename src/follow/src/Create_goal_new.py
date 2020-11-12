@@ -160,7 +160,10 @@ class Follow():
                     #temp_waypoint=self.Waypoints[0]
                     temp_waypoint.pose.position.x=xy_goal_stop[0]
                     temp_waypoint.pose.position.y=xy_goal_stop[1]
+                    print(temp_waypoint.pose.position, "2 after")
+                    print(self.Waypoints[0].pose.position,"before2 loop")
                     self.pub_goal.publish(temp_waypoint) 
+                    print(self.Waypoints[0].pose.position,"2 loop")
                     
                     #del self.Waypoints[0]
                 # If list containt more poses, publish a new goal
