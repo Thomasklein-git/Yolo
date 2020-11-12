@@ -27,7 +27,7 @@ from Object_handler import Object_handler
 class object_tracker:
     def __init__(self):
         print("[INFO] Initializing ROS...")
-        rospy.init_node('object_tracker', anonymous=True)
+        rospy.init_node('Object_Tracker')
 
         print("[INFO] Loading modules...")
         classNum        = len(list(read_class_names(YOLO_COCO_CLASSES).values()))
@@ -40,19 +40,17 @@ class object_tracker:
         self.Target_UID = []
 
         print("[INFO] Initialize ROS publisher...")
-        self.Tracking_list = rospy.Publisher("/yolo/Trackedbboxes", Detection2DArray, queue_size=1)
-        self.pose_pub = rospy.Publisher('/Published_pose', PoseStamped, queue_size=1)
+        self.Tracking_list = rospy.Publisher("/Object_Tracker/boxes", Detection2DArray, queue_size=1)
+        self.pose_pub = rospy.Publisher('/Object_Tracker/Published_pose', PoseStamped, queue_size=1)
 
         print("[INFO] Initialize ROS Subscribers...")
         #rospy.Subscriber("/yolo/Segbboxes", Detection2DArray, self.callback, queue_size=1)
-        boxes_sub = message_filters.Subscriber("/yolo/Segbboxes", Detection2DArray, queue_size=1)
-        timer_sub = message_filters.Subscriber("/yolo/Timer", TimeReference, queue_size=1)
+        boxes_sub = message_filters.Subscriber("/Segmentation/Boxes", Detection2DArray, queue_size=1)
+        timer_sub = message_filters.Subscriber("/Tracker/Timer", TimeReference, queue_size=1)
         print("[INFO] Loading complete")
 
         mf = message_filters.TimeSynchronizer([boxes_sub,timer_sub],queue_size=40)
         mf.registerCallback(self.callback)
-
-        print("[INFO] Loading complete")
 
     def callback(self,boxes,timer):
         Time = float("%.6f" %  boxes.header.stamp.to_sec())
