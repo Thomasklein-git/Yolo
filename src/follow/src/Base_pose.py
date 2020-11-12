@@ -42,7 +42,7 @@ class Base_pose():
                 Movez = self.Current_goal.pose.position.z-self.VPose.pose.pose.position.z
                 Movemag = math.sqrt((Movex)**2+(Movey)**2)
                 self.Movedir = [Movex, Movey, 0]
-                print(self.Movedir)
+                #print(self.Movedir)
                 #self.Movedir = [1,0,0]
             self.VPose.header.stamp = rospy.Time.now()
             self.VPose.pose.pose.position.x += self.Movedir[0]

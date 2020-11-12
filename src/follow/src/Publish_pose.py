@@ -8,14 +8,14 @@ import time
 def talker(n):
     pub = rospy.Publisher('/Published_pose', PoseStamped, queue_size=1)
     rospy.init_node('talker', anonymous=True)
-    rate = rospy.Rate(2) # 1hz
+    rate = rospy.Rate(1) # 1hz
     while not rospy.is_shutdown():
         n += 1.2
         pose = PoseStamped()
         pose.header.stamp = rospy.Time.now()
         pose.header.frame_id = "map"
         pose.pose.position.x    = float(n)
-        pose.pose.position.y    = float(n)
+        pose.pose.position.y    = float(0)
         pose.pose.position.z    = float(0)
         pose.pose.orientation.x = float(0)
         pose.pose.orientation.y = float(0)
