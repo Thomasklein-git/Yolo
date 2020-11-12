@@ -17,14 +17,23 @@ import message_filters
 
 class PointCloudReducer:
     def __init__(self):
+        print("[INFO] Initializing ROS...")
+        rospy.init_node('PointCloudReducer', anonymous=True)
+
+        print("[INFO] Loading modules...")
         self.bridge = CvBridge()
 
+        print("[INFO] Loading config...")
+
+        print("[INFO] Initialize ROS publishers...")
         self.cloud_pub = rospy.Publisher("/Reduced_cloud", PointCloud2, queue_size=1)
-		
+
+        print("[INFO] Initialize ROS Subscribers...")
         cloud_sub = message_filters.Subscriber("/yolo/CloudImage", Image, queue_size=1)
         boxes_sub = message_filters.Subscriber("/yolo/Trackedbboxes", Detection2DArray, queue_size=1)
         timer_sub = message_filters.Subscriber("/yolo/Timer", TimeReference, queue_size=1)
-        
+
+        print("[INFO] Loading complete")
         mf = message_filters.TimeSynchronizer([cloud_sub,boxes_sub,timer_sub],queue_size=30)
         mf.registerCallback(self.callback)
 
@@ -34,12 +43,8 @@ class PointCloudReducer:
             if Object.is_tracking == True:
                 Target = Object
                 break
-        time1 = rospy.Time.now().to_sec()
         Reduced_PC2 = self.PC_reduc_sep(Target,cloud)
         self.cloud_pub.publish(Reduced_PC2)
-        time2 = rospy.Time.now().to_sec()
-        print(time2-time1, "Time")
-        #print(time2-timer.time_ref.to_sec(),"Time delay")
 
     
     def PC_reduc_sep(self,bbox,CloudImage):
@@ -61,30 +66,25 @@ class PointCloudReducer:
                 bbox_i += list(range((y*672+Start_x)*3,(y*672+End_x+1)*3))
             pc_list = np.delete(pc_list, bbox_i)
             time2 = rospy.Time.now().to_sec()
-            print(time1-time2, "Time1")
         time3 = rospy.Time.now().to_sec()
         pc_list = pc_list.reshape(int(len(pc_list)/3),3)
         pc_list = pc_list[~np.isnan(pc_list).any(axis=1)]
         pc_list = pc_list[~np.isinf(pc_list).any(axis=1)]
         time4 = rospy.Time.now().to_sec()
-        print(time4-time3, "Time2")
+        
         
         print(pc_list.shape)
 
         Reduced_PC2 = pc2.create_cloud_xyz32(CloudImage.header, pc_list)
-        time5 = rospy.Time.now().to_sec()
-        print(time5-time4)
         return Reduced_PC2
 
 def main(args):
-	rospy.init_node('PointCloudReducer', anonymous=True)
 	pcr = PointCloudReducer()
 	
 	try:
 		rospy.spin()
 	except KeyboardInterrupt:
 		print("Shutting down")
-	cv2.destroyAllWindows
 
 if __name__ =='__main__':
 	main(sys.argv)
