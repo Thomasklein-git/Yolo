@@ -523,3 +523,9 @@ def read_class_names(class_file_name):
         for ID, name in enumerate(data):
             names[ID] = name.strip('\n')
     return names
+
+def cal_pose_stop(pose_goal,pose_vehicle,distance_keep):
+    vec_v2g=pose_goal-pose_vehicle #vec from vehicle to goal
+    vec_v2g_stop=vec_v2g/np.linalg.norm(vec_v2g)*distance_keep #vector from goal to stop
+    pose_goal_stop=pose_goal-vec_v2g_stop
+    return pose_goal_stop

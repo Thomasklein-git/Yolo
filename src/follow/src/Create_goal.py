@@ -2,6 +2,7 @@
 
 import rospy
 from geometry_msgs.msg import PoseStamped
+from nav_msgs.msg import Odometry
 import tf2_ros
 import tf2_geometry_msgs
 from tf import TransformListener
@@ -33,7 +34,7 @@ class Follow():
         # Subscribed topic
         self.pub_goal = rospy.Publisher('/move_base_simple/goal', PoseStamped, queue_size=1)
 
-        rospy.Subscriber("/odometry/filtered_map",PoseStamped,self.Compare_pose,queue_size=1)
+        rospy.Subscriber("/odometry/filtered_map",Odometry,self.Compare_pose,queue_size=1)
         rospy.Subscriber("/Published_pose",PoseStamped,self.New_input, queue_size=1)
         rospy.Subscriber("/move_base_simple/goal",PoseStamped,self.Current_goal, queue_size=1)
         
@@ -129,7 +130,7 @@ class Follow():
                 if len(self.Waypoints) == 1:
                     Goal_m=self.Waypoints[0]
                     vec_Goal_map = np.array([Goal_m.pose.position.x,Goal_m.pose.position.y])
-                    vec_Vehicle_map = np.array([Pose.pose.position.x,Pose.pose.position.y])
+                    vec_Vehicle_map = np.array([Pose.pose.pose.position.x,Pose.pose.pose.position.y])
                     xy_goal_stop = cal_pose_stop(vec_Goal_map,vec_Vehicle_map,self.distance_keep)
                     self.Waypoints[0].pose.position.x=xy_goal_stop[0]
                     self.Waypoints[0].pose.position.y=xy_goal_stop[1]
