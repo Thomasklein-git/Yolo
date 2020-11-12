@@ -1,8 +1,25 @@
 digraph G {
-"map" -> "base_link"[label="Broadcaster: /map_base_tf\nAverage rate: 112.756 Hz\nMost recent transform: 1604408428.713 ( -0.003 sec old)\nBuffer length: 4.984 sec\n"];
-"base_link" -> "zed2_left_camera_frame"[label="Broadcaster: /zed_base_tf\nAverage rate: 92.164 Hz\nMost recent transform: 1604408428.713 ( -0.003 sec old)\nBuffer length: 4.980 sec\n"];
+"zed2_camera_center" -> "zed2_baro_link"[label="Broadcaster: /play_1605087769677781389\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1605089824.756 sec old)\nBuffer length: 0.000 sec\n"];
+"base_zed" -> "zed2_camera_center"[label="Broadcaster: /play_1605087769677781389\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1605089824.756 sec old)\nBuffer length: 0.000 sec\n"];
+"base_link" -> "base_zed"[label="Broadcaster: /play_1605087769677781389\nAverage rate: 99.826 Hz\nMost recent transform: 1604590065.658 ( 499759.098 sec old)\nBuffer length: 0.501 sec\n"];
+"zed2_camera_center" -> "zed2_left_camera_frame"[label="Broadcaster: /play_1605087769677781389\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1605089824.756 sec old)\nBuffer length: 0.000 sec\n"];
+"zed2_left_camera_frame" -> "zed2_left_camera_optical_frame"[label="Broadcaster: /play_1605087769677781389\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1605089824.756 sec old)\nBuffer length: 0.000 sec\n"];
+"zed2_camera_center" -> "zed2_mag_link"[label="Broadcaster: /play_1605087769677781389\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1605089824.756 sec old)\nBuffer length: 0.000 sec\n"];
+"zed2_camera_center" -> "zed2_right_camera_frame"[label="Broadcaster: /play_1605087769677781389\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1605089824.756 sec old)\nBuffer length: 0.000 sec\n"];
+"zed2_right_camera_frame" -> "zed2_right_camera_optical_frame"[label="Broadcaster: /play_1605087769677781389\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1605089824.756 sec old)\nBuffer length: 0.000 sec\n"];
+"zed2_left_camera_frame" -> "zed2_temp_left_link"[label="Broadcaster: /play_1605087769677781389\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1605089824.756 sec old)\nBuffer length: 0.000 sec\n"];
+"zed2_right_camera_frame" -> "zed2_temp_right_link"[label="Broadcaster: /play_1605087769677781389\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1605089824.756 sec old)\nBuffer length: 0.000 sec\n"];
+"base_link" -> "base_cad"[label="Broadcaster: /play_1605087769677781389\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 1605089824.756 sec old)\nBuffer length: 0.000 sec\n"];
+"odom" -> "base_link"[label="Broadcaster: /play_1605087769677781389\nAverage rate: 21.988 Hz\nMost recent transform: 1604590065.691 ( 499759.065 sec old)\nBuffer length: 0.500 sec\n"];
+"base_link" -> "base_imu"[label="Broadcaster: /play_1605087769677781389\nAverage rate: 100.260 Hz\nMost recent transform: 1604590065.657 ( 499759.099 sec old)\nBuffer length: 0.509 sec\n"];
+"map" -> "map_zed"[label="Broadcaster: /play_1605087769677781389\nAverage rate: 99.770 Hz\nMost recent transform: 1604590065.660 ( 499759.096 sec old)\nBuffer length: 0.511 sec\n"];
+"odom" -> "odom_zed"[label="Broadcaster: /play_1605087769677781389\nAverage rate: 99.946 Hz\nMost recent transform: 1604590065.660 ( 499759.096 sec old)\nBuffer length: 0.510 sec\n"];
+"map" -> "odom"[label="Broadcaster: /play_1605087769677781389\nAverage rate: 22.224 Hz\nMost recent transform: 1604590065.640 ( 499759.116 sec old)\nBuffer length: 0.450 sec\n"];
+"odom" -> "odom_enc"[label="Broadcaster: /play_1605087769677781389\nAverage rate: 100.397 Hz\nMost recent transform: 1604590065.661 ( 499759.095 sec old)\nBuffer length: 0.508 sec\n"];
+"base_link" -> "base_enc"[label="Broadcaster: /play_1605087769677781389\nAverage rate: 99.774 Hz\nMost recent transform: 1604590065.665 ( 499759.092 sec old)\nBuffer length: 0.511 sec\n"];
+"base_link" -> "base_gps"[label="Broadcaster: /play_1605087769677781389\nAverage rate: 12.483 Hz\nMost recent transform: 1604590065.677 ( 499759.080 sec old)\nBuffer length: 0.401 sec\n"];
 edge [style=invis];
  subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
-"Recorded at time: 1604408428.710"[ shape=plaintext ] ;
+"Recorded at time: 1605089824.756"[ shape=plaintext ] ;
  }->"map";
 }

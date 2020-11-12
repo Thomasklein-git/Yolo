@@ -7,7 +7,13 @@ import tf2_geometry_msgs
 from tf import TransformListener
 import math
 from agfh import *
-
+"""
+def cal_pose_stop(pose_goal,pose_vehicle,distance_keep):
+    vec_v2g=pose_goal-pose_vehicle #vec from vehicle to goal
+    vec_v2g_stop=vec_v2g/np.linalg.norm(vec_v2g)*distance_keep #vector from goal to stop
+    pose_goal_stop=pose_goal-vec_v2g_stop
+    return pose_goal_stop
+"""
 class Follow():
     def __init__(self):
         rospy.init_node('Poser', anonymous=True)
@@ -114,6 +120,25 @@ class Follow():
                 else:
                     self.pub_goal.publish(self.Waypoints[0])
                     #self.Move_base_goal = self.Waypoints[0]
+            """
+            # If the waypoint is within distance threshold remove current waypoint 
+            else:
+                if len(self.Waypoints) != 1:
+                    del self.Waypoints[0]
+                # If list contains only one pose  
+                if len(self.Waypoints) == 1:
+                    Goal_m=self.Waypoints[0]
+                    vec_Goal_map = np.array([Goal_m.pose.position.x,Goal_m.pose.position.y])
+                    vec_Vehicle_map = np.array([Pose.pose.position.x,Pose.pose.position.y])
+                    xy_goal_stop = cal_pose_stop(vec_Goal_map,vec_Vehicle_map,self.distance_keep)
+                    self.Waypoints[0].pose.position.x=xy_goal_stop[0]
+                    self.Waypoints[0].pose.position.y=xy_goal_stop[1]
+                    
+                    self.pub_goal.publish(self.Waypoints[0]) 
+                # If list containt more poses, publish a new goal
+                else:
+                    self.pub_goal.publish(self.Waypoints[0])
+            """
 
     def Current_goal(self,Pose):
         self.Move_base_goal = Pose
