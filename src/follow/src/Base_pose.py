@@ -30,7 +30,7 @@ class Base_pose():
         self.VPose.pose.pose.orientation.z = float(0)
         self.VPose.pose.pose.orientation.w = float(1)
 
-        rate = rospy.Rate(20) # 10hz
+        rate = rospy.Rate(1) # 10hz
 
         while not rospy.is_shutdown():
             rospy.Subscriber("/move_base_simple/goal", PoseStamped, self.Find_goal, queue_size=1)
