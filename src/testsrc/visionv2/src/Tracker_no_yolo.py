@@ -26,6 +26,9 @@ from Object_handler import Object_handler
 
 class object_tracker:
     def __init__(self):
+        print("[INFO] Initializing ROS...")
+        rospy.init_node('object_tracker', anonymous=True)
+
         print("[INFO] Loading modules...")
         classNum        = len(list(read_class_names(YOLO_COCO_CLASSES).values()))
         self.ClassNames = read_class_names(YOLO_COCO_CLASSES)
@@ -36,13 +39,16 @@ class object_tracker:
         self.Target_Found = False
         self.Target_UID = []
 
-        print("[INFO] Loading ROS topics")
+        print("[INFO] Initialize ROS publisher...")
         self.Tracking_list = rospy.Publisher("/yolo/Trackedbboxes", Detection2DArray, queue_size=1)
         self.pose_pub = rospy.Publisher('/Published_pose', PoseStamped, queue_size=1)
 
+        print("[INFO] Initialize ROS Subscribers...")
         #rospy.Subscriber("/yolo/Segbboxes", Detection2DArray, self.callback, queue_size=1)
         boxes_sub = message_filters.Subscriber("/yolo/Segbboxes", Detection2DArray, queue_size=1)
         timer_sub = message_filters.Subscriber("/yolo/Timer", TimeReference, queue_size=1)
+        print("[INFO] Loading complete")
+
         mf = message_filters.TimeSynchronizer([boxes_sub,timer_sub],queue_size=40)
         mf.registerCallback(self.callback)
 
@@ -130,7 +136,6 @@ def box_for_OH(boxes,Time):
         return boxes_OH
 
 def main(args):
-	rospy.init_node('object_tracker', anonymous=True)
 	ot = object_tracker()
 	
 	try:

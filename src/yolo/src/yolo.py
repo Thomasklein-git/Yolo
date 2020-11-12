@@ -16,7 +16,7 @@ from yolov3.yolov3 import *
 class object_detector:
     def __init__(self):
         print("[INFO] Initializing ROS...")
-        rospy.init_node('YOLO', anonymous=True)
+        rospy.init_node('Detection')
 
         print("[INFO] Loading modules...")
         self.yolo = Load_Yolo_model()
@@ -26,12 +26,13 @@ class object_detector:
         # Create local variables
         self.timer = TimeReference()
 
-        print("[INFO] Initialize ROS publisher...")
+        print("[INFO] Initialize ROS publishers...")
         # Create Topics to publish
         self.boxes_pub = rospy.Publisher("/yolo/bboxes",Detection2DArray, queue_size=1)
         self.timer_pub = rospy.Publisher("/yolo/Timer",TimeReference, queue_size=1)
 
         print("[INFO] Initialize ROS Subscribers...")
+        rospy.Subscriber("/zed2/zed_node/left/image_rect_color/compressed",CompressedImage)
         # Create subscriptions
 
         print("[INFO] Loading complete")

@@ -25,7 +25,7 @@ class Cloud_segmentation:
         self.queue_lim = 30
 
 
-        print("[INFO] Initializing ROS publisher...")
+        print("[INFO] Initializing ROS publishers...")
         self.bboxes_pub = rospy.Publisher("/yolo/Segbboxes",Detection2DArray, queue_size=1) #Bboxes for object_handler 
         self.images_pub = rospy.Publisher("/yolo/Segimages",Detection2DArray, queue_size=1) #Bboxes with images for display
 
@@ -34,6 +34,8 @@ class Cloud_segmentation:
         #rospy.Subscriber("/zed2/zed_node/point_cloud/cloud_registered",PointCloud2,self.callback_pyt,queue_size=1)
         cloud_sub = message_filters.Subscriber("/yolo/CloudImage", Image, queue_size=1)
         timer_sub = message_filters.Subscriber("/yolo/Timer", TimeReference, queue_size=1)
+
+        print("[INFO] Loading complete")
         mf = message_filters.TimeSynchronizer([cloud_sub,timer_sub],queue_size=15)
         mf.registerCallback(self.callback_timer)
 
