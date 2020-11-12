@@ -104,7 +104,8 @@ class Follow():
                 else:
                     self.pub_goal.publish(self.Waypoints[0])
                     #self.Move_base_goal = self.Waypoints[0]:
-
+            # If the waypoint is within distance threshold remove current waypoint 
+                """
             # If the waypoint is within distance threshold remove current waypoint               
             else:
                 del self.Waypoints[0]
@@ -115,8 +116,7 @@ class Follow():
                 else:
                     self.pub_goal.publish(self.Waypoints[0])
                     #self.Move_base_goal = self.Waypoints[0]
-            """
-            # If the waypoint is within distance threshold remove current waypoint 
+                """
             else:
                 if len(self.Waypoints) != 1:
                     del self.Waypoints[0]
@@ -130,10 +130,11 @@ class Follow():
                     self.Waypoints[0].pose.position.y=xy_goal_stop[1]
                     
                     self.pub_goal.publish(self.Waypoints[0]) 
+                    del self.Waypoints[0]
                 # If list containt more poses, publish a new goal
                 else:
                     self.pub_goal.publish(self.Waypoints[0])
-            """
+            
 
     def Current_goal(self,Pose):
         self.Move_base_goal = Pose
