@@ -45,7 +45,7 @@ public:
         }
         pub_.publish (image_);
     }
-    PointCloudImage () : sub_topic_("/zed2/zed_node/point_cloud/cloud_registered"),pub_topic_("/Pc2ToImage/Cloud")
+    PointCloudImage () : sub_topic_("/zed2/zed_node/point_cloud/cloud_registered"),pub_topic_("/Tracker/Pc2ToImage/Cloud")
     {
         sub_ = nh_.subscribe (sub_topic_, 1, &PointCloudImage::callback_cloud, this);
         pub_ = nh_.advertise<sensor_msgs::Image > (pub_topic_, 1);

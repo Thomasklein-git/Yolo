@@ -40,12 +40,12 @@ class object_tracker:
         self.Target_UID = []
 
         print("[INFO] Initialize ROS publisher...")
-        self.Tracking_list = rospy.Publisher("/Object_Tracker/Boxes", Detection2DArray, queue_size=1)
-        self.pose_pub = rospy.Publisher('/Object_Tracker/Published_pose', PoseStamped, queue_size=1)
+        self.Tracking_list = rospy.Publisher("/Tracker/Object_Tracker/Boxes", Detection2DArray, queue_size=1)
+        self.pose_pub = rospy.Publisher('/Tracker/Object_Tracker/Published_pose', PoseStamped, queue_size=1)
 
         print("[INFO] Initialize ROS Subscribers...")
         #rospy.Subscriber("/yolo/Segbboxes", Detection2DArray, self.callback, queue_size=1)
-        boxes_sub = message_filters.Subscriber("/Segmentation/Boxes", Detection2DArray, queue_size=1)
+        boxes_sub = message_filters.Subscriber("/Tracker/Segmentation/Boxes", Detection2DArray, queue_size=1)
         timer_sub = message_filters.Subscriber("/Tracker/Timer", TimeReference, queue_size=1)
         print("[INFO] Loading complete")
 

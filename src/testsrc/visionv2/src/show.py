@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+na#!/usr/bin/env python3
 
 import roslib
 import sys
@@ -22,7 +22,7 @@ class show:
 
         print("[INFO] Loading videofeed...")	
         image_sub = message_filters.Subscriber("/zed2/zed_node/left/image_rect_color/compressed",CompressedImage, queue_size=1)
-        boxed_sub = message_filters.Subscriber("/Object_Tracker/Boxes", Detection2DArray, queue_size=1)
+        boxed_sub = message_filters.Subscriber("/Tracker/Object_Tracker/Boxes", Detection2DArray, queue_size=1)
 
         self.image_pub = rospy.Publisher("/Push/Detected_Image",Image,queue_size=1)
 

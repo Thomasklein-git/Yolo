@@ -28,7 +28,7 @@ class object_detector:
 
         print("[INFO] Initialize ROS publishers...")
         # Create Topics to publish
-        self.boxes_pub = rospy.Publisher("/Detection/Boxes",Detection2DArray, queue_size=1)
+        self.boxes_pub = rospy.Publisher("/Tracker/Detection/Boxes",Detection2DArray, queue_size=1)
         self.timer_pub = rospy.Publisher("/Tracker/Timer",TimeReference, queue_size=1)
 
         print("[INFO] Initialize ROS Subscribers...")
