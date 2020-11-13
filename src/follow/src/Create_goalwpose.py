@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import rospy
-from geometry_msgs.msg import PoseStamped
+from geometry_msgs.msg import PoseStamped, PoseArray
 from nav_msgs.msg import Odometry
 import tf2_ros
 import tf2_geometry_msgs
@@ -18,15 +18,17 @@ class Follow():
 
         self.Waypoints = []
         self.Move_base_goal = []
+        self.Waypoints2 = PoseArray()
 
         self.tf = TransformListener()
         # Tolerances
         self.distance_keep = 0.5 #[m]
-        self.distance_new = 1
+        self.distance_new = 0.9
         self.distance_threshold = 0.3 # Distance to a waypoint before it is discarded
 
         # Subscribed topic
         self.pub_goal = rospy.Publisher('/move_base_simple/goal', PoseStamped, queue_size=1)
+        self.pub_waypoint_list = rospy.Publisher("/Tracker/Waypoint_list",PoseArray,queue_size=1)
 
         rospy.Subscriber("/odometry/filtered_map",Odometry,self.Compare_pose,queue_size=1)
         rospy.Subscriber("/Tracker/Object_Tracker/Published_pose",PoseStamped,self.New_input, queue_size=1)
@@ -34,7 +36,7 @@ class Follow():
         
         
     def New_input(self,Pose):
-        Waypoints = self.Waypoints
+       # Waypoints = self.Waypoints
         transform = self.tf_buffer.lookup_transform("base_link", Pose.header.frame_id, rospy.Time(0), rospy.Duration(1.0))
         np_b = tf2_geometry_msgs.do_transform_pose(Pose, transform) # New Waypoint in base
         npd = math.sqrt((np_b.pose.position.x)**2+(np_b.pose.position.y)**2)
@@ -47,7 +49,7 @@ class Follow():
 
             # If the waypoint is further away than distance_threshold and Waypoint list is empty add point to waypoints
             # If list is not empty compare new waypoint with the latest added waypoint to ensure that distance between the two points are greater than distance_new
-            if Waypoints == []:
+            if self.Waypoints2.poses == []:
                 vec_new_old=np.array([np_b.pose.position.x,np_b.pose.position.y,np_b.pose.position.z])
                 quaternion=get_new_orientation(0,0,vec_new_old,Points=False)
                 np_m.pose.orientation.x=quaternion[0]
@@ -55,9 +57,10 @@ class Follow():
                 np_m.pose.orientation.z=quaternion[2]
                 np_m.pose.orientation.w=quaternion[3]
                 #print(np_m,"empty")
-                self.Waypoints.append(np_m)
+                self.update_waypoints(np_m)
             else: 
-                lp_m = Waypoints[-1]
+                lp_m = PoseStamped()
+                lp_m.pose = self.Waypoints2.poses[-1]
                 quaternion=get_new_orientation(lp_m,np_m,0,Points=True)
                 np_m.pose.orientation.x=quaternion[0]
                 np_m.pose.orientation.y=quaternion[1]
@@ -66,7 +69,8 @@ class Follow():
                 #print(np_m,"not empty")
                 wpd = math.sqrt((np_m.pose.position.x-lp_m.pose.position.x)**2+(np_m.pose.position.y-lp_m.pose.position.y)**2)
                 if wpd > self.distance_new:
-                    self.Waypoints.append(np_m)
+                    #self.Waypoints.append(np_m)
+                    self.update_waypoints(np_m)
     
     def Compare_pose(self,Pose):
         # https://answers.ros.org/question/222306/transform-a-pose-to-another-frame-with-tf2-in-python/
@@ -171,6 +175,12 @@ class Follow():
 
     def Current_goal(self,Pose):
         self.Move_base_goal = Pose
+
+    def update_waypoints(self,Pose):
+        self.Waypoints2.header = Pose.header
+        self.Waypoints2.poses.append(Pose.pose)
+        self.pub_waypoint_list.publish(self.Waypoints2)
+
 
 
 def temp(Pose, xy):

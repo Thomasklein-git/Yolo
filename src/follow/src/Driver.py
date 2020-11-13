@@ -21,8 +21,8 @@ class Driver:
         print("[INFO] Loading config...")
         self.Current_goal = PoseStamped()
         self.Current_goal.pose.orientation.w = float(1)
-        distance_threshold = 0.2 # If within distance threshold, move to the point goal
-        velocity = 0.2 
+        step     = 0.05
+
 
         print("[INFO] Initialize VPose...")
         Vpose = Odometry()
@@ -53,7 +53,7 @@ class Driver:
         self.br.sendTransform(trans, rot, stamp,"base_link","map")
         
         print("[INFO] Loading complete")
-        rate = rospy.Rate(1) # Hz
+        rate = rospy.Rate(20) # Hz
         
         while not rospy.is_shutdown():
 
@@ -66,12 +66,12 @@ class Driver:
             if Movemag == 0:
                 print("At goal, rotating if needed")
                 Move = [0,0,0]
-            elif Movemag < distance_threshold:
+            elif Movemag < step:
                 print("Close, moving to goal")
                 Move = [Movex, Movey, Movez]
             else:
                 print("Far away, moving towards goal")
-                Move = ([Movex,Movey,Movez]/Movemag)*velocity
+                Move = ([Movex,Movey,Movez]/Movemag)*step
             Vpose.header.stamp = rospy.Time.now()
             Vpose.pose.pose.position.x += Move[0]
             Vpose.pose.pose.position.y += Move[1]
