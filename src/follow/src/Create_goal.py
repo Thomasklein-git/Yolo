@@ -29,7 +29,7 @@ class Follow():
         self.pub_goal = rospy.Publisher('/move_base_simple/goal', PoseStamped, queue_size=1)
 
         rospy.Subscriber("/odometry/filtered_map",Odometry,self.Compare_pose,queue_size=1)
-        rospy.Subscriber("/Published_pose",PoseStamped,self.New_input, queue_size=1)
+        rospy.Subscriber("/Object_Tracker/Published_pose",PoseStamped,self.New_input, queue_size=1)
         rospy.Subscriber("/move_base_simple/goal",PoseStamped,self.Current_goal, queue_size=1)
         
         
