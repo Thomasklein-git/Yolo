@@ -21,16 +21,16 @@ class Follow():
 
         self.tf = TransformListener()
         # Tolerances
-        self.distance_keep = 0.3 #[m]
+        self.distance_keep = 0.5 #[m]
         self.distance_new = 1
-        self.distance_threshold = 0.5 # Distance to a waypoint before it is discarded
+        self.distance_threshold = 0.3 # Distance to a waypoint before it is discarded
 
         # Subscribed topic
         self.pub_goal = rospy.Publisher('/move_base_simple/goal', PoseStamped, queue_size=1)
 
         rospy.Subscriber("/odometry/filtered_map",Odometry,self.Compare_pose,queue_size=1)
         rospy.Subscriber("/Tracker/Object_Tracker/Published_pose",PoseStamped,self.New_input, queue_size=1)
-        rospy.Subscriber("/move_base_simple/goal",PoseStamped,self.Current_goal, queue_size=1)
+        rospy.Subscriber("/move_base/Current_goal",PoseStamped,self.Current_goal, queue_size=1)
         
         
     def New_input(self,Pose):
@@ -72,7 +72,7 @@ class Follow():
         # https://answers.ros.org/question/222306/transform-a-pose-to-another-frame-with-tf2-in-python/
         Waypoints=self.Waypoints
         Ch_vec_Vehicle_map = np.array([Pose.pose.pose.position.x,Pose.pose.pose.position.y])
-        print(Ch_vec_Vehicle_map,"Vehicle before")
+        #print(Ch_vec_Vehicle_map,"Vehicle before")
         #print(Waypoints[0].pose.position.x,Waypoints[0].pose.position.y,"--->last point")
         #print(Waypoints[-1].pose.position.x,Waypoints[-1].pose.position.y,"--->new point")
         print(len(Waypoints),"length")
@@ -83,20 +83,40 @@ class Follow():
         # If waypoint list only contains one pose
         elif len(Waypoints) == 1:
             print("CASE 2")
+            #print(self.Waypoints[0].pose.position,"i 1")
+
             #self.Waypoints.append(Waypoints[0])
             #self.pub_goal.publish(Waypoints[0])
             Goal_m=Waypoints[0]
+            #print(self.Waypoints[0].pose.position,"i 2")
+
             #print(Goal_m.pose.position,"--->goal pose")
             vec_Goal_map = np.array([Goal_m.pose.position.x,Goal_m.pose.position.y])
-            print(vec_Goal_map,"Goal")
-            vec_Vehicle_map = np.array([Pose.pose.pose.position.x,Pose.pose.pose.position.y])
-            print(vec_Vehicle_map,"Vehicle")
-            xy_goal_stop = cal_pose_stop(vec_Goal_map,vec_Vehicle_map,self.distance_keep)
-            temp_waypoint=Goal_m
-            temp_waypoint.pose.position.x=xy_goal_stop[0] # Udkommenter hvis den skal køre ind i object
-            temp_waypoint.pose.position.y=xy_goal_stop[1] # Udkommenter hvis den skal køre ind i object
+            #print(self.Waypoints[0].pose.position,"i 3")
 
-            self.pub_goal.publish(temp_waypoint)
+            #print(vec_Goal_map,"Goal")
+            vec_Vehicle_map = np.array([Pose.pose.pose.position.x,Pose.pose.pose.position.y])
+            #print(self.Waypoints[0].pose.position,"i 4")
+
+            #print(vec_Vehicle_map,"Vehicle")
+            xy_goal_stop = cal_pose_stop(vec_Goal_map,vec_Vehicle_map,self.distance_keep)
+            print(xy_goal_stop)
+
+            #temp_waypoint=Goal_m
+            temp_waypoint = self.Waypoints[0]
+            #Goal_m.pose.position.x=xy_goal_stop[0] # Udkommenter hvis den skal køre ind i object
+            #Goal_m.pose.position.y=xy_goal_stop[1] # Udkommenter hvis den skal køre ind i object
+
+            temp_pose = PoseStamped()
+            temp_pose.pose.position.x = xy_goal_stop[0]
+            temp_pose.pose.position.y = xy_goal_stop[1]
+            temp_pose.pose.position.z = self.Waypoints[0].pose.position.z
+            temp_pose.pose.orientation.x = self.Waypoints[0].pose.orientation.x
+            temp_pose.pose.orientation.y = self.Waypoints[0].pose.orientation.y
+            temp_pose.pose.orientation.z = self.Waypoints[0].pose.orientation.z
+            temp_pose.pose.orientation.w = self.Waypoints[0].pose.orientation.w
+            if temp_pose.pose.position.x - self.Waypoints[0].pose.position.x and temp_pose.pose.position.y - self.Waypoints[0].pose.position.y:
+                self.pub_goal.publish(temp_pose)
 
         # If waypoint list contains poses
         else:
@@ -119,7 +139,7 @@ class Follow():
             Goal_m    = Waypoints[0]
             Goal_b    = tf2_geometry_msgs.do_transform_pose(Goal_m, transform_mb)
             distance2waypoint = math.sqrt(Goal_b.pose.position.x**2+Goal_b.pose.position.y**2)
-            print(distance2waypoint,"distance")
+            #print(distance2waypoint,"distance")
             # If the waypoint is further away than distance threshold, check if point is the current goal or else publish as current goal
             if distance2waypoint > self.distance_threshold:
                 # If current waypoint is the same as goal, pass
@@ -151,6 +171,15 @@ class Follow():
 
     def Current_goal(self,Pose):
         self.Move_base_goal = Pose
+
+
+def temp(Pose, xy):
+    Pose.pose.position.x=xy[0] # Udkommenter hvis den skal køre ind i object
+    Pose.pose.position.y=xy[1] # Udkommenter hvis den skal køre ind i object
+    temp = Pose
+    return temp
+
+
 
 if __name__ == '__main__':
     try:

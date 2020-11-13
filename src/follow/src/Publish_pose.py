@@ -6,7 +6,7 @@ import random
 import time
 
 def talker(n):
-    pub = rospy.Publisher('/Object_Tracker/Published_pose', PoseStamped, queue_size=1)
+    pub = rospy.Publisher('/Tracker/Object_Tracker/Published_pose', PoseStamped, queue_size=1)
     rospy.init_node('talker', anonymous=True)
     rate = rospy.Rate(1) # 1hz
     while not rospy.is_shutdown():

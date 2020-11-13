@@ -1,0 +1,6 @@
+<launch>
+    <!--Launch keyboard reader-->
+    <node name="Keyboard_reader" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py"/>
+    <!--Launch Publish pose-->
+    <node name="Publish_pose" pkg="follow" type="Publish_pose_keyboard.py"/>
+</launch>
