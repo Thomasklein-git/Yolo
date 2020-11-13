@@ -40,7 +40,7 @@ class object_tracker:
         self.Target_UID = []
 
         print("[INFO] Initialize ROS publisher...")
-        self.Tracking_list = rospy.Publisher("/Object_Tracker/boxes", Detection2DArray, queue_size=1)
+        self.Tracking_list = rospy.Publisher("/Object_Tracker/Boxes", Detection2DArray, queue_size=1)
         self.pose_pub = rospy.Publisher('/Object_Tracker/Published_pose', PoseStamped, queue_size=1)
 
         print("[INFO] Initialize ROS Subscribers...")

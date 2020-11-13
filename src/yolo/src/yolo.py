@@ -32,7 +32,7 @@ class object_detector:
         self.timer_pub = rospy.Publisher("/Tracker/Timer",TimeReference, queue_size=1)
 
         print("[INFO] Initialize ROS Subscribers...")
-        #rospy.Subscriber("/zed2/zed_node/left/image_rect_color/compressed",CompressedImage)
+        rospy.Subscriber("/zed2/zed_node/left/image_rect_color/compressed",CompressedImage)
         # Create subscriptions
 
         print("[INFO] Loading complete")

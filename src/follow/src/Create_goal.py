@@ -11,7 +11,7 @@ from agfh import *
 
 class Follow():
     def __init__(self):
-        rospy.init_node('Poser', anonymous=True)
+        rospy.init_node('Create_goal')
 
         self.tf_buffer = tf2_ros.Buffer(rospy.Duration(1200.0)) #tf buffer length
         self.tf_listener = tf2_ros.TransformListener(self.tf_buffer)

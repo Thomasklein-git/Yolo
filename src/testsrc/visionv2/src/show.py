@@ -16,13 +16,15 @@ import message_filters
 
 class show:
     def __init__(self):
+        rospy.init_node('Draw_boxes')
+
         self.bridge = CvBridge()
 
         print("[INFO] Loading videofeed...")	
         image_sub = message_filters.Subscriber("/zed2/zed_node/left/image_rect_color/compressed",CompressedImage, queue_size=1)
-        boxed_sub = message_filters.Subscriber("/yolo/Trackedbboxes", Detection2DArray, queue_size=1)
+        boxed_sub = message_filters.Subscriber("/Object_Tracker/Boxes", Detection2DArray, queue_size=1)
 
-        self.image_pub = rospy.Publisher("/yolo/detected/image",Image,queue_size=1)
+        self.image_pub = rospy.Publisher("/Push/Detected_Image",Image,queue_size=1)
 
         mf = message_filters.TimeSynchronizer([image_sub,boxed_sub],50)
         mf.registerCallback(self.callback)
@@ -64,7 +66,6 @@ class show:
                 
 
 def main(args):
-	rospy.init_node('object_tracker', anonymous=True)
 	ot = show()
 	
 	try:
