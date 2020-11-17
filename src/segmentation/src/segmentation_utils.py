@@ -96,6 +96,20 @@ def DBSCAN_pointcloud(img, bboxes, seg_plot=True, eps=0.046, procent=0.0011):
         ycoord=np.transpose(np.array([ycoord])) # shape[ycoord,1] 
         zcoord=np.transpose(np.array([zcoord])) # shape[zcoord,1]
 
+        a=np.concatenate((label,xcoord,ycoord,zcoord),axis=1) # Put label xcoord,ycoord,zcoord side by side shape[pixel,4]
+        x_clust=[] # x coordinates from a which is at label_max
+        y_clust=[] # y coordinates from a which is at label_max
+        z_clust=[] # z coordinates from a which is at label_max
+        for len_a in range(len(a)):
+            if a[len_a,0]==label_max:
+                x_clust.append(a[len_a,1])
+                y_clust.append(a[len_a,2])
+                z_clust.append(a[len_a,3])
+        min_x=np.min(x_clust)
+        avg_y=np.mean(y_clust)
+        avg_z=np.mean(z_clust)
+        xyzcoord=[min_x,avg_y,avg_z]
+        """
         a=np.concatenate((label,xcoord),axis=1) # Put label and xcoord (depth) side by side shape[pixel,2]
         b=[] # Depth values from a which is at label_max
         for len_a in range(len(a)):
@@ -108,9 +122,10 @@ def DBSCAN_pointcloud(img, bboxes, seg_plot=True, eps=0.046, procent=0.0011):
         z_for_min_x = zcoord[min_index[0][0],0] # get z from min_index
             
         xyzcoord=[min_x,y_for_min_x,z_for_min_x]
+        """
         xyzcoord_series.append(xyzcoord)
         
-        avg_depth=np.mean(b)
+        avg_depth=np.mean(x_clust)
         avg_depth_series.append(avg_depth)
         
         if seg_plot==True:
@@ -122,9 +137,9 @@ def DBSCAN_pointcloud(img, bboxes, seg_plot=True, eps=0.046, procent=0.0011):
             labels = np.array(np.empty(len(depth_distance))) # Initialize labels array with the length of nr pixels in img
             labels[:] = np.nan # All index are nan
             labels[np.invert(np.isnan(depth_distance))]=label_for_plot
-            labels = np.where(np.isnan(labels), 1000 ,labels) #
-            labels = np.where(np.isinf(labels), 1000 ,labels) # 
-            for clust in range(-1,len(Sort)-1,1):
+            labels = np.where(np.isnan(labels), 1000 ,labels) # Set nan to 1000
+            labels = np.where(np.isinf(labels), 1000 ,labels) # Set +- inf to 1000
+            for clust in range(-1,len(Sort)-1,1): # Set all clusters which are not the largest cluster to 2000
                 if clust != label_max:
                     labels = np.where(labels==clust,2000,labels)
             
@@ -387,7 +402,6 @@ def PC_reduc_seg(bbox, Segmented_labels ,pc_list,cloud):
         Reduced_PC2 = pc2.create_cloud_xyz32(header, pc_list)
     return Reduced_PC2
 
-
 def Waypoint_planter(Target, TargetOrder, Frame_id, Time):
     Pose = PoseStamped()
     Pose.header.stamp = Time
@@ -415,12 +429,22 @@ def Choose_target(OH, Target_class):
     
 def Find_target(OH, Target_UID):
     Index = []
-    Occlusion = []
+    Listing = []
+    #Occlusion = []
+    
     for i in range(0,len(OH.Known)):
         if OH.Known[i][OH.KnownOrder.get("UID")] == Target_UID:
             Index = i
             Occlusion = OH.Known[i][OH.KnownOrder.get("Occlusion")]
-    return Index, Occlusion
+            break
+    if Index == []:
+        print("Target is Lost")
+    else:
+        if Occlusion > 0:
+            print("Target was occluded {} frames ago".format(Occlusion))
+        else:
+           Listing = OH.Known[Index][OH.KnownOrder.get("Current_listing")] 
+    return Listing
 
 def Unique_in_List(List):  
     Unique_Entries = []
@@ -474,14 +498,18 @@ def get_new_orientation(Waypoint_old, Waypoint_new, vec_old_new, Points=True):
     if Points == True:
         Waypoint_old_xyz = np.array([Waypoint_old.pose.position.x,Waypoint_old.pose.position.y,Waypoint_old.pose.position.z])
         Waypoint_new_xyz = np.array([Waypoint_new.pose.position.x,Waypoint_new.pose.position.y,Waypoint_new.pose.position.z])
+        #print(Waypoint_old_xyz, "old")
+        #print(Waypoint_new_xyz, "new")
         Vec_old_new = Waypoint_new_xyz-Waypoint_old_xyz
-        print(Vec_old_new)
         Vec_ref = np.array([1,0,0]) 
+        #print(np.dot(Vec_ref,Vec_old_new))
         Complex_ele = np.cross(Vec_ref,Vec_old_new) # X, Y, Z vector part
-        Real_ele = np.sqrt((np.linalg.norm(Vec_ref)**2)*(np.linalg.norm(Vec_old_new)**2))+np.dot(Vec_ref,Vec_old_new) # W scalar part
-    
-        q=np.append(Complex_ele,Real_ele)
-        q_norm=q/np.linalg.norm(q)
+        if np.dot(Vec_ref,Vec_old_new) < -0.999999 and np.linalg.norm(Complex_ele) == 0:
+            q_norm = np.array([0,0,1,0])
+        else:
+            Real_ele = np.sqrt((np.linalg.norm(Vec_ref)**2)*(np.linalg.norm(Vec_old_new)**2))+np.dot(Vec_ref,Vec_old_new) # W scalar part
+            q=np.append(Complex_ele,Real_ele)
+            q_norm=q/np.linalg.norm(q)
     elif Points == False:
         Vec_ref = np.array([1,0,0]) 
         Complex_ele = np.cross(Vec_ref,vec_old_new) # X, Y, Z vector part
@@ -491,3 +519,17 @@ def get_new_orientation(Waypoint_old, Waypoint_new, vec_old_new, Points=True):
         q_norm=q/np.linalg.norm(q)
     
     return q_norm
+
+def read_class_names(class_file_name):
+    # loads class name from a file
+    names = {}
+    with open(class_file_name, 'r') as data:
+        for ID, name in enumerate(data):
+            names[ID] = name.strip('\n')
+    return names
+
+def cal_pose_stop(pose_goal,pose_vehicle,distance_keep):
+    vec_v2g=pose_goal-pose_vehicle #vec from vehicle to goal
+    vec_v2g_stop=vec_v2g/np.linalg.norm(vec_v2g)*distance_keep #vector from goal to stop
+    pose_goal_stop=pose_goal-vec_v2g_stop
+    return pose_goal_stop
