@@ -48,7 +48,9 @@ def Cal_standard_deviation(all_coord):
     conf_x=mean_confidence_interval(x,confidence=0.95)
     conf_y=mean_confidence_interval(y,confidence=0.95)
     conf_z=mean_confidence_interval(z,confidence=0.95)
-    #print(conf_x)
+    print(conf_x)
+    print(conf_y)
+    print(conf_z)
 
     fig = plt.figure()
     gs = gridspec.GridSpec(3, 1, figure=fig)
@@ -82,10 +84,9 @@ def Cal_standard_deviation(all_coord):
     rospy.signal_shutdown("reason")
 
 def mean_confidence_interval(data, confidence=0.95):
-    #a = 1.0 * np.array(data)
-    a=data
-    n = len(a)
-    m, se = np.mean(a), scipy.stats.sem(a)
+    # https://www.kite.com/python/examples/702/scipy-compute-a-confidence-interval-from-a-dataset
+    n = len(data)
+    m, se = np.mean(data), scipy.stats.sem(data) # Cal mean and standard and standard error of the mean
     h = se * scipy.stats.t.ppf((1 + confidence) / 2., n-1)
     return m, m-h, m+h
 
