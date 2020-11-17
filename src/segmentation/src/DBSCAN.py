@@ -37,7 +37,7 @@ class Cloud_segmentation:
         timer_sub = message_filters.Subscriber("/Tracker/Timer", TimeReference, queue_size=1)
 
         print("[INFO] Loading complete")
-        mf = message_filters.TimeSynchronizer([cloud_sub,timer_sub],queue_size=15)
+        mf = message_filters.TimeSynchronizer([cloud_sub,timer_sub],queue_size=30)
         mf.registerCallback(self.callback_timer)
 
         self.callback_segmentation()
@@ -91,7 +91,7 @@ class Cloud_segmentation:
             #del self.pc_list[0]
             del self.cv_image[0]
         time5 = rospy.Time.now().to_sec()
-        #print(time2-time1 , "Time1")
+        print(time2-time1 , "Time1")
         #print(time3-time2 , "Time2")
         #print(time4-time3 , "Time3")
         #print(time5-time4 , "Time4")

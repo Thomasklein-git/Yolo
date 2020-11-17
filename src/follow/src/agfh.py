@@ -498,11 +498,11 @@ def get_new_orientation(Waypoint_old, Waypoint_new, vec_old_new, Points=True):
     if Points == True:
         Waypoint_old_xyz = np.array([Waypoint_old.pose.position.x,Waypoint_old.pose.position.y,Waypoint_old.pose.position.z])
         Waypoint_new_xyz = np.array([Waypoint_new.pose.position.x,Waypoint_new.pose.position.y,Waypoint_new.pose.position.z])
-        print(Waypoint_old_xyz, "old")
-        print(Waypoint_new_xyz, "new")
+        #print(Waypoint_old_xyz, "old")
+        #print(Waypoint_new_xyz, "new")
         Vec_old_new = Waypoint_new_xyz-Waypoint_old_xyz
         Vec_ref = np.array([1,0,0]) 
-        print(np.dot(Vec_ref,Vec_old_new))
+        #print(np.dot(Vec_ref,Vec_old_new))
         Complex_ele = np.cross(Vec_ref,Vec_old_new) # X, Y, Z vector part
         if np.dot(Vec_ref,Vec_old_new) < -0.999999 and np.linalg.norm(Complex_ele) == 0:
             q_norm = np.array([0,0,1,0])

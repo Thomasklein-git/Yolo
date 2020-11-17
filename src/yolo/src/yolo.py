@@ -44,6 +44,7 @@ class object_detector:
         image = rospy.wait_for_message("/zed2/zed_node/left/image_rect_color/compressed",CompressedImage)
         time1 = rospy.Time.now().to_sec()
         self.timer.header = image.header
+        self.timer.header.frame_id = "zed2_left_camera_frame"
         self.timer.time_ref = rospy.Time.now() 
         self.timer_pub.publish(self.timer)
         cv_image = self.bridge.compressed_imgmsg_to_cv2(image, "bgr8")

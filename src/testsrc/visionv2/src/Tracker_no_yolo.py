@@ -84,6 +84,9 @@ class object_tracker:
                     Pose = PoseStamped()
                     Pose.header = boxes.header
                     Pose.pose   = boxes.detections[Current_list].results[0].pose.pose
+
+                    Pose.pose.orientation.w = 1
+                    #print(Pose)
                     self.pose_pub.publish(Pose)
 
         self.Tracking_list.publish(boxes)

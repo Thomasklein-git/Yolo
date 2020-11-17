@@ -30,6 +30,7 @@ class show:
         mf.registerCallback(self.callback)
 
     def callback(self,image,boxes):
+        print("Image pub")
         cv_image = self.bridge.compressed_imgmsg_to_cv2(image, "bgr8")
 
         for box in boxes.detections:
