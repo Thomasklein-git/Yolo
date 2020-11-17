@@ -36,18 +36,14 @@ class Follow():
         
         
     def New_input(self,Pose):
-        #print(Pose, "Pose")
-        #print(self.Waypoints2)
-       # Waypoints = self.Waypoints
-        transform = self.tf_buffer.lookup_transform("base_link", Pose.header.frame_id, rospy.Time(0), rospy.Duration(1.0))
-        
-        np_b = tf2_geometry_msgs.do_transform_pose(Pose, transform) # New Waypoint in base
-        print(np_b, "np_b")
-        print(Pose,"Pose")
-        npd = math.sqrt((np_b.pose.position.x)**2+(np_b.pose.position.y)**2)
-
+        # This callback is responsible of creating a list of goals that the vehicle is to follow in order.
         # Check if point from Zed cam is further away than distance_threshold
+
+        transform = self.tf_buffer.lookup_transform("base_link", Pose.header.frame_id, rospy.Time(0), rospy.Duration(1.0))
+        np_b = tf2_geometry_msgs.do_transform_pose(Pose, transform) # New Waypoint in base
+        npd = math.sqrt((np_b.pose.position.x)**2+(np_b.pose.position.y)**2)
         if npd > self.distance_threshold:
+
             transform_np = self.tf_buffer.lookup_transform("map", Pose.header.frame_id, rospy.Time(0), rospy.Duration(1.0))
             np_m = tf2_geometry_msgs.do_transform_pose(Pose, transform_np)
             np_m.pose.position.z = 0
@@ -55,13 +51,13 @@ class Follow():
             # If the waypoint is further away than distance_threshold and Waypoint list is empty add point to waypoints
             # If list is not empty compare new waypoint with the latest added waypoint to ensure that distance between the two points are greater than distance_new
             if self.Waypoints2.poses == []:
-                vec_new_old=np.array([np_b.pose.position.x,np_b.pose.position.y,np_b.pose.position.z])
+                vec_new_old=np.array([np_m.pose.position.x,np_m.pose.position.y,np_m.pose.position.z])
                 quaternion=get_new_orientation(0,0,vec_new_old,Points=False)
                 np_m.pose.orientation.x=quaternion[0]
                 np_m.pose.orientation.y=quaternion[1]
                 np_m.pose.orientation.z=quaternion[2]
                 np_m.pose.orientation.w=quaternion[3]
-                #print(np_m,"empty")
+               
                 self.update_waypoints(np_m)
                 
             else: 
@@ -72,21 +68,23 @@ class Follow():
                 np_m.pose.orientation.y=quaternion[1]
                 np_m.pose.orientation.z=quaternion[2]
                 np_m.pose.orientation.w=quaternion[3]
-                #print(np_m,"not empty")
                 wpd = math.sqrt((np_m.pose.position.x-lp_m.pose.position.x)**2+(np_m.pose.position.y-lp_m.pose.position.y)**2)
                 if wpd > self.distance_new:
                     #self.Waypoints.append(np_m)
                     self.update_waypoints(np_m)
+
+
+        # If point is closer than distance treshold and goal is reached (Only on point in the list), initiate rotation on the spot
+        else:
+            pass
+
+
     
     def Compare_pose(self,Pose):
         # https://answers.ros.org/question/222306/transform-a-pose-to-another-frame-with-tf2-in-python/
-        print(len(self.Waypoints2.poses),"Compare")
+        #print(len(self.Waypoints2.poses),"Compare")
         Waypoints=self.Waypoints2
         Ch_vec_Vehicle_map = np.array([Pose.pose.pose.position.x,Pose.pose.pose.position.y])
-        #print(Ch_vec_Vehicle_map,"Vehicle before")
-        #print(Waypoints[0].pose.position.x,Waypoints[0].pose.position.y,"--->last point")
-        #print(Waypoints[-1].pose.position.x,Waypoints[-1].pose.position.y,"--->new point")
-        #print(len(Waypoints.poses),"length")
         # If waypoint list is empty do nothing
         if len(Waypoints.poses) == 0:
             #print("CASE 1")
@@ -123,14 +121,12 @@ class Follow():
             temp_pose.pose.position.x = xy_goal_stop[0]
             temp_pose.pose.position.y = xy_goal_stop[1]
             temp_pose.pose.position.z = self.Waypoints2.poses[0].position.z
-            temp_pose.pose.orientation.x = 0#self.Waypoints2.poses[0].orientation.x
-            temp_pose.pose.orientation.y = 0#self.Waypoints2.poses[0].orientation.y
-            temp_pose.pose.orientation.z = -0.866 #self.Waypoints2.poses[0].orientation.z
-            temp_pose.pose.orientation.w = 0.5#self.Waypoints2.poses[0].orientation.w
-
+            temp_pose.pose.orientation.x = self.Waypoints2.poses[0].orientation.x
+            temp_pose.pose.orientation.y = self.Waypoints2.poses[0].orientation.y
+            temp_pose.pose.orientation.z = self.Waypoints2.poses[0].orientation.z
+            temp_pose.pose.orientation.w = self.Waypoints2.poses[0].orientation.w
             #if temp_pose.pose.position.x - self.Waypoints[0].pose.position.x == 0 and temp_pose.pose.position.y - self.Waypoints[0].pose.position.y == 0:
             self.pub_goal.publish(temp_pose)
-
 
         # If waypoint list contains poses
             
@@ -148,9 +144,9 @@ class Follow():
             minpos = d2pb.index(min(d2pb))
             # If any waypoints in the list is closer to the base, discard all waypoints up to the closest point.
             if minpos > 0:
-                print("hej")
                 for i in range(0,minpos):
                     del Waypoints.poses[0]
+
             
             # Check if the current Waypoint in 
             Goal_m    = Waypoints.poses[0]
@@ -170,10 +166,12 @@ class Follow():
                     pubpoint.header = Waypoints.header
                     pubpoint.header.stamp = rospy.Time.now()
                     pubpoint.pose = Waypoints.poses[0]
+                    """
                     pubpoint.pose.orientation.x = 0
                     pubpoint.pose.orientation.y = 0
-                    pubpoint.pose.orientation.z = -0.866
-                    pubpoint.pose.orientation.w = 0.5
+                    pubpoint.pose.orientation.z = 0
+                    pubpoint.pose.orientation.w = 1
+                    """
                     
                     self.pub_goal.publish(pubpoint)
             # If the waypoint is within distance threshold remove current waypoint 
@@ -187,10 +185,12 @@ class Follow():
                     pubpoint.header = Waypoints.header
                     pubpoint.header.stamp = rospy.Time.now()
                     pubpoint.pose = Waypoints.poses[0]
+                    """
                     pubpoint.pose.orientation.x = 0
                     pubpoint.pose.orientation.y = 0
-                    pubpoint.pose.orientation.z = -0.866
-                    pubpoint.pose.orientation.w = 0.5
+                    pubpoint.pose.orientation.z = 0
+                    pubpoint.pose.orientation.w = 1
+                    """
 
                     self.pub_goal.publish(pubpoint)
                 """
@@ -221,8 +221,6 @@ def temp(Pose, xy):
     Pose.pose.position.y=xy[1] # Udkommenter hvis den skal køre ind i object
     temp = Pose
     return temp
-
-
 
 if __name__ == '__main__':
     try:

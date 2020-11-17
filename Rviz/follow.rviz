@@ -6,8 +6,9 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /Current_goal1
-        - /Current_goal1/Status1
+        - /Move_command1
+        - /Move_interpretation1/Status1
+        - /Waypoint_List1
       Splitter Ratio: 0.5
     Tree Height: 424
   - Class: rviz/Selection
@@ -58,11 +59,11 @@ Visualization Manager:
       Axes Length: 1
       Axes Radius: 0.10000000149011612
       Class: rviz/Pose
-      Color: 255; 25; 0
+      Color: 85; 0; 255
       Enabled: true
       Head Length: 0.30000001192092896
       Head Radius: 0.10000000149011612
-      Name: Pose
+      Name: Move_command
       Queue Size: 10
       Shaft Length: 1
       Shaft Radius: 0.05000000074505806
@@ -94,7 +95,7 @@ Visualization Manager:
       Enabled: true
       Head Length: 0.30000001192092896
       Head Radius: 0.20000000298023224
-      Name: Current_goal
+      Name: Move_interpretation
       Queue Size: 10
       Shaft Length: 1
       Shaft Radius: 0.10000000149011612
@@ -135,6 +136,23 @@ Visualization Manager:
         Shaft Radius: 0.10000000149011612
         Value: Arrow
       Topic: /odometry/filtered_map
+      Unreliable: false
+      Value: true
+    - Alpha: 1
+      Arrow Length: 0.30000001192092896
+      Axes Length: 0.30000001192092896
+      Axes Radius: 0.009999999776482582
+      Class: rviz/PoseArray
+      Color: 0; 255; 0
+      Enabled: true
+      Head Length: 0.07000000029802322
+      Head Radius: 0.029999999329447746
+      Name: Waypoint_List
+      Queue Size: 10
+      Shaft Length: 0.23000000417232513
+      Shaft Radius: 0.009999999776482582
+      Shape: Arrow (Flat)
+      Topic: /Tracker/Waypoint_list
       Unreliable: false
       Value: true
   Enabled: true
@@ -181,9 +199,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.6203981041908264
+      Pitch: 0.7747965455055237
       Target Frame: <Fixed Frame>
-      Yaw: 0.9153980612754822
+      Yaw: 1.3154066801071167
     Saved: ~
 Window Geometry:
   Displays:

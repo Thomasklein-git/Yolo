@@ -498,26 +498,36 @@ def get_new_orientation(Waypoint_old, Waypoint_new, vec_old_new, Points=True):
     if Points == True:
         Waypoint_old_xyz = np.array([Waypoint_old.pose.position.x,Waypoint_old.pose.position.y,Waypoint_old.pose.position.z])
         Waypoint_new_xyz = np.array([Waypoint_new.pose.position.x,Waypoint_new.pose.position.y,Waypoint_new.pose.position.z])
-        #print(Waypoint_old_xyz, "old")
-        #print(Waypoint_new_xyz, "new")
-        Vec_old_new = Waypoint_new_xyz-Waypoint_old_xyz
-        Vec_ref = np.array([1,0,0]) 
+        vec_old_new = Waypoint_new_xyz-Waypoint_old_xyz
+        #Vec_ref = np.array([1,0,0]) 
         #print(np.dot(Vec_ref,Vec_old_new))
-        Complex_ele = np.cross(Vec_ref,Vec_old_new) # X, Y, Z vector part
-        if np.dot(Vec_ref,Vec_old_new) < -0.999999 and np.linalg.norm(Complex_ele) == 0:
-            q_norm = np.array([0,0,1,0])
-        else:
-            Real_ele = np.sqrt((np.linalg.norm(Vec_ref)**2)*(np.linalg.norm(Vec_old_new)**2))+np.dot(Vec_ref,Vec_old_new) # W scalar part
-            q=np.append(Complex_ele,Real_ele)
-            q_norm=q/np.linalg.norm(q)
+        #Complex_ele = np.cross(Vec_ref,Vec_old_new) # X, Y, Z vector part
+        #if np.dot(Vec_ref,Vec_old_new) < -0.999999 and np.linalg.norm(Complex_ele) == 0:
+        #    q_norm = np.array([0,0,1,0])
+        #else:
+        #    Real_ele = np.sqrt((np.linalg.norm(Vec_ref)**2)*(np.linalg.norm(Vec_old_new)**2))+np.dot(Vec_ref,Vec_old_new) # W scalar part
+        #    q=np.append(Complex_ele,Real_ele)
+        #    q_norm=q/np.linalg.norm(q)
     elif Points == False:
-        Vec_ref = np.array([1,0,0]) 
-        Complex_ele = np.cross(Vec_ref,vec_old_new) # X, Y, Z vector part
-        Real_ele = np.sqrt((np.linalg.norm(Vec_ref)**2)*(np.linalg.norm(vec_old_new)**2))+np.dot(Vec_ref,vec_old_new) # W scalar part
+        pass
+        #Vec_ref = np.array([1,0,0]) 
+        #Complex_ele = np.cross(Vec_ref,vec_old_new) # X, Y, Z vector part
+        #if np.dot(Vec_ref,vec_old_new) < -0.999999 and np.linalg.norm(Complex_ele)
+        #Real_ele = np.sqrt((np.linalg.norm(Vec_ref)**2)*(np.linalg.norm(vec_old_new)**2))+np.dot(Vec_ref,vec_old_new) # W scalar part
     
+        #q=np.append(Complex_ele,Real_ele)
+        #q_norm=q/np.linalg.norm(q)
+
+    Vec_ref = np.array([1,0,0]) 
+    Complex_ele = np.cross(Vec_ref,vec_old_new) # X, Y, Z vector part
+    if np.dot(Vec_ref,vec_old_new/np.linalg.norm(vec_old_new)) < -0.999999 and np.linalg.norm(Complex_ele) == 0:
+        q_norm = np.array([0,0,1,0])
+    else:
+        Real_ele = np.sqrt((np.linalg.norm(Vec_ref)**2)*(np.linalg.norm(vec_old_new)**2))+np.dot(Vec_ref,vec_old_new) # W scalar part
         q=np.append(Complex_ele,Real_ele)
         q_norm=q/np.linalg.norm(q)
-    
+
+
     return q_norm
 
 def read_class_names(class_file_name):
