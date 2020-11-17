@@ -20,3 +20,8 @@ rosbag play name --topics /topic
 ```
 rosbag record -O LimitTest.bag -l 1 /zed2/zed_node/left/image_rect_color
 ```
+
+- Record for standard deviation experiment
+```
+rosbag record -O test.bag -l 30 /zed2/zed_node/left/image_rect_color/compressed /zed2/zed_node/point_cloud/cloud_registered
+```
