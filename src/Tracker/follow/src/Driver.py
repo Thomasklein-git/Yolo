@@ -53,7 +53,7 @@ class Driver:
         self.br.sendTransform(trans, rot, stamp,"base_link","map")
         
         print("[INFO] Loading complete")
-        rate = rospy.Rate(20) # Hz
+        rate = rospy.Rate(5) # Hz
         
         while not rospy.is_shutdown():
 
@@ -64,13 +64,13 @@ class Driver:
             Movec = [Movex,Movey,Movez]
             Movemag = np.linalg.norm([Movex,Movey,Movez])
             if Movemag == 0:
-                print("At goal, rotating if needed")
+                #print("At goal, rotating if needed")
                 Move = [0,0,0]
             elif Movemag < step:
-                print("Close, moving to goal")
+                #print("Close, moving to goal")
                 Move = [Movex, Movey, Movez]
             else:
-                print("Far away, moving towards goal")
+                #print("Far away, moving towards goal")
                 Move = ([Movex,Movey,Movez]/Movemag)*step
             Vpose.header.stamp = rospy.Time.now()
             Vpose.pose.pose.position.x += Move[0]
@@ -82,7 +82,7 @@ class Driver:
             rot   = (Vpose.pose.pose.orientation.x, Vpose.pose.pose.orientation.y, Vpose.pose.pose.orientation.z, Vpose.pose.pose.orientation.w)
             self.br.sendTransform(trans, rot, Vpose.header.stamp,"base_link","map") #Pose.header.stamp,"base","map")
             self.base_pub.publish(Vpose)
-            print("Moved", Move)
+            #print("Moved", Move)
 
 
             rate.sleep()

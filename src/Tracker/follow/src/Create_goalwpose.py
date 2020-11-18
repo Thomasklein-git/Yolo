@@ -32,9 +32,9 @@ class Follow():
 
         self.tf = TransformListener()
         # Tolerances
-        self.distance_keep = 0.4 #[m]
-        self.distance_new = 0.8
-        self.distance_threshold = 0.3 # Distance to a waypoint before it is discarded
+        self.distance_keep = 0.5 #[m]
+        self.distance_new = 1.5
+        self.distance_threshold = 0.1 # Distance to a waypoint before it is discarded
         self.twist_threshold = 30*math.pi/180
 
         # Subscribed topic
@@ -94,7 +94,6 @@ class Follow():
                 Waypoint.position.z = self.Move_base_goal.pose.position.z
             # If point is NOT witin proximity of vehicle, add object position with orientation towards point
             else:
-                print("case 2")
                 vec_new_old=np.array([np_m.pose.position.x,np_m.pose.position.y,np_m.pose.position.z])
                 quaternion=get_new_orientation(0,0,vec_new_old,Points=False)
 
@@ -117,7 +116,6 @@ class Follow():
             lp_m.pose = self.Waypoints.poses[-1]
             distance_to_lastest_waypoint = math.sqrt((np_m.pose.position.x-lp_m.pose.position.x)**2+(np_m.pose.position.y-lp_m.pose.position.y)**2)
             if distance_to_lastest_waypoint < self.distance_new:
-                print("case 3")
                 quaternion=get_new_orientation(lp_m,np_m,0,Points=True)
 
                 self.Waypoints.poses[-1].orientation.x = quaternion[0]
@@ -129,7 +127,6 @@ class Follow():
 
             # If NOT within proximity of the latast waypoint add as a new point
             else:
-                print("case 4")
                 quaternion=get_new_orientation(lp_m,np_m,0,Points=True)
                 Waypoint.position.x = np_m.pose.position.x
                 Waypoint.position.y = np_m.pose.position.y
@@ -201,30 +198,97 @@ class Follow():
         if self.Move_base_goal != []:
             # Check the distance from the vehicle to the current goal
             distance_to_goal = math.sqrt((self.Current_position.pose.pose.position.x-self.Move_base_goal.pose.position.x)**2+(self.Current_position.pose.pose.position.y-self.Move_base_goal.pose.position.y)**2)
-            # If vehicle is within distance_threshold:
-            
-            if distance_to_goal < self.distance_threshold:
+            # If vehicle is within distance_keep:
+            print(distance_to_goal, "d2g")
+            if distance_to_goal <= self.distance_threshold:
                 # Check lenght of Waypoint.poses
                 # If empty do nothing
-                if len(self.Waypoints.poses) == 0:
-                    pass
-                # If list is 1 waypoint 
+                if len(self.Waypoints.poses) > 0:
+                    distance_to_waypoint = math.sqrt((self.Current_position.pose.pose.position.x-self.Waypoints.poses[0].position.x)**2+(self.Current_position.pose.pose.position.y-self.Waypoints.poses[0].position.y)**2)
+                    print(distance_to_waypoint, "d2w")
+                    # If list is 1 waypoint 
+                    if distance_to_waypoint < self.distance_keep:
+                        if len(self.Waypoints.poses) ==1:
+                            print("wT wK 1P")
+                            Q_goal = Quaternion(self.Move_base_goal.pose.orientation.w,self.Move_base_goal.pose.orientation.x,self.Move_base_goal.pose.orientation.y,self.Move_base_goal.pose.orientation.z)
+                            Q_wp   = Quaternion(self.Waypoints.poses[0].orientation.w,self.Waypoints.poses[0].orientation.x,self.Waypoints.poses[0].orientation.y,self.Waypoints.poses[0].orientation.z)
+                            Twist_goal = abs((Q_goal*Q_wp.inverse).angle)
+                            if Twist_goal > self.twist_threshold: 
+                                Waypoint.pose = self.Waypoints.poses[0]
+                                self.pub_goal.publish(Waypoint)
+                                self.Waypoints_reached.poses.append(self.Waypoints.poses[0])
+                                del self.Waypoints.poses[0]
+                                self.pub_waypoint_list_reached.publish(self.Waypoints_reached)
+                                self.pub_waypoint_list.publish(self.Waypoints)
+                    # If list longer than one waypoint
+                        else:
+                            print("wT wK mP")
+                            self.Waypoints_reached.poses.append(self.Waypoints.poses[0])
+                            del self.Waypoints.poses[0]
+                            self.pub_waypoint_list_reached.publish(self.Waypoints_reached)
+                            #Waypoint.pose = self.Waypoints.poses[0]
+                            #self.pub_goal.publish(Waypoint)
+                            self.pub_waypoint_list.publish(self.Waypoints)
+                    # If further away from the waypoint than distance threshold
+                    else:
+                        # IF there is only one waypoint and it is further away than the keep distance. Make a new point in between the goal and the vehicle at the keep distance
+                        if len(self.Waypoints.poses) ==1:
+                            print("wT oK 1P")
+                            Waypoint.pose = self.Waypoints.poses[0]
+                            vec_Goal_map = np.array([self.Waypoints.poses[0].position.x,self.Waypoints.poses[0].position.y])
+                            vec_Vehicle_map = np.array([Pose.pose.pose.position.x,Pose.pose.pose.position.y])
+                            xy_goal_stop = cal_pose_stop(vec_Goal_map,vec_Vehicle_map,self.distance_keep)
+                            Waypoint.pose.position.x = xy_goal_stop[0]
+                            Waypoint.pose.position.y = xy_goal_stop[1]
+                            del self.Waypoints.poses[0]
+                            #self.Waypoints.poses[0] = Waypoint.pose
+                            self.pub_goal.publish(Waypoint)
+
+                        else:
+                            print("wT oK MP")
+                            #self.Waypoints_reached.poses.append(self.Waypoints.poses[0])
+                            Waypoint.pose = self.Waypoints.poses[0]
+                            self.pub_goal.publish(Waypoint)
+
+            else:
+                print("oT")
+            """
+
                 elif len(self.Waypoints.poses) == 1:
-                    # If angle between goal and current_waypoint is greater than twist_threshold
-                    Q_goal = Quaternion(self.Move_base_goal.pose.orientation.w,self.Move_base_goal.pose.orientation.x,self.Move_base_goal.pose.orientation.y,self.Move_base_goal.pose.orientation.z)
-                    Q_wp   = Quaternion(self.Waypoints.poses[0].orientation.w,self.Waypoints.poses[0].orientation.x,self.Waypoints.poses[0].orientation.y,self.Waypoints.poses[0].orientation.z)
-                    Twist_goal = abs((Q_goal*Q_wp.inverse).angle)
-                    if Twist_goal > self.twist_threshold: 
+                    
+                    distance_to_waypoint = math.sqrt((self.Current_position.pose.pose.position.x-self.Waypoints.poses[0].position.x)**2+(self.Current_position.pose.pose.position.y-self.Waypoints.poses[0].position.y)**2)
+                    print(distance_to_waypoint)
+                    if distance_to_waypoint <= self.distance_keep:
+                        print("case 1")
+                        # If angle between goal and current_waypoint is greater than twist_threshold
+                        Q_goal = Quaternion(self.Move_base_goal.pose.orientation.w,self.Move_base_goal.pose.orientation.x,self.Move_base_goal.pose.orientation.y,self.Move_base_goal.pose.orientation.z)
+                        Q_wp   = Quaternion(self.Waypoints.poses[0].orientation.w,self.Waypoints.poses[0].orientation.x,self.Waypoints.poses[0].orientation.y,self.Waypoints.poses[0].orientation.z)
+                        Twist_goal = abs((Q_goal*Q_wp.inverse).angle)
+                        if Twist_goal > self.twist_threshold: 
+                            Waypoint.pose = self.Waypoints.poses[0]
+                            self.pub_goal.publish(Waypoint)
+                            self.Waypoints_reached.poses.append(self.Waypoints.poses[0])
+                            del self.Waypoints.poses[0]
+                            self.pub_waypoint_list_reached.publish(self.Waypoints_reached)
+                            self.pub_waypoint_list.publish(self.Waypoints)
+                    else:
+                        print("case 2")
                         Waypoint.pose = self.Waypoints.poses[0]
-                        self.pub_goal.publish(Waypoint)
-                        self.Waypoints_reached.poses.append(self.Waypoints.poses[0])
+                        vec_Goal_map = np.array([self.Waypoints.poses[0].position.x,self.Waypoints.poses[0].position.y])
+                        vec_Vehicle_map = np.array([Pose.pose.pose.position.x,Pose.pose.pose.position.y])
+                        xy_goal_stop = cal_pose_stop(vec_Goal_map,vec_Vehicle_map,self.distance_keep)
+                        Waypoint.pose.position.x = xy_goal_stop[0]
+                        Waypoint.pose.position.y = xy_goal_stop[1]
+
                         del self.Waypoints.poses[0]
-                        self.pub_waypoint_list_reached.publish(self.Waypoints_reached)
                         self.pub_waypoint_list.publish(self.Waypoints)
+                        self.pub_goal.publish(Waypoint)
+
                     pass
                     # c
                 # If list have more than one waypoint
                 else:
+                    print("case 3")
                     self.Waypoints_reached.poses.append(self.Waypoints.poses[0])
                     del self.Waypoints.poses[0]
                     self.pub_waypoint_list_reached.publish(self.Waypoints_reached)
@@ -232,15 +296,35 @@ class Follow():
                     self.pub_goal.publish(Waypoint)
                     self.pub_waypoint_list.publish(self.Waypoints)
 
+            # distance to the goal is further than distance_keep
+            """
+            """
+            else: #if distance_to_goal < self.distance_keep:
+            
+                if len(self.Waypoints.poses) == 0:
+                    pass
+                elif len(self.Waypoints.poses) == 1:
+                    print("case 4")
+                    Waypoint.pose = self.Waypoints.poses[0]
+                    vec_Goal_map = np.array([self.Waypoints.poses[0].position.x,self.Waypoints.poses[0].position.y])
+                    vec_Vehicle_map = np.array([Pose.pose.pose.position.x,Pose.pose.pose.position.y])
+                    xy_goal_stop = cal_pose_stop(vec_Goal_map,vec_Vehicle_map,self.distance_keep)
+                    Waypoint.pose.position.x = xy_goal_stop[0]
+                    Waypoint.pose.position.y = xy_goal_stop[1]
 
-            # distance to the goal is further than distance_threshold
-            else:
+                    self.pub_waypoint_list.publish(self.Waypoints)
+                    self.pub_goal.publish(Waypoint)
+                    pass
+                else:
+                    print("case 5")
+                    pass
                 pass
-
+            """
         # If there is no current goal publish the current waypoint if there is any
         else:
             if len(self.Waypoints.poses) > 0:
                 Waypoint.pose = self.Waypoints.poses[0]
+                
                 self.pub_goal.publish(Waypoint)
         """
 
