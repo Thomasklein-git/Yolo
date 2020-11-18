@@ -493,7 +493,7 @@ def Transform_Coordinates_between_frames(xyzcoord_series, Current_frame,Target_f
     
     return xyzcoord_trans_series
 
-def get_new_orientation(Waypoint_old, Waypoint_new, vec_old_new, Points=True):
+def get_new_orientation(Waypoint_old, Waypoint_new, vec_old_new, Points=True):      ##### Ændret #####
     #https://stackoverflow.com/questions/1171849/finding-quaternion-representing-the-rotation-from-one-vector-to-another
     if Points == True:
         Waypoint_old_xyz = np.array([Waypoint_old.pose.position.x,Waypoint_old.pose.position.y,Waypoint_old.pose.position.z])
