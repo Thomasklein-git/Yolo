@@ -8,6 +8,13 @@ import tf2_ros
 import tf2_geometry_msgs
 from tf import TransformListener
 import math
+
+
+import os 
+import sys
+dir_to_Tracker=os.path.dirname(os.path.dirname(os.path.dirname( __file__ )))
+dir_to_Scripts = os.path.join(dir_to_Tracker,"Scripts") 
+sys.path.append(dir_to_Scripts)
 from agfh import *
 
 class Follow():
