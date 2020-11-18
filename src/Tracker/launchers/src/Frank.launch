@@ -6,9 +6,9 @@
     <!-- Launch boundary box segmentation-->
     <node ns="Tracker" name="Segmentation" pkg="segmentation" type="DBSCAN.py"/>
     <!-- Launch Tracker -->
-    <node ns="Tracker" name="Tracker" pkg="visionv2" type="Tracker_no_yolo.py"/>
+    <node ns="Tracker" name="Tracker" pkg="object_handler" type="Tracker_no_yolo.py"/>
     <!-- Launch set goal -->
-    <node ns="Tracker" name="Create_goal" pkg="follow" type="Create_goal.py"/>
-    <!-- -->
-    <node ns="Tracker" name="Draw_boxes" pkg="visionv2" type="show.py"/>
+    <node ns="Tracker" name="Create_goal" pkg="follow" type="Create_goalkeep.py"/>
+    <!-- Launch box show-->
+    <node ns="Tracker" name="Draw_boxes" pkg="object_handler" type="show.py"/>
 </launch>
