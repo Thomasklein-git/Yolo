@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import os
 import sys
 import rospy
 
@@ -7,6 +8,10 @@ from std_msgs.msg import Time
 from vision_msgs.msg import Detection2DArray, Detection2D, ObjectHypothesisWithPose
 from cv_bridge import CvBridge, CvBridgeError
 import message_filters
+
+dir_to_Tracker=os.path.dirname(os.path.dirname(os.path.dirname( __file__ )))
+dir_to_Scripts = os.path.join(dir_to_Tracker,"Scripts") 
+sys.path.append(dir_to_Scripts)
 
 from yolov3.utils import detect_image, Load_Yolo_model
 from yolov3.configs import *

@@ -14,6 +14,10 @@ from geometry_msgs.msg import PoseStamped
 
 import message_filters
 
+dir_to_Tracker=os.path.dirname(os.path.dirname(os.path.dirname( __file__ )))
+dir_to_Scripts = os.path.join(dir_to_Tracker,"Scripts") 
+sys.path.append(dir_to_Scripts)
+
 from agfh import *
 
 #from yolov3.utils import detect_image, Load_Yolo_model

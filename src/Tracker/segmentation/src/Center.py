@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import os
 import sys
 import rospy
 import cv2
@@ -9,7 +10,11 @@ from vision_msgs.msg import Detection2DArray, Detection2D, ObjectHypothesisWithP
 from cv_bridge import CvBridge, CvBridgeError
 import message_filters
 
-from segmentation_utils import *
+dir_to_Tracker=os.path.dirname(os.path.dirname(os.path.dirname( __file__ )))
+dir_to_Scripts = os.path.join(dir_to_Tracker,"Scripts") 
+sys.path.append(dir_to_Scripts)
+
+from agfh import *
 
 class Cloud_segmentation:
     def __init__(self):

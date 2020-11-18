@@ -1,9 +1,17 @@
 #!/usr/bin/env python3
+import os
+import sys
 
 import numpy as np
 import math
 from scipy.spatial import distance as dist
 from scipy.optimize import linear_sum_assignment
+
+
+dir_to_Tracker=os.path.dirname(os.path.dirname(os.path.dirname( __file__ )))
+dir_to_Scripts = os.path.join(dir_to_Tracker,"Scripts") 
+sys.path.append(dir_to_Scripts)
+
 from agfh import *
 
 class Object_handler():
