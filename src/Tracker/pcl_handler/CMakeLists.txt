@@ -209,3 +209,5 @@ include_directories(
 
 add_executable(cloudsubscriber src/cloudsubscriber.cpp)
 target_link_libraries(cloudsubscriber ${catkin_LIBRARIES})
+add_executable(cloudsubscribertimer src/cloudsubscribertimer.cpp)
+target_link_libraries(cloudsubscribertimer ${catkin_LIBRARIES})

@@ -23,8 +23,8 @@ class Follow():
 
         self.tf_buffer = tf2_ros.Buffer(rospy.Duration(1200.0)) #tf buffer length
         self.tf_listener = tf2_ros.TransformListener(self.tf_buffer)
+        
 
-        self.Move_base_goal = []
         self.Waypoint = Pose()
         self.Waypoints = PoseArray()
         self.Waypoints_reached = PoseArray()
@@ -45,7 +45,7 @@ class Follow():
         self.twist_threshold = 30*math.pi/180
 
         # Subscribed topic
-        self.pub_goal = rospy.Publisher('/move_base_simple/goal', PoseStamped, queue_size=1)
+        self.pub_goal = rospy.Publisher("/Tracker/move_base_goal", PoseStamped, queue_size=1)
         self.pub_waypoint_list = rospy.Publisher("/Tracker/Waypoint_list",PoseArray,queue_size=1)
         self.pub_waypoint_list_reached = rospy.Publisher("/Tracker/Waypoint_list_deleted",PoseArray,queue_size=1)
         print("Waiting for Odometry...")
@@ -63,12 +63,14 @@ class Follow():
             self.Current_position.pose.pose.orientation.z = 0
             print("Odometry created")
         
-        self.Move_base_goal = self.Current_position.pose
-        
+        self.Move_base_goal     = self.Current_position.pose
+        self.Waypoint_goal_pose = self.Current_position.pose
+
         rospy.Subscriber("/odometry/filtered_map",Odometry,self.Compare_pose,queue_size=1)
         rospy.Subscriber("/Tracker/Object_Tracker/Published_pose",PoseStamped,self.New_input, queue_size=1)
+        rospy.Subscriber("/Tracker/move_base_goal",PoseStamped,self.Waypoint_goal,queue_size=1)
         rospy.Subscriber("/move_base/Current_goal",PoseStamped,self.Current_goal, queue_size=1)
-        #rospy.Subscriber("/move_base_simple/goal",PoseStamped,self.Current_goal,queue_size=1)
+       
 
     def New_input(self,Pose):
         if rospy.has_param('/Target_UID'):
@@ -197,12 +199,17 @@ class Follow():
         if rospy.has_param('/Target_UID'):
             if self.Target != rospy.get_param('/Target_UID'):
                 if self.Move_base_goal != []:
-                    distance_between_vehicle_and_goal = math.sqrt((self.Move_base_goal.pose.position.x-self.Current_position.pose.pose.position.x)**2+(self.Move_base_goal.pose.position.y-self.Current_position.pose.pose.position.y)**2)
+
+                    #distance_between_vehicle_and_goal = math.sqrt((self.Move_base_goal.pose.position.x-self.Current_position.pose.pose.position.x)**2+(self.Move_base_goal.pose.position.y-self.Current_position.pose.pose.position.y)**2)
+                    distance_between_vehicle_and_goal = math.sqrt((self.Waypoint_goal_pose.pose.position.x-self.Current_position.pose.pose.position.x)**2+(self.Waypoint_goal_pose.pose.position.y-self.Current_position.pose.pose.position.y)**2)
+                    
                     if distance_between_vehicle_and_goal > self.break_threshold:
-                        Goal_coord      = np.array([self.Move_base_goal.pose.position.x,self.Move_base_goal.pose.position.y])
+                        Goal_coord      = np.array([self.Waypoint_goal_pose.pose.position.x,self.Waypoint_goal_pose.pose.position.y])
+                        #Goal_coord      = np.array([self.Move_base_goal.pose.position.x,self.Move_base_goal.pose.position.y])
                         Vehicle_coord   = np.array([self.Current_position.pose.pose.position.x,self.Current_position.pose.pose.position.y])
 
-                        quaternion=get_new_orientation(self.Current_position.pose,self.Move_base_goal,0,Points=True)
+                        #quaternion=get_new_orientation(self.Current_position.pose,self.Move_base_goal,0,Points=True)
+                        quaternion=get_new_orientation(self.Current_position.pose,self.Waypoint_goal_pose,0,Points=True)
 
                         move_back_coord = cal_pose_stop(Vehicle_coord,Goal_coord,self.break_threshold)
                         Waypoint.pose.position.x = move_back_coord[0]
@@ -227,23 +234,28 @@ class Follow():
         # Check if there is a current goal
         if self.Move_base_goal != []:
             #distance_to_vehicle = math.sqrt((np_m.pose.position.x-self.Current_position.pose.pose.position.x)**2+(np_m.pose.position.y-self.Current_position.pose.pose.position.y)**2)
-            distance_to_goal = math.sqrt((self.Move_base_goal.pose.position.x-self.Current_position.pose.pose.position.x)**2+(self.Move_base_goal.pose.position.y-self.Current_position.pose.pose.position.y)**2)
+            #distance_to_goal = math.sqrt((self.Move_base_goal.pose.position.x-self.Current_position.pose.pose.position.x)**2+(self.Move_base_goal.pose.position.y-self.Current_position.pose.pose.position.y)**2)
+            distance_to_goal = math.sqrt((self.Waypoint_goal_pose.pose.position.x-self.Current_position.pose.pose.position.x)**2+(self.Waypoint_goal_pose.pose.position.y-self.Current_position.pose.pose.position.y)**2)
+            #print(distance_to_goal, "d2g")
             if len(self.Waypoints.poses) == 0:
                 # If len of waypoints equal 0 do nothing, this is only the case when no object have been found.
                 pass
             elif len(self.Waypoints.poses) == 1:
+                
                 if distance_to_goal < self.distance_threshold:
-                    Q_goal = Quaternion(self.Move_base_goal.pose.orientation.w,self.Move_base_goal.pose.orientation.x,self.Move_base_goal.pose.orientation.y,self.Move_base_goal.pose.orientation.z)
+                    #Q_goal = Quaternion(self.Move_base_goal.pose.orientation.w,self.Move_base_goal.pose.orientation.x,self.Move_base_goal.pose.orientation.y,self.Move_base_goal.pose.orientation.z)
+                    Q_goal = Quaternion(self.Waypoint_goal_pose.pose.orientation.w,self.Waypoint_goal_pose.pose.orientation.x,self.Waypoint_goal_pose.pose.orientation.y,self.Waypoint_goal_pose.pose.orientation.z)
                     Q_wp   = Quaternion(self.Waypoints.poses[0].orientation.w,self.Waypoints.poses[0].orientation.x,self.Waypoints.poses[0].orientation.y,self.Waypoints.poses[0].orientation.z)
                     Twist_goal = abs((Q_goal*Q_wp.inverse).angle)
                     if Twist_goal > self.twist_threshold:
                         Waypoint.pose = self.Waypoints.poses[0]
-                        Waypoint_reached.pose = self.Move_base_goal.pose
+                        Waypoint_reached.pose = self.Waypoint_goal_pose.pose
                         self.Waypoints_reached.poses.append(Waypoint_reached.pose)
                         self.pub_goal.publish(Waypoint)
                         self.pub_waypoint_list_reached.publish(self.Waypoints_reached)
 
                 distance_between_goal_and_waypoint = math.sqrt((self.Move_base_goal.pose.position.x-self.Waypoints.poses[0].position.x)**2+(self.Move_base_goal.pose.position.y-self.Waypoints.poses[0].position.y)**2)
+                #distance_between_goal_and_waypoint = math.sqrt((self.Waypoint_goal_pose.pose.position.x-self.Waypoints.poses[0].position.x)**2+(self.Waypoint_goal_pose.pose.position.y-self.Waypoints.poses[0].position.y)**2)
                 if distance_between_goal_and_waypoint != 0:
                     Waypoint.pose = self.Waypoints.poses[0]
                     self.pub_goal.publish(Waypoint)
@@ -253,12 +265,17 @@ class Follow():
                     del self.Waypoints.poses[0]
 
                     Waypoint.pose = self.Waypoints.poses[0]
-                    quaternion=get_new_orientation(self.Current_position.pose,Waypoint,0,Points=True)
+                    #quaternion=get_new_orientation(self.Current_position.pose,Waypoint,0,Points=True)
+                    quaternion=get_new_orientation(self.Move_base_goal,Waypoint,0,Points=True)
 
                     # Måske skal det skiftes til currnet object position i stedet for Waypoint
-                    Waypoint_coord = np.array([self.Waypoints.poses[0].position.x,self.Waypoints.poses[0].position.y])
-                    Vehicle_coord  = np.array([self.Current_position.pose.pose.position.x,self.Current_position.pose.pose.position.y])
-                    move_back_coord = cal_pose_stop(Waypoint_coord,Vehicle_coord,self.distance_keep)
+                    Waypoint_coord = np.array([self.Waypoints.poses[0].position.x,self.Waypoints.poses[0].position.y]) ## Ændret
+                    Move_base_coord = np.array([self.Move_base_goal.pose.position.x,self.Move_base_goal.pose.position.y])
+                    #Vehicle_coord  = np.array([self.Current_position.pose.pose.position.x,self.Current_position.pose.pose.position.y])
+
+                    move_back_coord = cal_pose_stop(Waypoint_coord,Move_base_coord,self.distance_keep)
+                    #move_back_coord = cal_pose_stop(Waypoint_coord,Vehicle_coord,self.distance_keep)
+
 
                     self.Waypoints.poses[0].position.x = move_back_coord[0]
                     self.Waypoints.poses[0].position.y = move_back_coord[1]
@@ -285,8 +302,11 @@ class Follow():
                 Waypoint.pose = self.Waypoints.poses[0]
                 self.pub_goal.publish(Waypoint)
 
-    def Current_goal(self,Pose):
+    def Waypoint_goal(self,Pose):
         self.Move_base_goal = Pose
+
+    def Current_goal(self,Pose):
+        self.Waypoint_goal_pose = Pose
 
 if __name__ == '__main__':
     try:
