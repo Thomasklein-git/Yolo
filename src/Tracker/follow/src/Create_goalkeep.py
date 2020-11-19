@@ -31,13 +31,16 @@ class Follow():
 
         self.tf = TransformListener()
 
+        self.Target = []
         # Tolerances
         self.backoff = True
-        self.distance_lower = 0.1#0.4 # Lower limit, if waypoint is closer, move back
-        self.distance_keep  = 0.2#0.8 # Goal, keep this distance to the target
-        self.distance_upper = 0.3#1.2 # Upper limit, if waypoint is further away, move closer
+        self.distance_lower = 0.4 # Lower limit, if waypoint is closer, move back
+        self.distance_keep  = 0.8 # Goal, keep this distance to the target
+        self.distance_upper = 1.2 # Upper limit, if waypoint is further away, move closer
 
         self.distance_threshold = 0.1 # Distance to a waypoint before it is discarded
+
+        self.break_threshold = 0.2
 
         self.twist_threshold = 30*math.pi/180
 
@@ -68,6 +71,11 @@ class Follow():
         #rospy.Subscriber("/move_base_simple/goal",PoseStamped,self.Current_goal,queue_size=1)
 
     def New_input(self,Pose):
+        if rospy.has_param('/Target_UID'):
+            if self.Target != rospy.get_param('/Target_UID'):
+                self.Waypoints = PoseArray()
+            self.Target = rospy.get_param('/Target_UID')
+        
         #Pose.header.frame_id = "map"
         # Calculate Transforms and the Poses in their respective frames
         # Transform from "Pose Frame" to map
@@ -185,6 +193,33 @@ class Follow():
         self.Current_position = Pose
         Waypoint = PoseStamped()
         Waypoint.header = Pose.header
+
+        if rospy.has_param('/Target_UID'):
+            if self.Target != rospy.get_param('/Target_UID'):
+                if self.Move_base_goal != []:
+                    distance_between_vehicle_and_goal = math.sqrt((self.Move_base_goal.pose.position.x-self.Current_position.pose.pose.position.x)**2+(self.Move_base_goal.pose.position.y-self.Current_position.pose.pose.position.y)**2)
+                    if distance_between_vehicle_and_goal > self.break_threshold:
+                        Goal_coord      = np.array([self.Move_base_goal.pose.position.x,self.Move_base_goal.pose.position.y])
+                        Vehicle_coord   = np.array([self.Current_position.pose.pose.position.x,self.Current_position.pose.pose.position.y])
+
+                        quaternion=get_new_orientation(self.Current_position.pose,self.Move_base_goal,0,Points=True)
+
+                        move_back_coord = cal_pose_stop(Vehicle_coord,Goal_coord,self.break_threshold)
+                        Waypoint.pose.position.x = move_back_coord[0]
+                        Waypoint.pose.position.y = move_back_coord[1]
+
+                        Waypoint.pose.orientation.x = quaternion[0]
+                        Waypoint.pose.orientation.y = quaternion[1]
+                        Waypoint.pose.orientation.z = quaternion[2]
+                        Waypoint.pose.orientation.w = quaternion[3]
+                        self.pub_goal.publish(Waypoint)
+                
+                self.Waypoints = PoseArray()
+                self.Waypoints.header = Pose.header
+                self.pub_waypoint_list.publish(self.Waypoints)
+            self.Target = rospy.get_param('/Target_UID')
+
+        
         Waypoint_reached = PoseStamped()
         Waypoint_reached.header = Pose.header
         self.Waypoints_reached.header = Pose.header

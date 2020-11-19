@@ -11,7 +11,7 @@ class follow_rviz:
         rospy.Subscriber("/odometry/filtered_map",Odometry,self.cb_odom,queue_size=1)
         rospy.Subscriber("/Tracker/Object_Tracker/Published_pose",PoseStamped,self.cb_pose, queue_size=1)
         self.pub_odom_marker = rospy.Publisher("/Tracker/Vehicle_position",Marker,queue_size=1)
-        self.pub_pose_marker = rospy.Publisher("/Tracker/Vehicle_position",Marker,queue_size=1)
+        self.pub_pose_marker = rospy.Publisher("/Tracker/Object_position",Marker,queue_size=1)
         rospy
 
     def cb_odom(self,Odometry):

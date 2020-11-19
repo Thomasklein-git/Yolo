@@ -49,8 +49,8 @@ class object_tracker:
 
         print("[INFO] Initialize ROS Subscribers...")
         #rospy.Subscriber("/yolo/Segbboxes", Detection2DArray, self.callback, queue_size=1)
-        boxes_sub = message_filters.Subscriber("/Tracker/Segmentation/Boxes", Detection2DArray, queue_size=1)
-        timer_sub = message_filters.Subscriber("/Tracker/Timer", TimeReference, queue_size=1)
+        boxes_sub     = message_filters.Subscriber("/Tracker/Segmentation/Boxes", Detection2DArray, queue_size=1)
+        timer_sub     = message_filters.Subscriber("/Tracker/Timer", TimeReference, queue_size=1)
         print("[INFO] Loading complete")
 
         mf = message_filters.TimeSynchronizer([boxes_sub,timer_sub],queue_size=40)
@@ -64,13 +64,22 @@ class object_tracker:
         self.OH.add(boxes_OH)
 
         # If there are no current or previous target, run Choose_target to search for a new target
-        if self.Target_Found == False:
-            self.Target_UID, self.Target_Found = Choose_target(self.OH, self.Target_class)
-        # If there are a current or previous target run find target to search for the target in the current boxes
-        if self.Target_Found == True:
+        
+        
+        #if self.Target_Found == False:
+        #    self.Target_UID, self.Target_Found = Choose_target(self.OH, self.Target_class)
+
+        if rospy.has_param('/Target_UID'):
+            self.Target_UID = rospy.get_param('/Target_UID')
             TargetList = Find_target(self.OH, self.Target_UID)
         else:
             TargetList = []
+        
+        # If there are a current or previous target run find target to search for the target in the current boxes
+        #if self.Target_Found == True:
+        #    TargetList = Find_target(self.OH, self.Target_UID)
+        #else:
+        #    TargetList = []
         
         boxes.header.frame_id = "map"  #Til rapport#
 
@@ -100,20 +109,10 @@ class object_tracker:
         time2 = rospy.Time.now().to_sec()
         print(time2-timer.time_ref.to_sec(),"Time delay")
 
+    def callback_choose_target(self,req):
 
 
-        """
-        if self.Target_Found == True:
-            Target_I, Target_Occlusion = Find_target(self.OH, self.Target_UID)
-            if Target_I == []:
-                print("Target is Lost")
-            elif Target_Occlusion > 0:
-                print("Target was occluded {} frames ago".format(Target_Occlusion))
-            else:
-                Target = self.OH.Known[Target_I]
-                SegID = Target[self.OH.KnownOrder.get("Current_listing")]
-                #boxes.detections[SegID].is_tracking = True
-        """
+        return
 
 def box_for_OH(boxes,Time):
         # Takes boxes in the format of Detection2DArray.msg and converts it to fit the format Object_handler
