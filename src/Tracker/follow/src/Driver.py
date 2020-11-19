@@ -53,7 +53,7 @@ class Driver:
         self.br.sendTransform(trans, rot, stamp,"base_link","map")
         
         print("[INFO] Loading complete")
-        rate = rospy.Rate(5) # Hz
+        rate = rospy.Rate(10) # Hz
         
         while not rospy.is_shutdown():
 

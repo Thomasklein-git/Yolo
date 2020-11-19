@@ -108,7 +108,7 @@ def DBSCAN_pointcloud(img, bboxes, seg_plot=True, eps=0.046, procent=0.0011):
         min_x=np.min(x_clust)
         avg_y=np.mean(y_clust)
         avg_z=np.mean(z_clust)
-        xyzcoord=[min_x,avg_y,avg_z]
+        
         """
         a=np.concatenate((label,xcoord),axis=1) # Put label and xcoord (depth) side by side shape[pixel,2]
         b=[] # Depth values from a which is at label_max
@@ -123,9 +123,13 @@ def DBSCAN_pointcloud(img, bboxes, seg_plot=True, eps=0.046, procent=0.0011):
             
         xyzcoord=[min_x,y_for_min_x,z_for_min_x]
         """
-        xyzcoord_series.append(xyzcoord)
+        
         
         avg_depth=np.mean(x_clust)
+        xyzcoord=[avg_depth,avg_y,avg_z]
+        #xyzcoord=[min_x,avg_y,avg_z]
+
+        xyzcoord_series.append(xyzcoord)
         avg_depth_series.append(avg_depth)
         
         if seg_plot==True:

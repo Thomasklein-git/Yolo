@@ -33,9 +33,9 @@ class Follow():
 
         # Tolerances
         self.backoff = True
-        self.distance_lower = 0.4 # Lower limit, if waypoint is closer, move back
-        self.distance_keep  = 0.8 # Goal, keep this distance to the target
-        self.distance_upper = 1.2 # Upper limit, if waypoint is further away, move closer
+        self.distance_lower = 0.1#0.4 # Lower limit, if waypoint is closer, move back
+        self.distance_keep  = 0.2#0.8 # Goal, keep this distance to the target
+        self.distance_upper = 0.3#1.2 # Upper limit, if waypoint is further away, move closer
 
         self.distance_threshold = 0.1 # Distance to a waypoint before it is discarded
 
@@ -65,8 +65,10 @@ class Follow():
         rospy.Subscriber("/odometry/filtered_map",Odometry,self.Compare_pose,queue_size=1)
         rospy.Subscriber("/Tracker/Object_Tracker/Published_pose",PoseStamped,self.New_input, queue_size=1)
         rospy.Subscriber("/move_base/Current_goal",PoseStamped,self.Current_goal, queue_size=1)
-        
+        #rospy.Subscriber("/move_base_simple/goal",PoseStamped,self.Current_goal,queue_size=1)
+
     def New_input(self,Pose):
+        #Pose.header.frame_id = "map"
         # Calculate Transforms and the Poses in their respective frames
         # Transform from "Pose Frame" to map
         transform_pm = self.tf_buffer.lookup_transform("map", Pose.header.frame_id, rospy.Time(0), rospy.Duration(1.0))
@@ -102,7 +104,7 @@ class Follow():
                 self.pub_waypoint_list.publish(self.Waypoints)
 
         else:
-            print("{} waypoints".format(len(self.Waypoints.poses)))
+            #print("{} waypoints".format(len(self.Waypoints.poses)))
             distance_to_goal = math.sqrt((np_m.pose.position.x-self.Waypoints.poses[-1].position.x)**2+(np_m.pose.position.y-self.Waypoints.poses[-1].position.y)**2)
             if distance_to_goal == 0:
                 pass
@@ -191,8 +193,6 @@ class Follow():
         if self.Move_base_goal != []:
             #distance_to_vehicle = math.sqrt((np_m.pose.position.x-self.Current_position.pose.pose.position.x)**2+(np_m.pose.position.y-self.Current_position.pose.pose.position.y)**2)
             distance_to_goal = math.sqrt((self.Move_base_goal.pose.position.x-self.Current_position.pose.pose.position.x)**2+(self.Move_base_goal.pose.position.y-self.Current_position.pose.pose.position.y)**2)
-                
-            
             if len(self.Waypoints.poses) == 0:
                 # If len of waypoints equal 0 do nothing, this is only the case when no object have been found.
                 pass
@@ -223,7 +223,7 @@ class Follow():
                     # Måske skal det skiftes til currnet object position i stedet for Waypoint
                     Waypoint_coord = np.array([self.Waypoints.poses[0].position.x,self.Waypoints.poses[0].position.y])
                     Vehicle_coord  = np.array([self.Current_position.pose.pose.position.x,self.Current_position.pose.pose.position.y])
-                    move_back_coord = cal_pose_stop(Goal_coord,Vehicle_coord,self.distance_keep)
+                    move_back_coord = cal_pose_stop(Waypoint_coord,Vehicle_coord,self.distance_keep)
 
                     self.Waypoints.poses[0].position.x = move_back_coord[0]
                     self.Waypoints.poses[0].position.y = move_back_coord[1]
