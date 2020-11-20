@@ -24,7 +24,7 @@ class show:
         image_sub = message_filters.Subscriber("/zed2/zed_node/left/image_rect_color/compressed",CompressedImage, queue_size=1)
         boxed_sub = message_filters.Subscriber("/Tracker/Object_Tracker/Boxes", Detection2DArray, queue_size=1)
 
-        self.image_pub = rospy.Publisher("/Push/Detected_Image",Image,queue_size=1)
+        self.image_pub = rospy.Publisher("/Tracker/Visualization/Detected_Image",Image,queue_size=1)
 
         mf = message_filters.TimeSynchronizer([image_sub,boxed_sub],50)
         mf.registerCallback(self.callback)

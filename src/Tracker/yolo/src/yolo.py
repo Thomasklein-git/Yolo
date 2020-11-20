@@ -18,6 +18,7 @@ from yolov3.utils import detect_image, Load_Yolo_model
 from yolov3.configs import *
 from yolov3.yolov3 import *
 
+
 class object_detector:
     def __init__(self):
         print("[INFO] Initializing ROS...")
@@ -37,12 +38,14 @@ class object_detector:
         self.timer_pub = rospy.Publisher("/Tracker/Timer",TimeReference, queue_size=1)
 
         print("[INFO] Initialize ROS Subscribers...")
-        rospy.Subscriber("/zed2/zed_node/left/image_rect_color/compressed",CompressedImage)
+        #rospy.Subscriber("/zed2/zed_node/left/image_rect_color/compressed",CompressedImage,self.callback_sub,queue_size=1)
         # Create subscriptions
 
         print("[INFO] Loading complete")
+        self.init_time_delay = 0
         # Init callback
         self.callback()
+
 
     def callback(self):
         #image = rospy.wait_for_message("/zed2/zed_node/left/image_rect_color",Image)
@@ -93,13 +96,25 @@ class object_detector:
         self.boxes_pub.publish(detect)
         # Reload the callback loop 
         time2 = rospy.Time.now().to_sec()
-        print(time2-time1, "Yolo Time")
+        #print(time2-time1, "Yolo Time")
 
-        self.callback()     
+        self.callback()   
+
+def save_to_file(name,text):
+    with open(name, mode='wt', encoding='utf-8') as myfile:
+        #for lines in text:
+        myfile.write(str(text))
+            #myfile.write('\n'.join(str(text)))
+
 
 def main(args):
-    yolo = object_detector()
-    rospy.spin()
+    try:
+        yolo = object_detector()
+        rospy.spin()
+    except rospy.ROSInterruptException:
+        pass
+        
+
 
 if __name__ =='__main__':
 	main(sys.argv)

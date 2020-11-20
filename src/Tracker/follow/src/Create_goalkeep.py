@@ -46,8 +46,8 @@ class Follow():
 
         # Subscribed topic
         self.pub_goal = rospy.Publisher("/Tracker/move_base_goal", PoseStamped, queue_size=1)
-        self.pub_waypoint_list = rospy.Publisher("/Tracker/Waypoint_list",PoseArray,queue_size=1)
-        self.pub_waypoint_list_reached = rospy.Publisher("/Tracker/Waypoint_list_deleted",PoseArray,queue_size=1)
+        self.pub_waypoint_list = rospy.Publisher("/Tracker/Visualization/Waypoint_list",PoseArray,queue_size=1)
+        self.pub_waypoint_list_reached = rospy.Publisher("/Tracker/Visualization/Waypoint_list_deleted",PoseArray,queue_size=1)
         print("Waiting for Odometry...")
         try:
             self.Current_position = rospy.wait_for_message("/odometry/filtered_map",Odometry,timeout=5)
@@ -68,7 +68,7 @@ class Follow():
 
         rospy.Subscriber("/odometry/filtered_map",Odometry,self.Compare_pose,queue_size=1)
         rospy.Subscriber("/Tracker/Object_Tracker/Published_pose",PoseStamped,self.New_input, queue_size=1)
-        rospy.Subscriber("/Tracker/move_base_goal",PoseStamped,self.Waypoint_goal,queue_size=1)
+        #rospy.Subscriber("/Tracker/move_base_goal",PoseStamped,self.Waypoint_goal,queue_size=1)
         rospy.Subscriber("/move_base/Current_goal",PoseStamped,self.Current_goal, queue_size=1)
        
 
@@ -220,6 +220,7 @@ class Follow():
                         Waypoint.pose.orientation.z = quaternion[2]
                         Waypoint.pose.orientation.w = quaternion[3]
                         self.pub_goal.publish(Waypoint)
+                        self.Move_base_goal = Waypoint
                 
                 self.Waypoints = PoseArray()
                 self.Waypoints.header = Pose.header
@@ -252,6 +253,7 @@ class Follow():
                         Waypoint_reached.pose = self.Waypoint_goal_pose.pose
                         self.Waypoints_reached.poses.append(Waypoint_reached.pose)
                         self.pub_goal.publish(Waypoint)
+                        self.Move_base_goal = Waypoint
                         self.pub_waypoint_list_reached.publish(self.Waypoints_reached)
 
                 distance_between_goal_and_waypoint = math.sqrt((self.Move_base_goal.pose.position.x-self.Waypoints.poses[0].position.x)**2+(self.Move_base_goal.pose.position.y-self.Waypoints.poses[0].position.y)**2)
@@ -259,6 +261,7 @@ class Follow():
                 if distance_between_goal_and_waypoint != 0:
                     Waypoint.pose = self.Waypoints.poses[0]
                     self.pub_goal.publish(Waypoint)
+                    self.Move_base_goal = Waypoint
             elif len(self.Waypoints.poses) == 2:
                 if distance_to_goal < self.distance_threshold:
                     self.Waypoints_reached.poses.append(self.Waypoints.poses[0])
@@ -289,18 +292,21 @@ class Follow():
                     self.pub_waypoint_list_reached.publish(self.Waypoints_reached)
                     self.pub_waypoint_list.publish(self.Waypoints)
                     self.pub_goal.publish(Waypoint)
+                    self.Move_base_goal = Waypoint
             else:
                 if distance_to_goal < self.distance_threshold:
                     self.Waypoints_reached.poses.append(self.Waypoints.poses[0])
                     del self.Waypoints.poses[0]
                     Waypoint.pose = self.Waypoints.poses[0]
                     self.pub_goal.publish(Waypoint)
+                    self.Move_base_goal = Waypoint
                     self.pub_waypoint_list_reached.publish(self.Waypoints_reached)
                     self.pub_waypoint_list.publish(self.Waypoints)
         else:
             if len(self.Waypoints.poses) != 0:
                 Waypoint.pose = self.Waypoints.poses[0]
                 self.pub_goal.publish(Waypoint)
+                self.Move_base_goal = Waypoint
 
     def Waypoint_goal(self,Pose):
         self.Move_base_goal = Pose
