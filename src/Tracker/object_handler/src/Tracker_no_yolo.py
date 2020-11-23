@@ -109,11 +109,6 @@ class object_tracker:
         time2 = rospy.Time.now().to_sec()
         print(time2-timer.time_ref.to_sec(),"Time delay")
 
-    def callback_choose_target(self,req):
-
-
-        return
-
 def box_for_OH(boxes,Time):
         # Takes boxes in the format of Detection2DArray.msg and converts it to fit the format Object_handler
         boxes_OH = []
