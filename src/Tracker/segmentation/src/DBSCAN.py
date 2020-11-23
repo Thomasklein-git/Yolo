@@ -32,20 +32,33 @@ class Cloud_segmentation:
 
         print("[INFO] Initializing ROS publishers...")
         self.bboxes_pub = rospy.Publisher("/Tracker/Segmentation/Boxes",Detection2DArray, queue_size=1) #Bboxes for object_handler 
-        #self.images_pub = rospy.Publisher("/yolo/Segimages",Detection2DArray, queue_size=1) #Bboxes with images for display
-
+        
         print("[INFO] Initialize ROS Subscribers...")
         #rospy.Subscriber("/Detection/Boxes",Detection2DArray)
-        #rospy.Subscriber("yolo/CloudImage",Image,self.callback_cpp,queue_size=1)
-        rospy.Subscriber("/zed2/zed_node/point_cloud/cloud_registered",PointCloud2,self.callback_pyt,queue_size=1)#)
+        
         cloud_sub = message_filters.Subscriber("/Tracker/Pc2ToImage/Cloud", Image, queue_size=1)
         timer_sub = message_filters.Subscriber("/Tracker/Timer", TimeReference, queue_size=1)
 
         print("[INFO] Loading complete")
         mf = message_filters.TimeSynchronizer([cloud_sub,timer_sub],queue_size=30)
-        mf.registerCallback(self.callback_timer)
+        #mf.registerCallback(self.callback_timer)
 
         #self.callback_segmentation()
+        """
+        #### Test til rapport
+        #### Python ####
+        pyt_sub = message_filters.Subscriber("/zed2/zed_node/point_cloud/cloud_registered",PointCloud2, queue_size=1)
+        mf_pyt = message_filters.TimeSynchronizer([pyt_sub,timer_sub],queue_size=30)
+        mf_pyt.registerCallback(self.callback_pyt)
+        #rospy.Subscriber("/zed2/zed_node/point_cloud/cloud_registered",PointCloud2,self.callback_pyt,queue_size=1)#)
+        
+        
+        #### c++ ####
+        cpp_sub = message_filters.Subscriber("/Tracker/Pc2ToImage/Cloud",Image, queue_size=1)
+        mf_cpp = message_filters.TimeSynchronizer([cpp_sub,timer_sub],queue_size=30)
+        mf_cpp.registerCallback(self.callback_cpp)
+        #rospy.Subscriber("yolo/CloudImage",Image,self.callback_cpp,queue_size=1)
+        """
 
     def callback_segmentation(self):
         boxes = rospy.wait_for_message("/Tracker/Detection/Boxes",Detection2DArray)
@@ -101,15 +114,15 @@ class Cloud_segmentation:
         #print(time4-time3 , "Time3")
         #print(time5-time4 , "Time4")
 
-    def callback_cpp(self,image):
-        time1 = rospy.Time.now().to_sec()
+    def callback_cpp(self,image,timer):
+        time1 = timer.time_ref.to_sec()
         self.cv_image = np.array(self.bridge.imgmsg_to_cv2(image)) # Image with distance in channels x,y,z
-        self.pc_list  = np.reshape(np.reshape(self.cv_image,(image.height,image.width*3)).T, image.height*image.width*3)
+        #self.pc_list  = np.reshape(np.reshape(self.cv_image,(image.height,image.width*3)).T, image.height*image.width*3)
         time2 = rospy.Time.now().to_sec()
         print(time2-time1 , "CPP")
 
-    def callback_pyt(self,cloud):
-        time1 = rospy.Time.now().to_sec()
+    def callback_pyt(self,cloud,timer):
+        time1 = timer.time_ref.to_sec()
         pc_list, cv_image_pc = PC_dataxyz_to_PC_image(cloud,Org_img_height=376,Org_img_width=672)
         time2 = rospy.Time.now().to_sec()
         print(time2-time1 , "python")

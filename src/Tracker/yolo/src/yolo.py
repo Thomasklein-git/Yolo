@@ -92,7 +92,6 @@ class object_detector:
             detection.results = [hypo,]
             detection.is_tracking = False
             detect.detections.append(detection)
-        print(len(detect.detections))
         self.boxes_pub.publish(detect)
         # Reload the callback loop 
         time2 = rospy.Time.now().to_sec()
