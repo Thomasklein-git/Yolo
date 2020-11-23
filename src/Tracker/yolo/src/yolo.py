@@ -56,7 +56,7 @@ class object_detector:
         self.timer.time_ref = rospy.Time.now() 
         self.timer_pub.publish(self.timer)
         cv_image = self.bridge.compressed_imgmsg_to_cv2(image, "bgr8")
-        _ , bboxes=detect_image(self.yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
+        _ , bboxes=detect_image(self.yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False,CLASSES=TRAIN_CLASSES,score_threshold=0.7, iou_threshold=0.3, rectangle_colors=(255,0,0))
         detect = Detection2DArray()
         detect.header = image.header
 
@@ -92,7 +92,7 @@ class object_detector:
             detection.results = [hypo,]
             detection.is_tracking = False
             detect.detections.append(detection)
-
+        print(len(detect.detections))
         self.boxes_pub.publish(detect)
         # Reload the callback loop 
         time2 = rospy.Time.now().to_sec()

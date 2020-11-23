@@ -6,3 +6,4 @@ build
 *.pyo
 *.bag
 __pycache__/
+*.data-00000-of-00001
