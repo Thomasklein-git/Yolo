@@ -147,3 +147,11 @@ def main(args):
 
 if __name__ =='__main__':
 	main(sys.argv)
+    
+    
+    for i in range(len(yolo.layers)):
+        yolo.layers[i].trainable=False
+        if yolo.layers[i].name in ["conv2d_74", "conv2d_66", "conv2d_58"]:
+            print(yolo.layers[i].name,"trainable layer")
+            yolo.layers[i].trainable=True
+    yolo.summary()
