@@ -37,7 +37,7 @@ class Cloud_segmentation:
         print("[INFO] Initialize ROS Subscribers...")
         #rospy.Subscriber("/Detection/Boxes",Detection2DArray)
         #rospy.Subscriber("yolo/CloudImage",Image,self.callback_cpp,queue_size=1)
-        #rospy.Subscriber("/zed2/zed_node/point_cloud/cloud_registered",PointCloud2)#,self.callback_pyt,queue_size=1)
+        rospy.Subscriber("/zed2/zed_node/point_cloud/cloud_registered",PointCloud2,self.callback_pyt,queue_size=1)#)
         cloud_sub = message_filters.Subscriber("/Tracker/Pc2ToImage/Cloud", Image, queue_size=1)
         timer_sub = message_filters.Subscriber("/Tracker/Timer", TimeReference, queue_size=1)
 
@@ -45,7 +45,7 @@ class Cloud_segmentation:
         mf = message_filters.TimeSynchronizer([cloud_sub,timer_sub],queue_size=30)
         mf.registerCallback(self.callback_timer)
 
-        self.callback_segmentation()
+        #self.callback_segmentation()
 
     def callback_segmentation(self):
         boxes = rospy.wait_for_message("/Tracker/Detection/Boxes",Detection2DArray)
