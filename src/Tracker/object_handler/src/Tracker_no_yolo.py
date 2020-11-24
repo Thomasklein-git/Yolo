@@ -34,8 +34,8 @@ class object_tracker:
         rospy.init_node('Object_Tracker')
 
         print("[INFO] Loading modules...")
-        classNum        = len(list(read_class_names(YOLO_COCO_CLASSES).values()))
-        self.ClassNames = read_class_names(YOLO_COCO_CLASSES)
+        classNum        = len(list(read_class_names(TRAIN_CLASSES).values()))
+        self.ClassNames = read_class_names(TRAIN_CLASSES)
         self.OH 	    = Object_handler(classNum)
 
         print("[INFO] initializing config...")
@@ -81,7 +81,7 @@ class object_tracker:
         #else:
         #    TargetList = []
         
-        boxes.header.frame_id = "map"  #Til rapport#
+        #boxes.header.frame_id = "map"  #Til rapport#
 
         for Object in self.OH.Known:
             # Search Known Objects for their number in the current bbox list

@@ -43,7 +43,7 @@ class Cloud_segmentation:
         mf = message_filters.TimeSynchronizer([cloud_sub,timer_sub],queue_size=30)
         #mf.registerCallback(self.callback_timer)
 
-        #self.callback_segmentation()
+        self.callback_segmentation()
         """
         #### Test til rapport
         #### Python ####

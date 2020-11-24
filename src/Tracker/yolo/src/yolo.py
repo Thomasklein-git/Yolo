@@ -95,7 +95,7 @@ class object_detector:
         self.boxes_pub.publish(detect)
         # Reload the callback loop 
         time2 = rospy.Time.now().to_sec()
-        #print(time2-time1, "Yolo Time")
+        print(time2-time1, "Yolo Time")
 
         self.callback()   
 
