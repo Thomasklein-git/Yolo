@@ -9,12 +9,12 @@
     <node ns="Tracker" name="Tracker" pkg="object_handler" type="Tracker_no_yolo.py"/>
     <!-- Launch set goal -->
     <node ns="Tracker" name="Create_goal" pkg="follow" type="Create_goalkeep.py"/>
-    <!-- Launch box show -->
-    <node ns="Tracker/Visualization" name="Draw_boxes" pkg="object_handler" type="show.py"/>
+    <!-- Launch box show 
+    <node ns="Tracker/Visualization" name="Draw_boxes" pkg="object_handler" type="show.py"/> -->
     <!-- Launch Visual improvements for rviz -->
     <node ns="Tracker/Visualization" name="Visual_rviz" pkg="follow" type="rviz.py"/>
-    <!-- Launch Driver
-    <node ns="move_base" name="Driver" pkg="follow" type="Driver.py"/> -->
+    <!-- Launch Driver -->
+    <node ns="move_base" name="Driver" pkg="follow" type="Driver.py"/> 
     <!-- Launch Offset for follower -->
     <node ns="Tracker" name="Formation" pkg="follow" type="Offset_goal.py"/>
 </launch>
