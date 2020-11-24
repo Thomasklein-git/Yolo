@@ -34,9 +34,9 @@ class Follow():
         self.Target = []
         # Tolerances
         self.backoff = True
-        self.distance_lower = 0.4 # Lower limit, if waypoint is closer, move back
-        self.distance_keep  = 0.8 # Goal, keep this distance to the target
-        self.distance_upper = 1.2 # Upper limit, if waypoint is further away, move closer
+        self.distance_lower = 0.8 # Lower limit, if waypoint is closer, move back
+        self.distance_keep  = 1.2 # Goal, keep this distance to the target
+        self.distance_upper = 1.6 # Upper limit, if waypoint is further away, move closer
 
         self.distance_threshold = 0.1 # Distance to a waypoint before it is discarded
 
