@@ -1,0 +1,6 @@
+<launch>
+    <!-- Launch Pointcloud2 to Image cpp -->
+    <node ns="Tracker" name="CloudImage" pkg="pcl_handler" type="cloudsubscribertimer"/>
+    <!-- Launch boundary box segmentation -->
+    <node ns="Tracker" name="Segmentation" pkg="segmentation" type="DBSCAN.py"/>
+</launch>
