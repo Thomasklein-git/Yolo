@@ -56,22 +56,26 @@ class Driver:
         rate = rospy.Rate(10) # Hz
         
         while not rospy.is_shutdown():
-
-            VPose = Odometry()
-            Movex = self.Current_goal.pose.position.x - Vpose.pose.pose.position.x
-            Movey = self.Current_goal.pose.position.y - Vpose.pose.pose.position.y
-            Movez = self.Current_goal.pose.position.z - Vpose.pose.pose.position.z
-            Movec = [Movex,Movey,Movez]
-            Movemag = np.linalg.norm([Movex,Movey,Movez])
-            if Movemag == 0:
-                #print("At goal, rotating if needed")
+            state = rospy.get_param("/driveState")
+            if state == "drive":
+                VPose = Odometry()
+                Movex = self.Current_goal.pose.position.x - Vpose.pose.pose.position.x
+                Movey = self.Current_goal.pose.position.y - Vpose.pose.pose.position.y
+                Movez = self.Current_goal.pose.position.z - Vpose.pose.pose.position.z
+                Movec = [Movex,Movey,Movez]
+                Movemag = np.linalg.norm([Movex,Movey,Movez])
+                if Movemag == 0:
+                    #print("At goal, rotating if needed")
+                    Move = [0,0,0]
+                elif Movemag < step:
+                    #print("Close, moving to goal")
+                    Move = [Movex, Movey, Movez]
+                else:
+                    #print("Far away, moving towards goal")
+                    Move = ([Movex,Movey,Movez]/Movemag)*step
+            elif state == "stop":
                 Move = [0,0,0]
-            elif Movemag < step:
-                #print("Close, moving to goal")
-                Move = [Movex, Movey, Movez]
-            else:
-                #print("Far away, moving towards goal")
-                Move = ([Movex,Movey,Movez]/Movemag)*step
+
             Vpose.header.stamp = rospy.Time.now()
             Vpose.pose.pose.position.x += Move[0]
             Vpose.pose.pose.position.y += Move[1]

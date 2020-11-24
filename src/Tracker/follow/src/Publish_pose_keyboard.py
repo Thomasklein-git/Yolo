@@ -16,6 +16,7 @@ class Keyboard_pose:
         self.Pose.pose.orientation.z = 0
         self.Pose.pose.orientation.w = 1
         self.pub = rospy.Publisher('/Tracker/Object_Tracker/Published_pose', PoseStamped, queue_size=1)
+        self.vis = rospy.Publisher('/Tracker/Visualization/Published_pose', PoseStamped, queue_size=1)
         rospy.Subscriber("/Keyboard/Twist",Twist,self.cb_Twist,queue_size=1)
         self.translation_step = 0.1
         self.rotation_step    = 0.1
@@ -50,7 +51,12 @@ class Keyboard_pose:
         self.Pose.pose.orientation.z = 0
         self.Pose.pose.orientation.w = 1
         """
-        self.pub.publish(self.Pose)
+        pubState = rospy.get_param("/poseState")
+        if pubState == "Publish":
+            self.vis.publish(self.Pose)
+            self.pub.publish(self.Pose)
+        elif pubState == "Silent":
+            self.vis.publish(self.Pose)
          
 if __name__ == '__main__':
     try:

@@ -76,6 +76,16 @@ speedBindings={
         'c':(1,.9),
     }
 
+driveState={
+        't':"drive",
+        'y':"stop",
+    }
+
+poseState={
+        'g':"Publish",
+        'h':"Silent",
+    }
+
 class PublishThread(threading.Thread):
     def __init__(self, rate):
         super(PublishThread, self).__init__()
@@ -211,6 +221,10 @@ if __name__=="__main__":
                 if (status == 14):
                     print(msg)
                 status = (status + 1) % 15
+            elif key in driveState.keys():
+                rospy.set_param("driveState",driveState[key])
+            elif key in poseState.keys():
+                rospy.set_param("poseState",poseState[key])
             else:
                 # Skip updating cmd_vel if key timeout and robot already
                 # stopped.
