@@ -139,6 +139,12 @@ class Follow():
                     self.Waypoints.poses[-1].orientation.z = quaternion[2]
                     self.Waypoints.poses[-1].orientation.w = quaternion[3]
                     self.pub_waypoint_list.publish(self.Waypoints)
+
+                    Waypoint = PoseStamped()
+                    Waypoint.header = Pose.header
+                    Waypoint.pose = self.Waypoints.poses[0]
+                    self.pub_goal.publish(Waypoint)
+                    self.Move_base_goal = Waypoint
                     #print(quaternion,"lower 1")
                 else:
                     lp_m = PoseStamped()
