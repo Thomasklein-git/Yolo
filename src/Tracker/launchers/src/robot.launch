@@ -1,6 +1,6 @@
 <launch>
-    <!-- Launch image detection 
-    <node ns="Tracker" name="Detection" pkg="yolo" type="yolo.py"/>-->
+    <!-- Launch image detection -->
+    <node ns="Tracker" name="Detection" pkg="yolo" type="yolo.py"/>
     <!-- Launch Pointcloud2 to Image cpp -->
     <node ns="Tracker" name="CloudImage" pkg="pcl_handler" type="cloudsubscribertimer"/>
     <!-- Launch boundary box segmentation -->
