@@ -18,6 +18,7 @@ from yolov3.utils import detect_image, Load_Yolo_model
 from yolov3.configs import *
 from yolov3.yolov3 import *
 
+os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
 class object_detector:
     def __init__(self):
