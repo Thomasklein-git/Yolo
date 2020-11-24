@@ -140,7 +140,7 @@ def DBSCAN_pointcloud(img, bboxes, seg_plot=True, eps=0.046, procent=0.0011):
             
             labels = np.array(np.empty(len(depth_distance))) # Initialize labels array with the length of nr pixels in img
             labels[:] = np.nan # All index are nan
-            labels[np.invert(np.isnan(depth_distance))]=label_for_plot
+            labels[np.invert(np.isfinite(depth_distance))]=label_for_plot
             labels = np.where(np.isnan(labels), 1000 ,labels) # Set nan to 1000
             labels = np.where(np.isinf(labels), 1000 ,labels) # Set +- inf to 1000
             for clust in range(-1,len(Sort)-1,1): # Set all clusters which are not the largest cluster to 2000
