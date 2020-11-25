@@ -22,7 +22,8 @@ class show:
         self.Nd = 2
         print("[INFO] Loading videofeed...")	
         image_sub = message_filters.Subscriber("/zed2/zed_node/left/image_rect_color/compressed",CompressedImage, queue_size=1)
-        boxed_sub = message_filters.Subscriber("/Tracker/Object_Tracker/Boxes", Detection2DArray, queue_size=1)
+        #boxed_sub = message_filters.Subscriber("/Tracker/Object_Tracker/Boxes", Detection2DArray, queue_size=1)
+        boxed_sub = message_filters.Subscriber("/Tracker/Detection/Boxes", Detection2DArray, queue_size=1)
         timer_sub = message_filters.Subscriber("/Tracker/Timer", TimeReference, queue_size=1)
 
         self.image_pub = rospy.Publisher("/Tracker/Visualization/Detected_Image",Image,queue_size=1)
