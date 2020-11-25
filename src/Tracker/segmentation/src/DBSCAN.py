@@ -27,7 +27,7 @@ class Cloud_segmentation:
         self.time_list = []
         self.pc_list = []
         self.cv_image = []
-        self.queue_lim = 30
+        self.queue_lim = 60
 
 
         print("[INFO] Initializing ROS publishers...")
@@ -62,8 +62,11 @@ class Cloud_segmentation:
 
     def callback_segmentation(self):
         boxes = rospy.wait_for_message("/Tracker/Detection/Boxes",Detection2DArray)
-        time1 = rospy.Time.now().to_sec()
         # Making sure that time on pc_list and cv_image is the same as time on the bboxes
+        if len(self.time_list) >0:
+            print(self.time_list[0])
+            print(self.time_list[-1])
+            print(boxes.header.stamp.to_sec())
         image = False
         i = 0
         for time in self.time_list:
@@ -85,34 +88,26 @@ class Cloud_segmentation:
                 boxes.detections[i].results[0].pose.pose.position.x = xyzcoord_series[i][0]
                 boxes.detections[i].results[0].pose.pose.position.y = xyzcoord_series[i][1]
                 boxes.detections[i].results[0].pose.pose.position.z = xyzcoord_series[i][2]
-            
+        
             self.bboxes_pub.publish(boxes)
-        time2 = rospy.Time.now().to_sec()
-        print(time2-time1, "Time DBScan")
+            time2 = rospy.Time.now().to_sec()
+            print(time2-time1, "Time DBScan")
+        else:
+            print("No match")
         self.callback_segmentation()
 
     def callback_timer(self,image,timer):
-        time1 = rospy.Time.now().to_sec()
         cv_image    = np.array(self.bridge.imgmsg_to_cv2(image)) # Image with distance in channels x,y,z
-
-        time2 = rospy.Time.now().to_sec()
         pc_list     = np.reshape(np.reshape(cv_image,(image.height,image.width*3)).T, image.height*image.width*3)
-
-        time3 = rospy.Time.now().to_sec()
         self.time_list.append(image.header.stamp.to_sec())
         #self.pc_list.append(pc_list)
         self.cv_image.append(cv_image)
 
-        time4 = rospy.Time.now().to_sec()
         if len(self.time_list) > self.queue_lim:
             del self.time_list[0]
             #del self.pc_list[0]
             del self.cv_image[0]
-        time5 = rospy.Time.now().to_sec()
-        print(time2-time1 , "Time1")
-        #print(time3-time2 , "Time2")
-        #print(time4-time3 , "Time3")
-        #print(time5-time4 , "Time4")
+        print("timer callback")
 
     def callback_cpp(self,image,timer):
         time1 = timer.time_ref.to_sec()
