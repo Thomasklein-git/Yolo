@@ -37,7 +37,7 @@ class object_detector:
         self.timer_pub = rospy.Publisher("/Tracker/Timer",TimeReference, queue_size=1)
 
         print("[INFO] Initialize ROS Subscribers...")
-        rospy.Subscriber("/zed2/zed_node/left/image_rect_color/compressed",CompressedImage,self.callback, queue_size=200)
+        rospy.Subscriber("/zed2/zed_node/left/image_rect_color/compressed",CompressedImage,self.callback, queue_size=400)
         # Create subscriptions
 
         print("[INFO] Loading complete")
@@ -53,7 +53,8 @@ class object_detector:
         self.timer.time_ref = rospy.Time.now() 
         self.timer_pub.publish(self.timer)
         cv_image = self.bridge.compressed_imgmsg_to_cv2(image, "bgr8")
-        _ , bboxes=detect_image(self.yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
+        _ , bboxes=detect_image(self.yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False,CLASSES=TRAIN_CLASSES,score_threshold=0.5, iou_threshold=0.3, rectangle_colors=(255,0,0))
+        #_ , bboxes=detect_image(self.yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False, rectangle_colors=(255,0,0))
         detect = Detection2DArray()
         detect.header = image.header
 

@@ -28,7 +28,7 @@ class Cloud_segmentation:
         self.time_list = []
         self.pc_list = []
         self.cv_image = []
-        self.queue_lim = 30
+        self.queue_lim = 90
 
 
         print("[INFO] Initializing ROS publishers...")
@@ -36,14 +36,14 @@ class Cloud_segmentation:
         #self.images_pub = rospy.Publisher("/yolo/Segimages",Detection2DArray, queue_size=1) #Bboxes with images for display
 
         print("[INFO] Initialize ROS Subscribers...")
-        rospy.Subscriber("/Tracker/Detection/Boxes",Detection2DArray,self.callback_segmentation,queue_size=200)
+        rospy.Subscriber("/Tracker/Detection/Boxes",Detection2DArray,self.callback_segmentation,queue_size=400)
         #rospy.Subscriber("yolo/CloudImage",Image,self.callback_cpp,queue_size=1)
         #rospy.Subscriber("/zed2/zed_node/point_cloud/cloud_registered",PointCloud2)#,self.callback_pyt,queue_size=1)
         cloud_sub = message_filters.Subscriber("/Tracker/Pc2ToImage/Cloud", Image, queue_size=1)
         timer_sub = message_filters.Subscriber("/Tracker/Timer", TimeReference, queue_size=1)
 
         print("[INFO] Loading complete")
-        mf = message_filters.TimeSynchronizer([cloud_sub,timer_sub],queue_size=200)
+        mf = message_filters.TimeSynchronizer([cloud_sub,timer_sub],queue_size=400)
         mf.registerCallback(self.callback_timer)
 
         #self.callback_segmentation()
@@ -99,7 +99,7 @@ class Cloud_segmentation:
             #del self.pc_list[0]
             del self.cv_image[0]
         time5 = rospy.Time.now().to_sec()
-        print(time2-time1 , "Time1")
+        #print(time2-time1 , "Time1")
         #print(time3-time2 , "Time2")
         #print(time4-time3 , "Time3")
         #print(time5-time4 , "Time4")

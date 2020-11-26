@@ -11,10 +11,8 @@ import scipy.stats
 class Standard_deviation_cal():
     def __init__(self):
         rospy.init_node("STD")
-        #rospy.init_node('Create_goal')
         self.all_coord=np.array([])
-        self.no_seg_boxes=30
-        #print(self.all_coord)
+        self.no_seg_boxes=60
         rospy.Subscriber("/Tracker/Segmentation/Boxes", Detection2DArray, self.Append_boxes,queue_size=200)
    
         
@@ -27,11 +25,10 @@ class Standard_deviation_cal():
         print("Ready to calculate in (",int(len(self.all_coord)/3),":",self.no_seg_boxes,")",end="\r")
         if len(self.all_coord)==3*self.no_seg_boxes:
             Cal_standard_deviation(self.all_coord)
-        #print(self.all_coord[0],"x")
     
 def Cal_standard_deviation(all_coord):
     Coord_reshape=np.transpose(np.reshape(all_coord,(-1,3))) #shape=[3,no_seg_boxes]
-    #print(Coord_reshape[0])
+    #save_to_file("test.csv",Coord_reshape[0])
     x=pd.Series(Coord_reshape[0])
     y=pd.Series(Coord_reshape[1])
     z=pd.Series(Coord_reshape[2])
@@ -48,13 +45,14 @@ def Cal_standard_deviation(all_coord):
     conf_x=mean_confidence_interval(x,confidence=0.95)
     conf_y=mean_confidence_interval(y,confidence=0.95)
     conf_z=mean_confidence_interval(z,confidence=0.95)
-    print(conf_x)
-    print(conf_y)
-    print(conf_z)
+    print(conf_x,"conf_x")
+    print(conf_y,"conf_y")
+    print(conf_z,"conf_z")
 
     fig = plt.figure()
-    gs = gridspec.GridSpec(3, 1, figure=fig)
-    plt.title('Boxplot af x, y, z coordinates')
+    gs = gridspec.GridSpec(1, 1, figure=fig)
+    plt.title('Boxplot of x, y, z coordinates')
+    #plt.title('Boxplot of x coordinates')
     plt.axis('off')
     ax = fig.add_subplot(gs[0, 0])
     ax.boxplot((x), vert=False, showmeans=True, meanline=True,
@@ -79,16 +77,21 @@ def Cal_standard_deviation(all_coord):
            meanprops={'linewidth': 2, 'color': 'red'})
     az.axvline(conf_z[1],linewidth=2, color='darkorange') #min_conf
     az.axvline(conf_z[2],linewidth=2, color='darkorange') #max_conf
-
+    
     plt.show()
     rospy.signal_shutdown("reason")
 
 def mean_confidence_interval(data, confidence=0.95):
     # https://www.kite.com/python/examples/702/scipy-compute-a-confidence-interval-from-a-dataset
     n = len(data)
-    m, se = np.mean(data), scipy.stats.sem(data) # Cal mean and standard and standard error of the mean
+    m, se = np.mean(data), scipy.stats.sem(data) # Cal mean and standard error of the mean
     h = se * scipy.stats.t.ppf((1 + confidence) / 2., n-1)
     return m, m-h, m+h
+
+def save_to_file(name,text):
+    with open(name, mode='wt', encoding='utf-8') as myfile:
+        #for lines in text:
+        myfile.write(str(text))
 
 if __name__ == '__main__':
     try:
