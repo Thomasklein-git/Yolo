@@ -60,6 +60,7 @@ class object_tracker:
         Time = float("%.6f" %  boxes.header.stamp.to_sec())
         boxes_OH = box_for_OH(boxes,Time)
         # Coordinates from BB to other coordinate set
+        boxes.header.frame_id = "map"  #Til rapport#
         #xyzcoord_trans_series = Transform_Coordinates_between_frames(xyzcoord_series,"zed2_left_camera_frame","map",Time)
         self.OH.add(boxes_OH)
 
@@ -81,7 +82,7 @@ class object_tracker:
         #else:
         #    TargetList = []
         
-        boxes.header.frame_id = "map"  #Til rapport#
+        
 
         for Object in self.OH.Known:
             # Search Known Objects for their number in the current bbox list

@@ -27,7 +27,7 @@ class Object_handler():
                 "Current_listing": 12} #Tilføjet time and vehicle XYZ
         self.KnownOrder   = {"UID":  0, "ID": 1, "Class": 2, "cx": 3, "cy": 4, "Start_x": 5, "Start_y": 6, \
              "End_x": 7, "End_y": 8, "Score": 9, "Occlusion": 10, "Depth_X": 11, "Depth_Y": 12, "Depth_Z": 13, \
-             "Time": 14, "Current_listing": 15} #Tilføjet time and vehicle XYZ
+             "Time": 14, "Current_listing": 15, "velocity_x": 16, "velocity_y": 17, "velocity_z": 18} #Tilføjet time and vehicle XYZ
         self.LostOrder    = {"UID":  0, "ID": 1, "Class": 2}
         self.Dynsta = np.zeros(classNum, dtype=bool) # Dynamic class true, Static class flass (everything is false)
         self.Dynsta[np.array([0,1])] = True # Make person and car (2) dynamic 
@@ -100,6 +100,7 @@ class Object_handler():
                     Known_i   = [i for i, x in enumerate(Known_classes) if c == x]
                     Current_D = []
                     Known_D = []
+                    Estim_D = []
                     Current_Time = [] #tilføjet
                     Known_Time = [] #tilføjet
                     UsedRow = []
@@ -111,6 +112,10 @@ class Object_handler():
 
                     for i in Known_i:
                         Known_D.append([self.Known[i][self.KnownOrder.get("Depth_X")],self.Known[i][self.KnownOrder.get("Depth_Y")],self.Known[i][self.KnownOrder.get("Depth_Z")]])      
+                        #Estim_x = self.Known[i][self.KnownOrder.get("Depth_X")]+self.Known[i][self.KnownOrder.get("velocity_x")]*(self.Current[i][self.CurrentOrder.get("Time")]-self.Known[i][self.KnownOrder.get("Time")])
+                        Estim_D.append([self.Known[i][self.KnownOrder.get("Depth_X")]+self.Known[i][self.KnownOrder.get("velocity_x")]*(self.Current[0][self.CurrentOrder.get("Time")]-self.Known[i][self.KnownOrder.get("Time")]), \
+                                        self.Known[i][self.KnownOrder.get("Depth_Y")]+self.Known[i][self.KnownOrder.get("velocity_y")]*(self.Current[0][self.CurrentOrder.get("Time")]-self.Known[i][self.KnownOrder.get("Time")]), \
+                                        self.Known[i][self.KnownOrder.get("Depth_Z")]+self.Known[i][self.KnownOrder.get("velocity_z")]*(self.Current[0][self.CurrentOrder.get("Time")]-self.Known[i][self.KnownOrder.get("Time")])])
                         Known_Time.append([self.Known[i][self.KnownOrder.get("Time")]]) #tilføjet
 
                     if len(Known_D) > 0:
@@ -121,8 +126,11 @@ class Object_handler():
                             v_thres=self.dynamic_V
                         # Calculate distance between pairs
                         D = dist.cdist(np.array(Current_D), np.array(Known_D))
+                        E = dist.cdist(np.array(Current_D), np.array(Estim_D))
                         # Calculate pairs for lowest cost 
-                        UsedRow, UsedCol = linear_sum_assignment(D)
+                        #UsedRow, UsedCol = linear_sum_assignment(D)
+                        UsedRow, UsedCol = linear_sum_assignment(E)
+
                         dellist = np.array([])
                         for i in range(len(UsedCol)):
                             # Calculate velocity of lowest cost pairs
@@ -134,53 +142,6 @@ class Object_handler():
                         UsedRow = np.delete(UsedRow,dellist)
                         UsedCol = np.delete(UsedCol,dellist)
                         
-
-                        """
-                        #print(np.min(D))
-                        V_obj=np.array([]) # Velocity of object relative to Vehicle
-                        for i in range(D.shape[1]):
-                            V=D[:,i]/(np.array(Current_Time)-np.array(Known_Time[i]))
-                            V_obj=np.append(V_obj,V)    
-                        V_obj=np.reshape(V_obj,D.shape)
-                        #print(D,"distance")
-                        #print(V_obj, "Velocity object")
-                        #print(len(V_obj))
-
-                        if self.Dynsta[c]==False:
-                            v_thres=self.static_V
-                            #print(v_thres,"sta")
-                        else:
-                            v_thres=self.dynamic_V
-                            #print(v_thres,"dyn")
-
-                        pairs = min(len(Current_i), len(Known_i))
-                        
-                        
-                        for i in range(0,pairs):
-                            #V_obj1=np.where(V_obj==V_obj.min())
-                            if V_obj.min()<=v_thres:# and D[V_obj1[0][0],V_obj1[1][0]]<3:# and D.min()<1:
-                                D1 = np.where(D==D.min())   
-                                UsedRow.append(D1[0][0])
-                                UsedCol.append(D1[1][0])
-                                D[UsedRow[i]][0:len(Known_i)] = 1000
-                                V_obj[UsedRow[i]][0:len(Known_i)] = 1000
-                                for j in range(0,len(Current_i)):
-                                    D[j][UsedCol[i]] = 1000
-                                    V_obj[j][UsedCol[i]] = 1000
-                    """
-                    
-                       
-                            
-                    """
-                        for i in range(0,pairs):
-                            print(D, "D")
-                            D1 = np.where(D==D.min())
-                            UsedRow.append(D1[0][0])
-                            UsedCol.append(D1[1][0])
-                            D[UsedRow[i]][0:len(Known_i)] = 1000
-                            for j in range(0,len(Current_i)):
-                                D[j][UsedCol[i]] = 1000
-                    """
                     # Updating Known to match current pairs
                     for i in range(len(UsedRow)):
                         Row = UsedRow[i]
@@ -188,13 +149,6 @@ class Object_handler():
                         Current_update = self.Current[Current_i[Row]]
                         Known_update = self.Known[Known_i[Col]][self.KnownOrder.get("UID")]
                         self.update(Current_update,Known_update)
-                    """
-                    for i in UsedRow:
-                        for j in UsedCol:
-                            Current_update = self.Current[Current_i[i]]
-                            Known_update = self.Known[Known_i[j]][self.KnownOrder.get("UID")]
-                            self.update(Current_update,Known_update)
-                    """
 
                     # Adding new points not matched with a known points
                     if len(UsedRow) < len(Current_i):
@@ -232,7 +186,7 @@ class Object_handler():
                 Current[self.CurrentOrder.get("Score")], 0, Current[self.CurrentOrder.get("Depth_X")], \
                 Current[self.CurrentOrder.get("Depth_Y")], Current[self.CurrentOrder.get("Depth_Z")], \
                 Current[self.CurrentOrder.get("Time")], \
-                Current[self.CurrentOrder.get("Current_listing")]]   
+                Current[self.CurrentOrder.get("Current_listing")],0,0,0]   
         self.Known.append(Known)
 
     def update(self,Current,Known_update):
@@ -240,7 +194,9 @@ class Object_handler():
         for i in range(0,len(self.Known)):
             if Known_update == self.Known[i][self.KnownOrder.get("UID")]:
                 Knownrow = i
-        
+        self.Known[Knownrow][self.KnownOrder.get("velocity_x")] = (Current[self.CurrentOrder.get("Depth_X")]-self.Known[Knownrow][self.KnownOrder.get("Depth_X")])/(Current[self.CurrentOrder.get("Time")]-self.Known[Knownrow][self.KnownOrder.get("Time")])
+        self.Known[Knownrow][self.KnownOrder.get("velocity_y")] = (Current[self.CurrentOrder.get("Depth_Y")]-self.Known[Knownrow][self.KnownOrder.get("Depth_Y")])/(Current[self.CurrentOrder.get("Time")]-self.Known[Knownrow][self.KnownOrder.get("Time")])
+        self.Known[Knownrow][self.KnownOrder.get("velocity_z")] = (Current[self.CurrentOrder.get("Depth_Z")]-self.Known[Knownrow][self.KnownOrder.get("Depth_Z")])/(Current[self.CurrentOrder.get("Time")]-self.Known[Knownrow][self.KnownOrder.get("Time")])
         self.Known[Knownrow][self.KnownOrder.get("cx")] = Current[self.CurrentOrder.get("cx")]
         self.Known[Knownrow][self.KnownOrder.get("cy")] = Current[self.CurrentOrder.get("cy")]
         self.Known[Knownrow][self.KnownOrder.get("Start_x")] = Current[self.CurrentOrder.get("Start_x")]
