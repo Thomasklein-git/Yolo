@@ -63,10 +63,6 @@ class Cloud_segmentation:
     def callback_segmentation(self):
         boxes = rospy.wait_for_message("/Tracker/Detection/Boxes",Detection2DArray)
         # Making sure that time on pc_list and cv_image is the same as time on the bboxes
-        if len(self.time_list) >0:
-            print(self.time_list[0])
-            print(self.time_list[-1])
-            print(boxes.header.stamp.to_sec())
         image = False
         i = 0
         for time in self.time_list:
@@ -90,8 +86,6 @@ class Cloud_segmentation:
                 boxes.detections[i].results[0].pose.pose.position.z = xyzcoord_series[i][2]
         
             self.bboxes_pub.publish(boxes)
-            time2 = rospy.Time.now().to_sec()
-            print(time2-time1, "Time DBScan")
         else:
             print("No match")
         self.callback_segmentation()

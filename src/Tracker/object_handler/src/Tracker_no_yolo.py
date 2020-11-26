@@ -81,7 +81,7 @@ class object_tracker:
         #else:
         #    TargetList = []
         
-        #boxes.header.frame_id = "map"  #Til rapport#
+        boxes.header.frame_id = "map"  #Til rapport#
 
         for Object in self.OH.Known:
             # Search Known Objects for their number in the current bbox list
