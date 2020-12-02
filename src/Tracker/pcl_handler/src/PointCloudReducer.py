@@ -25,14 +25,15 @@ class PointCloudReducer:
 
         self.bridge = CvBridge()
 
+        self.cloud_pub3 = rospy.Publisher("/Reduced_PointCloud",PointCloud2,queue_size=1)
         self.cloud_pub1 = rospy.Publisher("/Reduced_PointCloud_bb",PointCloud2,queue_size=1)
         self.cloud_pub2 = rospy.Publisher("/Reduced_PointCloud_seg",PointCloud2,queue_size=1)
-        
+        self.image_pub1 = rospy.Publisher("/Segmentation_image",Image,queue_size=1)
+
         image_sub = message_filters.Subscriber("/Tracker/Pc2ToImage/Cloud", Image, queue_size=1)
         boxes_sub = message_filters.Subscriber("/Tracker/Detection/Boxes", Detection2DArray, queue_size=1)
         cloud_sub = message_filters.Subscriber("/zed2/zed_node/point_cloud/cloud_registered",PointCloud2,queue_size=1)
-
-        mf = message_filters.TimeSynchronizer([image_sub,boxes_sub,cloud_sub],queue_size=1)
+        mf = message_filters.ApproximateTimeSynchronizer([image_sub,boxes_sub,cloud_sub],queue_size=10,slop=2)
         mf.registerCallback(self.callback)
 
     def callback(self,image,boxes,cloud):
@@ -46,12 +47,13 @@ class PointCloudReducer:
 
         pc_list, cv_image_pc = PC_dataxyz_to_PC_image(cloud,Org_img_height=376,Org_img_width=672)
         # bbox remove
-        
-        Start_x = int(boxes.detections[0].bbox.center.x-boxes.detections[0].bbox.size_x/2)
-        Start_y = int(boxes.detections[0].bbox.center.y-boxes.detections[0].bbox.size_y/2)
-        End_x   = int(boxes.detections[0].bbox.center.x+boxes.detections[0].bbox.size_x/2)
-        End_y   = int(boxes.detections[0].bbox.center.y+boxes.detections[0].bbox.size_y/2)
-        
+       
+        Start_x = int(boxes.detections[0].bbox.center.x-int(boxes.detections[0].bbox.size_x)/2)
+        Start_y = int(boxes.detections[0].bbox.center.y-int(boxes.detections[0].bbox.size_y)/2)
+        End_x   = int(boxes.detections[0].bbox.center.x+int(boxes.detections[0].bbox.size_x)/2)
+        End_y   = int(boxes.detections[0].bbox.center.y+int(boxes.detections[0].bbox.size_y)/2)
+        print(Start_x)
+        print(End_x)
         bbox_i = []
         for y in range(Start_y,End_y):
             bbox_i += list(range((y*672+Start_x)*3,(y*672+End_x+1)*3))
@@ -66,9 +68,10 @@ class PointCloudReducer:
         header = image.header
         Reduced_PC2_bb = pc2.create_cloud_xyz32(header, pc_list_bb)
         self.cloud_pub1.publish(Reduced_PC2_bb)
-
+        
         bbox_i = []
         Seg_index = 0
+        print(labels_series[0].shape)
         for y in range(Start_y,End_y):
             for x in range(Start_x,End_x):
                 pc_index = (y*672+x)*3
@@ -76,6 +79,8 @@ class PointCloudReducer:
                     for i in [0,1,2]:
                         bbox_i.append(pc_index+i)
                 Seg_index += 1
+        print(y*x)
+        print(Seg_index)
         pc_list_seg = pc_list
         pc_list_seg = np.delete(pc_list_seg, bbox_i)
         #print(pc_list.shape)
@@ -85,6 +90,10 @@ class PointCloudReducer:
         header = cloud.header
         Reduced_PC2_seg = pc2.create_cloud_xyz32(header, pc_list_seg)
         self.cloud_pub2.publish(Reduced_PC2_seg)
+
+        imgmsg = self.bridge.cv2_to_imgmsg(segmentation_img[0])
+        self.image_pub1.publish(imgmsg)
+        #self.cloud_pub3(cloud)
 
 def main(args):
     try:
