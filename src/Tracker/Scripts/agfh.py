@@ -350,7 +350,7 @@ def k_means_pointcloud(img, bboxes, PC=True, seg_plot=True, k=3,max_iter=1000,to
 
     return avg_depth_series, segmented_img_color_series, xyzcoord_series
 
-def PC_reduc(Target, TargetOrder, pc_list, cloud):
+def PC_reduc(Target,TargetOrder, pc_list, cloud):
     if Target == None:
         Reduced_PC2 = cloud
     else:
