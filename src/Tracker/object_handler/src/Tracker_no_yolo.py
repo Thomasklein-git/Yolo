@@ -58,10 +58,10 @@ class object_tracker:
 
     def callback(self,boxes,timer):
         Time = float("%.6f" %  boxes.header.stamp.to_sec())
-        boxes_OH = box_for_OH(boxes,Time)
+        
         # Coordinates from BB to other coordinate set
-        boxes.header.frame_id = "map"  #Til rapport#
-        #xyzcoord_trans_series = Transform_Coordinates_between_frames(xyzcoord_series,"zed2_left_camera_frame","map",Time)
+        #boxes.header.frame_id = "map"  #Til rapport#
+        boxes_OH = box_for_OH(boxes,Time)
         self.OH.add(boxes_OH)
 
         # If there are no current or previous target, run Choose_target to search for a new target
@@ -131,6 +131,12 @@ def box_for_OH(boxes,Time):
             x = box.results[0].pose.pose.position.x
             y = box.results[0].pose.pose.position.y
             z = box.results[0].pose.pose.position.z
+            xyz = [[x,y,z]]
+            
+            xyz = Transform_Coordinates_between_frames(xyz,"zed2_left_camera_frame","map",rospy.Time.now())
+            x = xyz[box][0]
+            y = xyz[box][1]
+            z = xyz[box][2]
             xyz = [x,y,z]
 
             boxes_OH.append([Start_x,End_x,Start_y,End_y,Score,Class,xyz,Time])

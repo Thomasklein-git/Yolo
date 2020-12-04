@@ -5,24 +5,30 @@
     poseState: Silent
     </rosparam>
 
-    <!-- Launch image detection
-    <node ns="Tracker" name="Detection" pkg="yolo" type="yolo.py"/> -->
-    <!-- Launch Pointcloud2 to Image cpp 
-    <node ns="Tracker" name="CloudImage" pkg="pcl_handler" type="cloudsubscribertimer"/>-->
-    <!-- Launch boundary box segmentation 
-    <node ns="Tracker" name="Segmentation" pkg="segmentation" type="DBSCAN.py"/>-->
+    <!-- Launch static transforms -->
+    <node name="base_to_zed" pkg="tf" type="static_transform_publisher" args="0.9 0 1.9 0 0 0 1 base_link zed2_left_camera_frame 100"/>
+    <!--<node name="base_to_zed2" pkg="tf" type="static_transform_publisher" args="0.9 0 1.9 0 0 0 1 map base_link 100"/> -->
+    <!-- Launch dynamic transform 
+    <node name="map_to_base" pkg="experiments" type="dynamic_transform.py"/>-->
+
+    <!-- Launch image detection-->
+    <node ns="Tracker" name="Detection" pkg="yolo" type="yolo.py"/> 
+    <!-- Launch Pointcloud2 to Image cpp -->
+    <node ns="Tracker" name="CloudImage" pkg="pcl_handler" type="cloudsubscriber"/>
+    <!-- Launch boundary box segmentation -->
+    <node ns="Tracker" name="Segmentation" pkg="segmentation" type="DBSCAN.py"/>
     <!-- Launch Tracker -->
     <node ns="Tracker" name="Object_Tracker" pkg="object_handler" type="Tracker_no_yolo.py"/>
-    <!-- Launch set goal 
-    <node ns="Tracker" name="Create_goal" pkg="follow" type="Create_goalkeep.py"/>-->
-    <!-- Launch box show 
-    <node ns="Tracker/Visualization" name="Draw_boxes" pkg="object_handler" type="show.py"/> -->
-    <!-- Launch Visual improvements for rviz 
-    <node ns="Tracker/Visualization" name="Visual_rviz" pkg="follow" type="rviz.py"/> -->
+    <!-- Launch set goal -->
+    <node ns="Tracker" name="Create_goal" pkg="follow" type="Create_goalkeep.py"/>
+    <!-- Launch box show -->
+    <node ns="Tracker/Visualization" name="Draw_boxes" pkg="object_handler" type="show.py"/> 
+    <!-- Launch Visual improvements for rviz -->
+    <node ns="Tracker/Visualization" name="Visual_rviz" pkg="follow" type="rviz.py"/> 
     <!-- Launch Keyboard 
     <include file="$(find launchers)/src/keyboard.launch"/>-->
     <!-- Launch Driver 
     <node ns="move_base" name="Driver" pkg="follow" type="Driver.py"/> -->
-    <!-- Launch Offset for follower 
-    <node ns="Tracker" name="Formation" pkg="follow" type="Offset_goal.py"/>-->
+    <!-- Launch Offset for follower -->
+    <node ns="Tracker" name="Formation" pkg="follow" type="Offset_goal.py"/>
 </launch>

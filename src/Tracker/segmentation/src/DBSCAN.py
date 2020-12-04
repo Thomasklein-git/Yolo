@@ -40,7 +40,8 @@ class Cloud_segmentation:
         timer_sub = message_filters.Subscriber("/Tracker/Timer", TimeReference, queue_size=1)
 
         print("[INFO] Loading complete")
-        mf = message_filters.TimeSynchronizer([cloud_sub,timer_sub],queue_size=30)
+        #mf = message_filters.TimeSynchronizer([cloud_sub,timer_sub],queue_size=30)
+        mf = message_filters.ApproximateTimeSynchronizer([cloud_sub,timer_sub],queue_size=30,slop=5)
         mf.registerCallback(self.callback_timer)
 
         self.callback_segmentation()
@@ -73,7 +74,9 @@ class Cloud_segmentation:
                 break
             i += 1
         # Maybe add delete of all pc_list and cv image from before time stamp.
-        
+        if len(self.cv_image) > 0:
+            cv_image = self.cv_image[-1]
+            image = True
         if image == True:
             PC_image_bbox_sub_series = []
             for box in boxes.detections:

@@ -483,7 +483,7 @@ def Transform_Pose_between_frames(coordinates,Current_frame,Target_frame,Time):
     # Transform pose to target frame
     tf_buffer = tf2_ros.Buffer(rospy.Duration(1200.0)) #tf buffer length
     tf_listener = tf2_ros.TransformListener(tf_buffer)
-    transform = tf_buffer.lookup_transform(Target_frame, Pose.header.frame_id, rospy.Time(0), rospy.Duration(1.0))
+    transform = tf_buffer.lookup_transform(Target_frame, Pose.header.frame_id, rospy.Time(0), rospy.Duration(20.0))
     Trans_Pose = tf2_geometry_msgs.do_transform_pose(Pose, transform)
     
     return Trans_Pose
