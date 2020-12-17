@@ -50,7 +50,7 @@ def Cal_standard_deviation(all_coord):
     print(conf_z,"conf_z")
 
     fig = plt.figure()
-    gs = gridspec.GridSpec(1, 1, figure=fig)
+    gs = gridspec.GridSpec(3, 1, figure=fig)
     plt.title('Boxplot of x, y, z coordinates')
     #plt.title('Boxplot of x coordinates')
     plt.axis('off')
