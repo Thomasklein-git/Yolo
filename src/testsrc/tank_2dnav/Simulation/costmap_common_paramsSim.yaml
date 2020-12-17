@@ -1,0 +1,41 @@
+plugins:
+  - {name: obstacles, type: "costmap_2d::VoxelLayer"}
+  - {name: inflation_layer, type: "costmap_2d::InflationLayer"}
+
+robot_base_frame: base_link
+
+
+# ---- Footprint
+footprint: [[2.6, -1.15], [2.8, 0], [2.6, 1.15], [-2.6, 1.15], [-2.6, -1.15]]
+footprint_padding: 0.3
+
+
+transform_tolerance: 1.0 # Added without testing
+
+
+# ---- Mapping
+#map_type: costmap
+publish_voxel_map: true # Added without test
+
+# ---- Detect obstacles
+obstacle_range: 100.0
+raytrace_range: 100.0
+
+obstacles:
+  observation_sources: point_cloud2_sim
+  point_cloud2_sim: {sensor_frame: base_lidar, data_type: PointCloud2, topic: lidar, marking: true, clearing: false, max_obstacle_height: 2.1, min_obstacle_height: 0.2}
+
+obstacle_layer: {track_unknown_space: true} # Added without test
+  
+inflation_layer:
+  enabled:              true
+  cost_scaling_factor:  2.0  # exponential rate at which the obstacle cost drops off (default: 10)  SET TO 1
+  inflation_radius:     5.25  # max. distance from an obstacle at which costs are incurred for planning paths (default: 0.55).
+
+# ---- Voxel layer parameters
+origin_z: 0.2
+z_resolution: 0.19
+z_voxels: 10
+# unknown threshold:
+mark_threshold: 0
+publish_voxel_map: false

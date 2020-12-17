@@ -15,8 +15,8 @@ class dynamic_transform:
     def callback(self, Odom):
         trans = (Odom.pose.pose.position.x, Odom.pose.pose.position.y, Odom.pose.pose.position.z)
         rot   = (Odom.pose.pose.orientation.x, Odom.pose.pose.orientation.y, Odom.pose.pose.orientation.z, Odom.pose.pose.orientation.w)
-        #stamp = rospy.Time.now()
-        stamp = Odom.header.stamp
+        stamp = rospy.Time.now()
+        #stamp = Odom.header.stamp
         self.br.sendTransform(trans, rot, stamp,"base_link","map")
 
 def main(args):

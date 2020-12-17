@@ -5,8 +5,8 @@
     poseState: Silent
     </rosparam>
 
-    <!-- Launch static transforms -->
-    <node name="base_to_zed" pkg="tf" type="static_transform_publisher" args="0.9 0 1.9 0 0 0 1 base_link zed2_left_camera_frame 100"/>
+    <!-- Launch static transforms 
+    <node name="base_to_zed" pkg="tf" type="static_transform_publisher" args="0.9 0 1.9 0 0 0 1 base_link zed2_left_camera_frame 100"/> -->
     <!--<node name="base_to_zed2" pkg="tf" type="static_transform_publisher" args="0.9 0 1.9 0 0 0 1 map base_link 100"/> -->
     <!-- Launch dynamic transform 
     <node name="map_to_base" pkg="experiments" type="dynamic_transform.py"/>-->

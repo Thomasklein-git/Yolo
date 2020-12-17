@@ -65,7 +65,7 @@ class show:
 
             cv2.rectangle(cv_image, (int(Start_x),int(Start_y)), (int(End_x),int(End_y)), color, 1)
             
-            cv2.putText(cv_image, Position,     (int(box.bbox.center.x), int(box.bbox.center.y)-5), cv2.FONT_HERSHEY_PLAIN, 1, color, 2)
+            #cv2.putText(cv_image, Position,     (int(box.bbox.center.x), int(box.bbox.center.y)-5), cv2.FONT_HERSHEY_PLAIN, 1, color, 2)
             cv2.putText(cv_image, Description,  (int(Start_x), int(End_y)-5),                       cv2.FONT_HERSHEY_PLAIN, 1, color, 2)
 			
         

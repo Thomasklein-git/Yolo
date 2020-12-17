@@ -1,0 +1,9 @@
+GlobalPlanner:
+  allow_unknown: true
+  visualize_potential: true # (default: false)
+  use_dijkstra: true
+  default_tolerance: 0.0
+  
+  lethal_cost: 253 # (default: 253)
+  neutral_cost: 50 # (default: 50)
+  cost_factor: 3 # (default: 3.0)

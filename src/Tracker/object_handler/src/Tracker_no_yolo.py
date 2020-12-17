@@ -57,6 +57,7 @@ class object_tracker:
         mf.registerCallback(self.callback)
 
     def callback(self,boxes,timer):
+        print("hej")
         Time = float("%.6f" %  boxes.header.stamp.to_sec())
         
         # Coordinates from BB to other coordinate set
@@ -131,14 +132,17 @@ def box_for_OH(boxes,Time):
             x = box.results[0].pose.pose.position.x
             y = box.results[0].pose.pose.position.y
             z = box.results[0].pose.pose.position.z
+            
             xyz = [[x,y,z]]
             
-            xyz = Transform_Coordinates_between_frames(xyz,"zed2_left_camera_frame","map",rospy.Time.now())
-            x = xyz[box][0]
-            y = xyz[box][1]
-            z = xyz[box][2]
+            xyz = Transform_Coordinates_between_frames(xyz,"zed2_left_camera_frame","map",rospy.Time(0))#.now())
+            x = xyz[0][0]
+            y = xyz[0][1]
+            z = xyz[0][2]
+            
             xyz = [x,y,z]
-
+            print(xyz)
+            
             boxes_OH.append([Start_x,End_x,Start_y,End_y,Score,Class,xyz,Time])
         boxes_OH = np.array(boxes_OH)
         return boxes_OH

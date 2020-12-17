@@ -33,12 +33,12 @@ class Follow():
 
         self.Target = []
         # Tolerances
-        self.backoff = True
-        self.distance_lower = 0.8 # Lower limit, if waypoint is closer, move back
-        self.distance_keep  = 1.2 # Goal, keep this distance to the target
-        self.distance_upper = 1.6 # Upper limit, if waypoint is further away, move closer
+        self.backoff = False
+        self.distance_lower = 2 # Lower limit, if waypoint is closer, move back
+        self.distance_keep  = 3 # Goal, keep this distance to the target
+        self.distance_upper = 12 # Upper limit, if waypoint is further away, move closer
 
-        self.distance_threshold = 0.1 # Distance to a waypoint before it is discarded
+        self.distance_threshold = 12 # Distance to a waypoint before it is discarded
 
         self.break_threshold = 0.2
 
@@ -68,8 +68,9 @@ class Follow():
 
         rospy.Subscriber("/odometry/filtered_map",Odometry,self.Compare_pose,queue_size=1)
         rospy.Subscriber("/Tracker/Object_Tracker/Published_pose",PoseStamped,self.New_input, queue_size=1)
-        #rospy.Subscriber("/Tracker/move_base_goal",PoseStamped,self.Waypoint_goal,queue_size=1)
-        rospy.Subscriber("/move_base/Current_goal",PoseStamped,self.Current_goal, queue_size=1)
+        rospy.Subscriber("/Tracker/move_base_goal",PoseStamped,self.Waypoint_goal,queue_size=1)
+        #rospy.Subscriber("/move_base/Current_goal",PoseStamped,self.Current_goal, queue_size=1)
+        rospy.Subscriber("/move_base_simple/goal",PoseStamped,self.Current_goal,queue_size=1)
        
 
     def New_input(self,Pose):

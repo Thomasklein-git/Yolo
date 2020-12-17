@@ -39,7 +39,7 @@ class object_detector:
         self.timer_pub = rospy.Publisher("/Tracker/Timer",TimeReference, queue_size=1)
 
         print("[INFO] Initialize ROS Subscribers...")
-        #rospy.Subscriber("/zed2/zed_node/left/image_rect_color/compressed",CompressedImage,self.callback_sub,queue_size=1)
+        rospy.Subscriber("/zed2/zed_node/left/image_rect_color/compressed",CompressedImage,self.callback_sub,queue_size=1)
         # Create subscriptions
 
         print("[INFO] Loading complete")
@@ -58,7 +58,7 @@ class object_detector:
         self.timer_pub.publish(self.timer)
         cv_image = self.bridge.compressed_imgmsg_to_cv2(image, "bgr8")
         #cv_image = self.bridge.imgmsg_to_cv2(image,image.encoding)
-        _ , bboxes=detect_image(self.yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False,CLASSES=TRAIN_CLASSES,score_threshold=0.5, iou_threshold=0.45, rectangle_colors=(255,0,0))
+        _ , bboxes=detect_image(self.yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False,CLASSES=TRAIN_CLASSES,score_threshold=0.4, iou_threshold=0.1, rectangle_colors=(255,0,0))
         detect = Detection2DArray()
         detect.header = image.header
 
@@ -100,12 +100,16 @@ class object_detector:
         print(time2-time1, "Yolo Time")
 
         self.callback()   
+    def callback_sub(self,image):
+        pass
 
 def save_to_file(name,text):
     with open(name, mode='wt', encoding='utf-8') as myfile:
         #for lines in text:
         myfile.write(str(text))
             #myfile.write('\n'.join(str(text)))
+
+
 
 
 def main(args):

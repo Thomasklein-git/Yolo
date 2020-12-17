@@ -67,7 +67,7 @@ main(int argc, char **argv)
     ros::init(argc, argv, "PointcloudImage");
     PointCloudImage pci;  // Load class
     ros::spin();
-    std::cout << "Hey";
+    //std::cout << "Hey";
     //ros::NodeHandle n;
     //ros::Publisher pub = n.advertise<sensor_msgs::Image> ("/yolo/CloudImage",1);
     //ros::Subscriber sub = n.subscribe("/zed2/zed_node/point_cloud/cloud_registered", 1, callback_cloud);

@@ -24,12 +24,13 @@ class Follow():
         self.tf_listener = tf2_ros.TransformListener(self.tf_buffer)
 
         # Tolerances
-        self.distance_left   = 0.6
-        self.distance_right  = 0.6
-        self.distance_behind = 1.2
+        self.distance_left   = [0,10,0]
+        self.distance_right  = [0,-10,0]
+        self.distance_behind = [-3,0,0]
 
         # Subscribed topic
         self.pub_goal = rospy.Publisher("/move_base_simple/goal", PoseStamped, queue_size=1)
+        #self.pub_goal = rospy.Publisher("/move_base/Current_goal", PoseStamped, queue_size=1)
         rospy.Subscriber("/Tracker/move_base_goal",PoseStamped,self.callback_offset,queue_size=1)
 
     def callback_offset(self,Pose):
@@ -50,11 +51,11 @@ class Follow():
         if Formation == 0:
             displacement = [0,0,0]
         elif Formation == 1:
-            displacement = [-self.distance_left,0.3,0]            
+            displacement = self.distance_left           
         elif Formation == 2:
-            displacement = [-self.distance_right,-0.3,0]
+            displacement = self.distance_right
         elif Formation == 3:
-            displacement = [-self.distance_behind,0,0]
+            displacement = self.distance_behind
 
         quaternion   = Quaternion(Pose.pose.orientation.w,Pose.pose.orientation.x,Pose.pose.orientation.y,Pose.pose.orientation.z)
         displacement = quaternion.rotate(displacement)
