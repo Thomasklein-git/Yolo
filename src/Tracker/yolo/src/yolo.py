@@ -30,26 +30,21 @@ class object_detector:
         self.bridge = CvBridge()
 
         print("[INFO] Loading config...")
-        # Create local variables
         self.timer = TimeReference()
 
         print("[INFO] Initialize ROS publishers...")
-        # Create Topics to publish
         self.boxes_pub = rospy.Publisher("/Tracker/Detection/Boxes",Detection2DArray, queue_size=1)
         self.timer_pub = rospy.Publisher("/Tracker/Timer",TimeReference, queue_size=1)
 
         print("[INFO] Initialize ROS Subscribers...")
         rospy.Subscriber("/zed2/zed_node/left/image_rect_color/compressed",CompressedImage,self.callback_sub,queue_size=1)
-        # Create subscriptions
 
         print("[INFO] Loading complete")
         self.init_time_delay = 0
-        # Init callback
         self.callback()
 
 
     def callback(self):
-        #image = rospy.wait_for_message("/zed2/zed_node/left/image_rect_color",Image)
         image = rospy.wait_for_message("/zed2/zed_node/left/image_rect_color/compressed",CompressedImage)
         time1 = rospy.Time.now().to_sec()
         self.timer.header = image.header
@@ -57,8 +52,7 @@ class object_detector:
         self.timer.time_ref = rospy.Time.now() 
         self.timer_pub.publish(self.timer)
         cv_image = self.bridge.compressed_imgmsg_to_cv2(image, "bgr8")
-        #cv_image = self.bridge.imgmsg_to_cv2(image,image.encoding)
-        _ , bboxes=detect_image(self.yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False,CLASSES=TRAIN_CLASSES,score_threshold=0.4, iou_threshold=0.1, rectangle_colors=(255,0,0))
+        _ , bboxes=detect_image(self.yolo, cv_image, "", input_size=YOLO_INPUT_SIZE, show=False,CLASSES=TRAIN_CLASSES,score_threshold=0.3, iou_threshold=0.1, rectangle_colors=(255,0,0))
         detect = Detection2DArray()
         detect.header = image.header
 
@@ -95,21 +89,8 @@ class object_detector:
             detection.is_tracking = False
             detect.detections.append(detection)
         self.boxes_pub.publish(detect)
-        # Reload the callback loop 
-        time2 = rospy.Time.now().to_sec()
-        print(time2-time1, "Yolo Time")
 
         self.callback()   
-    def callback_sub(self,image):
-        pass
-
-def save_to_file(name,text):
-    with open(name, mode='wt', encoding='utf-8') as myfile:
-        #for lines in text:
-        myfile.write(str(text))
-            #myfile.write('\n'.join(str(text)))
-
-
 
 
 def main(args):
@@ -119,7 +100,5 @@ def main(args):
     except rospy.ROSInterruptException:
         pass
         
-
-
 if __name__ =='__main__':
 	main(sys.argv)

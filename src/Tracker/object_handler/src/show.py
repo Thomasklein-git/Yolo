@@ -22,9 +22,9 @@ class show:
         self.Nd = 2
         print("[INFO] Loading videofeed...")	
         image_sub = message_filters.Subscriber("/zed2/zed_node/left/image_rect_color/compressed",CompressedImage, queue_size=1)
-        boxed_sub = message_filters.Subscriber("/Tracker/Object_Tracker/Boxes", Detection2DArray, queue_size=1)
-        #boxed_sub = message_filters.Subscriber("/Tracker/Detection/Boxes", Detection2DArray, queue_size=1)
         timer_sub = message_filters.Subscriber("/Tracker/Timer", TimeReference, queue_size=1)
+        #boxed_sub = message_filters.Subscriber("/Tracker/Object_Tracker/Boxes", Detection2DArray, queue_size=1) # Full tracker
+        boxed_sub = message_filters.Subscriber("/Tracker/Detection/Boxes", Detection2DArray, queue_size=1) # Only yolo
 
         self.image_pub = rospy.Publisher("/Tracker/Visualization/Detected_Image",Image,queue_size=1)
 
@@ -65,18 +65,16 @@ class show:
 
             cv2.rectangle(cv_image, (int(Start_x),int(Start_y)), (int(End_x),int(End_y)), color, 1)
             
-            #cv2.putText(cv_image, Position,     (int(box.bbox.center.x), int(box.bbox.center.y)-5), cv2.FONT_HERSHEY_PLAIN, 1, color, 2)
+            cv2.putText(cv_image, Position,     (int(box.bbox.center.x), int(box.bbox.center.y)-5), cv2.FONT_HERSHEY_PLAIN, 1, color, 2)
             cv2.putText(cv_image, Description,  (int(Start_x), int(End_y)-5),                       cv2.FONT_HERSHEY_PLAIN, 1, color, 2)
 			
-        
         boxed_image = self.bridge.cv2_to_imgmsg(cv_image, "bgr8")
         self.image_pub.publish(boxed_image)
                 
 
 def main(args):
-	ot = show()
-	
 	try:
+	ot = show()
 		rospy.spin()
 	except KeyboardInterrupt:
 		print("Shutting down")
